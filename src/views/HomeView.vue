@@ -4,7 +4,7 @@
       <img src="/img/folder.png"  class="icon icon-folder"  alt="Folder" />
       <img src="/img/arrow.png"   class="icon icon-arrow"   alt="Arrow"  />
       <img src="/img/clips.png"   class="icon icon-clips"   alt="Clips"  />
-      <img src="/img/coffee.png"  class="icon icon-coffee"  alt="Coffee" />
+      <img src="/img/cafeamarillo.png"  class="icon icon-coffee"  alt="Coffee" />
       <img src="/img/camera.png"  class="icon icon-camera"  alt="Camera" />
       <img src="/img/figma.png"   class="icon icon-figma"   alt="Figma"  />
 
@@ -15,21 +15,17 @@
     </section>
 
     <div class="marquee-wrapper">
-      <div class="marquee-track" >
-        
+      <div class="marquee-track">
         <div v-for="n in 2" :key="n" class="marquee-content">
-          <div v-for="(img, index) in projects" :key="index" class="marquee-item">
-            <img :src="img.url" :alt="img.name" class="project-thumb" />
+          <div v-for="(img, index) in projects" :key="index" class="project-card">
+            <img :src="img.url" :alt="img.name" class="project-img" />
           </div>
-
         </div>
-        
-
       </div>
     </div>
-              <router-link to="/Portfolio" class="btn-explore">
-          Explore here all my projects
-        </router-link>
+    <router-link to="/Portfolio" class="btn-explore">
+      Explore here all my projects
+    </router-link>
   </main>
 </template>
 
@@ -37,12 +33,13 @@
 
 const projects = [
   { name: 'Proyecto 1', url: '/img/proyecto1.png' },
+  { name: 'Proyecto 7', url: '/img/itinerohome.png' },
+  { name: 'Proyecto 3', url: '/img/under.png' },
+  { name: 'Proyecto 4', url: '/img/Raizysazon.png' },
+  { name: 'Proyecto 5', url: '/img/arandacoriahome.png' },
+  { name: 'Proyecto 6', url: '/img/ordendashboard.png' },
   { name: 'Proyecto 2', url: '/img/proyecto2.png' },
-  { name: 'Proyecto 3', url: '/img/proyecto3.png' },
-  { name: 'Proyecto 4', url: '/img/proyecto4.png' },
-  { name: 'Proyecto 5', url: '/img/proyecto5.jpg' },
-  { name: 'Proyecto 6', url: '/img/proyecto6.png' },
-  { name: 'Proyecto 7', url: '/img/proyecto7.png' },
+  
 ];
 </script>
 
@@ -52,7 +49,10 @@ const projects = [
 
 .hero {
     font-family: 'Inter' !important;
-    min-height: 60vh;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,11 +67,12 @@ const projects = [
   font-size: 52px; 
   
   /* Centrado y límite de ancho */
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto; /* Centra el bloque horizontalmente */
   
   /* Alineación del texto */
   text-align: justify;
+  text-wrap: balance;
   
   /* Espaciado para que no toque los bordes en móviles */
   padding: 0px;
@@ -83,6 +84,18 @@ const projects = [
   font-weight: 
   450;
   letter-spacing: -0.02em;
+}
+
+/* Color de resaltado personalizado */
+.hero-content h1::selection {
+    background-color: var(--lima); /* Usa tu variable de color lima */
+    color: var(--black);           /* Asegura que el texto sea legible (negro) */
+}
+
+/* También para navegadores basados en Firefox */
+.hero-content h1::-moz-selection {
+    background-color: var(--lima);
+    color: var(--black);
 }
 
 .highlight {
@@ -108,13 +121,13 @@ const projects = [
     color: var(--black);
     text-decoration: none;
     border-radius: 50px;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 18px;
     transition: 0.2s ease-in-out;
 }
 
 .btn-explore:hover {
-    transform: translateY(-3px);
+    transform: scale(1.01);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
@@ -141,7 +154,7 @@ const projects = [
     left: 8%;
     }
 .icon-coffee {
-    width: 100px;
+    width: 80px;
     top: 40%;
     right: 9%;
     }
@@ -178,78 +191,90 @@ const projects = [
 .icon-figma  { --base-rot: 2deg; --hover-tilt: -7deg; }
 
 
-/*CARROUSEL */
+/* CARROUSEL MODERNO */
 
 .marquee-wrapper {
   width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Oculta lo que sale de la pantalla */
   display: flex;
   justify-content: flex-start;
-  background: transparent;
-  padding: 60px 0;
-  /* Cursor opcional para indicar que hay interacción */
-  cursor: ew-resize;
+  padding: 60px 0; /* Espacio para que luzca */
+  cursor: ew-resize; /* Indica movimiento */
 }
 
 .marquee-track {
-  display: flex;
-  width: fit-content;
+  display: flex; /* Alinea los dos bloques de contenido */
+  width: fit-content; /* Se ajusta al ancho total */
   flex-shrink: 0;
-  /* Usamos la variable de dirección que controlas con JS */
-  animation: scroll-loop 35s linear infinite;
+  /* Controlamos la animación por JS como antes */
+  animation: scroll-loop 40s linear infinite;
 }
 
-/* Pausa al hover */
+/* Pausa al pasar el mouse */
 .marquee-wrapper:hover .marquee-track {
   animation-play-state: paused;
 }
 
+/* El bloque de contenido es clave: no puede tener gap */
 .marquee-content {
-display: flex;
+  display: flex;
   flex-shrink: 0;
-  /* --- CLAVE CLEAN: Volvemos a dar aire entre imágenes --- */
-  gap: 30px !important; /* Espacio minimalista y limpio */
-  padding-right: 30px !important;
+  /* IMPORTANTE: No dar gap aquí, lo controlamos con el margen de la carta */
+  gap: 0px !important; 
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.marquee-item {
-  width: 400px !important;
-  height: 450px !important;
+/* CADA PROYECTO AHORA ES UNA 'CARTA' (Estilo Bento Box) */
+.project-card {
+  /* Truco: inline-block para que se alineen perfectamente */
+  display: inline-block;
+  vertical-align: top;
+  
+  /* Definimos el tamaño de la carta, como en tu referencia */
+  width: 380px !important;
+  height: 480px !important;
+  
   flex-shrink: 0;
-  border-radius: 16px;
+  
+  /* Radio de borde grande y moderno */
+  border-radius: 35px;
   overflow: hidden;
   position: relative;
   
-  /* --- CLAVE CLEAN: Reseteamos el solapamiento negativo --- */
-  margin-right: 0 !important; /* Volvemos a cero */
-  /* -------------------------------------------------------- */
-
-  /* Resets de seguridad */
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  margin-left: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  outline: none !important;
+  /* Espaciado entre cartas (el gap que antes estaba arriba) */
+  margin-right: 30px; 
   
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* Sombra suave y moderna */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  
+  /* Comportamiento al hover */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.marquee-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+/* EFECTO ESCALONADO (opcional pero moderno, pruébalo) */
+/* Esto hace que las cartas pares suban un poco, creando ritmo visual */
+.project-card:nth-child(even) {
+  margin-top: 30px;
+}
+.project-card:nth-child(odd) {
+  margin-top: -30px;
 }
 
-.project-thumb {
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.03); /* Sube un poco más y se agranda */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* LA IMAGEN DENTRO DE LA CARTA */
+.project-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Clave: ajusta la imagen sin deformar */
   object-position: center;
   display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 /* KEYFRAMES: Esencial para que el loop no se rompa */
@@ -258,7 +283,7 @@ display: flex;
     transform: translateX(0);
   }
   100% {
-    /* Se mueve exactamente el 50% porque duplicamos el contenido en el HTML */
+    /* Se mueve el 50% porque duplicamos el contenido en el HTML */
     transform: translateX(-50%);
   }
 }

@@ -17,7 +17,7 @@
             <router-link to="/" active-class="active" exact>Home</router-link>
           </li>
           <li class="dropdown">
-            <router-link to="/Portfolio/" active-class="active">Work</router-link>
+            <router-link to="/Portfolio/" active-class="active">Works</router-link>
           </li>
           <li>
             <router-link to="/about" active-class="active">About me</router-link>
@@ -26,7 +26,7 @@
             <router-link to="/cv" active-class="active">CV</router-link>
           </li>
           <li>
-            <router-link to="/digital-playground" active-class="active">DP</router-link>
+            <router-link to="/digital-playground" active-class="active">Playground</router-link>
           </li>
           <li>
             <router-link to="/contact" active-class="active">Contact</router-link>

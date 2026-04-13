@@ -1,192 +1,378 @@
 <template>
   <div class="portfolio-page">
     <main>
-      <section class="portfolio-header">
-        <img src="/img/folder.png" class="icon icon-folder" alt="Folder">
-        <img src="/img/arrow.png" class="icon icon-arrow" alt="Arrow">
-        <img src="/img/clips.png" class="icon icon-clips" alt="Clips">
-        <img src="/img/cafeamarillo.png" class="icon icon-coffee" alt="Coffee">
-        <img src="/img/smile.png" class="icon icon-smile" alt="Smiley">
-        <img src="/img/figma.png" class="icon icon-figma" alt="Figma">
-
+      <section class="portfolio-header-clean">
         <div class="header-text">
-          <h1>My creative universe</h1>
-          <p>My work unfolds across three connected worlds:</p>
+          <h1>Works</h1>
+          <p class="works-subtitle">
+            A showcase of projects defined by a constant curiosity and a commitment to learning by doing.
+          </p>
         </div>
       </section>
 
       <section class="projects-grid-section">
-        <div class="universe-grid">
+        <div class="works-container">
           
-          <div class="universe-item item-camera">
-            <router-link to="/content-creation" class="btn-green">Content Creation</router-link>
-            <router-link to="/content-creation">
-              <img src="/img/camera.png" alt="Camera">
-            </router-link>
+          <div class="filter-group">
+            <button 
+              v-for="filter in filters" 
+              :key="filter.label" 
+              class="filter-tag"
+              :class="{ 'btn-active': activeFilter === filter.value }"
+              @click="activeFilter = filter.value"
+            >
+              {{ filter.label }}
+            </button>
           </div>
 
-          <div class="universe-item item-collage">
-            <router-link to="/collage-workshops" class="btn-green">Collage workshops</router-link>
-            <router-link to="/collage-workshops">
-              <img src="/img/collage.png" alt="Collage">
-            </router-link>
-          </div>
+          <div class="projects-list-grid">
+            <div 
+              v-for="project in filteredProjects" 
+              :key="project.title" 
+              class="project-card"
+              @click="$router.push(project.link)" 
+      style="cursor: pointer;"
+            >
+              <div class="project-image-container">
+                <img :src="project.image" :alt="project.title" class="project-image" />
+              </div>
 
-          <div class="universe-item">
-            <router-link to="/multimedia-design" class="btn-green">Multimedia design</router-link>
-            <router-link to="/multimedia-design">
-              <img src="/img/mac.png" alt="Laptop">
-            </router-link>
-          </div>
+              <div class="project-details">
+                <h3 class="project-name">{{ project.title }}</h3>
+                <p class="project-description">{{ project.description }}</p>
 
+                <div class="project-footer">
+                  <div class="project-tags">
+                    <span 
+                      v-for="tag in project.tags" 
+                      :key="tag" 
+                      class="project-tag-pill"
+                    >
+                      {{ tag }}
+                    </span>
+                  </div>
+                  <router-link :to="project.link" class="btn-lime btn-small">
+                    View Project
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="cv-callout">
         <h2>Curious to learn more about my background?</h2>
-        <router-link to="/cv" class="btn-green">Check out my CV</router-link>
+        <router-link to="/cv" class="btn-lime">Check out my CV</router-link>
       </section>
     </main>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'PortfolioView'
-}
+<script setup>
+import { ref, computed } from 'vue';
+
+const filters = ref([
+  { label: 'All', value: 'all' },
+  { label: 'UX/UI', value: 'UX/UI' },
+  { label: 'Web design', value: 'Web Design' },
+  { label: 'Visual design', value: 'Visual Design' },
+  { label: 'Content creation', value: 'Content Creation' },
+  { label: 'Workshops', value: 'Workshops' },
+]);
+
+const activeFilter = ref('all');
+
+const projectsList = ref([
+  {
+    title: 'Under',
+    description: 'Naming, logo, and color palette for the Syddansk Erhvervsakademi student bar, capturing its unique vibe and atmosphere.',
+    tags: ['Visual Design'],
+    image: '/img/underhorizontal.png',
+    link: '/portfolio/under'
+  },
+  {
+    title: 'Itinero',
+    description: 'A mobile application designed to simplify and enhance travel experiences.',
+    tags: ['UX/UI'],
+    image: '/img/itineroapp.png',
+    link: '/portfolio/itinero'
+  },
+  {
+    title: 'Orden',
+    description: 'A web platform designed to streamline task and project management for teams.',
+    tags: ['Web Design'],
+    image: '/img/ordenproject.png',
+    link: '/portfolio/orden'
+  },
+  {
+    title: 'Personal portfolio',
+    description: 'The design and development of my own digital creative space.',
+    tags: ['Web Design'],
+    image: '/img/portfolioproject.png',
+    link: '/portfolio/personal-portfolio'
+  },
+  {
+    title: 'SoMe Content creation',
+    description: 'Strategy and creation of engaging content including UGC, tutorials and lifestyle reels for Instagram and TikTok.',
+    tags: ['Content Creation'],
+    image: '/img/socialmedia.png',
+    link: '/portfolio/content-creation'
+  },
+    {
+    title: 'Raiz y Sazón',
+    description: 'A dedicated site focused on South American vegan recipes.',
+    tags: ['UX/UI', 'Web Design'],
+    image: '/img/Raizysazon.png', 
+    link: '/portfolio/raiz-sazon'
+  },
+  {
+    title: 'Amada amiga',
+    description: 'Unique wine label design capturing the essence of a beloved friend, blending personal connection with artistic expression.',
+    tags: ['Visual Design'],
+    image: '/img/amadaamigaproject.png',
+    link: '/portfolio/amada-amiga'
+  },
+  {
+    title: 'Lic. Aranda Coria',
+    description: 'Complete brand identity design for a psichologist, including logo, color palette, and visual elements.',
+    tags: ['Visual Design'],
+    image: '/img/arandacoria.png',
+    link: '/portfolio/lic-aranda'
+  },
+  {
+    title: 'Collage Afternoon | DOKK1',
+    description: 'A collaborative and creative workshop held at the modern DOKK1 library.',
+    tags: ['Workshops'],
+    image: '/img/Collageafternoondokk1.JPG',
+    link: '/portfolio/collage-afternoon'
+  },
+  {
+    title: 'Collage Workshop | Aarhus City Welcome',
+    description: 'A welcoming creative session as part of the official Aarhus City Welcome event.',
+    tags: ['Workshops'],
+    image: '/img/CollageworkshopAarhusCityWelcome.JPG',
+    link: '/portfolio/city-welcome'
+  },
+  {
+    title: 'Collage workshop | Royal Danish Library',
+    description: 'An inspiring creative experience within the historic Royal Danish Library.',
+    tags: ['Workshops'],
+    image: '/img/Collageworkshoproyaldanishlibrary.JPEG',
+    link: '/portfolio/royal-library'
+  },
+  {
+    title: 'Collage & Migrant Emotions | Frontløberne',
+    description: 'An expressive workshop exploring and communicating migrant emotions through art.',
+    tags: ['Workshops'],
+    image: '/img/Collageandmigrantemotions.jpg',
+    link: '/portfolio/migrant-emotions'
+  }
+]);
+
+const filteredProjects = computed(() => {
+  if (activeFilter.value === 'all') {
+    return projectsList.value;
+  }
+  return projectsList.value.filter(project => project.tags.includes(activeFilter.value));
+});
 </script>
 
 <style scoped>
-.btn-green {
+.btn-lime {
     display: inline-block;
     padding: 15px 35px;
-    background-color: #E2FF54; /* Tu verde lima */
+    background-color: #E2FF54; 
     color: black;
     text-decoration: none;
     border-radius: 50px;
-    font-weight: 400;
-    font-size: 18px;
-    transition: 0.3s ease;
+    font-weight: 450 !important; 
+    font-size: 16px;
     border: none;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+    backface-visibility: hidden; /* Evita micro-saltos de píxeles */
+    transform: translateZ(0);     /* Fuerza el uso de la tarjeta gráfica */
+    will-change: transform;      /* Prepara al navegador para la animación */
 }
 
-.btn-green:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.btn-lime:hover {
+    transform: scale(1.05); /* Lo subí a 1.05 para que se note el movimiento fluido */
+    box-shadow: 0 15px 30px rgba(226, 255, 84, 0.3); /* Sombra del color del botón para que brille */
 }
 
-/* --- SECCIÓN 1: CABECERA --- */
-.portfolio-header {
-    position: relative;
-    width: 100%;
-    height: 60vh; /* Altura controlada para que los iconos no se pierdan */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-small {
+    padding: 10px 25px; 
+
+}
+
+/* --- SECCIÓN 1: CABECERA LIMPIA --- */
+.portfolio-header-clean {
+    padding: 100px 10% 40px 10%;
     text-align: center;
-    padding: 0 10%;
-    overflow: visible;
+    background-color: white;
 }
 
 .header-text h1 {
-    font-size: 70px; /* Más pequeño como pediste */
-    font-weight: 500;
-    margin-bottom: 15px;
+    font-size: 70px; /* Misma que "My creative universe" */
+    font-weight: 450;
+    margin-top: -20px;
+    margin-bottom: 30px;
     letter-spacing: -0.02em;
-}
-
-.header-text p {
-    font-size: 20px;
     color: black;
 }
 
-/* Posicionamiento de Iconos Flotantes */
-.icon {
-    position: absolute;
-    z-index: 1;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    z-index: 5;
+.works-subtitle {
+    font-size: 20px;
+    color: black; /* Adiós gris */
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.4;
 }
 
-.icon-folder { top: 10%; left: 15%; width: 150px; }
-.icon-arrow  { top: 15%; right: 15%; width: 60px; }
-.icon-clips  { top: 50%; left: 10%; width: 70px; }
-.icon-coffee { top: 45%; right: 10%; width: 90px; }
-.icon-smile  { bottom: 5%; left: 20%; width: 60px; }
-.icon-figma  { bottom: 10%; right: 20%; width: 60px; }
-
-/* --- SECCIÓN 2: GRID DE PROYECTOS --- */
+/* --- SECCIÓN 2: FILTROS --- */
 .projects-grid-section {
-    padding: 50px 5%;
+    padding: 40px 5% 80px 5%;
     background-color: white;
-    padding-bottom: 10px !important;
 }
 
-.universe-grid {
+.filter-group {
     display: flex;
     justify-content: center;
+    gap: 12px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.filter-tag {
+    background-color: transparent;
+    border: 1.5px solid black; /* Borde negro para mantener tu estética */
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 50px;
+    color: black;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-tag:hover {
+    background-color: #f0f0f0;
+}
+
+.filter-tag.btn-active {
+    background-color: #E2FF54; /* Tu verde Lima */
+    border-color: #E2FF54;
+    font-weight: 450;
+}
+
+/* --- GRID DE PROYECTOS --- */
+.projects-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: 40px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
-.universe-item {
-    flex: 1;
+.project-card {
+    background-color: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #eee; /* Muy sutil */
     display: flex;
     flex-direction: column;
+    transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.project-image-container {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    border-radius: 24px 24px 0 0;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.1); /* El zoom de la imagen */
+}
+
+.project-details {
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px !important;
+}
+
+.project-name {
+    font-size: 28px;
+    font-weight: 450;
+    color: black;
+    margin: 0;
+}
+
+.project-description {
+    font-size: 16px;
+    color: black; /* Adiós gris */
+    line-height: 1.5;
+    margin: 0;
+}
+
+.project-footer {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px; /* Espacio entre botón e imagen */
+    margin-top: 10px !important;
+    padding-top: 10px;
 }
 
-.universe-item img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    object-fit: contain;
+.project-tags {
+    display: flex;
+    gap: 12px; /* Aquí aumentas el espacio entre los tags */
 }
 
-.item-collage img {
-    margin-top: -70px !important; 
-    display: block;
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-}
-
-.item-camera img {
-    margin-top: -20px !important; 
-    display: block;
-    width: 100%;
-    max-width: 350px;
-    height: auto;
+.project-tag-pill {
+    background-color: black; /* Invertido para que resalte más en tu estilo */
+    color: white;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* --- SECCIÓN 3: CV CALLOUT --- */
 .cv-callout {
     text-align: center;
+    padding: 60px 20px;
     background-color: white;
 }
 
 .cv-callout h2 {
     font-size: 34px;
     font-weight: 400;
+    color: black;
     margin-bottom: 40px;
-    letter-spacing: -0.01em;
 }
 
-
-/* --- ANIMACIÓN PARA LOS ICONOS FLOTANTES --- */
-
-.icon:hover {
-    transform: scale(1.1) rotate(15deg);
-}
-
-.icon-folder:hover, 
-.icon-smile:hover, 
-.icon-figma:hover {
-    transform: scale(1.1) rotate(-15deg);
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .projects-list-grid {
+        grid-template-columns: 1fr;
+    }
+    .header-text h1 {
+        font-size: 50px;
+    }
 }
 </style>

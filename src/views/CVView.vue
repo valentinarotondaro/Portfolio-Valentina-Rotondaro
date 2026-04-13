@@ -12,7 +12,7 @@
       <div class="about-image">
         <div class="blob-frame">
           <img src="/img/valentina-perfil.JPG" alt="Valentina Rotondaro profile picture" />
-          <a href="/img/cv-valentina-rotondaro.pdf" download class="btn-download">
+          <a href="/img/CV Valentina Rotondaro.pdf" download class="btn-download">
         Download my CV
       </a>
         </div>
@@ -56,21 +56,23 @@
           <li>Collaboration and teamwork</li>
           <li>Adaptability and flexibility</li>
           <li>Community building</li>
-          <li>Innate curiosity</li>
+          <li>Critical thinking</li>
         </ul>
 
         <h2 class="section-title" id="tools-title">Tools</h2>
         <div class="tools-grid">
-          <img src="/img/figma.png"        alt="Figma" />
+          <img src="/img/figma.png"  class="figma-icon"       alt="Figma" />
           <img src="/img/premiere.png"     alt="Premiere" />
           <img src="/img/illustrator.png"  alt="Illustrator" />
           <img src="/img/photoshop.png"    alt="Photoshop" />
           <img src="/img/indesign.png"     alt="InDesign" />
           <img src="/img/after-effects.png" alt="After Effects" />
-          <img src="/img/procreate.png"    alt="Procreate" />
+          <img src="/img/procreate.png"  class="procreate-icon"  alt="Procreate" />
           <img src="/img/html.png"         alt="HTML5" />
           <img src="/img/css.png"          alt="CSS3" />
           <img src="/img/js.png"           alt="JS" />
+          <img src="/img/vue-logo.png" alt="Vue" /> 
+          <img src="/img/tailwind-logo.png" alt="Tailwind" /> 
         </div>
       </div>
 
@@ -128,10 +130,53 @@
 
 <style scoped>
 
+/* Color de resaltado personalizado */
+.about-text h1::selection {
+    background-color: var(--lima); /* Usa tu variable de color lima */
+    color: var(--black);           /* Asegura que el texto sea legible (negro) */
+}
+
+/* También para navegadores basados en Firefox */
+.about-text h1::-moz-selection {
+    background-color: var(--lima);
+    color: var(--black);
+}
+
+.about-text p::selection {
+    background-color: var(--lima); /* Usa tu variable de color lima */
+    color: var(--black);           /* Asegura que el texto sea legible (negro) */
+}
+
+.about-text p::-moz-selection {
+    background-color: var(--lima);
+    color: var(--black);
+}
+
+.resume-item::selection {
+    background-color: var(--lima); /* Usa tu variable de color lima */
+    color: var(--black);           /* Asegura que el texto sea legible (negro) */
+}
+
+.resume-item::-moz-selection {
+    background-color: var(--lima);
+    color: var(--black);
+}
+
+.bullet-list::selection {
+    background-color: var(--lima); /* Usa tu variable de color lima */
+    color: var(--black);           /* Asegura que el texto sea legible (negro) */
+}
+
+.bullet-list::-moz-selection {
+    background-color: var(--lima);
+    color: var(--black);
+}
+
+
 .about-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 40px 60px 40px; 
+    padding: 20px 40px 0px 40px;
 }
 
 .about-hero {
@@ -145,7 +190,8 @@
     font-size: 64px;
     font-weight: 450;
     line-height: 1.1;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     letter-spacing: -0.02em;
 }
 
@@ -210,11 +256,11 @@
 }
 
 #skills-title {
-    margin-top: 80px !important; 
+    margin-top: 60px !important; 
 }
 
 #tools-title {
-    margin-top: 70px !important; 
+    margin-top: 60px !important; 
 }
 
 #event-item {
@@ -228,12 +274,12 @@
 .section-title {
     color: var(--pink);
     font-size: 38px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     letter-spacing: -0.02em;
 }
 
 .resume-item {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .resume-item h3 {
@@ -277,18 +323,30 @@
 }
 
 /* TOOLS */
+
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    max-width: 400px;
-    margin-top: 20px;
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 20px;
+    max-width: 520px; /* Un poquito más de ancho para que respiren */
+    margin-top: 30px;
+    align-items: center; 
+    justify-items: center;
+}
+.tools-grid img {
+    max-width: 55px; 
+    max-height: 55px; 
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    /* La transición debe ir ACÁ para que sea fluida al entrar Y al salir */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.tools-grid img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
+.tools-grid img:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
 }
 
 /* BUTTON DOWNLOAD */
@@ -309,7 +367,7 @@
     color: #000000;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 450;
     transition: 0.3s;
     font-size: 16px;
     z-index: 10 !important;
@@ -318,26 +376,26 @@
 }
 
 .btn-download:hover {
-    transform: translateY(-3px);
+    transform: scale(1.01) rotate(3deg);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* --- CORRECCIÓN ICONOS (FIGMA/PROCREATE) --- */
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    max-width: 450px;
-    align-items: center; 
-    justify-items: center; 
+.tools-grid img.procreate-icon {
+    transform: scale(1.7); 
 }
 
-.tools-grid img {
-    max-width: 55px; /* Ajustamos un poco el tamaño para que se vean parejos */
-    max-height: 55px; 
-    width: auto;
-    height: auto;
-    object-fit: contain;
+.tools-grid img.figma-icon {
+    transform: scale(1.2); 
+}
+.tools-grid :hover {
+    transform: scale(1.45) rotate(5deg);
 }
 
+.tools-grid img.figma-icon:hover {
+    transform: scale(1.45) rotate(5deg) !important;
+}
+
+.tools-grid img.procreate-icon:hover {
+    transform: scale(1.95) rotate(5deg) !important;
+}
 </style>

@@ -77,6 +77,19 @@
     opacity: 0.7;
 }
 
+/* Color de resaltado personalizado */
+.contact-text::selection {
+    background-color: var(--lima); /* Usa tu variable de color lima */
+    color: var(--black);           /* Asegura que el texto sea legible (negro) */
+}
+
+/* También para navegadores basados en Firefox */
+.contact-text::-moz-selection {
+    background-color: var(--lima);
+    color: var(--black);
+}
+
+
 /* IMAGEN Y TAG LIMA */
 .contact-image-container {
     position: relative;
@@ -108,15 +121,12 @@
     background-color: #d9fb60; /* Tu verde lima */
     padding: 12px 24px;
     border-radius: 50px;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 16px;
     white-space: nowrap;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: 0.2s ease-in-out;
 }
 
-.tag-opportunities:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
+
 </style>

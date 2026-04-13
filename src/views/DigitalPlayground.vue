@@ -1,43 +1,64 @@
 <template>
-  <main>
+  <main :class="{ 'is-clean-mode': isCleanMode }">
     <!-- Collage section -->
     <section class="about-me-container">
       <div class="collage-wrapper">
+        <div class="about-me-text" :class="{ 'is-clean': isCleanMode }">
+  <h1>Valen Rotondaro</h1>
+  <p class="description">
+    Hi there! In this corner of my website, you’ll find a curated collection of 
+    objects that define my world. Feel free to discover them and reorder the chaos!
+  </p>
+</div>
 
         <!-- Objetos izquierda -->
         <div 
-  class="obj lamp-interaction-group" 
+  class="obj lamp-interaction-group" :class="{ 'is-clean': isCleanMode }"
   @mouseenter="activateLamp" 
   @mouseleave="deactivateLamp"
 >
-  <img src="/img/lampitradition.png" class="lamp-body-img" alt="Lamp Body" />
-
   <div class="lamp-head-container">
-    <img src="/img/lampitradition.png" class="lamp-head-img" alt="Lamp Head" />
+    <img src="/img/lampitradition.png" class="lamp-head-img" :class="{ 'is-clean': isCleanMode }" alt="Lamp Head" />
     
     <div class="light-glow" :class="{ 'is-lit': isLampOn }"></div>
   </div>
 
   <audio ref="lampSound" src="/audio/lampon.mp3" preload="auto"></audio>
 </div>
-        <img src="/img/tijeraroja.png"     class="obj scissors"   alt="Scissors" />
-        <img src="/img/moleskine.png"      class="obj notebook"   alt="Notebook" />
-        <img src="/img/collage.png"        class="obj collage"    alt="Collage" />
-        <img src="/img/sopadeletras.png"   class="obj wordsearch" alt="Wordsearch" />
-        <img src="/img/passport.png"       class="obj passport"   alt="Passport" />
-        <img src="/img/boardingpass.png"   class="obj boarding"   alt="Boarding Pass" />
-        <img src="/img/lego.png"           class="obj lego"       alt="Lego Flowers" />
-        <img src="/img/sagradafamilia.png" class="obj photo"      alt="Sagrada Familia" />
+
+<div class="obj passport-group" :class="{ 'is-clean': isCleanMode }" 
+ 
+>
+  <img src="/img/passport.png" class="passport-img" alt="Passport" />
+  <img src="/img/boardingpass.png" class="boarding-img" alt="Boarding Pass" v-if="!isCleanMode" />
+</div>
+
+<div class="obj lego-group" :class="{ 'is-clean': isCleanMode }" >
+  <img src="/img/lego.png" class="lego-img" alt="Lego Flowers" />
+  <img src="/img/legogreen.png" class="legopalm-img" alt="Lego Palm" v-if="!isCleanMode" />
+</div>
+
+<div class="obj pie-group" :class="{ 'is-clean': isCleanMode }">
+  <img src="/img/pastafrola.png" class="pie-img" alt="Pastafrola" />
+  <img src="/public/img/migas.png" class="migas-img" alt="Migas" v-if="!isCleanMode" />
+</div>
+
+<div class="obj notebook-group" :class="{ 'is-clean': isCleanMode }" >
+  <img src="/img/moleskine.png" class="notebook-img" alt="Notebook" />
+  <img src="/img/coffee-stain.png" class="stain-img" alt="Coffee Stain" v-if="!isCleanMode" />
+  <img src="/img/sopadeletras.png" class="wordsearch-img" alt="Wordsearch" />
+</div>
+
+<div class="obj candles-group" :class="{ 'is-clean': isCleanMode }" >
+  <img src="/img/candles.png" class="candles-img" alt="Candles" />
+  <img src="/img/fosforos.png" class="fosforos-img" alt="Fosforos" />
+</div>
+        <img src="/img/tijeraroja.png"     class="obj scissors" :class="{ 'is-clean': isCleanMode }"  alt="Scissors" />
+        <img src="/img/sagradafamilia.png" class="obj photo"   :class="{ 'is-clean': isCleanMode }"   alt="Sagrada Familia" />
 
         <!-- Texto central -->
         <div class="about-me-text">
-          <p>
-            I believe in human-centered design as a tool for clarity and purpose. My focus is on
-            intentionality: creating work that is as
-            <span class="highlight-pink">functional</span> as it is
-            <span class="highlight-pink">visual</span>, ensuring every solution adds genuine
-            meaning to the user's experience.
-          </p>
+          
         </div>
 
         <!-- Objetos derecha -->
@@ -45,27 +66,55 @@
           <img 
   src="/img/spotify.png" 
   class="obj spotify" 
-  :class="{ 'is-playing': isPlaying }"
+  :class="{ 'is-playing': isPlaying, 'is-clean': isCleanMode }"
   alt="Spotify Player" 
   @mouseenter="playMusic"
   @mouseleave="pauseMusic"
 />
 <audio ref="audioPlayer" src="/audio/comptinedunautreete.mp3" preload="auto" loop></audio>
-          <img src="/img/macfigma.png"         class="obj laptop"  alt="Macbook with Figma" />
-          <img src="/img/cafeamarillo.png"     class="obj coffee"  alt="Coffee" />
-          <img src="/img/candles.png"          class="obj candles" alt="Candles" />
-          <img src="/img/cups.png"             class="obj cups"    alt="Smiley Cups" />
-          <img src="/img/pastafrola.png"       class="obj pie"     alt="Pastafrola" />
-          <img src="/img/bookinspiration.png"  class="obj book"    alt="Book Inspiration" />
+          <img src="/img/macfigma.png"         class="obj laptop" :class="{ 'is-clean': isCleanMode }" alt="Macbook with Figma" />
+          <img src="/img/cafeamarillo.png"     class="obj coffee" :class="{ 'is-clean': isCleanMode }" alt="Coffee" />
+          <img src="/img/valenrotondarofeed.png"             class="obj feed"   :class="{ 'is-clean': isCleanMode }" alt="Instagram Feed" />
         </div>
-
+<div class="mode-controls">
+  <div class="control-group">
+    <button @click="setChaosMode" :class="{ active: !isCleanMode }" data-label="Chaos mode">
+      <img src="/img/coffee-icon.png" class="coffee-icon" alt="Chaos Mode"  /> 
+    </button>
+  </div>
+  <div class="control-group">
+    <button @click="setCleanMode" :class="{ active: isCleanMode }" data-label="Clean mode">
+      <img src="/img/broom-icon.png" class="broom-icon" alt="Clean Mode" />
+    </button>
+  </div>
+</div>
       </div>
+<div class="mode-controls">
+  </div>
+  <transition name="pop-fade">
+  <div 
+    v-if="activePopUp" 
+    class="object-tooltip" 
+    :style="tooltipStyle"
+  >
+    <div class="tooltip-content">
+      <button class="close-tooltip-btn">×</button>
+      <p>{{ activeObjectText }}</p>
+    </div>
+  </div>
+</transition>
     </section>
   </main>
 </template>
 
+
 <script setup>
 import { ref, onMounted } from 'vue';
+
+const isCleanMode = ref(false); // Por defecto empieza en caos (false)
+
+const setCleanMode = () => { isCleanMode.value = true; };
+const setChaosMode = () => { isCleanMode.value = false; };
 
 const audioPlayer = ref(null);
 const isPlaying = ref(false);
@@ -164,15 +213,18 @@ const deactivateLamp = () => {
     lampSound.value.pause();
   }
 };
+
+
 </script>
 
 <style scoped>
-
+/* =========================================
+   1. ESTRUCTURA Y TEXTO (Sin cambios)
+   ========================================= */
 .about-me-container {
-    min-height: auto !important; /* Quitamos el mínimo de 600px */
+    min-height: auto !important;
     height: auto !important;
-    margin-bottom: -50px !important; /* Margen negativo para "atraer" a la siguiente sección */
-    padding-bottom: 0 !important;
+    margin-bottom: -150px !important;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -188,166 +240,210 @@ const deactivateLamp = () => {
 }
 
 .about-me-text {
+    margin-top: -300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     max-width: 550px;
-    text-align: justify;
     z-index: 10;
+    pointer-events: none;
 }
 
-.about-me-text p {
-    font-size: 28px;
-    line-height: 1.3;
-    margin-bottom: 200px;
-    font-weight: 400;
+.about-me-text h1 {
+    font-size: 74px; 
+    font-weight: 450;
+    color: #ff63a7;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+    user-select: none;
+}
+
+.description {
     text-align: justify;
+    font-size: 20px;
+    width: 450px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: black;
+    font-family: 'Inter', sans-serif !important; 
+    margin-top: 15px !important;
 }
-
-.highlight-pink {
-    color: var(--pink);
-    font-weight: 500;
-}
-
-
+/* =========================================
+   2. COMPORTAMIENTO BASE Y HOVERS (FIX DEFINITIVO)
+   ========================================= */
 .obj {
     position: absolute;
     height: auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, z-index 0s;
 }
 
-.obj:hover {
-    transform: scale(1.05) rotate(3deg); 
-}
-.scissors:hover {
-    transform: scale(1.05) rotate(205deg) !important; 
+/* 1. HOVER MODO CAOS (Excluye Lámpara Y Tijeras para que no giren locas) */
+.obj:not(.is-clean):not(.lamp-interaction-group):not(.scissors):hover, 
+.passport-group:not(.is-clean):hover, 
+.lego-group:not(.is-clean):hover, 
+.pie-group:not(.is-clean):hover, 
+.notebook-group:not(.is-clean):hover, 
+.candles-group:not(.is-clean):hover {
+    transform: scale(1.05) rotate(3deg) !important;
+    z-index: 500 !important;
 }
 
-/* Objects in the left */
+/* 2. HOVER ESPECÍFICO TIJERAS EN CHAOS MODE */
+/* Su base es 200deg, así que solo le sumamos 3 */
+.scissors:not(.is-clean):hover {
+    transform: scale(1.05) rotate(203deg) !important;
+    z-index: 500 !important;
+}
 
-.lamp { width: 100px; top: 0; left: 10%; z-index: 4;  }
+/* 3. HOVER MODO CLEAN (Casi todos los objetos) */
+.about-me-container .obj.is-clean:not(.scissors):not(.passport-group):hover,
+.about-me-container .lego-group.is-clean:hover,
+.about-me-container .pie-group.is-clean:hover,
+.about-me-container .notebook-group.is-clean:hover,
+.about-me-container .candles-group.is-clean:hover {
+    transform: scale(1.1) rotate(3deg) !important; 
+    z-index: 500 !important;
+    cursor: pointer;
+}
+
+/* 4. CASO ESPECIAL TIJERAS CLEAN (Base 140deg + 3) */
+.about-me-container .scissors.is-clean:hover {
+    transform: scale(1.1) rotate(143deg) !important;
+    z-index: 500 !important;
+}
+
+/* 5. CASO ESPECIAL PASAPORTE CLEAN (Base -20deg + 3) */
+.about-me-container .passport-group.is-clean:hover {
+    transform: scale(1.1) rotate(-17deg) !important;
+    z-index: 500 !important;
+}
+/* =========================================
+   3. POSICIONES CHAOS MODE
+   ========================================= */
+.passport-group { bottom: 373px; left: 9%; width: 120px; z-index: 10; transform: rotate(-15deg); }
+.boarding-img  { position: absolute; width: 200px; top: 20px; left: 40px; z-index: -1; transform: rotate(5deg); }
+
+.lego-group    { bottom: 265px; left: 15%; width: 180px; z-index: 12; transform: rotate(-4deg);}
+.legopalm-img  { position: absolute; width: 110px; bottom: 20px; left: -130px; }
+
+.notebook-group { top: 92px; left:3%; width: 252px; z-index: 100 !important; }
+.stain-img      { position: absolute; width: 50px; top: 60px; left: 60px; transform: rotate(-10deg); }
+.wordsearch-img { position: absolute; width: 58px; top: 50px; left: 132px; z-index: 12; transform: rotate(6deg); }
+
+.pie-group     { bottom: 290px; right: 0%; width: 130px; z-index: 10; }
+.migas-img     { position: absolute; width: 80px; bottom: 30px; right: 80px; z-index: -1; }
+
+.candles-group { bottom: 539px; right: 12%; width: 55px; z-index: 12; overflow: visible; }
+.fosforos-img  { position: absolute; width: 170px; bottom: 10px; right: 70px; transform: rotate(-5deg); }
+
 .scissors { width: 95px; top: 40px; left: 19%; transform: rotate(200deg); }
-.notebook { width: 320px; top: 60px; left: -5%; z-index: 11;}
-.wordsearch { width: 75px; top: 120px; left: 10%; z-index: 11; }
-.passport { width: 150px; bottom: 330px; left: 5%; transform: rotate(-10deg); }
-.boarding { width: 200px; bottom: 320px; left: 7%; }
-.lego { width: 190px; bottom: 210px; left: 4%; }
-.collage { width: 100px; bottom: 500px; left: -1%;}
-.photo { width: 100px; bottom: 360px; left: 0%; transform: rotate(-10deg);}
+.photo    { width: 110px; bottom: 385px; left: 4%; transform: rotate(-10deg);  }
+.spotify  { width: 240px; top: 25px; right: -2%; transform: rotate(7deg); z-index: 12; }
+.laptop   { width: 250px; top: 150px; right: -3.5%; }
+.coffee   { width: 75px; bottom: 675px; right: 20%; transform: rotate(-15deg); }
+.feed     { width: 75px; bottom: 290px; right: 15.5%;  transform: rotate(5deg); }
 
-/* Objects in the right */
-.spotify { width: 260px; top: 20px; right: -2%; }
-.laptop { width: 270px; top: 135px; right: -3%; }
-.coffee { width: 100px; bottom: 360px; right: 12%; }
-.candles { width: 60px; bottom: 520px; right: 15%; }
-.cups { width: 120px; bottom: 220px; right: 12%; }
-.pie { width: 160px; bottom: 215px; right: -1%; }
-.book { width: 160px; bottom: 290px; right: -4%; transform: rotate(30deg); border-radius: 30px; }
+/* =========================================
+   4. LAMP
+   ========================================= */
 
-
-@keyframes music-vibe {
-  from { transform: scale(1.05) rotate(3deg); }
-  to { transform: scale(1.07) rotate(5deg); }
-}
-/* Contenedor principal para toda la interacción */
-.lamp-interaction-group {
-  position: absolute;
-  top: 0;
-  left: 10%;
-  width: 100px;
-  cursor: pointer;
-  z-index: 4;
+.lamp-interaction-group { 
+    position: absolute; 
+    top: 0; 
+    left: 10%; 
+    width: 100px; 
+    cursor: pointer;
+    z-index: 4; 
+    transition: transform 0.3s ease;
+    z-index: 10 !important;
 }
 
-/* El cuerpo estático de la lámpara */
-.lamp-body-img {
-  width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 4; /* Por debajo de la cabeza */
+/* La imagen ahora es única y ocupa todo el contenedor */
+.lamp-head-img { 
+    width: 100%; 
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 5;
 }
 
-/* Contenedor para la cabeza y su luz */
-.lamp-head-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 4; /* Por encima del cuerpo */
+.lamp-head-container { 
+    position: relative; 
+    width: 100%; 
 }
 
-.lamp-head-img {
-  width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 14;
-}
-
-/* El resplandor focalizado tras la cabeza */
 .light-glow {
-  position: absolute;
-  top: 25%; /* Ajusta esto para que el centro de la luz esté bajo la 'cabeza' */
-  left: 50%;
-  width: 130%; /* Tamaño relativo de la luz */
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 235, 59, 0.7) 0%, rgba(255, 235, 59, 0) 65%);
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  pointer-events: none;
-  z-index: 1; /* Detrás de la imagen de la cabeza */
-  
-  /* CLAVE: Recorta el brillo para que no se extienda hacia abajo */
-  clip-path: ellipse(50% 50% at 50% 50%); /* O un círculo ajustado */
+    position: absolute; 
+    top: 25%; 
+    left: 50%; 
+    width: 130%; 
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 235, 59, 0.7) 0%, rgba(255, 235, 59, 0) 65%);
+    transform: translate(-50%, -50%); 
+    opacity: 0; 
+    transition: opacity 0.2s ease;
+    pointer-events: none; 
+    z-index: 1; 
+    clip-path: ellipse(50% 50% at 50% 50%);
 }
 
-/* El estado 'encendido' */
-.is-lit {
-  opacity: 1;
-}
+.is-lit { opacity: 1; }
 
-/* Efecto visual en la cabeza misma al prenderse */
-.lamp-interaction-group:hover .lamp-head-img {
-  filter: brightness(1.15) drop-shadow(0 0 8px rgba(255, 235, 59, 0.6));
-  transform: scale(1.03); /* Un sutil pop */
-}
-
-/* Mantenemos el efecto de escala en todo el grupo como lo tenías */
+/* HOVER UNIFICADO: Solo escalamos el contenedor padre */
 .lamp-interaction-group:hover {
-  transform: scale(1.02);
+    transform: scale(1.05) !important;
+    /* En Chaos mode (no .is-clean) mantenemos z-index bajo para no tapar notebook */
+    z-index: 100 !important;
 }
 
-/* layer front */
-.passport {
-    position: absolute; 
-    z-index: 10;        
+/* En Clean mode sí queremos que suba el z-index al hacer hover */
+.lamp-interaction-group.is-clean:hover {
+    z-index: 100 !important;
 }
-/* layer back */
-.photo {
-    position: absolute;
-    z-index: 5;  
-    top: 300px;
-    left: 0%;
-}
-/* layer front */
-.notebook {
-    position: absolute; 
-    z-index: 10;        
-}
-/* layer back */
-.collage {
-    position: absolute;
-    z-index: 5;  
-    top: 180px;
-    left: -1%;
-}
-/* layer front */
-.pie {
-    position: absolute; 
-    z-index: 10;        
-}
-.book {
-    position: absolute;
-    z-index: 5;  
-    top: 360px;
-    left: 90%;
-}
+/* =========================================
+   5. MODO CLEAN (REORDENAMIENTO)
+   ========================================= */
+.about-me-text.is-clean { position: absolute; top: 200px; left: 55%; text-align: justify; align-items: center; margin-top: 0 !important; }
 
+.laptop.is-clean  { width: 210px !important; top: 12px; left: 80%; transform: rotate(0deg) !important; }
+.spotify.is-clean { width: 240px !important; top: 20px; left: 10%; transform: rotate(0deg) !important; }
+.photo.is-clean    { width: 120px !important; top: 152px; left: 8%; transform: rotate(0deg) !important; }
+.lamp-interaction-group.is-clean { width: 110px; top: 50px; left: 43%; transform: rotate(0deg) !important; }
+.scissors.is-clean { width: 110px !important; top: 50px; left: 72%; transform: rotate(140deg) !important; }
+.coffee.is-clean   { width: 98px !important; top: 30px; left: 32%; transform: rotate(0deg) !important; }
+.feed.is-clean     { width: 60px !important; top: 289px; left: 28%; transform: rotate(0deg) !important; }
+
+.passport-group.is-clean { width: 100px !important; top: 125px; left: 37%; transform: rotate(-20deg) !important; }
+.notebook-group.is-clean { width: 250px !important; top: 10px; left: 53%; transform: rotate(-9deg) !important; }
+.pie-group.is-clean      { width: 120px !important; top: 140px; left: 22%; transform: rotate(0deg) !important; }
+.lego-group.is-clean     { width: 210px !important; top: 280px; left: 35.5%; transform: rotate(-3deg) !important; }
+.candles-group.is-clean  { width: 70px !important; top: 260px; left: 19%; transform: rotate(0deg) !important; }
+
+/* Internos Clean */
+.notebook-group.is-clean .wordsearch-img { width: 60px !important; top: 49px; left: 139px; transform: rotate(7deg) !important; }
+.candles-group.is-clean .fosforos-img    { width: 90px !important; top: 50px; left: -80px; }
+
+/* =========================================
+   6. CONTROLES (CAFÉ / ESCOBA)
+   ========================================= */
+.mode-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 9999; }
+.mode-controls button {
+    position: relative; padding: 8px !important; width: 64px !important; height: 64px !important;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    background-color: transparent !important; border: none; border-radius: 18px; transition: all 0.3s ease;
+}
+.mode-controls button:hover { transform: translateY(-5px) rotate(5deg); background-color: #f7f7f7 !important; }
+.mode-controls button.active { background-color: #f0f0f0 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+.mode-controls img { object-fit: contain; transition: transform 0.2s ease; }
+.coffee-icon { width: 80px; height: auto; }
+.broom-icon { width: 50px; height: auto; }
+
+/* Tooltip */
+.mode-controls button:hover::after {
+    content: attr(data-label); position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+    background-color: black; color: white; padding: 6px 12px; border-radius: 8px;
+    font-family: 'Inter', sans-serif; font-size: 13px; white-space: nowrap; z-index: 100;
+}
 </style>
