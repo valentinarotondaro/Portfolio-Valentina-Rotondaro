@@ -4,23 +4,15 @@
 
       <div class="contact-text">
         <h1>Let's connect!</h1>
-        <p>My goal is to join a collaborative team where I can apply my skills in user experience and visual communication.</p>
         <p>
-          Feel free to drop me a message on
+          I'm currently seeking a UX/UI design internship, eager to contribute to meaningful projects and grow alongside design-driven teams.
+          <br>
+          <p>If you like what you see, feel free to drop me a message on
           <a href="https://www.linkedin.com/in/valentinarotondaro/" class="contact-link" target="_blank">Linkedin</a>
           or send me an
-          <a href="mailto:vrotondaro@hotmail.com" class="contact-link">email.</a>
+          <a href="mailto:vrotondaro@hotmail.com" class="contact-link">email.</a> </p>
         </p>
-        <p>I would love to connect!</p>
       </div>
-
-      <div class="contact-image-container">
-        <div class="blob-frame contact-blob">
-          <img src="/img/valentina-perfil.JPG" alt="Valentina Rotondaro" />
-        </div>
-        <div class="tag tag-opportunities">Open to new opportunities</div>
-      </div>
-
     </div>
   </main>
 </template>
@@ -36,7 +28,8 @@
 .contact-container {
     max-width: 1200px;
     margin: auto;
-    padding: 20px 40px 80px 40px !important;
+    margin-bottom: -100px;
+    padding: 40px 40px 110px 20px !important;
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -52,17 +45,26 @@
 
 /* TEXTO */
 .contact-text h1 {
-    font-size: 64px;
-    font-weight: 500;
-    margin-bottom: 40px;
-    letter-spacing: -0.02em;
+  font-size: 100px; /* Tamaño masivo como en la referencia */
+  font-weight: 450;
+  color: black;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin: 0;
+  align-items: left;     /* ESTO centra horizontalmente */
+  text-align: left;
+  overflow: hidden;    
+  z-index: 1;  
 }
 
 .contact-text p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 25px;
-    max-width: 500px;
+  font-family: Inter !important;
+  font-size: 30px;
+  color: black;
+  max-width: 750px;
+  margin: 40px auto 0 auto; 
+  line-height: 1.3;  
+  text-align: justify;
 }
 
 .contact-link {
@@ -87,45 +89,6 @@
 .contact-text::-moz-selection {
     background-color: var(--lima);
     color: var(--black);
-}
-
-
-/* IMAGEN Y TAG LIMA */
-.contact-image-container {
-    position: relative;
-    flex-shrink: 0;
-    transform: translateY(20px);
-
-}
-
-.contact-blob {
-    width: 450px;
-    height: 480px;
-    background-color: transparent; /* Quitamos el gris de fondo */
-    border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
-    position: relative;
-}
-
-
-.contact-blob img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
-}
-
-.tag-opportunities {
-    position: absolute;
-    bottom: 25%;
-    left: -80px; /* Cruza un poco sobre la imagen como en la captura */
-    background-color: #d9fb60; /* Tu verde lima */
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-weight: 450;
-    font-size: 16px;
-    white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: 0.2s ease-in-out;
 }
 
 

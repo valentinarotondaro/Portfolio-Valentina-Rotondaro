@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PortfolioView from '../views/PortfolioView.vue'
+import UnderView from '../views/projects/UnderView.vue'
 
 const router = createRouter({
   // Usamos el BASE_URL para que las rutas funcionen bien en producción

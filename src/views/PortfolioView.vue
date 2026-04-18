@@ -89,84 +89,84 @@ const projectsList = ref([
     description: 'Naming, logo, and color palette for the Syddansk Erhvervsakademi student bar, capturing its unique vibe and atmosphere.',
     tags: ['Visual Design'],
     image: '/img/underhorizontal.png',
-    link: '/portfolio/under'
+    link: '/portfolio/under' // Corregido
   },
   {
     title: 'Itinero',
     description: 'A mobile application designed to simplify and enhance travel experiences.',
     tags: ['UX/UI'],
     image: '/img/itineroapp.png',
-    link: '/portfolio/itinero'
+    link: '/portfolio/itinero' // Corregido
   },
   {
     title: 'Orden',
     description: 'A web platform designed to streamline task and project management for teams.',
     tags: ['Web Design'],
     image: '/img/ordenproject.png',
-    link: '/portfolio/orden'
+    link: '/portfolio/orden' // Corregido
   },
   {
     title: 'Personal portfolio',
     description: 'The design and development of my own digital creative space.',
     tags: ['Web Design'],
     image: '/img/portfolioproject.png',
-    link: '/portfolio/personal-portfolio'
+    link: '/portfolio/personal-portfolio' // Corregido
   },
   {
     title: 'SoMe Content creation',
     description: 'Strategy and creation of engaging content including UGC, tutorials and lifestyle reels for Instagram and TikTok.',
     tags: ['Content Creation'],
     image: '/img/socialmedia.png',
-    link: '/portfolio/content-creation'
+    link: '/portfolio/content-creation' // Corregido
   },
-    {
+  {
     title: 'Raiz y Sazón',
     description: 'A dedicated site focused on South American vegan recipes.',
     tags: ['UX/UI', 'Web Design'],
     image: '/img/Raizysazon.png', 
-    link: '/portfolio/raiz-sazon'
+    link: '/portfolio/raiz-sazon' // Corregido
   },
   {
     title: 'Amada amiga',
     description: 'Unique wine label design capturing the essence of a beloved friend, blending personal connection with artistic expression.',
     tags: ['Visual Design'],
     image: '/img/amadaamigaproject.png',
-    link: '/portfolio/amada-amiga'
+    link: '/portfolio/amada-amiga' // Corregido
   },
   {
     title: 'Lic. Aranda Coria',
     description: 'Complete brand identity design for a psichologist, including logo, color palette, and visual elements.',
     tags: ['Visual Design'],
     image: '/img/arandacoria.png',
-    link: '/portfolio/lic-aranda'
+    link: '/portfolio/lic-aranda' // Corregido
   },
   {
     title: 'Collage Afternoon | DOKK1',
     description: 'A collaborative and creative workshop held at the modern DOKK1 library.',
     tags: ['Workshops'],
     image: '/img/Collageafternoondokk1.JPG',
-    link: '/portfolio/collage-afternoon'
+    link: '/portfolio/collage-afternoon' // Corregido
   },
   {
     title: 'Collage Workshop | Aarhus City Welcome',
     description: 'A welcoming creative session as part of the official Aarhus City Welcome event.',
     tags: ['Workshops'],
     image: '/img/CollageworkshopAarhusCityWelcome.JPG',
-    link: '/portfolio/city-welcome'
+    link: '/portfolio/city-welcome' // Corregido
   },
   {
     title: 'Collage workshop | Royal Danish Library',
     description: 'An inspiring creative experience within the historic Royal Danish Library.',
     tags: ['Workshops'],
     image: '/img/Collageworkshoproyaldanishlibrary.JPEG',
-    link: '/portfolio/royal-library'
+    link: '/portfolio/royal-library' // Corregido
   },
   {
     title: 'Collage & Migrant Emotions | Frontløberne',
     description: 'An expressive workshop exploring and communicating migrant emotions through art.',
     tags: ['Workshops'],
     image: '/img/Collageandmigrantemotions.jpg',
-    link: '/portfolio/migrant-emotions'
+    link: '/portfolio/migrant-emotions' // Corregido
   }
 ]);
 

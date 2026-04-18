@@ -1,39 +1,25 @@
 <template>
   <main>
-    <!-- PHOTO AND TAGS SECTION -->
-<section class="about-hero">
+    <section class="about-hero">
       <div class="hero-content">
-        <div class="about-text">
-          <h1>I bring a diverse skillset <br> to the table!</h1>
-          
-          <div class="skills-pile-container">
-            <span 
-              v-for="(skill, index) in skillsData" 
-              :key="index"
-              class="skill-tag"
-              :style="getFixedStyle(index, skill)"
-            >
-              {{ skill.text }}
-            </span>
-          </div>
-        </div>
-
         <div class="about-image">
           <div class="blob-frame">
             <img src="/img/valentina-perfil.JPG" alt="Valentina Rotondaro" />
           </div>
-          <div class="photo-caption">
-    <p>Want to know me a little better? <br>Dive into my 
-       <router-link to="/Digital-Playground" class="pink-link">
-      digital playground!
-    </router-link>
-    </p>
-  </div>
+          <router-link to="/Digital-Playground" class="btn-playground-overlay">
+    Want to know me a little better?
+  </router-link>
+
+        </div>
+        <div class="about-text">
+          <p class="hero-description">
+             I'm a colorful creative based in Aarhus, Denmark. Those who know me describe me as friendly, curious, and empathetic.         </p>
         </div>
       </div>
     </section>
-    <section class="about-extra-text">
-  <p>
+    
+  <section class="about-extra-text">
+    <p>
     Beyond the screen, I'm fueled by 
     <span class="hover-word">
       travel
@@ -55,6 +41,26 @@
     </span>.
   </p>
 </section>
+
+
+<section class="about-skills">
+      <div class="skills-content">      
+          <div class="skills-pile-container">
+            <span 
+              v-for="(skill, index) in skillsData" 
+              :key="index"
+              class="skill-tag"
+              :style="getFixedStyle(index, skill)">
+              {{ skill.text }}
+            </span>
+          </div>
+          <div class="skills-text">
+          <h1>I bring a diverse skillset to the table!</h1>
+        </div>
+        </div>
+        </section>
+
+
 <section class="about-multimedia">
   <div class="video-section">
     <div class="video-container">
@@ -81,40 +87,34 @@
 <script setup>
 import { computed } from 'vue';
 
-// 1. Definimos los skills en el orden inverso (primero los de abajo de todo)
 const skillsData = [
   // --- Fila inferior (entran primero y quedan horizontales) ---
-  { text: 'Video edition', rotate: 0, xOffset: 0 },
-  { text: 'Front-End development', rotate: 0, xOffset: 5 },
-  
+  { text: 'Video Editing', rotate: 0, xOffset: 0 },
+  { text: 'Front-End Development', rotate: 0, xOffset: 5 },
+  { text: 'Workshop Facilitation', rotate: 0, xOffset: 5 },
   // --- Fila media (entran segundo y quedan de costado) ---
-  { text: 'Workshop facilitation', rotate: 15, xOffset: -5 }, // Rotación positiva fijos y de costado
-  { text: 'Flexibility', rotate: -12, xOffset: 8 }, // Rotación negativa fijos y de costado
-  { text: 'Visual storytelling', rotate: 22, xOffset: 5, yOffset: 10 }, // Rotación positiva fijos y de costado
-  
+  { text: 'Continous Learning', rotate: 10, xOffset: -10, yOffset: 6 }, 
+  { text: 'SoMe Content', rotate: -12, xOffset: 8 }, 
+  { text: 'Visual Storytelling', rotate: 22, xOffset: -25, yOffset: -10 }, 
+  { text: 'UX/UI Design', rotate: -20, xOffset: 0, yOffset: -10 },
   // --- Fila superior (entran último y quedan de costado) ---
-  { text: 'Critical thinking', rotate: -25, xOffset: 35, yOffset: 20 },// Rotación negativa fijos y de costado
-  { text: 'Team player', rotate: 10, xOffset: -10 }, // Rotación positiva fijos y de costado
-  { text: 'SoMe Content', rotate: -10, xOffset: 55, yOffset: 40 }, // Rotación negativa fijos y de costado
+  { text: 'Critical Thinking', rotate: 10, xOffset: -35, yOffset: 10 },
+  { text: 'Team Collaboration', rotate: -7, xOffset: -70, yOffset: -25 }, 
+  { text: 'AI Tool Integration', rotate: -10, xOffset: -15, yOffset: 0 },
 ];
 
-// 2. Función para obtener el estilo fijo para cada botón
 const getFixedStyle = (index, skill) => {
-  // Retraso escalonado para la animación (más alto para los últimos en entrar)
-  const delay = index * 0.2; 
-  
   return {
-    '--index-delay': `${delay}s`,
+    '--index-delay': `${index * 0.15}s`,
     '--rotation': `${skill.rotate}deg`,
     '--x-offset': `${skill.xOffset}px`,
-    // Aplicamos la rotación inicial aquí también
-    transform: `rotate(${skill.rotate}deg) translateX(${skill.xOffset}px translateY(${skill.yOffset || 0}px)`
+    '--y-offset': `${skill.yOffset || 0}px`, // Si no ponés yOffset, que sea 0
   };
 };
 </script>
 
 <style scoped>
-/* PHOTO AND TAGS SECTION*/
+
 .about-image { 
     position: relative;
     flex-shrink: 0;
@@ -140,17 +140,87 @@ const getFixedStyle = (index, skill) => {
     display: block;
 }
 
-/* CONTENEDOR DE SKILLS */
-.skills-pile-container {
-    display: flex;
-    flex-wrap: wrap-reverse; /* Invertimos el orden del wrap: de abajo hacia arriba */
-    gap: 8px; /* Reducido para que se amontonen más */
-    max-width: 650px;
-    padding-top: 100px;
-    align-items: flex-end; /* Alineamos al fondo */
-    justify-content: flex-start;
+.btn-playground-overlay {
+    position: absolute;
+    bottom: 20px;       /* Distancia desde el borde inferior de la imagen */
+    left: 10px;         /* Distancia desde el borde izquierdo */
+    background-color: var(--lima); /* Tu color lima definido */
+    color: var(--black);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 450;
+    font-size: 16px;
+    text-decoration: none;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
 }
 
+.btn-playground-overlay:hover {
+    transform: scale(1.02);
+}
+
+/* Titulo tamaño Beyond */
+.beyond-style-title {
+    font-size: 45px !important; /* Mismo tamaño que tu sección Beyond */
+    font-weight: 450;
+    color: #000;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row; /* Foto izquierda, texto derecha */
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px 20px;
+}
+
+.hero-description {
+    font-size: 45px; /* Tamaño similar al de tu imagen de referencia */
+    line-height: 1.2;
+    color: black;
+    max-width: 520px;
+    font-weight: 450;
+    text-align: justify;
+    text-justify: inter-word; /* Mejora cómo se distribuye el espacio */
+    letter-spacing: -0.02em;
+}
+
+.hero-description::selection {
+    background-color: var(--lima); /* Usa tu variable de color lima */
+    color: var(--black);           /* Asegura que el texto sea legible (negro) */
+}
+
+/* =========================================
+   SECCIÓN SKILLS
+   ========================================= */
+.skills-pile-container {
+    display: flex;
+    width: 100%;
+    max-width: 700px;     /* Aumentamos un poco para que entren más tags */
+    margin: 0 auto 40px auto; /* El 'auto' en los laterales lo centra en la página */
+    padding-top: 100px;
+    min-height: 200px;
+    flex-wrap: wrap-reverse; /* Invertimos el orden del wrap: de abajo hacia arriba */
+    gap: 8px; /* Reducido para que se amontonen más */
+    min-height: 200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills-text h1 {
+    font-size: 45px;
+    font-weight: 450;
+    color: black;
+    text-align: center; 
+    line-height: 1.2;
+    white-space: nowrap; /* Fuerza a que todo el texto esté en una sola línea */
+    max-width: none;
+    letter-spacing: -0.02em;
+}
 /* ESTILO DEL BOTÓN LIMA */
 .skill-tag {
     display: inline-block;
@@ -161,31 +231,23 @@ const getFixedStyle = (index, skill) => {
     font-size: 18px;
     font-weight: 400;
     white-space: nowrap;
-    
-    /* Estado inicial (oculto arriba) */
     opacity: 0;
     will-change: transform, opacity;
-    
-    /* La animación usa las variables del JS */
     animation: pileUpFixed 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
     animation-delay: var(--index-delay); /* Retraso fijo */
     transition: 0.2s ease-in-out;
 }
 
-/* Animación de caída fijos y de costado */
 @keyframes pileUpFixed {
     0% {
         opacity: 0;
-        /* Entran de arriba, sin rotación */
-        transform: translateY(-120px) rotate(0deg) scale(0.8);
-    }
-    60% {
-        opacity: 1;
+        transform: translateY(-100px) scale(0.8);
     }
     100% {
         opacity: 1;
-        /* Termina con la rotación y el desplazamiento fijos definidos en JS */
-        transform: translateY(0) rotate(var(--rotation)) translateX(var(--x-offset));
+        /* IMPORTANTE: El orden de los factores altera el producto aquí */
+        /* Primero movés a la posición (X, Y) y DESPUÉS rotás */
+        transform: translate(var(--x-offset), var(--y-offset)) rotate(var(--rotation));
     }
 }
 
@@ -195,99 +257,35 @@ const getFixedStyle = (index, skill) => {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-
-/* Aseguramos que la foto no se encime de forma rara */
-.about-image {
-  display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el texto con la foto */
-    text-align: center;
-    gap: 20px; /* Espacio entre el borde de la foto y el texto */
-    position: relative;
-    z-index: 10;
-}
-
-.photo-caption p {
-    font-size: 18px;
-    line-height: 1.4;
-    font-family: Inter;
-    color: #000;
-    font-weight: 450;
-    align-items: center;
-    text-align: center;
-}
-
-.photo-caption .pink-link {
-    color: #ff63a7;
-    font-weight: 450;
-    font-family: Inter;
-    cursor: pointer;
-}
-
-/* Ajuste del Hero para que el texto de la izquierda no empuje tanto */
-.hero-content {
-    align-items: flex-start; /* Alinea el título arriba y la foto fluye abajo */
-    padding-bottom: 100px; /* Reducimos el padding exagerado */
-}
-/* Responsivo rápido: por si lo ves en pantallas más chicas */
-@media (max-width: 1024px) {
-    .blob-frame {
-        width: 350px;
-        height: 380px;
-    }
-}
-
-/* Este contenedor limita el ancho para que no ocupe toda la pantalla */
-.about-hero {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Centra todo el bloque en la pantalla */
-    padding: 60px 40px;
-}
-
-.hero-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1100px; /* Igual al ancho máximo de tu sección de CV */
-    gap: 40px;
-    padding: 10x 80px 200px 200px;
-}
-
-.about-text {
-    flex: 1;
-}
-
-.about-text h1 {
-    font-size: 54px;
-    font-weight: 450;
-    line-height: 1.1;
-    margin-bottom: 20px; /* Reducido para que las tags queden cerca del texto */
-    color: #000;
-    letter-spacing: -0.02em;
-}
-
 /* ABOUT ME FINAL TEXT*/
 
-.about-extra-text {
-    width: 90%;
-    max-width: 1100px;
-    margin: -80px auto 100px auto !important;
-    padding: 0;
-    text-align: justify;
+.inline-icon {
+    height: 150px; /* Un poco más alto que el font-size (45px) para que destaquen */
+    width: auto;
+    display: inline-block;
+    vertical-align: middle; /* Centra la imagen con el eje del texto */
+    margin: 0 8px; /* Espaciado lateral para que no peguen con las letras */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto opcional: que las imágenes se muevan un poquito al pasar el mouse */
+.inline-icon:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .about-extra-text p {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto; 
+    padding: 0 20px; /* Margen interno para que no pegue con los bordes en móvil */
     font-size: 45px;
-    width: 100%;
-    text-align: justify;
-    text-justify: inter-word;
-    color: var(--black);
     font-weight: 450;
+    color: black;
+    text-align: justify;
+     text-justify: inter-word;
+    line-height: 1.2;
     letter-spacing: -0.02em;
-    line-height: 1.1;
-}
+  }
 
 .hover-word {
     position: relative;
@@ -298,13 +296,11 @@ const getFixedStyle = (index, skill) => {
 }
 .pop-up-image {
     position: absolute;
-    width: 250px !important;    /* Bajamos de 450px a 380px para un tamaño equilibrado */
+    width: 220px !important;  
     max-width: 75vw !important; 
-    
-    /* --- ALTURA DINÁMICA: Proporción Estilizada --- */
-    height: auto !important;    /* Que la altura crezca lo que necesite la foto */
-    min-height: 250px !important; /* Forzamos un mínimo para que ninguna sea "chiquita" */
-    object-fit: cover !important; /* Llena el espacio sin deformar, clave con height:auto */
+    height: auto !important;   
+    min-height: 250px !important; 
+    object-fit: cover !important; 
     border-radius: 20px !important; 
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     border: none;
@@ -323,7 +319,6 @@ const getFixedStyle = (index, skill) => {
     opacity: 1;
     transform: translateX(-50%) scale(1) translateY(-15px);
 }
-
 /* Color de resaltado personalizado */
 .about-extra-text::selection {
     background-color: var(--lima); /* Usa tu variable de color lima */
@@ -357,7 +352,7 @@ const getFixedStyle = (index, skill) => {
     font-size: 32px;
     font-weight: 450;
     margin-bottom: 30px;
-    color: #000;
+    color: black;
 }
 
 .video-container {
@@ -386,6 +381,11 @@ const getFixedStyle = (index, skill) => {
     margin-bottom: 25px;
     color: #000;
 }
+
+.cv-section p::selection {
+    background-color: var(--lima); 
+    color: var(--black);           
+    }
 
 .cv-button {
     display: block;

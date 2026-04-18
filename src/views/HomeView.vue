@@ -1,3 +1,17 @@
+
+<script setup>
+const projects = [
+  { name: 'Proyecto 1', url: '/img/proyecto1.png', path: '/portfolio/amada-amiga' },
+  { name: 'Proyecto 7', url: '/img/itinerohome.png', path: '/portfolio/itinero' },
+  { name: 'Proyecto 3', url: '/img/under.png', path: '/portfolio/under' },
+  { name: 'Proyecto 4', url: '/img/Raizysazon.png', path: '/portfolio/raiz-sazon' },
+  { name: 'Proyecto 5', url: '/img/arandacoriahome.png', path: '/portfolio/lic-aranda' },
+  { name: 'Proyecto 6', url: '/img/ordendashboard.png', path: '/portfolio/orden' },
+  { name: 'Proyecto 2', url: '/img/collageafternoon.png', path: '/portfolio/collage-afternoon' },
+];
+</script>
+
+
 <template>
   <main>
     <section class="hero">
@@ -8,82 +22,70 @@
       <img src="/img/camera.png"  class="icon icon-camera"  alt="Camera" />
       <img src="/img/figma.png"   class="icon icon-figma"   alt="Figma"  />
 
-      <div class="hero-content">
-        <h1>Hi! I'm <span class="highlight">Valen Rotondaro,</span>
-        a Multimedia Design student and UX/UI enthusiast focused on creating intuitive, functional, and aesthetic digital solutions.</h1>
+<div class="hero-content">
+        <div class="title-container">
+          <h1 class="hero-title">Hi! I'm <span class="highlight">Valen Rotondaro</span></h1>
+        
+        </div>
+        <p class="hero-subtitle">
+          I'm a Multimedia design student and UX/UI enthusiast focused on creating intuitive, functional, and aesthetic digital solutions.
+        </p>
       </div>
     </section>
 
-    <div class="marquee-wrapper">
-      <div class="marquee-track">
-        <div v-for="n in 2" :key="n" class="marquee-content">
-          <div v-for="(img, index) in projects" :key="index" class="project-card">
-            <img :src="img.url" :alt="img.name" class="project-img" />
-          </div>
-        </div>
-      </div>
+   <div class="marquee-wrapper">
+  <div class="marquee-track">
+    <div v-for="n in 2" :key="n" class="marquee-content">
+      <router-link 
+        v-for="(img, index) in projects" 
+        :key="index" 
+        :to="img.path" 
+        class="project-card"
+      >
+        <img :src="img.url" :alt="img.name" class="project-img" />
+      </router-link>
     </div>
-    <router-link to="/Portfolio" class="btn-explore">
+  </div>
+</div>
+ <router-link to="/Portfolio" class="btn-explore">
+
       Explore here all my projects
+
     </router-link>
-  </main>
+</main>
 </template>
-
-<script setup>
-
-const projects = [
-  { name: 'Proyecto 1', url: '/img/proyecto1.png' },
-  { name: 'Proyecto 7', url: '/img/itinerohome.png' },
-  { name: 'Proyecto 3', url: '/img/under.png' },
-  { name: 'Proyecto 4', url: '/img/Raizysazon.png' },
-  { name: 'Proyecto 5', url: '/img/arandacoriahome.png' },
-  { name: 'Proyecto 6', url: '/img/ordendashboard.png' },
-  { name: 'Proyecto 2', url: '/img/proyecto2.png' },
-  
-];
-</script>
 
 <style scoped>
 
 /* HERO SECTION */
 
-.hero {
-    font-family: 'Inter' !important;
-    min-height: 100vh;
-    flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
-    align-items: center;
+   .hero {
+    font-family: 'Inter', 'Helvetica' !important;
+    height: 100vh; /* Usa height en lugar de min-height para fijar el tamaño */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    flex-direction: column;
+    justify-content: center; /* ESTO centra verticalmente */
+    align-items: center;     /* ESTO centra horizontalmente */
+    text-align: center;      /* Centra el alineado de las líneas de texto */
     position: relative;
-    padding: 0 15%;
+    margin-top: -160px; 
+    padding-top: 150px;
+    overflow: hidden;    
+    z-index: 1;   
 }
 
-.hero-content h1 {
-    font-family: 'Inter' !important;
-/* Tamaño de letra más equilibrado */
-  font-size: 52px; 
-  
-  /* Centrado y límite de ancho */
-  max-width: 680px;
-  margin: 0 auto; /* Centra el bloque horizontalmente */
-  
-  /* Alineación del texto */
-  text-align: justify;
-  text-wrap: balance;
-  
-  /* Espaciado para que no toque los bordes en móviles */
-  padding: 0px;
-  
-  /* Altura de línea para que sea legible */
-  line-height: 1.2;
-  
-  /* Estética (opcional) */
-  font-weight: 
-  450;
-  letter-spacing: -0.02em;
+
+.hero-title {
+  font-size: 100px; /* Tamaño masivo como en la referencia */
+  font-weight: 450;
+  color: black;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin: 0;
+  align-items: center;     /* ESTO centra horizontalmente */
+  text-align: center;
+  overflow: hidden;    
+  z-index: 1;   
 }
 
 /* Color de resaltado personalizado */
@@ -92,22 +94,33 @@ const projects = [
     color: var(--black);           /* Asegura que el texto sea legible (negro) */
 }
 
+.hero-subtitle {
+  font-family: 'Inter', 'Helvetica' !important;
+  font-size: 30px;
+  color: black;
+  max-width: 800px;
+  margin: 40px auto 0 auto; 
+  line-height: 1.3;
+  text-align: center;
+}
+
+.highlight {
+  color: var(--pink);
+}
+
 /* También para navegadores basados en Firefox */
 .hero-content h1::-moz-selection {
     background-color: var(--lima);
     color: var(--black);
 }
 
-.highlight {
-    color: var(--pink);
+.hero-subtitle::selection  {
+    background-color: var(--lima);
+    color: var(--black);
 }
 
-.hero-content p {
-    font-family: 'Inter' !important;
-    font-size: 20px;
-    line-height: 1.4;
-    max-width: 900px;
-    margin: 0 auto;
+.highlight {
+    color: var(--pink);
 }
 
 .btn-explore {
@@ -131,7 +144,6 @@ const projects = [
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-
 /* ICONS */
 .icon {
     position: absolute;
@@ -141,21 +153,21 @@ const projects = [
 
 .icon-folder {
     width: 160px;
-    top: 2%; 
-    left: 10%; 
+    top: 22%; 
+    left: 15%; 
     }
 .icon-arrow  {
-    top: 7%;
+    top: 25%;
     right: 14%;
     }
 .icon-clips  {
     width: 80px;
-    top: 43%;
-    left: 8%;
+    top: 50%;
+    left: 10%;
     }
 .icon-coffee {
     width: 80px;
-    top: 40%;
+    top: 50%;
     right: 9%;
     }
 .icon-camera {
@@ -167,7 +179,6 @@ const projects = [
     bottom: 10%;
     right: 15%;
     }
-
 
 /* Base behavior for all floating icons */
 .icon {
@@ -227,11 +238,8 @@ const projects = [
 
 /* CADA PROYECTO AHORA ES UNA 'CARTA' (Estilo Bento Box) */
 .project-card {
-  /* Truco: inline-block para que se alineen perfectamente */
   display: inline-block;
   vertical-align: top;
-  
-  /* Definimos el tamaño de la carta, como en tu referencia */
   width: 380px !important;
   height: 480px !important;
   
@@ -252,15 +260,12 @@ const projects = [
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* EFECTO ESCALONADO (opcional pero moderno, pruébalo) */
-/* Esto hace que las cartas pares suban un poco, creando ritmo visual */
 .project-card:nth-child(even) {
   margin-top: 30px;
 }
 .project-card:nth-child(odd) {
   margin-top: -30px;
 }
-
 
 .project-card:hover {
   transform: translateY(-8px) scale(1.03); /* Sube un poco más y se agranda */

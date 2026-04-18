@@ -376,7 +376,7 @@
 }
 
 .btn-download:hover {
-    transform: scale(1.01) rotate(3deg);
+   transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 

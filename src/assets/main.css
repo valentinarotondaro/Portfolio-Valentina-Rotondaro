@@ -22,6 +22,13 @@ body {
     color: var(--black);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0;
+  padding: 0;
 }
 
 h1, .section-title {
@@ -52,6 +59,8 @@ li {
     justify-content: space-between;
     align-items: center;
     padding: 30px 80px;
+    z-index: 100 !important;
+    position: relative;    
 }
 
 .logo {

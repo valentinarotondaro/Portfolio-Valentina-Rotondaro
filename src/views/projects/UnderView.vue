@@ -1,7 +1,17 @@
+<script setup>
+import { ref } from 'vue';
+
+const imgSketches = ref('/img/undersketches.jpg');
+const imgBeer = ref('/img/underbeer.png');
+const imgVisual = ref('/img/undervisual.png');
+const imgIsotipo = ref('/img/underisotipo.png');
+</script>
+
+
 <template>
   <div class="case-study">
     <nav class="top-nav">
-      <router-link to="/Portfolio" class="back-btn">
+      <router-link to="/portfolio" class="back-btn">
         <span class="arrow">←</span> Back to Works
       </router-link>
     </nav>
@@ -36,10 +46,10 @@
       <section class="process-gallery">
         <div class="gallery-dual-grid">
           <div class="gallery-item">
-            <img src="/img/undersketches.jpg" alt="Logo Ideation" />
+            <img :src="imgSketches" class="hover-effect" @mouseenter="imgSketches = '/img/undercards.jpg'" @mouseleave="imgSketches = '/img/undersketches.jpg'" />
           </div>
           <div class="gallery-item">
-            <img src="/img/underbeer.png" alt="Process detail" />
+          <img :src="imgBeer" class="hover-effect" @mouseenter="imgBeer = '/img/underbeerhand.png'" @mouseleave="imgBeer = '/img/underbeer.png'" />
           </div>
         </div>
       </section>
@@ -56,28 +66,13 @@
 
       <section class="visual-identity-full">
         <div class="hero-image-container">
-          <img src="/img/undervisual.png" alt="Visual Identity Full Display" class="hero-img" />
-        </div>
-      </section>
-
-      <section class="styleguide-grid">
-        <div class="style-card colors-minimal">
-          <div class="color-row-vertical">
-            <div class="color-rect amber"><span>#D18A2B</span></div>
-            <div class="color-rect cream"><span>#FDFDED</span></div>
-          </div>
-        </div>
-        <div class="style-card typo-minimal">
-          <div class="typo-display-minimal">
-            <span class="letter-main">Aa</span>
-            <p class="typo-label">Retro Star / Public Sans</p>
-          </div>
+        <img :src="imgVisual" class="hero-img hover-effect"  @mouseenter="imgVisual = '/img/underlogo.png'" @mouseleave="imgVisual = '/img/undervisual.png'" />
         </div>
       </section>
 
       <section class="results-section">
         <div class="results-container">
-          <img src="/img/underbeer.png" alt="Final Result Cheers" class="result-img" />
+          <img :src="imgIsotipo" class="result-img hover-effect" @mouseenter="imgIsotipo = '/img/underbar.png'" @mouseleave="imgIsotipo = '/img/underisotipo.png'" />
           <div class="results-text">
             <h2 class="section-label">04. Result</h2>
             <p class="body-text">
@@ -133,6 +128,7 @@
   font-size: 60px;
   font-weight: 500;
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
 /* TOP NAV */
@@ -266,13 +262,18 @@ p, .body-text {
   margin: 0;
   text-align: left;
 }
+.visual-identity-full {
+  margin-bottom: 50px;
+  margin-top: 50px; /* Bajamos de 50px a 20px */
+}
 
 /* RESULTS */
 .results-container {
   display: flex;
   align-items: center;
   gap: 60px;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
+  margin-top: 0px;
 }
 .result-img {
   width: 50%;
@@ -281,8 +282,8 @@ p, .body-text {
 
 /* FOOTER */
 .case-footer {
-  padding: 50px 5%;
-  border-top: 1px solid #eee;
+  padding: 30px 5%;
+  border-top: none;
   margin-top: 30px;
 }
 .pagination-wrapper {
@@ -312,5 +313,22 @@ p, .body-text {
   .hero-image-container { height: 40vh; }
   .project-intro-header h1 { font-size: 40px; }
   .typo-display-minimal { flex-direction: column; gap: 10px; align-items: flex-start; }
+}
+/* Esto aplica a las imágenes con hover */
+.hover-effect {
+  transition: opacity 0.4s ease-in-out, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efecto opcional: que la imagen se aclare un poquito al entrar 
+   o se mueva apenas para notar la interacción */
+.hover-effect:hover {
+  opacity: 0.9;
+  transform: scale(1.01);
+}
+
+img {
+  transition: filter 0.3s ease-in-out; /* Opcional: añade suavidad si las imágenes pesan poco */
+  cursor: pointer;
 }
 </style>

@@ -33,9 +33,16 @@
   <img src="/img/boardingpass.png" class="boarding-img" alt="Boarding Pass" v-if="!isCleanMode" />
 </div>
 
-<div class="obj lego-group" :class="{ 'is-clean': isCleanMode }" >
+<div 
+  class="obj lego-group" 
+  :class="{ 'is-clean': isCleanMode }"
+  @mouseenter="playLegoSound"
+  @mouseleave="stopLegoSound" 
+>
   <img src="/img/lego.png" class="lego-img" alt="Lego Flowers" />
   <img src="/img/legogreen.png" class="legopalm-img" alt="Lego Palm" v-if="!isCleanMode" />
+  
+  <audio ref="legoSound" src="/audio/legobricks.mp3" preload="auto"></audio>
 </div>
 
 <div class="obj pie-group" :class="{ 'is-clean': isCleanMode }">
@@ -111,19 +118,23 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const isCleanMode = ref(false); // Por defecto empieza en caos (false)
+const activePopUp = ref(false);
+const activeObjectText = ref('');
+const tooltipStyle = ref({ top: '0px', left: '0px' });
+
+/* MODES */
+
+const isCleanMode = ref(false); 
 
 const setCleanMode = () => { isCleanMode.value = true; };
 const setChaosMode = () => { isCleanMode.value = false; };
 
+/* SPOTIFY */
+
 const audioPlayer = ref(null);
 const isPlaying = ref(false);
-
-// Configuración de Volúmenes (0 a 1)
-const MUSIC_MAX_VOL = 0.35; // Volumen de fondo equilibrado
-const LAMP_VOL = 1.0;       // El clic al máximo para que se escuche
-
-// Ajustamos el punto de inicio (en segundos)
+const MUSIC_MAX_VOL = 0.35; 
+const LAMP_VOL = 1.0;       
 const startTime = 10;
 
 onMounted(() => {
@@ -145,8 +156,7 @@ const playMusic = () => {
     if (promise !== undefined) {
       promise.then(() => {
         isPlaying.value = true;
-        
-        // FADE IN Corregido: Sube hasta MUSIC_MAX_VOL, no hasta 1
+  
         let vol = 0;
         const interval = setInterval(() => {
           if (vol < MUSIC_MAX_VOL) {
@@ -170,14 +180,13 @@ const pauseMusic = () => {
   }
 };
 
-/* LAMP SOUND EFFECT */
+/* LAMP */
+
 const isLampOn = ref(false);
 const lampSound = ref(null);
 
 const activateLamp = () => {
   isLampOn.value = true;
-  
-  // EFECTO "DUCKING": Bajamos Spotify un poco más al prender la lámpara
   if (audioPlayer.value && isPlaying.value) {
     audioPlayer.value.volume = 0.15;
   }
@@ -213,8 +222,22 @@ const deactivateLamp = () => {
     lampSound.value.pause();
   }
 };
+/* LEGO */
+const legoSound = ref(null);
 
-
+const playLegoSound = () => {
+  if (legoSound.value) {
+    legoSound.value.currentTime = 2; // Empieza en el segundo 4
+    legoSound.value.volume = 0.5;
+    legoSound.value.play().catch(e => console.log("Error lego audio"));
+  }
+};
+const stopLegoSound = () => {
+  if (legoSound.value) {
+    legoSound.value.pause(); // Pausa el sonido al sacar el mouse
+    // No reseteamos el tiempo acá para que no haga un ruido raro al cortar
+  }
+};
 </script>
 
 <style scoped>
@@ -222,11 +245,12 @@ const deactivateLamp = () => {
    1. ESTRUCTURA Y TEXTO (Sin cambios)
    ========================================= */
 .about-me-container {
-    min-height: auto !important;
+    min-height: 0 important;
     height: auto !important;
-    margin-bottom: -150px !important;
+    padding-bottom: 50px !important;
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: -150px !important;   
 }
 
 .collage-wrapper {
@@ -237,6 +261,8 @@ const deactivateLamp = () => {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: -150px !important;
+
 }
 
 .about-me-text {
@@ -252,12 +278,13 @@ const deactivateLamp = () => {
 }
 
 .about-me-text h1 {
-    font-size: 74px; 
+    font-size: 75px; 
     font-weight: 450;
     color: #ff63a7;
     margin-bottom: 10px;
     letter-spacing: -0.02em;
     user-select: none;
+    
 }
 
 .description {
@@ -376,17 +403,17 @@ const deactivateLamp = () => {
 
 .light-glow {
     position: absolute; 
-    top: 25%; 
+    top: 15%;  /* Ajustalo para que salga de la campana de la lámpara */
     left: 50%; 
-    width: 130%; 
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 235, 59, 0.7) 0%, rgba(255, 235, 59, 0) 65%);
-    transform: translate(-50%, -50%); 
+    transform: translateX(-50%);
+    width: 140px; 
+    height: 140px; 
+    background: radial-gradient(circle, rgba(255, 235, 59, 0.8) 0%, rgba(255, 235, 59, 0) 70%);
     opacity: 0; 
-    transition: opacity 0.2s ease;
+    transition: opacity 0.3s ease;
     pointer-events: none; 
     z-index: 1; 
-    clip-path: ellipse(50% 50% at 50% 50%);
+    border-radius: 50%; /* Esto reemplaza al clip-path y no falla nunca */
 }
 
 .is-lit { opacity: 1; }
@@ -435,7 +462,7 @@ const deactivateLamp = () => {
     background-color: transparent !important; border: none; border-radius: 18px; transition: all 0.3s ease;
 }
 .mode-controls button:hover { transform: translateY(-5px) rotate(5deg); background-color: #f7f7f7 !important; }
-.mode-controls button.active { background-color: #f0f0f0 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+.mode-controls button.active { background-color: #f0f0f0 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.07); }
 .mode-controls img { object-fit: contain; transition: transform 0.2s ease; }
 .coffee-icon { width: 80px; height: auto; }
 .broom-icon { width: 50px; height: auto; }
@@ -445,5 +472,17 @@ const deactivateLamp = () => {
     content: attr(data-label); position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
     background-color: black; color: white; padding: 6px 12px; border-radius: 8px;
     font-family: 'Inter', sans-serif; font-size: 13px; white-space: nowrap; z-index: 100;
+}
+
+main {
+    display: block;
+    overflow: hidden; /* Corta cualquier reborde invisible */
+    height: auto !important;
+}
+
+/* Si el footer tiene un margen superior escondido, lo matamos */
+:deep(.footer) {
+    margin-top: 0 !important;
+    padding-top: 20px !important; /* Espacio mínimo controlado */
 }
 </style>
