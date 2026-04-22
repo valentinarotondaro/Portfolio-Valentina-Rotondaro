@@ -90,7 +90,7 @@ const imgIsotipo = ref('/img/underisotipo.png');
         </router-link>
         
         <router-link to="/portfolio/itinero" class="footer-link next-link">
-          <span class="project-name">Itinero</span> <span class="nav-arrow">→</span>
+          <span class="project-name">Next project</span> <span class="nav-arrow">→</span>
         </router-link>
       </div>
     </footer>
@@ -137,7 +137,9 @@ const imgIsotipo = ref('/img/underisotipo.png');
 }
 .back-btn {
   text-decoration: none;
-  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: black;
   font-weight: 450;
   display: flex;
   align-items: center;

@@ -21,11 +21,9 @@ const router = createRouter({
     { path: '/collage-workshops', name: 'collage-workshops', component: () => import('../views/collage-workshops.vue') },
     { path: '/multimedia-design', name: 'multimedia-design', component: () => import('../views/multimedia-design.vue') },
     { path: '/Digital-Playground', name: 'digital-playground', component: () => import('../views/DigitalPlayground.vue') },    
-    // Rutas para cada proyecto individual
+
     { path: '/portfolio/under', name: 'under', component: () => import('../views/projects/UnderView.vue') },
     { path: '/portfolio/itinero', name: 'itinero', component: () => import('../views/projects/ItineroView.vue') },
-    { path: '/portfolio/orden', name: 'orden', component: () => import('../views/projects/OrdenView.vue') },
-    { path: '/portfolio/personal-portfolio', name: 'personal-portfolio', component: () => import('../views/projects/PortfolioProjectView.vue') },
     { path: '/portfolio/content-creation', name: 'project-content-creation', component: () => import('../views/projects/ContentCreationView.vue') },
     { path: '/portfolio/raiz-sazon', name: 'raiz-sazon', component: () => import('../views/projects/RaizSazonView.vue') },
     { path: '/portfolio/amada-amiga', name: 'amada-amiga', component: () => import('../views/projects/AmadaAmigaView.vue') },
@@ -34,8 +32,6 @@ const router = createRouter({
     { path: '/portfolio/city-welcome', name: 'aarhus-city-welcome', component: () => import('../views/projects/AarhusCityWelcomeView.vue') },
     { path: '/portfolio/royal-library', name: 'royal-library', component: () => import('../views/projects/RoyalLibraryView.vue') },
     { path: '/portfolio/migrant-emotions', name: 'migrant-emotions', component: () => import('../views/projects/MigrantEmotionsView.vue') },
-
-// ]
   ],
 
   // ESTO ES LO QUE SOLUCIONA EL SCROLL

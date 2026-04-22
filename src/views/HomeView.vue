@@ -4,9 +4,9 @@ const projects = [
   { name: 'Proyecto 1', url: '/img/proyecto1.png', path: '/portfolio/amada-amiga' },
   { name: 'Proyecto 7', url: '/img/itinerohome.png', path: '/portfolio/itinero' },
   { name: 'Proyecto 3', url: '/img/under.png', path: '/portfolio/under' },
-  { name: 'Proyecto 4', url: '/img/Raizysazon.png', path: '/portfolio/raiz-sazon' },
-  { name: 'Proyecto 5', url: '/img/arandacoriahome.png', path: '/portfolio/lic-aranda' },
-  { name: 'Proyecto 6', url: '/img/ordendashboard.png', path: '/portfolio/orden' },
+  { name: 'Proyecto 4', url: '/img/raizysazonhome.png', path: '/portfolio/raiz-sazon' },
+  { name: 'Proyecto 5', url: '/img/LicArandaCoriaToteBag.png', path: '/portfolio/lic-aranda' },
+  { name: 'Proyecto 6', url: '/img/somehome.png', path: '/portfolio/content-creation' },
   { name: 'Proyecto 2', url: '/img/collageafternoon.png', path: '/portfolio/collage-afternoon' },
 ];
 </script>

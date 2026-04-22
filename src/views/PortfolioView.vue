@@ -99,31 +99,17 @@ const projectsList = ref([
     link: '/portfolio/itinero' // Corregido
   },
   {
-    title: 'Orden',
-    description: 'A web platform designed to streamline task and project management for teams.',
-    tags: ['Web Design'],
-    image: '/img/ordenproject.png',
-    link: '/portfolio/orden' // Corregido
-  },
-  {
-    title: 'Personal portfolio',
-    description: 'The design and development of my own digital creative space.',
-    tags: ['Web Design'],
-    image: '/img/portfolioproject.png',
-    link: '/portfolio/personal-portfolio' // Corregido
-  },
-  {
     title: 'SoMe Content creation',
     description: 'Strategy and creation of engaging content including UGC, tutorials and lifestyle reels for Instagram and TikTok.',
     tags: ['Content Creation'],
-    image: '/img/socialmedia.png',
+    image: '/img/someproject.png',
     link: '/portfolio/content-creation' // Corregido
   },
   {
     title: 'Raiz y Sazón',
     description: 'A dedicated site focused on South American vegan recipes.',
     tags: ['UX/UI', 'Web Design'],
-    image: '/img/Raizysazon.png', 
+    image: '/img/raizysazonproject.png', 
     link: '/portfolio/raiz-sazon' // Corregido
   },
   {
@@ -141,31 +127,31 @@ const projectsList = ref([
     link: '/portfolio/lic-aranda' // Corregido
   },
   {
-    title: 'Collage Afternoon | DOKK1',
+    title: 'Collage Afternoon',
     description: 'A collaborative and creative workshop held at the modern DOKK1 library.',
     tags: ['Workshops'],
     image: '/img/Collageafternoondokk1.JPG',
     link: '/portfolio/collage-afternoon' // Corregido
   },
   {
-    title: 'Collage Workshop | Aarhus City Welcome',
+    title: 'Collage Workshop ACW 26',
     description: 'A welcoming creative session as part of the official Aarhus City Welcome event.',
     tags: ['Workshops'],
     image: '/img/CollageworkshopAarhusCityWelcome.JPG',
     link: '/portfolio/city-welcome' // Corregido
   },
   {
-    title: 'Collage workshop | Royal Danish Library',
+    title: 'Monochromatic Collage Workshop',
     description: 'An inspiring creative experience within the historic Royal Danish Library.',
     tags: ['Workshops'],
-    image: '/img/Collageworkshoproyaldanishlibrary.JPEG',
+    image: '/img/royalcollage2.JPEG',
     link: '/portfolio/royal-library' // Corregido
   },
   {
-    title: 'Collage & Migrant Emotions | Frontløberne',
+    title: 'Collage & Migrant Emotions ',
     description: 'An expressive workshop exploring and communicating migrant emotions through art.',
     tags: ['Workshops'],
-    image: '/img/Collageandmigrantemotions.jpg',
+    image: '/img/collagesome.JPEG',
     link: '/portfolio/migrant-emotions' // Corregido
   }
 ]);

@@ -1,5 +1,5 @@
 <template>
-  <main :class="{ 'is-clean-mode': isCleanMode }">
+  <main :class="{ 'is-clean-mode': isCleanMode }" @click="closeNote">
     <!-- Collage section -->
     <section class="about-me-container">
       <div class="collage-wrapper">
@@ -16,18 +16,15 @@
   class="obj lamp-interaction-group" :class="{ 'is-clean': isCleanMode }"
   @mouseenter="activateLamp" 
   @mouseleave="deactivateLamp"
->
+  @click="openNote('Denmark sparked my love for lamps ✴︎ I’m obsessed with Danish design.', $event)">
   <div class="lamp-head-container">
     <img src="/img/lampitradition.png" class="lamp-head-img" :class="{ 'is-clean': isCleanMode }" alt="Lamp Head" />
-    
     <div class="light-glow" :class="{ 'is-lit': isLampOn }"></div>
   </div>
-
   <audio ref="lampSound" src="/audio/lampon.mp3" preload="auto"></audio>
 </div>
 
-<div class="obj passport-group" :class="{ 'is-clean': isCleanMode }" 
- 
+<div class="obj passport-group" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I am from Argentina! I have dual citizenship because my grandma is Italian, but I was born in Buenos Aires ✈︎', $event)"
 >
   <img src="/img/passport.png" class="passport-img" alt="Passport" />
   <img src="/img/boardingpass.png" class="boarding-img" alt="Boarding Pass" v-if="!isCleanMode" />
@@ -38,6 +35,7 @@
   :class="{ 'is-clean': isCleanMode }"
   @mouseenter="playLegoSound"
   @mouseleave="stopLegoSound" 
+  @click.stop="openNote('I’m a Lego fan, I am collecting the entire botanical collection ❀', $event)"
 >
   <img src="/img/lego.png" class="lego-img" alt="Lego Flowers" />
   <img src="/img/legogreen.png" class="legopalm-img" alt="Lego Palm" v-if="!isCleanMode" />
@@ -45,23 +43,23 @@
   <audio ref="legoSound" src="/audio/legobricks.mp3" preload="auto"></audio>
 </div>
 
-<div class="obj pie-group" :class="{ 'is-clean': isCleanMode }">
+<div class="obj pie-group" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('This is my favorite cake! It is called Pastafrola and my grandma used to make the best one!', $event)">
   <img src="/img/pastafrola.png" class="pie-img" alt="Pastafrola" />
   <img src="/public/img/migas.png" class="migas-img" alt="Migas" v-if="!isCleanMode" />
 </div>
 
-<div class="obj notebook-group" :class="{ 'is-clean': isCleanMode }" >
+<div class="obj notebook-group" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I found this word search and it highlights some of my most important values, the ones I choose every day even when no one is watching.', $event)">
   <img src="/img/moleskine.png" class="notebook-img" alt="Notebook" />
   <img src="/img/coffee-stain.png" class="stain-img" alt="Coffee Stain" v-if="!isCleanMode" />
   <img src="/img/sopadeletras.png" class="wordsearch-img" alt="Wordsearch" />
 </div>
 
-<div class="obj candles-group" :class="{ 'is-clean': isCleanMode }" >
+<div class="obj candles-group" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I always have colorful candles at home!', $event)">
   <img src="/img/candles.png" class="candles-img" alt="Candles" />
   <img src="/img/fosforos.png" class="fosforos-img" alt="Fosforos" />
 </div>
-        <img src="/img/tijeraroja.png"     class="obj scissors" :class="{ 'is-clean': isCleanMode }"  alt="Scissors" />
-        <img src="/img/sagradafamilia.png" class="obj photo"   :class="{ 'is-clean': isCleanMode }"   alt="Sagrada Familia" />
+        <img src="/img/tijeraroja.png"     class="obj scissors" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I always carry scissors with me, you never know when a collage might want to be born ✄', $event)"  alt="Scissors" />
+        <img src="/img/sagradafamilia.png" class="obj photo"   :class="{ 'is-clean': isCleanMode }"  @click.stop="openNote('This is a photo of my Sagrada Familia, from that Europe trip we dreamed about for so long.', $event)"  alt="Sagrada Familia" />
 
         <!-- Texto central -->
         <div class="about-me-text">
@@ -73,15 +71,15 @@
           <img 
   src="/img/spotify.png" 
   class="obj spotify" 
-  :class="{ 'is-playing': isPlaying, 'is-clean': isCleanMode }"
+  :class="{ 'is-playing': isPlaying, 'is-clean': isCleanMode }" @click.stop="openNote('This is a song from one of my favorite movies, Amélie. If you haven’t seen it, I highly recommend it, it’s pure beauty.', $event)"
   alt="Spotify Player" 
   @mouseenter="playMusic"
   @mouseleave="pauseMusic"
 />
 <audio ref="audioPlayer" src="/audio/comptinedunautreete.mp3" preload="auto" loop></audio>
-          <img src="/img/macfigma.png"         class="obj laptop" :class="{ 'is-clean': isCleanMode }" alt="Macbook with Figma" />
-          <img src="/img/cafeamarillo.png"     class="obj coffee" :class="{ 'is-clean': isCleanMode }" alt="Coffee" />
-          <img src="/img/valenrotondarofeed.png"             class="obj feed"   :class="{ 'is-clean': isCleanMode }" alt="Instagram Feed" />
+          <img src="/img/macfigma.png"         class="obj laptop" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I almost always have my computer with me! There’s always a project waiting to begin, or one asking to be finished.', $event)" alt="Macbook with Figma" />
+          <img src="/img/cafeamarillo.png"     class="obj coffee" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I’m a huge coffee fan. On my dates with myself, I’m always out discovering a new café in the city ☕︎', $event)" alt="Coffee" />
+          <img src="/img/valenrotondarofeed.png"             class="obj feed"   :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('Creating content is one of my biggest passions. I show up for it every day. You can stalk me on Instagram at @valenrotondaro', $event)"  alt="Instagram Feed" />
         </div>
 <div class="mode-controls">
   <div class="control-group">
@@ -105,7 +103,7 @@
     :style="tooltipStyle"
   >
     <div class="tooltip-content">
-      <button class="close-tooltip-btn">×</button>
+      <button class="close-tooltip-btn" @click="closeNote">×</button>
       <p>{{ activeObjectText }}</p>
     </div>
   </div>
@@ -238,6 +236,28 @@ const stopLegoSound = () => {
     // No reseteamos el tiempo acá para que no haga un ruido raro al cortar
   }
 };
+
+/* CARD TEXT */
+
+const openNote = (text, event) => {
+if (activePopUp.value && activeObjectText.value === text) return;
+  event.stopPropagation();
+  activeObjectText.value = text;
+  activePopUp.value = true;
+
+  // Si el click es muy a la derecha, abrimos la card hacia la izquierda
+  const xOffset = event.clientX > window.innerWidth / 2 ? -300 : 20;
+  
+  tooltipStyle.value = {
+    top: `${event.clientY - 50}px`, 
+    left: `${event.clientX + xOffset}px`
+  };
+};
+// Función para cerrar la nota
+const closeNote = () => {
+  activePopUp.value = false;
+};
+
 </script>
 
 <style scoped>
@@ -485,4 +505,58 @@ main {
     margin-top: 0 !important;
     padding-top: 20px !important; /* Espacio mínimo controlado */
 }
+
+/* LAMP CARD TEXT */
+
+.object-tooltip {
+    position: fixed;
+    width: 380px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 10000;
+    pointer-events: auto; /* Para que puedas tocar la cruz */
+}
+
+.tooltip-content {
+    position: relative;
+    font-family: 'Inter';
+}
+
+.tooltip-content p {
+    margin: 0;
+    width: 320px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: black;
+    padding-right: 15px;
+    text-align: justify;
+}
+
+.close-tooltip-btn {
+    position: absolute;
+    top: -25px;
+    right: -15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.close-tooltip-btn:hover {
+    color: #ff63a7; /* Tu rosa */
+}
+
+/* Animación de entrada */
+.pop-fade-enter-active, .pop-fade-leave-active {
+    transition: all 0.3s ease;
+}
+.pop-fade-enter-from, .pop-fade-leave-to {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+}
+
 </style>
