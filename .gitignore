@@ -39,3 +39,5 @@ __screenshots__/
 *.timestamp-*-*.mjs
 *.mp4
 *.MP4
+*.mov
+*.MOV
