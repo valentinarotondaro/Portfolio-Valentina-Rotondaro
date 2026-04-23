@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 
-// --- CONFIGURACIÓN DE VIDEOS POR CATEGORÍA ---
 const contentWork = ref([
   {
     category: 'UGC',
@@ -53,75 +52,87 @@ const contentWork = ref([
 
 <template>
   <div class="case-study some-page">
+
     <nav class="top-nav">
-      <router-link to="/portfolio" class="back-btn">
-        <span class="arrow"><</span> Back to Works
-      </router-link>
+      <router-link to="/portfolio" class="back-btn">&lt; Back to Works</router-link>
     </nav>
 
     <main class="content-wrapper">
+
       <header class="project-intro-header">
         <span class="category-badge">Content Creation & Digital Storytelling</span>
         <h1>Social Media Strategy</h1>
         <a href="https://instagram.com/valenrotondaro" target="_blank" class="ig-handle">
-    @valenrotondaro <span class="arrow-diagonal">↗</span>
-  </a>
+          @valenrotondaro <span class="arrow-diagonal">↗</span>
+        </a>
       </header>
 
-      <section class="section-grid context-objective">
+      <section class="section-grid">
         <div class="text-col">
           <h2 class="section-label">01. Perspective</h2>
-          <p class="body-text">
-            Passionate about digital storytelling, I create short-form videos and branded content that drive real engagement. My work combines video editing, design, and strategy to capture attention and make a brand’s essence shine.
-          </p>
+          <p class="body-text">Passionate about digital storytelling, I create short-form videos and branded content that drive real engagement. My work combines video editing, design, and strategy to capture attention and make a brand's essence shine.</p>
         </div>
         <div class="text-col">
           <h2 class="section-label">02. Goals</h2>
-          <p class="body-text">
-            I craft authentic concepts that inspire and build deep connections. Whether it's UGC or high-end tutorials, the goal is always to inspire action and create a lasting impact across digital platforms.
-          </p>
+          <p class="body-text">I craft authentic concepts that inspire and build deep connections. Whether it's UGC or high-end tutorials, the goal is always to inspire action and create a lasting impact across digital platforms.</p>
         </div>
       </section>
 
-      <section v-for="section in contentWork" :key="section.category" class="category-block">
+      <section
+        v-for="section in contentWork"
+        :key="section.category"
+        class="category-block"
+      >
         <h2 class="section-label-gray">{{ section.category }}</h2>
         <div class="video-grid-four">
-          <div v-for="(video, index) in section.videos" :key="index" class="reel-box">
-            <iframe 
-              :src="video" 
-              frameborder="0" 
-              allow="autoplay; fullscreen" 
-              class="vimeo-frame">
-            </iframe>
+          <div
+            v-for="(video, index) in section.videos"
+            :key="index"
+            class="reel-box"
+          >
+            <iframe
+              :src="video"
+              frameborder="0"
+              allow="autoplay; fullscreen"
+              class="vimeo-frame"
+            ></iframe>
           </div>
         </div>
       </section>
+
     </main>
+
     <footer class="case-footer">
       <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link back-link">
-          <span class="nav-arrow"><</span> Back to All Works
-        </router-link>
-        <router-link to="/portfolio/itinero" class="footer-link next-link">
-          <span class="project-name">Next project</span> <span class="nav-arrow">></span>
-        </router-link>
+        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
+        <router-link to="/portfolio/amada-amiga" class="footer-link">Next project &gt;</router-link>
       </div>
     </footer>
+
   </div>
 </template>
 
 <style scoped>
-.some-page { background-color: #ffffff; color: #000; }
+/* ─── BASE ──────────────────────────────────────────────── */
+.some-page {
+  background-color: #ffffff;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
 
+/* ─── LAYOUT ────────────────────────────────────────────── */
 .content-wrapper {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 5%;
 }
 
+/* ─── NAV ───────────────────────────────────────────────── */
 .top-nav {
   padding: 25px 5%;
 }
+
 .back-btn {
   font-size: 25px;
   font-weight: 500;
@@ -132,20 +143,41 @@ const contentWork = ref([
   transition: opacity 0.3s ease;
 }
 
-.project-intro-header h1 { 
-  font-size: clamp(32px, 5vw, 60px); 
-  font-weight: 500; 
-  letter-spacing: -0.02em; 
-  margin-top: 10px; 
+.back-btn:hover {
+  opacity: 0.5;
 }
 
-.category-badge { 
-  color: #888; 
-  text-transform: uppercase; 
-  letter-spacing: 2px; 
-  font-size: 14px; 
+/* ─── HEADER ────────────────────────────────────────────── */
+.project-intro-header {
+  margin-bottom: 10px;
 }
 
+.category-badge {
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.project-intro-header h1 {
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ig-handle {
+  font-size: 40px;
+  font-weight: 450;
+  color: #ff69b4;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ─── PERSPECTIVE / GOALS GRID ──────────────────────────── */
 .section-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -153,28 +185,33 @@ const contentWork = ref([
   margin: 60px 0 100px 0;
 }
 
-.section-label { 
-  color: #888; 
-  text-transform: uppercase; 
-  letter-spacing: 2px; 
-  font-size: 14px; 
-  margin-bottom: 20px; 
+.section-label {
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  margin-bottom: 20px;
   display: block;
 }
 
-.body-text { 
-  font-size: 18px; 
-  line-height: 1.6; 
-  color: #333; 
+.body-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
 }
 
-.ig-handle {
-    font-size: 40px;
-    font-weight: 450;
-    color: #ff69b4;
-    margin-top: 0;
+/* ─── CATEGORY BLOCKS ───────────────────────────────────── */
+.section-label-gray {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #aaa;
+  letter-spacing: 2px;
+  margin: 40px 0 20px 0;
+  display: block;
 }
-/* Grilla de 4 */
+
+/* ─── VIDEO GRID ─────────────────────────────────────────── */
 .video-grid-four {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -185,7 +222,7 @@ const contentWork = ref([
 .reel-box {
   position: relative;
   width: 100%;
-  padding-bottom: 177.78%; 
+  padding-bottom: 177.78%;
   background: #f7f7f7;
   border-radius: 12px;
   overflow: hidden;
@@ -193,26 +230,19 @@ const contentWork = ref([
 
 .vimeo-frame {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.section-label-gray { 
-  font-size: 14px; 
-  text-transform: uppercase; 
-  color: #aaa; 
-  letter-spacing: 2px; 
-  margin: 40px 0 20px 0; 
-  display: block; 
-}
-
-/* Footer */
-
+/* ─── FOOTER ────────────────────────────────────────────── */
 .case-footer {
   padding: 30px 5%;
-  border-top: none;
   margin-top: 30px;
 }
+
 .pagination-wrapper {
   max-width: 1100px;
   margin: 0 auto;
@@ -220,22 +250,54 @@ const contentWork = ref([
   justify-content: space-between;
   align-items: center;
 }
+
 .footer-link {
   font-size: 32px;
   font-weight: 500;
   color: #000;
   text-decoration: none;
-  display: block;
-  margin-top: 10px;
   transition: opacity 0.3s ease;
 }
-.footer-link:hover { opacity: 0.5; }
-.project-name { font-weight: 450; }
 
+.footer-link:hover {
+  opacity: 0.5;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 850px) {
-  .section-grid { grid-template-columns: 1fr; gap: 40px; }
-  .video-grid-four { grid-template-columns: repeat(2, 1fr); }
-  .links-container { flex-direction: column; gap: 10px; }
-  .separator { display: none; }
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin: 40px 0 60px 0;
+  }
+
+  .video-grid-four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .back-btn {
+    font-size: 18px;
+  }
+
+  .ig-handle {
+    font-size: 28px;
+  }
+
+  .body-text {
+    font-size: 16px;
+    text-align: justify;
+  }
+
+  .video-grid-four {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+  }
+
+  .footer-link {
+    font-size: 20px;
+  }
 }
 </style>

@@ -199,9 +199,10 @@ li {
     }
 
     .footer {
-        flex-direction: column;
-        gap: 25px;
-        padding: 40px 20px;
-        text-align: center;
-    }
+    flex-direction: row;   /* ← row, no column */
+    gap: 0;
+    padding: 24px 20px;
+    margin-top: auto;      /* se pega al fondo pero sin espacio vacío */
+    text-align: left;
+  }
 }
