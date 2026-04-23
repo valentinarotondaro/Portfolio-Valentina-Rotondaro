@@ -64,7 +64,7 @@ onUnmounted(() => {
   <div class="case-study">
     <nav class="top-nav">
       <router-link to="/portfolio" class="back-btn">
-        <span class="arrow">←</span> Back to Works
+        <span class="arrow"><</span> Back to Works
       </router-link>
     </nav>
 
@@ -179,10 +179,10 @@ onUnmounted(() => {
     <footer class="case-footer">
       <div class="pagination-wrapper">
         <router-link to="/Portfolio" class="footer-link">
-          ← Back to All Works
+          <span class="nav-arrow"><</span> Back to All Works
         </router-link>
         <router-link to="/portfolio/itinero" class="footer-link">
-          Next project →
+          Next project <span class="nav-arrow">></span>
         </router-link>
       </div>
     </footer>
@@ -192,15 +192,17 @@ onUnmounted(() => {
 <style scoped>
 /* COPIADO EXACTAMENTE DE MIGRANT EMOTIONS */
 .case-study { font-family: 'Inter', sans-serif; background-color: #ffffff; color: black; line-height: 1.6; }
+.top-nav {
+  padding: 25px 5%;
+}
 .back-btn {
+  font-size: 25px;
+  font-weight: 500;
+  color: #000;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  color: black;
-  font-weight: 450;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: block;
+  margin-top: 10px;
+  transition: opacity 0.3s ease;
 }
 .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 0%; }
 .project-intro-header { margin: 40px 0; }
@@ -289,8 +291,6 @@ onUnmounted(() => {
 .results-container { display: flex; align-items: center; gap: 60px; margin-top: 80px; }
 .hero-image-container { position: relative; width: 100%; height: 65vh; border-radius: 12px; overflow: hidden; background: black; }
 .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
-.top-nav { padding: 25px 5%; }
-.back-btn { text-decoration: none; font-size: 18px; color: black; display: flex; align-items: center; gap: 10px; }
 .case-footer {
   padding: 30px 5%;
   border-top: none;
@@ -304,10 +304,12 @@ onUnmounted(() => {
   align-items: center;
 }
 .footer-link {
-  text-decoration: none;
+  font-size: 32px;
+  font-weight: 500;
   color: #000;
-  font-size: 18px;
-  font-weight: 450;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
   transition: opacity 0.3s ease;
 }
 .footer-link:hover { opacity: 0.5; }

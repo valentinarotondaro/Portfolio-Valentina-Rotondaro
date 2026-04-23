@@ -77,7 +77,7 @@
   @mouseleave="pauseMusic"
 />
 <audio ref="audioPlayer" src="/audio/comptinedunautreete.mp3" preload="auto" loop></audio>
-          <img src="/img/macfigma.png"         class="obj laptop" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I almost always have my computer with me! There’s always a project waiting to begin, or one asking to be finished.', $event)" alt="Macbook with Figma" />
+          <img src="/img/macfigma.png"         class="obj laptop" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I rarely go anywhere without my laptop. There’s always a project waiting to begin, or one asking to be finished.', $event)" alt="Macbook with Figma" />
           <img src="/img/cafeamarillo.png"     class="obj coffee" :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('I’m a huge coffee fan. On my dates with myself, I’m always out discovering a new café in the city ☕︎', $event)" alt="Coffee" />
           <img src="/img/valenrotondarofeed.png"             class="obj feed"   :class="{ 'is-clean': isCleanMode }" @click.stop="openNote('Creating content is one of my biggest passions. I show up for it every day. You can stalk me on Instagram at @valenrotondaro', $event)"  alt="Instagram Feed" />
         </div>

@@ -18,7 +18,7 @@ const quote = ref({
   <div class="case-study amada-theme">
     <nav class="top-nav">
       <router-link to="/portfolio" class="back-btn">
-        <span class="arrow">←</span> Back to Works
+        <span class="arrow"><</span> Back to Works
       </router-link>
     </nav>
 
@@ -83,11 +83,11 @@ const quote = ref({
     <footer class="case-footer">
       <div class="pagination-wrapper">
         <router-link to="/portfolio" class="footer-link back-link">
-          <span class="nav-arrow">←</span> Back to All Works
+          <span class="nav-arrow"><</span> Back to All Works
         </router-link>
         
         <router-link to="/portfolio/next-project" class="footer-link next-link">
-          <span class="project-name">Next project</span> <span class="nav-arrow">→</span>
+          <span class="project-name">Next project</span> <span class="nav-arrow">></span>
         </router-link>
       </div>
     </footer>
@@ -149,16 +149,27 @@ const quote = ref({
 .dual-img { width: 90%; height: 70%; border-radius: 12px; object-fit: cover;}
 
 /* Navigation */
-.top-nav { padding: 30px 5%; }
-.back-btn { text-decoration: none; font-weight: 450; color: black; font-size: 18px; display: flex; align-items: center; gap: 10px; }
-
+.top-nav {
+  padding: 25px 5%;
+}
+.back-btn {
+  font-size: 25px;
+  font-weight: 500;
+  color: #000;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+  transition: opacity 0.3s ease;
+}
 .case-footer { padding: 60px 5%;  margin-top: 60px; }
 .pagination-wrapper { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; }
 .footer-link {
+   font-size: 32px;
+  font-weight: 500;
+  color: #000;
   text-decoration: none;
-  color: black;
-  font-size: 18px;
-  font-weight: 450;
+  display: block;
+  margin-top: 10px;
   transition: opacity 0.3s ease;
 }
 .footer-link:hover { opacity: 0.5; }

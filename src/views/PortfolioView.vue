@@ -11,55 +11,56 @@
       </section>
 
       <section class="projects-grid-section">
-        <div class="works-container">
-          
-          <div class="filter-group">
-            <button 
-              v-for="filter in filters" 
-              :key="filter.label" 
-              class="filter-tag"
-              :class="{ 'btn-active': activeFilter === filter.value }"
-              @click="activeFilter = filter.value"
-            >
-              {{ filter.label }}
-            </button>
-          </div>
+  <div class="works-container">
+    
+    <div class="filter-group">
+      <button 
+        v-for="filter in filters" 
+        :key="filter.label" 
+        class="filter-tag"
+        :class="{ 'btn-active': activeFilter === filter.value }"
+        @click="activeFilter = filter.value"
+      >
+        {{ filter.label }}
+      </button>
+    </div>
 
-          <div class="projects-list-grid">
-            <div 
-              v-for="project in filteredProjects" 
-              :key="project.title" 
-              class="project-card"
-              @click="$router.push(project.link)" 
-      style="cursor: pointer;"
-            >
-              <div class="project-image-container">
-                <img :src="project.image" :alt="project.title" class="project-image" />
-              </div>
+    <div class="projects-list-grid">
+      <div 
+        v-for="project in filteredProjects" 
+        :key="project.title" 
+        class="project-card"
+        @click="project.title === 'Raíz y Sazón' ? null : $router.push(project.link)" 
+        :style="{ cursor: project.title === 'Raíz y Sazón' ? 'default' : 'pointer' }"
+      >
+        <div class="project-image-container">
+          <img :src="project.image" :alt="project.title" class="project-image" />
+        </div>
 
-              <div class="project-details">
-                <h3 class="project-name">{{ project.title }}</h3>
-                <p class="project-description">{{ project.description }}</p>
+        <div class="project-details">
+          <h3 class="project-name">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
 
-                <div class="project-footer">
-                  <div class="project-tags">
-                    <span 
-                      v-for="tag in project.tags" 
-                      :key="tag" 
-                      class="project-tag-pill"
-                    >
-                      {{ tag }}
-                    </span>
-                  </div>
-                  <router-link :to="project.link" class="btn-lime btn-small">
-                    View Project
-                  </router-link>
-                </div>
-              </div>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span 
+                v-for="tag in project.tags" 
+                :key="tag" 
+                class="project-tag-pill"
+              >
+                {{ tag }}
+              </span>
             </div>
+
+            <div v-if="project.title === 'Raíz y Sazón'" class="status-badge-work">
+              Coming Soon
+            </div>
+            <router-link v-else :to="project.link" class="btn-lime btn-small">
+              View Project
+            </router-link>
           </div>
         </div>
-      </section>
+      </div> </div> </div> </section>
 
       <section class="cv-callout">
         <h2>Curious to learn more about my background?</h2>
@@ -86,7 +87,7 @@ const activeFilter = ref('all');
 const projectsList = ref([
   {
     title: 'Under',
-    description: 'Naming, logo, and color palette for the Syddansk Erhvervsakademi student bar, capturing its unique vibe and atmosphere.',
+    description: 'Naming, logo, and color palette for the Syddansk Erhvervsakademi student bar.',
     tags: ['Visual Design'],
     image: '/img/underhorizontal.png',
     link: '/portfolio/under' // Corregido
@@ -100,28 +101,27 @@ const projectsList = ref([
   },
   {
     title: 'SoMe Content creation',
-    description: 'Strategy and creation of engaging content including UGC, tutorials and lifestyle reels for Instagram and TikTok.',
+    description: 'Strategy and creation of engaging content for Instagram and TikTok.',
     tags: ['Content Creation'],
     image: '/img/someproject.png',
     link: '/portfolio/content-creation' // Corregido
   },
-  {
-    title: 'Raiz y Sazón',
-    description: 'A dedicated site focused on South American vegan recipes.',
-    tags: ['UX/UI', 'Web Design'],
-    image: '/img/raizysazonproject.png', 
-    link: '/portfolio/raiz-sazon' // Corregido
+ {
+    /* AQUÍ ESTÁ EL CAMBIO: Agregué la tilde para que coincida con el v-if */
+    title: 'Raíz y Sazón', 
+    description: 'A dedicated site focused on South American vegan recipes.',    tags: ['UX/UI', 'Web Design'],
+    image: '/img/raizysazonproject.png',
   },
   {
     title: 'Amada amiga',
-    description: 'Unique wine label design capturing the essence of a beloved friend, blending personal connection with artistic expression.',
+    description: 'Unique wine label design capturing the essence of a beloved friend.',
     tags: ['Visual Design'],
     image: '/img/amadaamigaproject.png',
     link: '/portfolio/amada-amiga' // Corregido
   },
   {
     title: 'Lic. Aranda Coria',
-    description: 'Complete brand identity design for a psichologist, including logo, color palette, and visual elements.',
+    description: 'Brand identity design for a psichologist, reflecting professionalism and empathy.',
     tags: ['Visual Design'],
     image: '/img/arandacoria.png',
     link: '/portfolio/lic-aranda' // Corregido
@@ -149,7 +149,7 @@ const projectsList = ref([
   },
   {
     title: 'Collage & Migrant Emotions ',
-    description: 'An expressive workshop exploring and communicating migrant emotions through art.',
+    description: 'An expressive workshop exploring migrant emotions through art.',
     tags: ['Workshops'],
     image: '/img/collagesome.JPEG',
     link: '/portfolio/migrant-emotions' // Corregido
@@ -189,7 +189,17 @@ const filteredProjects = computed(() => {
 
 .btn-small {
     padding: 10px 25px; 
+}
 
+.status-badge-work {
+  padding: 10px 25px;
+  background-color: #f5f5f5;
+  color: #999;
+  font-size: 16px;
+  border-radius: 50px;
+  font-weight: 450;
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 /* --- SECCIÓN 1: CABECERA LIMPIA --- */

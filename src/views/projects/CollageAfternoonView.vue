@@ -56,7 +56,7 @@ const someVideos = ref([
   <div class="case-study">
     <nav class="top-nav">
       <router-link to="/portfolio" class="back-btn">
-        <span class="arrow">←</span> Back to Works
+        <span class="arrow"><</span> Back to Works
       </router-link>
     </nav>
 
@@ -185,11 +185,11 @@ const someVideos = ref([
 <footer class="case-footer">
       <div class="pagination-wrapper">
         <router-link to="/Portfolio" class="footer-link back-link">
-          <span class="nav-arrow">←</span> Back to All Works
+          <span class="nav-arrow"><</span> Back to All Works
         </router-link>
         
         <router-link to="/portfolio/itinero" class="footer-link next-link">
-          <span class="project-name">Next project</span> <span class="nav-arrow">→</span>
+          <span class="project-name">Next project</span> <span class="nav-arrow">></span>
         </router-link>
       </div>
     </footer>
@@ -247,14 +247,13 @@ const someVideos = ref([
   padding: 25px 5%;
 }
 .back-btn {
+  font-size: 25px;
+  font-weight: 500;
+  color: #000;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  color: black;
-  font-weight: 450;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: block;
+  margin-top: 10px;
+  transition: opacity 0.3s ease;
 }
 /* Contenedor principal de las tarjetas */
 .process-cards {
@@ -408,10 +407,12 @@ const someVideos = ref([
   align-items: center;
 }
 .footer-link {
-  text-decoration: none;
+  font-size: 32px;
+  font-weight: 500;
   color: #000;
-  font-size: 18px;
-  font-weight: 450;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
   transition: opacity 0.3s ease;
 }
 .footer-link:hover { opacity: 0.5; }

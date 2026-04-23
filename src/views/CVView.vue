@@ -7,7 +7,6 @@
         <h1>Hi there! I'm <span>Valentina Rotondaro</span>, a creative based in Denmark.</h1>
         <p class="intro-p">As a Multimedia Design student I combine visual storytelling with a technical mindset. My work lives at the intersection of UX/UI, branding, and content creation, supported by a solid foundation in frontend, WordPress, and video editing.</p>
         <p class="intro-p">Beyond the screen, I am an analog collage artist and a creative workshop facilitator. I believe in the power of hands-on art to connect with our own expression and with others.</p>
-        <p class="intro-p">My goal is always the same: mixing beauty with logic to create projects that are as visually stunning as they are easy to use.</p>
       </div>
       <div class="about-image">
         <div class="blob-frame">
@@ -36,8 +35,7 @@
         <div class="resume-item">
           <h3>Workshop facilitation & Content creation | 2023-present</h3>
           <ul class="exp-list">
-            <li>Host monthly analog collage workshops in collaboration with DOKK1, Royal Danish Library, and Aarhus Kommune, bringing together international groups of 20+ participants to build community and foster creativity through hands-on expression.</li>
-            <li>Manage the end-to-end production of each event, including experience design, email marketing, and social media communication, while coordinating all materials and logistics to ensure a seamless and engaging participant journey.</li>
+            <li>I host monthly analog collage workshops for international groups of 20+ participants in collaboration with DOKK1 and the Royal Danish Library, managing the end-to-end production, from experience design and materials logistics to multi-channel marketing, to foster community through hands-on creativity.</li>
           </ul>
         </div>
 
@@ -172,7 +170,6 @@
     color: var(--black);
 }
 
-
 .about-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -191,7 +188,7 @@
     font-weight: 450;
     line-height: 1.1;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     letter-spacing: -0.02em;
 }
 
@@ -200,12 +197,29 @@
 }
 
 /* Forzamos que todo texto de párrafo sea negro y justificado */
-.about-text p, .intro-p, .resume-item p {
+.about-text p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #000000 !important;
+    text-align: justify;
+}
+
+.intro-p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #000000 !important;
+    text-align: justify;
+}
+
+.resume-item p {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 20px;
     color: #000000 !important;
     text-align: justify;
+    font-weight: 400;
 }
 
 .about-text p:last-of-type {
@@ -215,7 +229,7 @@
 .about-image {
     position: relative;
     flex-shrink: 0;
-    transform: translateY(-40px);
+    transform: translateY(-10px);
 }
 
 .blob-frame {
@@ -249,7 +263,7 @@
 /* RESUME GRID */
 .resume-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.2fr 1.2fr;
     gap: 100px;
     margin-top: 15px !important; 
     margin-bottom: 100px;
@@ -276,6 +290,8 @@
     font-size: 38px;
     margin-bottom: 12px;
     letter-spacing: -0.02em;
+    font-family: 'Inter' !important;
+    font-weight: 550;
 }
 
 .resume-item {
@@ -285,7 +301,7 @@
 .resume-item h3 {
     font-size: 22px;
     margin-bottom: 15px;
-    font-weight: 500px;
+    font-weight: bold;
     color: #000000;
     letter-spacing: -0.02em;
     font-family: 'Inter' !important;
@@ -302,7 +318,7 @@
     padding-left: 25px !important; 
     margin-bottom: 12px !important;
     margin-left: 0 !important;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.5;
     text-align: justify;
     color: #000000 !important;
