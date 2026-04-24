@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
-const heroRef = ref(null);
 
 const someVideos = [
   "https://player.vimeo.com/video/1124840298?h=e4f3e1cc75&background=1",
@@ -23,17 +22,7 @@ const activeReviewIndex = ref(0);
 let reviewInterval;
 
 onMounted(() => {
-  const video = heroRef.value;
-  if (video) {
-    video.currentTime = 0;
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= 46) {
-        video.currentTime = 0;
-        video.play();
-      }
-    });
-  }
-
+ 
   reviewInterval = setInterval(() => {
     activeReviewIndex.value = (activeReviewIndex.value + 1) % reviews.length;
   }, 5000);
@@ -59,13 +48,15 @@ onUnmounted(() => {
       </header>
 
       <section class="hero">
-        <video
-          ref="heroRef"
-          src="/img/AarhusCityWelcomeCollageReel.mp4"
-          autoplay loop muted playsinline
-          class="hero-video"
-        ></video>
-      </section>
+  <div class="some-item hero-item">
+    <iframe 
+      src="https://player.vimeo.com/video/1124840298?h=e4f3e1cc75&background=1"
+      frameborder="0" 
+      allow="autoplay; fullscreen" 
+      class="vimeo-embed video-zoom"
+    ></iframe>
+  </div>
+</section>
 
       <section class="section-grid">
         <div class="text-col">
@@ -208,12 +199,21 @@ onUnmounted(() => {
   margin-bottom: 60px;
 }
 
-.hero-video {
+.hero-item {
+  position: relative;
   width: 100%;
-  height: 65vh;
-  object-fit: cover;
-  object-position: 50% 20%;
+  height: 60vh;
+  padding-bottom: 0 !important; /* cancela el 178% de .some-item */
+  background: #000;
   border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-item .video-zoom {
+  width: 100%;
+  left: 0;
+  transform: scale(4);
+  transform-origin: center center;
 }
 
 /* ─── SHARED LABELS ─────────────────────────────────────── */

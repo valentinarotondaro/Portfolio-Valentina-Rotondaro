@@ -590,6 +590,8 @@ main {
     font-size: 45px;
     font-weight: 500;
     margin-bottom: 20px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
   }
 
   .mobile-intro {

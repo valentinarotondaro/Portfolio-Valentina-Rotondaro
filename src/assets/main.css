@@ -135,8 +135,7 @@ li {
 .social-links a img {
     height: 30px; 
     width: auto;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    filter: invert(56%) sepia(61%) saturate(2454%) hue-rotate(305deg) brightness(101%) contrast(101%);
+    transition: transform 0.3s ease;
 }
 
 .social-links a:hover img {

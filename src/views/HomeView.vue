@@ -202,27 +202,19 @@ const projects = [
 
   .hero-title {
     font-size: 48px;
+    text-align: center;
+    line-height: 1.1;
   }
 
   .hero-subtitle {
     font-size: 18px;
-    max-width: 75%;
+    max-width: 90%;
     margin: 30px auto 0;
+    text-align: justify;
+    align-self: center;
   }
 
-  /* Ocultar todos los iconos por defecto */
   .icon { display: none; }
-
-  /* Mostrar solo 4 estratégicamente */
-  .icon-folder,
-  .icon-arrow,
-  .icon-figma,
-  .icon-camera { display: block; }
-
-  .icon-folder { width: 85px; left: 7%;  top: 10%; transform: rotate(-5deg);  }
-  .icon-arrow  { width: 50px; right: 7%; top: 18%; }
-  .icon-figma  { width: 50px; right: 75%; top: 75%; transform: rotate(-13deg); }
-  .icon-camera { width: 80px; left: 75%; top: 72%;  transform: rotate(10deg);  }
 
   .marquee-wrapper {
     padding: 20px 0;

@@ -43,15 +43,15 @@ const closeMenu = () => { menuOpen.value = false }
           <img src="/img/logo-vr.png" alt="Valentina Rotondaro Logo" />
         </router-link>
       </div>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank">
+      <div class="social-links">       
+        <a href="mailto:vrotondaro@hotmail.com">
+          <img src="/img/email-icon.png" alt="Email" />
+        </a>
+         <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank">
           <img src="/img/linkedin-icon.png" alt="LinkedIn" />
         </a>
         <a href="https://www.instagram.com/valenrotondaro" target="_blank">
           <img src="/img/instagram-icon.png" alt="Instagram" />
-        </a>
-        <a href="mailto:vrotondaro@hotmail.com">
-          <img src="/img/email-icon.png" alt="Email" />
         </a>
       </div>
     </footer>

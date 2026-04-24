@@ -440,7 +440,7 @@ const isComingSoon = (project) => project.link === null;
 
   .btn-small {
     width: auto;
-    padding: 9px 16px;
+    padding: 4px 10px;
     font-size: 13px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -449,7 +449,7 @@ const isComingSoon = (project) => project.link === null;
   .status-badge {
     width: auto;
     font-size: 11px;
-    padding: 8px 12px;
+    padding: 4px 10px;
     white-space: nowrap;
     flex-shrink: 0;
   }

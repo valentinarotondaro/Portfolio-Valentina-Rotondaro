@@ -354,9 +354,10 @@
   }
 
   .about-text h1 {
-    font-size: 32px;
+    font-size: 32px !important;
     margin-bottom: 0;
     margin-top: 10px;
+    padding: 0 10px;
   }
 
   /* Foto centrada */
