@@ -10,9 +10,7 @@ const closeMenu = () => { menuOpen.value = false }
     <!-- NAVBAR -->
     <header class="navbar">
       <div class="logo">
-        <router-link to="/">
-          <img src="/img/logo-vr.png" alt="Logo VR" />
-        </router-link>
+        <router-link to="/" @click="closeMenu" class="logo-text">VALEN ROTONDARO</router-link>
       </div>
 
       <button class="hamburger" @click="toggleMenu" aria-label="Toggle menu">
@@ -23,11 +21,10 @@ const closeMenu = () => { menuOpen.value = false }
 
       <nav :class="{ open: menuOpen }">
         <ul class="nav-links">
-          <li><router-link to="/" active-class="active" exact @click="closeMenu">Home</router-link></li>
           <li><router-link to="/Portfolio/" active-class="active" @click="closeMenu">Works</router-link></li>
           <li><router-link to="/about" active-class="active" @click="closeMenu">About me</router-link></li>
-          <li><router-link to="/cv" active-class="active" @click="closeMenu">CV</router-link></li>
-          <li><router-link to="/digital-playground" active-class="active" @click="closeMenu">Playground</router-link></li>
+          <li><router-link to="/collage-workshops" active-class="active" @click="closeMenu">Collage</router-link></li>
+          <li><router-link to="/content-creation" active-class="active" @click="closeMenu">CC</router-link></li>
           <li><router-link to="/contact" active-class="active" @click="closeMenu">Contact</router-link></li>
         </ul>
       </nav>
@@ -39,9 +36,7 @@ const closeMenu = () => { menuOpen.value = false }
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-logo">
-        <router-link to="/">
-          <img src="/img/logo-vr.png" alt="Valentina Rotondaro Logo" />
-        </router-link>
+      <router-link to="/" @click="closeMenu" class="logo-text">VALEN ROTONDARO</router-link>
       </div>
       <div class="social-links">       
         <a href="mailto:vrotondaro@hotmail.com">
@@ -59,19 +54,41 @@ const closeMenu = () => { menuOpen.value = false }
 </template>
 
 <style>
+
+@font-face {
+  font-family: 'BethanyElingston';
+  src: url('/fonts/BethanyElingston.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BiroScript';
+  src: url('/fonts/Biro_Script_reduced.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/Myfont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
 /* ── NAVBAR ── */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
-  position: relative;
+  position: relative; 
 }
 
-.logo img {
-  height: 40px;
-  width: auto;
-}
+
 
 .nav-links {
   display: flex;
@@ -109,6 +126,15 @@ const closeMenu = () => { menuOpen.value = false }
   transition: 0.3s ease;
 }
 
+.logo-text {
+  font-family: 'MyFont', sans-serif;
+  font-size: 50px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: #111;
+  text-transform: uppercase;
+}
+
 /* ── FOOTER ── */
 .footer {
   display: flex;
@@ -118,10 +144,6 @@ const closeMenu = () => { menuOpen.value = false }
   margin-top: 40px;
 }
 
-.footer-logo img {
-  height: 40px;
-  width: auto;
-}
 
 .social-links {
   display: flex;
@@ -182,9 +204,7 @@ const closeMenu = () => { menuOpen.value = false }
     margin-top: 20px;
   }
 
-  .footer-logo img {
-    height: 32px;
-  }
+ 
 
   .social-links {
     gap: 16px;

@@ -28,32 +28,23 @@ const getFixedStyle = (index, skill) => ({
     <!-- ─── HERO ─────────────────────────────────────────── -->
     <section class="about-hero">
       <div class="hero-content">
+         <h1 class="about-title">About me!</h1>
         <div class="about-image">
-          <div class="blob-frame">
-            <img src="/img/valentina-perfil.JPG" alt="Valentina Rotondaro" />
-          </div>
-          <router-link to="/Digital-Playground" class="btn-playground-overlay">
-            Want to know me a little better?
-          </router-link>
+          <div class="hola-sticker">
+  <p>Holaaa<br>I am Valen</p>
+</div>
+          <img src="/img/valentinarotondaroimg.png" alt="Valentina Rotondaro" />          </div>
         </div>
         <p class="hero-description">
-          I'm a colorful creative based in Aarhus, Denmark. Those who know me describe me as friendly, curious, and empathetic.
+          I'm a colorful creative based in Aarhus, Denmark. <br> Those who know me describe me as friendly, curious, and empathetic.
         </p>
-      </div>
+
     </section>
 
-    <!-- ─── BEYOND ────────────────────────────────────────── -->
-    <section class="about-extra-text">
-      <p>
-        Beyond the screen, I'm fueled by
-        <span class="hover-word">travel<img src="/img/travel.JPEG" class="pop-up-image" alt="Travel" /></span>,
-        <span class="hover-word">interior design<img src="/img/interiordesign.jpg" class="pop-up-image" alt="Interior Design" /></span>,
-        and
-        <span class="hover-word">fashion<img src="/img/fashion.png" class="pop-up-image" alt="Fashion" /></span>.
-        When I'm not working on a project, you'll likely find me getting my hands dirty with paint and collage in my
-        <span class="hover-word">sketchbook<img src="/img/sketchbook.JPEG" class="pop-up-image" alt="Sketchbook" /></span>.
-      </p>
-    </section>
+   <!-- ─── MOODBOARD ────────────────────────────────────────── -->
+<section class="about-moodboard">
+  <img src="/img/moodboard.png" alt="Moodboard" class="moodboard-img" />
+</section>
 
     <!-- ─── SKILLS ────────────────────────────────────────── -->
     <section class="about-skills">
@@ -101,121 +92,89 @@ const getFixedStyle = (index, skill) => ({
 
 /* ─── HERO ──────────────────────────────────────────────── */
 .about-hero {
-  padding: 40px 20px;
+  padding: 40px 60px;
+  background-color: #ffffff;
 }
 
 .hero-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
   max-width: 1100px;
   margin: 0 auto;
+  gap: 20px;
+}
+
+.about-title {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 65px;
+  font-weight: 450;
+  margin: 0;
+  letter-spacing: -0.04em;
+  align-self: start;
 }
 
 .about-image {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
   position: relative;
-  flex-shrink: 0;
-  transform: translateY(-20px) translateX(10px);
 }
 
-.blob-frame {
-  width: 450px;
-  height: 480px;
-  border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
-  overflow: hidden;
-}
-
-.blob-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
-  display: block;
-}
-
-.btn-playground-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 10px;
-  background-color: var(--lima);
-  color: var(--black);
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-weight: 450;
-  font-size: 16px;
-  text-decoration: none;
-  z-index: 10;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.btn-playground-overlay:hover {
-  transform: scale(1.02);
+.about-image img {
+  width: 280px;
+  height: 350px;
+  object-fit: contain;
+  margin-bottom: 100px;
 }
 
 .hero-description {
+  grid-column: 1;
+  grid-row: 1;
   font-size: 45px;
   font-weight: 450;
   color: #000;
-  max-width: 520px;
   text-align: justify;
+  align-self: start;
   text-justify: inter-word;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   line-height: 1.2;
+}
+
+.hola-sticker {
+  position: absolute;
+  top: 35%;
+  right: -60%;
+  background: white;
+  padding: 16px 20px;
+  border-radius: 4px;
+  transform: rotate(8deg);
+  z-index: 10;
+}
+
+.hola-sticker p {
+  font-family: 'BiroScript', cursive !important;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
   margin: 0;
 }
 
-
-
-/* ─── BEYOND ────────────────────────────────────────────── */
-.about-extra-text p {
+/* ─── MOODBOARD ─────────────────────────────────────────── */
+.about-moodboard {
   width: 90%;
   max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-size: 45px;
-  font-weight: 450;
-  color: #000;
-  text-align: justify;
-  text-justify: inter-word;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  margin: 0 auto 60px auto;
 }
 
-.hover-word {
-  position: relative;
-  display: inline;
-  cursor: default;
-  color: #ff69b4;
-  font-weight: 400;
-}
-
-.pop-up-image {
-  position: absolute;
-  width: 220px;
-  max-width: 75vw;
+.moodboard-img {
+  width: 100%;
   height: auto;
-  min-height: 250px;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-50%) scale(0.6);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 1000;
+  border-radius: 24px;
   display: block;
 }
-
-.hover-word:hover .pop-up-image {
-  opacity: 1;
-  transform: translateX(-50%) scale(1) translateY(-15px);
-}
-
 /* ─── SKILLS ────────────────────────────────────────────── */
 .about-skills {
   padding: 20px;
