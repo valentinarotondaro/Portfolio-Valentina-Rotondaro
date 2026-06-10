@@ -98,36 +98,52 @@ const closeNote = () => { activePopUp.value = false; };
 
     <!-- ─── HERO ─────────────────────────────────────────── -->
     <section class="hero">
-      <div class="hero-notes">
-        <span class="hi-label">HI! I'M VALEN</span>
-        <div class="postit postit-lime">:)</div>
-        <div class="postits-row">
-          <div class="postit postit-lilac">Crafting human centered experiences</div>
-          <div class="postit postit-gold">UX UI Designer</div>
-        </div>
+  <div class="hero-top-notes">
+    <span class="hi-label">HI! I'M VALEN</span>
+    <img src="/img/herostar.png" alt="" class="hero-deco--star" />
+  </div>
+
+  <h1 class="hero-headline">
+    From pixels to paper, I design experiences that connect.
+  </h1>
+
+  <div class="hero-bottom-notes">
+    <div class="hero-deco-wrap">
+      <img src="/img/heroscrap.png" alt="" class="hero-deco--scrap" />
+      <span class="deco-text deco-text--scrap">WELCOME!</span>
+    </div>
+    <div class="hero-deco-wrap">
+      <img src="/img/heronote.png" alt="" class="hero-deco--note" />
+      <span class="deco-text deco-text--note">UX UI DESIGNER</span>
+    </div>
+  </div>
+
+  <img src="/img/flechaabajo.png" alt="scroll down" class="hero-arrow" />
+
+  <div class="hero-categories">
+    <router-link to="/Portfolio/" class="hero-cat">
+      <div class="cat-img-wrap">
+        <img src="/img/macfigma.png" alt="Multimedia Design" class="cat-img" />
+        <img src="/img/figma.png" alt="" class="cat-img-extra cat-extra--figma" />
       </div>
-
-      <h1 class="hero-headline">
-        From pixels to paper, I design experiences that connect.
-      </h1>
-
-      <img src="/img/flechaabajo.png" alt="scroll down" class="hero-arrow" />
-
-      <div class="hero-categories">
-        <router-link to="/Portfolio/" class="hero-cat">
-          <img src="/img/macfigma.png" alt="Multimedia Design" class="cat-img" />
-          <span>Multimedia<br>Design</span>
-        </router-link>
-        <router-link to="/content-creation" class="hero-cat">
-          <img src="/img/camera.png" alt="Content Creation" class="cat-img" />
-          <span>Content<br>Creation</span>
-        </router-link>
-        <router-link to="/collage-workshops" class="hero-cat">
-          <img src="/img/collage.png" alt="Collage & Crafts" class="cat-img cat-img--collage" />
-          <span>Collage<br>&amp; Crafts</span>
-        </router-link>
+      <span>Multimedia<br>Design</span>
+    </router-link>
+    <router-link to="/content-creation" class="hero-cat">
+      <div class="cat-img-wrap">
+        <img src="/img/camera.png" alt="Content Creation" class="cat-img" />
+        <img src="/img/micpink.png" alt="" class="cat-img-extra cat-extra--mic" />
       </div>
-    </section>
+      <span>Content<br>Creation</span>
+    </router-link>
+    <router-link to="/collage-workshops" class="hero-cat">
+      <div class="cat-img-wrap">
+        <img src="/img/collage.png" alt="Collage & Crafts" class="cat-img cat-img--collage" />
+        <img src="/img/tijeraroja.png" alt="" class="cat-img-extra cat-extra--scissors" />
+      </div>
+      <span>Collage<br>&amp; Crafts</span>
+    </router-link>
+  </div>
+</section>
 
     <!-- ─── RECENT WORKS ─────────────────────────────────── -->
     <section class="works-section" id="works">
@@ -173,25 +189,35 @@ const closeNote = () => { activePopUp.value = false; };
 
     <!-- ─── ABOUT ME ─────────────────────────────────────── -->
     <section class="about-section" id="about">
-      <div class="about-inner">
-        <div class="about-left">
-          <img src="/img/valentinarotondaroimg.png" alt="Valen Rotondaro" class="about-photo" />
-          <div class="about-sticker">
-            <span class="sticker-text">HOLA</span>
-            <img src="/img/flechaabout.png" alt="" class="sticker-arrow" />
-          </div>
-          <img src="/img/starpink.png" alt="" class="about-star" />
-        </div>
-        <div class="about-right">
-          <h2 class="about-title">About me</h2>
-          <p class="about-desc">
-            Driven by a fascination with human connection, I combine my sociology roots with multimedia design to bridge analytical thinking and empathy. I don't just build screens, I create warm, intuitive, and inclusive experiences designed for real people.
-          </p>
-          <img src="/img/flechaabout.png" alt="" class="about-arrow-deco" />
-        </div>
+  <div class="about-inner">
+    <div class="about-left">
+      <!-- Foto -->
+      <img src="/img/valentinarotondaroimg.png" alt="Valen Rotondaro" class="about-photo" />
+      
+      <!-- HOLA sticker arriba derecha -->
+      <div class="about-sticker">
+        <span class="sticker-text">HOLA!</span>
+        <img src="/img/flechaabout.png" alt="" class="sticker-arrow" />
       </div>
-    </section>
 
+      <!-- locationnote detrás derecha -->
+      <img src="/img/locationnote.png" alt="" class="about-locationnote" />
+
+      <!-- cvnote abajo izquierda -->
+      <img src="/img/cvnote.png" alt="" class="about-cvnote" />
+
+      <!-- starpink -->
+      <img src="/img/starpink.png" alt="" class="about-star" />
+    </div>
+
+    <div class="about-right">
+      <h2 class="about-title">About me</h2>
+      <p class="about-desc">
+        Driven by a fascination with human connection, I combine my sociology roots with multimedia design to bridge analytical thinking and empathy. I don't just build screens, I create warm, intuitive, and inclusive experiences designed for real people.
+      </p>
+    </div>
+  </div>
+</section>
     <!-- ─── BEYOND PIXELS ────────────────────────────────── -->
     <section class="beyond-section">
       <h2 class="beyond-title">Beyond pixels and prototypes, I love...</h2>
@@ -235,8 +261,8 @@ const closeNote = () => { activePopUp.value = false; };
         <div class="cv-left">
           <h2 class="cv-title">Curious to learn more<br>about my background?</h2>
           <div class="cv-arrow-wrap">
+            <span class="cv-check">CHECK OUT MY CV VIDEO</span>
             <img src="/img/flechaabout.png" alt="" class="cv-arrow" />
-            <span class="cv-check">Check out my CV video!</span>
           </div>
         </div>
         <div class="cv-right">
@@ -306,7 +332,7 @@ const closeNote = () => { activePopUp.value = false; };
 
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero {
-  padding: 120px 5% 60px;
+  padding: 40px 5% 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -314,93 +340,110 @@ const closeNote = () => { activePopUp.value = false; };
   gap: 32px;
 }
 
-.hero-notes {
+.hero-top-notes {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 .hi-label {
   font-family: 'MyFont', sans-serif;
-  font-size: 40px;
+  font-size: 70px;
   letter-spacing: 0.06em;
   color: #111;
   text-transform: uppercase;
+  margin-bottom: -110px;
 }
 
-.postits-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.postit {
-  border-radius: 4px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.12);
-}
-
-.postit-lime {
-  width: 90px;
-  height: 36px;
-  background-color: #D9FB60;
-  transform: rotate(-2deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'MyFont', sans-serif;
-  text-transform: uppercase;
-  font-size: 20px;
-  color: black ;
-}
-
-.postit-lilac {
-  width: 160px;
-  height: 130px;
-  background-color: #E5ABDD;
-  transform: rotate(5deg);
-  padding: 14px;
-  font-family: 'MyFont', sans-serif;
-  text-transform: uppercase;
-  font-size: 25px;
-  color: black;
-  line-height: 1.6;
-}
-
-.postit-gold {
-  width: 180px;
-  height: 110px;
-  background-color: #CAAB2C;
-  transform: rotate(-4deg);
-  padding: 14px;
-  font-family: 'MyFont', sans-serif;
-  text-transform: uppercase;
-  font-size: 40px;
-  color: black;
-  line-height: 1.6;
+.hero-deco--star {
+  width: 100px;
+  height: auto;
+  margin-top: -20px;
+  margin-left: -400px;
 }
 
 .hero-headline {
   font-family: 'BethanyElingston', sans-serif;
-  font-size: clamp(28px, 3vw, 68px);
+  font-size: clamp(32px, 4vw, 76px);
   font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.3;
   color: #111;
   max-width: 900px;
   margin: 0;
 }
 
-.hero-arrow {
-  width: 60px;
+.hero-bottom-notes {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  margin-bottom: -160px;
+  padding-bottom: -20px;
+}
+
+.hero-deco-wrap {
+  position: absolute;
+  display: inline-block;
+}
+
+.hero-deco-wrap:first-child {
+  left: 25%;
+  top: -25px;
+}
+
+.hero-deco-wrap:last-child {
+  right: 28%;
+  top: -120px;
+}
+
+.hero-deco--scrap {
+  width: 180px;
   height: auto;
-  opacity: 0.7;
+  display: block;
+  transform: rotate(-5deg);
+}
+
+.hero-deco--note {
+  width: 200px;
+  height: auto;
+  display: block;
+  transform: rotate(10deg);
+}
+
+.deco-text {
+  position: absolute;
+  font-family: 'MyFont', sans-serif;
+  text-transform: uppercase;
+  color: #111;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.deco-text--scrap {
+  font-size: 35px;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.deco-text--note {
+  font-size: 35px;
+  top: 51%;
+  left: 53%;
+  text-align: center;
+  transform: translate(-50%, -50%) rotate(7deg);
+}
+
+.hero-arrow {
+  width: 90px;
+  height: auto;
 }
 
 /* ─── HERO CATEGORIES ───────────────────────────────────── */
 .hero-categories {
   display: flex;
-  gap: 60px;
+  gap: 100px;
   justify-content: center;
   align-items: flex-end;
   flex-wrap: wrap;
@@ -418,29 +461,59 @@ const closeNote = () => { activePopUp.value = false; };
   transition: transform 0.2s ease;
 }
 
-.hero-cat:hover {
-  transform: translateY(-4px);
-}
+.hero-cat:hover { transform: translateY(-4px); }
 
 .hero-cat span {
-  font-size: 17px;
+  font-size: 25px;
   font-weight: 400;
   color: #111;
   text-align: center;
   line-height: 1.3;
 }
 
+.cat-img-wrap {
+  position: relative;
+  width: 220px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .cat-img {
-  width: 130px;
-  height: 110px;
+  width: 220px;
+  height: 200px;
   object-fit: contain;
 }
 
 .cat-img--collage {
-  width: 150px;
-  height: 120px;
+  width: 240px;
+  height: 210px;
 }
 
+.cat-img-extra {
+  position: absolute;
+  height: auto;
+}
+
+.cat-extra--figma {
+  width: 70px;
+  bottom: 30px;
+  right: 5px;
+}
+
+.cat-extra--mic {
+  width: 80px;
+  bottom: 10px;
+  right: -10px;
+}
+
+.cat-extra--scissors {
+  width: 100px;
+  bottom: 0;
+  right: -20px;
+  transform: rotate(-20deg);
+}
 /* ─── RECENT WORKS ──────────────────────────────────────── */
 .works-section {
   padding: 80px 5%;
@@ -588,67 +661,86 @@ const closeNote = () => { activePopUp.value = false; };
   font-weight: 400;
 }
 
+
+
 /* ─── ABOUT ME ──────────────────────────────────────────── */
 .about-section {
   padding: 80px 5%;
-  background: #fff;
-}
+  }
 
 .about-inner {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 420px 1fr;
   gap: 60px;
   align-items: center;
 }
 
 .about-left {
   position: relative;
+  width: 420px;
+  height: 520px;
 }
 
 .about-photo {
-  width: 260px;
-  height: 320px;
+  position: absolute;
+
+  width: 280px;
+  height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 6px;
   display: block;
+  top: 60px;
+  left: 20px;
+  z-index: 2;
+  box-shadow: 4px 6px 20px rgba(0,0,0,0.15);
 }
 
-.about-sticker {
-  position: absolute;
-  top: -24px;
-  right: -30px;
-  background: #fff;
-  border: 1px solid #eee;
-  padding: 10px 16px;
-  border-radius: 4px;
-  transform: rotate(6deg);
-  box-shadow: 2px 4px 12px rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+
 
 .sticker-text {
   font-family: 'MyFont', sans-serif;
-  font-size: 18px;
+  font-size: 60px;
   letter-spacing: 0.04em;
   color: #111;
+  text-transform: uppercase;
 }
 
 .sticker-arrow {
-  width: 28px;
+  width: 144px;
   height: auto;
-  transform: rotate(30deg);
+  transform: rotate(180deg) scaleY(-1);
+  left: 140px;
+}
+
+.about-locationnote {
+  position: absolute;
+  width: 160px;
+  height: auto;
+  top: 80px;
+  right: 0px;
+  z-index: 1;
+  transform: rotate(5deg);
+}
+
+.about-cvnote {
+  position: absolute;
+  width: 160px;
+  height: auto;
+  bottom: 20px;
+  left: 0px;
+  z-index: 3;
+  transform: rotate(-4deg);
 }
 
 .about-star {
   position: absolute;
-  bottom: -20px;
-  left: 20px;
-  width: 44px;
+  width: 36px;
   height: auto;
+  bottom: 60px;
+  left: 10px;
+  z-index: 4;
 }
 
 .about-right {
@@ -659,7 +751,7 @@ const closeNote = () => { activePopUp.value = false; };
 
 .about-title {
   font-family: 'BethanyElingston', sans-serif;
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 400;
   letter-spacing: -0.03em;
   margin: 0;
@@ -667,20 +759,35 @@ const closeNote = () => { activePopUp.value = false; };
 }
 
 .about-desc {
-  font-size: 18px;
+  font-size: 25px;
   line-height: 1.6;
-  color: #333;
+  color:black;
+  text-align: justify;
   margin: 0;
-  max-width: 540px;
+  max-width: 650px;
 }
 
-.about-arrow-deco {
-  width: 32px;
-  height: auto;
-  opacity: 0.5;
-  display: none;
+@media (max-width: 900px) {
+  .about-inner {
+    grid-template-columns: 1fr;
+  }
+  .about-left {
+    width: 100%;
+    height: 420px;
+  }
+  .about-photo {
+    position: absolute;
+    width: 300px;
+    height: 420px;
+    top: 40px;
+    left: 10px;
+    z-index: 2;
+    display: block;  }
+  .about-locationnote { width: 130px; right: 10px; }
+  .about-cvnote { width: 130px; }
+  .about-title { font-size: 40px; }
+  .about-desc { font-size: 16px; }
 }
-
 /* ─── BEYOND PIXELS ─────────────────────────────────────── */
 .beyond-section {
   padding: 60px 5% 80px;
@@ -690,7 +797,7 @@ const closeNote = () => { activePopUp.value = false; };
 
 .beyond-title {
   font-family: 'BethanyElingston', sans-serif;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 400;
   letter-spacing: -0.02em;
   color: #111;
@@ -701,7 +808,7 @@ const closeNote = () => { activePopUp.value = false; };
   position: relative;
   width: 100%;
   max-width: 700px;
-  height: 420px;
+  height: 480px;
   margin: 0 auto;
 }
 
@@ -947,7 +1054,7 @@ const closeNote = () => { activePopUp.value = false; };
   .project-image-container { height: 220px; }
 
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
-  .about-photo { width: 200px; height: 250px; }
+  .about-photo { width: 220px; height: 280px; }
 
   .beyond-grid { height: 600px; }
   .b-spotify { width: 160px; }
