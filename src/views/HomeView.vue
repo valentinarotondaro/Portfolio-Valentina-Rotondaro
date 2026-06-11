@@ -3,6 +3,54 @@ import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+// ─── AUDIO REFS ──────────────────────────────────────────
+const audioPlayer = ref(null);
+const lampSound   = ref(null);
+const isPlaying   = ref(false);
+const isLampOn    = ref(false);
+
+const MUSIC_MAX_VOL = 0.35;
+const START_TIME    = 10;
+
+// ─── MÚSICA SPOTIFY ──────────────────────────────────────
+const playMusic = () => {
+  if (!audioPlayer.value) return;
+  if (audioPlayer.value.currentTime < START_TIME) audioPlayer.value.currentTime = START_TIME;
+  audioPlayer.value.play().then(() => {
+    isPlaying.value = true;
+    let vol = 0;
+    const interval = setInterval(() => {
+      if (vol < MUSIC_MAX_VOL) {
+        vol = Math.min(vol + 0.05, MUSIC_MAX_VOL);
+        audioPlayer.value.volume = vol;
+      } else clearInterval(interval);
+    }, 50);
+  }).catch(() => {});
+};
+
+const pauseMusic = () => {
+  if (!audioPlayer.value) return;
+  audioPlayer.value.pause();
+  isPlaying.value = false;
+};
+
+// ─── LÁMPARA ─────────────────────────────────────────────
+const activateLamp = () => {
+  isLampOn.value = true;
+  if (audioPlayer.value && isPlaying.value) audioPlayer.value.volume = 0.15;
+  if (!lampSound.value) return;
+  lampSound.value.currentTime = 1;
+  lampSound.value.volume = 1.0;
+  lampSound.value.play().then(() => {
+    setTimeout(() => { if (isLampOn.value) lampSound.value.pause(); }, 500);
+  }).catch(() => {});
+};
+
+const deactivateLamp = () => {
+  isLampOn.value = false;
+  if (audioPlayer.value && isPlaying.value) audioPlayer.value.volume = MUSIC_MAX_VOL;
+  if (lampSound.value) lampSound.value.pause();
+};
 
 // ─── WORKS FILTERS ───────────────────────────────────────
 const filters = [
@@ -68,6 +116,8 @@ const filteredProjects = computed(() =>
 
 const isComingSoon = (project) => project.link === null;
 
+
+
 // ─── PLAYGROUND TOOLTIP ──────────────────────────────────
 const activePopUp   = ref(false);
 const activeObjectText = ref('');
@@ -89,6 +139,15 @@ const openNote = (text, event) => {
 };
 
 const closeNote = () => { activePopUp.value = false; };
+const emailCopied = ref(false);
+const copyEmail = () => {
+  navigator.clipboard.writeText('vrotondaro@hotmail.com');
+  emailCopied.value = true;
+  setTimeout(() => { emailCopied.value = false; }, 2000);
+};
+
+
+
 </script>
 
 <template>
@@ -192,22 +251,24 @@ const closeNote = () => { activePopUp.value = false; };
   <div class="about-inner">
     <div class="about-left">
       <!-- Foto -->
-      <img src="/img/valentinarotondaroimg.png" alt="Valen Rotondaro" class="about-photo" />
+      <img src="/img/valpolaroid.png" alt="Valen Rotondaro" class="about-photo" />
       
       <!-- HOLA sticker arriba derecha -->
       <div class="about-sticker">
         <span class="sticker-text">HOLA!</span>
-        <img src="/img/flechaabout.png" alt="" class="sticker-arrow" />
+        <img src="/img/flechaabout.png" alt=""class="about-hola-arrow" />
       </div>
 
       <!-- locationnote detrás derecha -->
       <img src="/img/locationnote.png" alt="" class="about-locationnote" />
 
       <!-- cvnote abajo izquierda -->
-      <img src="/img/cvnote.png" alt="" class="about-cvnote" />
+      <router-link to="/cv">
+  <img src="/img/cvnote.png" alt="My CV" class="about-cvnote" />
+</router-link>
 
       <!-- starpink -->
-      <img src="/img/starpink.png" alt="" class="about-star" />
+      <img src="/img/collage.png" alt="" class="about-star" />
     </div>
 
     <div class="about-right">
@@ -223,14 +284,28 @@ const closeNote = () => { activePopUp.value = false; };
       <h2 class="beyond-title">Beyond pixels and prototypes, I love...</h2>
       <div class="beyond-grid">
         <!-- Spotify -->
-        <img src="/img/spotify.png" alt="Spotify" class="beyond-obj b-spotify"
-          @click.stop="openNote('This is a song from one of my favorite movies, Amélie. If you haven\'t seen it, I highly recommend it, it\'s pure beauty.', $event)" />
+<div class="beyond-obj b-spotify"
+  :class="{ 'is-playing': isPlaying }"
+  @mouseenter="playMusic"
+  @mouseleave="pauseMusic"
+  @click.stop="openNote('This is a song from one of my favorite movies, Amélie. If you haven\'t seen it, I highly recommend it, it\'s pure beauty.', $event)">
+  <img src="/img/spotify.png" alt="Spotify" style="width:100%; height:auto;" />
+  <audio ref="audioPlayer" src="/audio/comptinedunautreete.mp3" preload="auto" loop></audio>
+</div>
         <!-- Pastafrola -->
         <img src="/img/pastafrola.png" alt="Pastafrola" class="beyond-obj b-pie"
           @click.stop="openNote('This is my favorite cake! It is called Pastafrola and my grandma used to make the best one!', $event)" />
         <!-- Lámpara -->
-        <img src="/img/lampitradition.png" alt="Lamp" class="beyond-obj b-lamp"
-          @click.stop="openNote('Denmark sparked my love for lamps ✴︎ I\'m obsessed with Danish design.', $event)" />
+        <div class="beyond-obj b-lamp"
+  @mouseenter="activateLamp"
+  @mouseleave="deactivateLamp"
+  @click.stop="openNote('Denmark sparked my love for lamps ✴︎ I\'m obsessed with Danish design.', $event)">
+  <div class="lamp-head-container">
+    <img src="/img/lampitradition.png" alt="Lamp" style="width:100%; height:auto; position:relative; z-index:5;" />
+    <div class="light-glow" :class="{ 'is-lit': isLampOn }"></div>
+  </div>
+  <audio ref="lampSound" src="/audio/lampon.mp3" preload="auto"></audio>
+</div>
         <!-- Foto grupal -->
         <img src="/img/sagradafamilia.png" alt="Photo" class="beyond-obj b-photo"
           @click.stop="openNote('This is a photo of my Sagrada Familia, from that Europe trip we dreamed about for so long.', $event)" />
@@ -252,6 +327,9 @@ const closeNote = () => { activePopUp.value = false; };
         <!-- Scissors -->
         <img src="/img/tijeraroja.png" alt="Scissors" class="beyond-obj b-scissors"
           @click.stop="openNote('I always carry scissors with me, you never know when a collage might want to be born ✄', $event)" />
+        <!-- Cafe -->
+          <img src="/img/cafeamarillo.png" alt="Coffee" class="beyond-obj b-coffee"
+  @click.stop="openNote('I\'m a huge coffee fan. On my dates with myself, I\'m always out discovering a new café in the city ☕︎', $event)" />
       </div>
     </section>
 
@@ -259,7 +337,7 @@ const closeNote = () => { activePopUp.value = false; };
     <section class="cv-section">
       <div class="cv-inner">
         <div class="cv-left">
-          <h2 class="cv-title">Curious to learn more<br>about my background?</h2>
+          <h2 class="cv-title">Curious to learn more about my background?</h2>
           <div class="cv-arrow-wrap">
             <span class="cv-check">CHECK OUT MY CV VIDEO</span>
             <img src="/img/flechaabout.png" alt="" class="cv-arrow" />
@@ -286,21 +364,37 @@ const closeNote = () => { activePopUp.value = false; };
     <section class="contact-section" id="contact">
       <div class="contact-inner">
         <div class="contact-left">
-          <p class="contact-sub">If my work made sense</p>
-          <h2 class="contact-title">Let's talk!</h2>
-          <div class="contact-links">
-            <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
-            <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
-            <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
-          </div>
-        </div>
+  <p class="contact-sub">If my work made sense</p>
+  <h2 class="contact-title">Let's talk!</h2>
+  <div class="contact-links">
+    <div class="contact-email-wrap">
+  <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
+  <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7BB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+    </svg>
+  </button>
+</div>
+    <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
+    <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
+  </div>
+</div>
+
         <div class="contact-right">
-          <img src="/img/telefono.png" alt="Telephone" class="contact-phone" />
-          <img src="/img/valentinarotondaroimg.png" alt="Valen" class="contact-photo" />
-          <div class="contact-note contact-note--gold"></div>
-          <div class="contact-note contact-note--lime"></div>
-          <img src="/img/starpink.png" alt="" class="contact-star" />
-        </div>
+  <img src="/img/valpolaroid.png" alt="Valen" class="contact-photo" />
+  
+  <div class="contact-sticker">
+    <span class="contact-sticker-text">GREAT THINGS CAN HAPPEN <br> WITH A SIMPLE “HELLO!”</span>
+  </div>
+  <img src="/img/flechaabout.png" alt="" class="contact-hola-arrow" />
+
+  <img src="/img/locationnote.png" alt="" class="contact-locationnote" />
+<a href="/cv" target="_blank">
+  <img src="/img/cvnote.png" alt="My CV" class="contact-cvnote" />
+</a>  <img src="/img/collage.png" alt="" class="contact-collage" />
+</div>
+
       </div>
     </section>
 
@@ -544,15 +638,16 @@ const closeNote = () => { activePopUp.value = false; };
   padding: 8px 22px;
   font-size: 14px;
   font-weight: 400;
-  border-radius: 50px;
-  color: #111;
+  border-radius: 25px;
+  color: black;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: 'BethanyElingston', sans-serif;
 }
 
 .filter-tag:hover { background: #f0f0f0; }
-.filter-tag.btn-active { background: #D9FB60; border-color: #D9FB60; font-weight: 500; }
+.filter-tag.btn-active { background: #D9FB60; border-color: #D9FB60; font-weight: 500;
+ }
 
 .projects-grid {
   display: grid;
@@ -680,67 +775,94 @@ const closeNote = () => { activePopUp.value = false; };
 .about-left {
   position: relative;
   width: 420px;
+  margin-top: 20px;
   height: 520px;
 }
 
 .about-photo {
   position: absolute;
-
-  width: 280px;
-  height: auto;
+  width: 260px;
+  height: 280px;
   object-fit: cover;
-  border-radius: 6px;
   display: block;
   top: 60px;
   left: 20px;
   z-index: 2;
-  box-shadow: 4px 6px 20px rgba(0,0,0,0.15);
+  transform: rotate(-5deg);
 }
-
-
+.about-sticker {
+  position: absolute;
+  top: -40px;
+  left: 5px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+  white-space: nowrap;
+  transform: rotate(-5deg);
+}
 
 .sticker-text {
   font-family: 'MyFont', sans-serif;
-  font-size: 60px;
+  font-size: 70px;
   letter-spacing: 0.04em;
-  color: #111;
+  color: black;
   text-transform: uppercase;
 }
 
-.sticker-arrow {
-  width: 144px;
+.about-hola-arrow {
+  position: absolute;
+  width: 50px;
   height: auto;
-  transform: rotate(180deg) scaleY(-1);
-  left: 140px;
+  top: 65px;
+  left: -45px;
+  z-index: 5;
+  transform: rotate(290deg);
+}
+
+.sticker-arrow {
+  width: 60px;
+  height: auto;
+  display: block;
+  left: -20px;
+  opacity: 100%;
+  transform: rotate(290deg);
+
 }
 
 .about-locationnote {
   position: absolute;
-  width: 160px;
+  width: 180px;
   height: auto;
-  top: 80px;
-  right: 0px;
+  top: 49px;
+  right: -8px;
   z-index: 1;
   transform: rotate(5deg);
 }
 
 .about-cvnote {
   position: absolute;
-  width: 160px;
+  width: 200px;
   height: auto;
   bottom: 20px;
-  left: 0px;
-  z-index: 3;
+  top: 255px;
+  left: -70px;
+  z-index: 1;
   transform: rotate(-4deg);
 }
 
 .about-star {
   position: absolute;
-  width: 36px;
+  width: 120px;
   height: auto;
   bottom: 60px;
-  left: 10px;
-  z-index: 4;
+  top: 270px;
+  left: 210px;
+  z-index: 1;
+  background: none;
 }
 
 .about-right {
@@ -754,7 +876,7 @@ const closeNote = () => { activePopUp.value = false; };
   font-size: 56px;
   font-weight: 400;
   letter-spacing: -0.03em;
-  margin: 0;
+  margin: -100px 0 0 0;
   color: #111;
 }
 
@@ -790,18 +912,17 @@ const closeNote = () => { activePopUp.value = false; };
 }
 /* ─── BEYOND PIXELS ─────────────────────────────────────── */
 .beyond-section {
-  padding: 60px 5% 80px;
   background: #fff;
   text-align: center;
 }
 
 .beyond-title {
   font-family: 'BethanyElingston', sans-serif;
-  font-size: 40px;
+  font-size: 56px;
   font-weight: 400;
   letter-spacing: -0.02em;
   color: #111;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .beyond-grid {
@@ -819,24 +940,51 @@ const closeNote = () => { activePopUp.value = false; };
   height: auto;
 }
 
+
 .beyond-obj:hover { transform: scale(1.08) rotate(3deg); z-index: 10; }
 
+.b-scissors:hover {
+  transform: scale(1.08) rotate(200deg) !important;
+  z-index: 10;
+}
 /* Clean mode positions matching Playground clean layout */
-.b-spotify   { width: 200px; top: 0;    left: 0;    transform: rotate(0deg); }
-.b-pie       { width: 110px; top: 0;    left: 220px; transform: rotate(0deg); }
+.b-spotify   { width: 200px; top: 10px;    left: 0;    transform: rotate(0deg); }
+.b-pie       { width: 115px; top: 0;    left: 220px; transform: rotate(0deg); }
 .b-lamp      { width: 90px;  top: 0;    right: 60px; transform: rotate(0deg); }
-.b-photo     { width: 110px; top: 120px; left: 0;   transform: rotate(0deg); }
-.b-notebook  { width: 200px; top: 10px; left: 350px; transform: rotate(-9deg); position: absolute; }
+.b-photo     { width: 120px; top: 120px; left: 0;   transform: rotate(0deg); }
+.b-notebook  { width: 200px; top: -5px; left: 335px; transform: rotate(-9deg); position: absolute; }
 .b-notebook img:first-child { width: 100%; }
 .b-wordsearch { position: absolute; width: 46px; top: 38px; left: 110px; transform: rotate(7deg); }
-.b-passport  { width: 90px;  top: 140px; left: 230px; transform: rotate(-20deg); }
-.b-lego      { width: 160px; top: 230px; left: 80px; transform: rotate(-3deg); }
-.b-candles   { width: 60px;  top: 250px; left: 0;   transform: rotate(0deg); }
-.b-scissors  { width: 80px;  top: 220px; right: 40px; transform: rotate(140deg); }
+.b-passport  { width: 110px;  top: 115px; left: 230px; transform: rotate(-20deg); }
+.b-lego      { width: 190px; top: 140px; left: 350px; transform: rotate(-3deg); }
+.b-candles   { width: 60px;  top: 120px; left: 150px;  transform: rotate(0deg); }
+.b-scissors  { width: 130px;  top: 160px; right: -25px; transform: rotate(220deg); }
+.b-coffee { width:90px; top: 50px; right: -40px; transform: rotate(10deg); }
 
+
+.lamp-head-container {
+  position: relative;
+  width: 100%;
+}
+
+.light-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255,235,59,0.8) 0%, rgba(255,235,59,0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.is-lit { opacity: 1; }
 /* ─── CV SECTION ────────────────────────────────────────── */
 .cv-section {
-  padding: 60px 5% 80px;
   background: #fff;
 }
 
@@ -849,16 +997,6 @@ const closeNote = () => { activePopUp.value = false; };
   align-items: center;
 }
 
-.cv-title {
-  font-family: 'BethanyElingston', sans-serif;
-  font-size: 36px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: #111;
-  margin: 0 0 24px 0;
-}
-
 .cv-arrow-wrap {
   display: flex;
   align-items: center;
@@ -866,16 +1004,21 @@ const closeNote = () => { activePopUp.value = false; };
 }
 
 .cv-arrow {
-  width: 36px;
+  width: 80px;
   height: auto;
-  transform: rotate(20deg);
+  left: -20px;
+  transform: rotate(210deg);
+  margin-top: 45px;
 }
 
 .cv-check {
   font-family: 'MyFont';
   text-transform: uppercase;
-  font-size: 50px;
-  color: #111;
+  font-size: 60px;
+  color: black;
+    margin-top: 10px;
+  margin-left: 80px;
+  text-transform: rotate(25deg);
 }
 
 .cv-mac-wrap {
@@ -890,11 +1033,12 @@ const closeNote = () => { activePopUp.value = false; };
   display: block;
 }
 
+
 .cv-video-frame {
   position: absolute;
-  top: 7%;
-  left: 12%;
-  width: 76%;
+  top: 3.5%;
+  left: 2.5%;
+  width: 95%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 4px;
@@ -905,9 +1049,22 @@ const closeNote = () => { activePopUp.value = false; };
   height: 100%;
 }
 
+ .cv-title {
+  font-family: 'BethanyElingston', sans-serif;
+  font-size: 52px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #111;
+  margin: 0 0 24px 0;
+  max-width: 420px;
+}
+
+
 /* ─── CONTACT ───────────────────────────────────────────── */
 .contact-section {
-  padding: 80px 5% 100px;
+  padding:0;
+  margin: 0;
   background: #fff;
 }
 
@@ -920,10 +1077,31 @@ const closeNote = () => { activePopUp.value = false; };
   align-items: center;
 }
 
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .contact-sub {
-  font-size: 18px;
-  color: #555;
-  margin: 0 0 8px 0;
+  font-size: 24px;
+  color: black;
+  margin: 0;
+}
+
+.contact-email {
+  font-size: 20px;
+  color: #FF7BB5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-social {
+  font-size: 20px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
 }
 
 .contact-title {
@@ -931,8 +1109,8 @@ const closeNote = () => { activePopUp.value = false; };
   font-size: 72px;
   font-weight: 400;
   letter-spacing: -0.04em;
-  color: #111;
-  margin: 0 0 32px 0;
+  color: black;
+  margin: 0 0 20px 0;
   line-height: 1;
 }
 
@@ -942,67 +1120,113 @@ const closeNote = () => { activePopUp.value = false; };
   gap: 10px;
 }
 
-.contact-email {
-  font-size: 16px;
-  color: #FF7BB5;
-  text-decoration: none;
-  font-weight: 500;
-}
 
-.contact-email:hover { text-decoration: underline; }
-
-.contact-social {
-  font-size: 15px;
-  color: #111;
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.2s;
-}
 
 .contact-social:hover { color: #FF7BB5; }
 
 .contact-right {
   position: relative;
-  height: 380px;
-}
-
-.contact-phone {
-  position: absolute;
-  width: 130px;
-  bottom: 40px;
-  left: -20px;
-  z-index: 2;
+  width: 420px;
+  height: 480px;
+  margin-top: 120px;
 }
 
 .contact-photo {
   position: absolute;
-  width: 220px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 10px;
-  right: 40px;
-  top: 20px;
+  width: 280px;
+  height: auto;
+  object-fit: contain;
+  top: 60px;
+  left: 20px;
+  z-index: 2;
+  }
+
+.contact-sticker {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  white-space: nowrap;
+  transform: rotate(-2deg);
+}
+
+.contact-sticker-text {
+  font-family: 'MyFont', sans-serif;
+  font-size: 60px;
+  letter-spacing: 0.04em;
+  line-height: 0.5;
+  color: black;
+  text-transform: uppercase;
+}
+
+.contact-hola-arrow {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  top: 55px;
+  left: -55px;
+  z-index: 5;
+  transform: rotate(290deg);
+}
+
+.contact-locationnote {
+  position: absolute;
+  width: 180px;
+  height: auto;
+  top: 70px;
+  right: -20px;
   z-index: 1;
+  transform: rotate(5deg);
 }
 
-.contact-note {
+.contact-cvnote {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  border-radius: 4px;
+  width: 180px;
+  height: auto;
+  top: 325px;
+  left: -60px;
+  z-index: 1;
+  transform: rotate(-1deg);
 }
 
-.contact-note--gold { background: #CAAB2C; top: 10px; left: 60px; transform: rotate(-8deg); }
-.contact-note--lime { background: #D9FB60; bottom: 20px; right: 20px; transform: rotate(5deg); width: 80px; height: 36px; }
-
-.contact-star {
+.contact-collage {
   position: absolute;
-  width: 40px;
-  bottom: 100px;
-  right: 10px;
-  z-index: 3;
+  width: 130px;
+  height: auto;
+  top: 320px;
+  right: 50px;
+  z-index: 1;
+  transform: rotate(3deg);
 }
 
+.contact-email-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.copy-btn:hover {
+  transform: scale(1.1);
+}
+
+.copy-btn.copied svg {
+  stroke: #D9FB60;
+}
 /* ─── TOOLTIP ───────────────────────────────────────────── */
 .object-tooltip {
   position: fixed;
@@ -1061,8 +1285,8 @@ const closeNote = () => { activePopUp.value = false; };
   .b-notebook { width: 150px; }
 
   .cv-inner { grid-template-columns: 1fr; }
-  .cv-title { font-size: 26px; }
-
+  .cv-title { font-size: 32px; }
+  
   .contact-inner { grid-template-columns: 1fr; }
   .contact-title { font-size: 52px; }
   .contact-right { height: 260px; }
@@ -1082,4 +1306,6 @@ const closeNote = () => { activePopUp.value = false; };
   .contact-title { font-size: 40px; }
   .beyond-grid { height: 700px; }
 }
+
+
 </style>

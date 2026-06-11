@@ -161,6 +161,24 @@ const closeMenu = () => { menuOpen.value = false }
   opacity: 0.6;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FF7BB5;
+  border-radius: 10px;
+}
+
+::selection {
+  background-color: #D9FB60;
+  color: black;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   /* Navbar */
@@ -200,8 +218,7 @@ const closeMenu = () => { menuOpen.value = false }
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 24px 24px 32px 24px;
-    margin-top: 20px;
+
   }
 
  
@@ -214,4 +231,6 @@ const closeMenu = () => { menuOpen.value = false }
     height: 20px;
   }
 }
+
+
 </style>
