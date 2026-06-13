@@ -852,6 +852,12 @@ const copyEmail = () => {
   left: -70px;
   z-index: 1;
   transform: rotate(-4deg);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.about-cvnote:hover {
+  transform: rotate(-10deg)  !important;
 }
 
 .about-star {
@@ -1192,6 +1198,12 @@ const copyEmail = () => {
   left: -60px;
   z-index: 1;
   transform: rotate(-1deg);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.contact-cvnote:hover {
+  transform: rotate(-10deg)  !important;
 }
 
 .contact-collage {

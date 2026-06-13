@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -102,6 +102,30 @@ const copyEmail = () => {
   emailCopied.value = true;
   setTimeout(() => { emailCopied.value = false; }, 2000);
 };
+// ANIMATION SKILLS // 
+onMounted(() => {
+  const container = document.querySelector('.skills-pile-container');
+  if (!container) return;
+  
+  const tags = container.querySelectorAll('.skill-tag');
+  tags.forEach(tag => {
+    tag.style.opacity = '0';
+    tag.style.animationPlayState = 'paused';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tags.forEach(tag => {
+          tag.style.animationPlayState = 'running';
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(container);
+});
 </script>
 
 <template>
@@ -359,6 +383,12 @@ const copyEmail = () => {
   left: -70px;
   z-index: 1;
   transform: rotate(-4deg);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.about-cvnote:hover {
+  transform: rotate(-10deg)  !important;
 }
 
 .about-star {
@@ -396,7 +426,7 @@ const copyEmail = () => {
 
 /* ─── SKILLS ────────────────────────────────────────────── */
 .skills-section {
-  padding: 60px 5% 80px;
+  padding: 0px 5% 80px;
   background: #fff;
 }
 
@@ -411,7 +441,7 @@ const copyEmail = () => {
   width: 100%;
   max-width: 700px;
   margin: 0 auto 20px auto;
-  padding-top: 60px;
+  padding-top: 40px;
   min-height: 200px;
   flex-wrap: wrap-reverse;
   gap: 8px;
@@ -432,6 +462,7 @@ const copyEmail = () => {
   will-change: transform, opacity;
   animation: pileUpFixed 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
   animation-delay: var(--index-delay);
+  animation-play-state: paused;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -460,7 +491,7 @@ const copyEmail = () => {
 .beyond-section {
   background: #fff;
   text-align: center;
-  padding: 60px 5% 80px;
+  padding:  0px 5% 80px;
 }
 
 .beyond-title {
@@ -743,6 +774,12 @@ const copyEmail = () => {
   left: -60px;
   z-index: 1;
   transform: rotate(-1deg);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.contact-cvnote:hover {
+  transform: rotate(-10deg)  !important;
 }
 
 .contact-collage {

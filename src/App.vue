@@ -24,7 +24,7 @@ const closeMenu = () => { menuOpen.value = false }
           <li><router-link to="/Portfolio/" active-class="active" @click="closeMenu">Works</router-link></li>
           <li><router-link to="/about" active-class="active" @click="closeMenu">About me</router-link></li>
           <li><router-link to="/collage-workshops" active-class="active" @click="closeMenu">Collage</router-link></li>
-          <li><router-link to="/content-creation" active-class="active" @click="closeMenu">CC</router-link></li>
+          <li><router-link to="/content-creation" active-class="active" @click="closeMenu">Content Creation</router-link></li>
           <li><router-link to="/contact" active-class="active" @click="closeMenu">Contact</router-link></li>
         </ul>
       </nav>
@@ -144,21 +144,18 @@ const closeMenu = () => { menuOpen.value = false }
   margin-top: 40px;
 }
 
-
 .social-links {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-
 .social-links img {
   height: 24px;
   width: auto;
-  transition: opacity 0.2s;
+  transition: transform 0.2s ease;
 }
-
 .social-links a:hover img {
-  opacity: 0.6;
+  transform: scale(1.15);
 }
 
 ::-webkit-scrollbar {

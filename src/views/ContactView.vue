@@ -18,9 +18,6 @@ const copyEmail = () => {
 
         <div class="contact-left">
           <h1 class="contact-title">Let's connect!</h1>
-          <p class="contact-desc">
-            I'm currently seeking a UX/UI design internship, eager to contribute to meaningful projects and grow alongside design-driven teams.
-          </p>
           <div class="contact-links">
             <div class="contact-email-wrap">
               <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
@@ -91,17 +88,9 @@ const copyEmail = () => {
   font-size: 90px;
   font-weight: 400;
   letter-spacing: -0.04em;
-  color: #111;
-  margin: 0;
+  color: black;
+  margin-bottom: 30px;
   line-height: 1;
-}
-
-.contact-desc {
-  font-size: 22px;
-  line-height: 1.5;
-  color: #333;
-  margin: 0;
-  max-width: 500px;
 }
 
 .contact-links {
@@ -205,8 +194,12 @@ const copyEmail = () => {
   top: 350px;
   left: 20px;
   z-index: 1;
-  transform: rotate(25deg);
   cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-cvnote:hover {
+  transform: rotate(10deg)  !important;
 }
 
 .contact-collage {

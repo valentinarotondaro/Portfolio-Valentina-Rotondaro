@@ -101,7 +101,6 @@ const isComingSoon = (project) => project.link === null;
       <!-- ─── HEADER ─────────────────────────────────────── -->
       <section class="portfolio-header">
         <h1>Works</h1>
-        <p class="works-subtitle">Curiosity-driven projects built through learning by doing.</p>
       </section>
 
       <!-- ─── PROJECTS ───────────────────────────────────── -->
@@ -199,29 +198,18 @@ const isComingSoon = (project) => project.link === null;
 
 /* ─── HEADER ────────────────────────────────────────────── */
 .portfolio-header {
-  padding: 100px 10% 40px;
+  padding: 100px 10% 5px;
   text-align: center;
   background-color: #fff;
 }
 
 .portfolio-header h1 {
-  font-size: 100px;
+  font-size: clamp(32px, 4vw, 76px);
   font-weight: 450;
   margin-top: -20px;
   margin-bottom: 30px;
   letter-spacing: -0.02em;
   color: #000;
-}
-
-.works-subtitle {
-  font-size: 36px;
-  color: #000;
-  max-width: 1100px;
-  margin: 0 auto;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  text-align: center;
 }
 
 /* ─── FILTERS ───────────────────────────────────────────── */
@@ -375,9 +363,7 @@ const isComingSoon = (project) => project.link === null;
     margin-bottom: 16px;
   }
 
-  .works-subtitle {
-    font-size: 18px;
-  }
+
 
   .projects-section {
     padding: 24px 5% 48px;
