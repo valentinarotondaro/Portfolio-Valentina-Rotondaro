@@ -23,7 +23,7 @@ const closeMenu = () => { menuOpen.value = false }
         <ul class="nav-links">
           <li><router-link to="/Portfolio/" active-class="active" @click="closeMenu">Works</router-link></li>
           <li><router-link to="/about" active-class="active" @click="closeMenu">About me</router-link></li>
-          <li><router-link to="/collage-workshops" active-class="active" @click="closeMenu">Collage</router-link></li>
+          <li><router-link to="/collage" active-class="active" @click="closeMenu">Collage</router-link></li>
           <li><router-link to="/content-creation" active-class="active" @click="closeMenu">Content Creation</router-link></li>
           <li><router-link to="/contact" active-class="active" @click="closeMenu">Contact</router-link></li>
         </ul>

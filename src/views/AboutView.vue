@@ -147,7 +147,7 @@ onMounted(() => {
           <img src="/img/collage.png" alt="" class="about-star" />
         </div>
         <div class="about-right">
-          <h2 class="about-title">About me</h2>
+          <h2 class="about-title">Hi there! I'm Valen</h2>
           <p class="about-desc">
             Driven by a fascination with human connection, I combine my sociology roots with multimedia design to bridge analytical thinking and empathy. I don't just build screens, I create warm, intuitive, and inclusive experiences designed for real people.
           </p>

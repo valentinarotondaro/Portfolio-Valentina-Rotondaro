@@ -168,7 +168,10 @@ const copyEmail = () => {
 
   <div class="hero-bottom-notes">
     <div class="hero-deco-wrap">
+      <img src="/img/washitape.png"  alt="" class="deco-washitape" />
       <img src="/img/heroscrap.png" alt="" class="hero-deco--scrap" />
+     <img src="/img/smileyface.png" alt="" class="deco-smiley" />
+      <img src="/img/starpink.png"   alt="" class="deco-star-br" />
       <span class="deco-text deco-text--scrap">WELCOME!</span>
     </div>
     <div class="hero-deco-wrap">
@@ -457,9 +460,31 @@ const copyEmail = () => {
   margin-left: -400px;
 }
 
+.deco-smiley {
+  position: absolute;
+  width: 45px;
+  top: -65px;
+  right: -550px;
+}
+
+.deco-star-br {
+  position: absolute;
+  width: 150px;
+  bottom: 30px;
+  right: -180px;
+}
+.deco-washitape {
+  position: absolute;
+  width: 140px;
+  top: -260px;
+  left: -120px;
+  transform: rotate(-8deg);
+}
+
+
 .hero-headline {
   font-family: 'BethanyElingston', sans-serif;
-  font-size: clamp(32px, 4vw, 76px);
+  font-size: clamp(52px, 4vw, 76px);
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1.3;
