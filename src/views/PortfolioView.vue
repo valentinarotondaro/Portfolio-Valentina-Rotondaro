@@ -210,7 +210,7 @@ const isComingSoon = (project) => project.link === null;
   margin-top: -20px;
   margin-bottom: 30px;
   letter-spacing: -0.02em;
-  color: #000;
+  color: black;
 }
 
 .works-subtitle {

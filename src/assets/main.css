@@ -3,6 +3,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/MyFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
     --black: #000000;
     --pink: #ff63a7;
@@ -140,9 +148,26 @@ li {
 
 .social-links a:hover img {
     transform: scale(1.1);
-    filter: brightness(0);
 }
 
+/* ─── SCROLLBAR ROSA ────────────────────────────────────── */
+/* ─── SCROLLBAR ROSA ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FF7BB5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #FF7BB5;
+}
+
+/* Firefox */
+html {
+  scrollbar-color: #FF7BB5 #fff;
+}
 /* RESPONSIVE NAV */
 
 @media (max-width: 768px) {

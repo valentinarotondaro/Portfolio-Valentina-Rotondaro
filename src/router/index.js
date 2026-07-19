@@ -18,9 +18,10 @@ const router = createRouter({
       component: PortfolioView 
     },    
     { path: '/content-creation', name: 'content-creation', component: () => import('../views/content-creation.vue') },
-    { path: '/collage-workshops', name: 'collage-workshops', component: () => import('../views/collage-workshops.vue') },
-    { path: '/multimedia-design', name: 'multimedia-design', component: () => import('../views/multimedia-design.vue') },
-    { path: '/Digital-Playground', name: 'digital-playground', component: () => import('../views/DigitalPlayground.vue') },    
+{ path: '/collage', name: 'collage', component: () => import('../views/collage-workshops.vue') },
+{ path: '/collage/art', name: 'collage-art', component: () => import('../views/CollageArt.vue') },
+{ path: '/collage/workshops', name: 'collage-workshops', component: () => import('../views/CollageWorkshopsView.vue') },
+{ path: '/collage/brands', name: 'collage-brands', component: () => import('../views/CollageBrandsView.vue') },    { path: '/Digital-Playground', name: 'digital-playground', component: () => import('../views/DigitalPlayground.vue') },    
 
     { path: '/portfolio/under', name: 'under', component: () => import('../views/projects/UnderView.vue') },
     { path: '/portfolio/itinero', name: 'itinero', component: () => import('../views/projects/ItineroView.vue') },

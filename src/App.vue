@@ -26,8 +26,8 @@ const closeMenu = () => { menuOpen.value = false }
           <li><router-link to="/" active-class="active" exact @click="closeMenu">Home</router-link></li>
           <li><router-link to="/Portfolio/" active-class="active" @click="closeMenu">Works</router-link></li>
           <li><router-link to="/about" active-class="active" @click="closeMenu">About me</router-link></li>
-          <li><router-link to="/cv" active-class="active" @click="closeMenu">CV</router-link></li>
-          <li><router-link to="/digital-playground" active-class="active" @click="closeMenu">Playground</router-link></li>
+          <li class="nav-hidden"><router-link to="/cv" active-class="active" @click="closeMenu">CV</router-link></li>
+          <li class="nav-hidden"><router-link to="/digital-playground" active-class="active" @click="closeMenu">Playground</router-link></li>
           <li><router-link to="/contact" active-class="active" @click="closeMenu">Contact</router-link></li>
         </ul>
       </nav>
@@ -86,6 +86,10 @@ const closeMenu = () => { menuOpen.value = false }
   color: black;
   font-size: 16px;
   transition: opacity 0.2s;
+}
+
+.nav-hidden {
+  display: none;
 }
 
 /* ── HAMBURGER (oculto en desktop) ── */

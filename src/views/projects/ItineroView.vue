@@ -178,7 +178,8 @@
 }
 
 .back-btn:hover {
-  opacity: 0.5;
+  opacity: 1;
+  color:#FF7BB5;
 }
 
 /* ─── HEADER ────────────────────────────────────────────── */
