@@ -125,8 +125,7 @@
             <div class="result-layout">
               <div class="video-wrapper">
                 <video autoplay loop muted playsinline class="result-video">
-                  <source src="/img/itinerovideo.mp4" type="video/mp4" />
-                </video>
+<source :src="'/img/itinerovideo.mp4'" type="video/mp4" />                </video>
               </div>
               <p class="final-text">The final result is a functional prototype that not only prioritizes efficiency through automated scheduling but also focuses on the emotional journey of the traveler, ensuring safety, personalization, and social connectivity are at the forefront of the experience. By integrating intuitive navigation with a sophisticated AI backend, we successfully reduced the cognitive load on users, allowing them to focus on the joy of discovery rather than the stress of logistics.</p>
             </div>
