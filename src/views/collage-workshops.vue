@@ -81,8 +81,7 @@ const upcomingWorkshops = [
 
     <!-- ─── HERO ──────────────────────────────────────── -->
     <section class="hero">
-      <p class="hero-eyebrow">COLLAGE &nbsp; CRAFTS &nbsp; WORKSHOPS &nbsp; BRAND CAMPAIGNS</p>
-
+<p class="hero-eyebrow">COLLAGE CRAFTS WORKSHOPS BRAND CAMPAIGNS</p>
       <div class="hero-title-wrap">
         <img src="/img/washitape.png"  alt="" class="deco-washitape" />
         <img src="/img/herostar.png"   alt="" class="deco-star-tl" />
@@ -245,31 +244,59 @@ const upcomingWorkshops = [
 
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .hero-nav { gap: 40px; }
-  .artworks-grid { grid-template-columns: 1fr; }
-  .products-grid { grid-template-columns: 1fr; }
-  .product-item--tall { grid-row: auto; }
-  .workhome-cta-wrap { grid-template-columns: 1fr; }
-  .workshops-grid { grid-template-columns: 1fr; }
-  .reviews-grid { grid-template-columns: 1fr; }
-  .resources-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
-  .insta-grid { grid-template-columns: repeat(3, 1fr); }
-  .carousel-slide { min-width: calc(50% - 8px); }
+  .hero {
+    padding: 40px 5% 20px;
+  }
+
+  .hero-eyebrow {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+  }
+
+  .hero-title-wrap {
+    margin-bottom: 24px;
+  }
+
+  .hero-nav {
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
   .deco-washitape,
   .deco-star-tl,
   .deco-smiley,
   .deco-note,
-  .deco-star-br { display: none; }
+  .deco-star-br {
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
-  .hero-title { font-size: 36px; }
-  .hero-nav { gap: 24px; }
-  .hero-nav-icon { width: 56px; height: 56px; }
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
-  .carousel-slide { min-width: 80%; }
-  .newsletter-form { flex-direction: column; align-items: center; }
-  .nl-input { width: 100%; }
+  .hero-eyebrow {
+    font-size: 18px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-nav {
+    gap: 24px;
+  }
+
+  .hero-nav-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .hero-nav-item {
+    font-size: 15px;
+  }
 }
 </style>

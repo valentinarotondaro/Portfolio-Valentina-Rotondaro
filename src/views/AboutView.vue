@@ -835,36 +835,262 @@ onMounted(() => {
 .pop-fade-leave-to { opacity: 0; transform: scale(0.9) translateY(10px); }
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
+/* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .about-inner { grid-template-columns: 1fr; gap: 40px; }
-  .about-left { width: 100%; height: 420px; }
-  .about-photo { width: 220px; height: 280px; }
-  .about-locationnote { width: 130px; right: 10px; }
-  .about-cvnote { width: 130px; }
-  .about-title { font-size: 40px; }
-  .about-desc { font-size: 16px; }
+  /* ABOUT ME */
+  .about-section {
+    padding: 40px 5%;
+  }
 
-  .skills-pile-container { padding-top: 20px; flex-wrap: wrap; gap: 10px; }
-  .skill-tag { animation: none; opacity: 1; transform: none !important; font-size: 14px; padding: 8px 16px; }
-  .skills-heading { font-size: 30px; white-space: normal;font-weight: 450; }
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 
-  .beyond-grid { height: 600px; }
-  .b-spotify { width: 160px; }
-  .b-notebook { width: 150px; }
+  .about-left {
+    width: 100%;
+    height: 420px;
+    margin: 0 auto;
+  }
 
-  .cv-inner { grid-template-columns: 1fr; }
-  .cv-title { font-size: 32px;font-weight: 450; }
+  .about-photo {
+    width: 220px;
+    height: 280px;
+  }
 
-  .contact-inner { grid-template-columns: 1fr; }
-  .contact-title { font-size: 52px; }
-  .contact-right { height: 260px; }
-  .contact-photo { width: 160px; }
+  .about-sticker {
+    top: -20px;
+  }
+
+  .sticker-text {
+    font-size: 44px;
+  }
+
+  .about-hola-arrow {
+    width: 36px;
+    top: 50px;
+    left: -30px;
+  }
+
+  .about-locationnote {
+    width: 130px;
+    right: 10px;
+  }
+
+  .about-cvnote {
+    width: 130px;
+  }
+
+  .about-star {
+    width: 80px;
+    top: 220px;
+    left: 160px;
+  }
+
+  .about-title {
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .about-desc {
+    font-size: 16px;
+  }
+
+  /* SKILLS */
+  .skills-pile-container {
+    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill-tag {
+    animation: none;
+    opacity: 1;
+    transform: none !important;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .skills-heading {
+    font-size: 30px;
+    white-space: normal;
+    font-weight: 450;
+  }
+
+  /* BEYOND PIXELS — collage escalado a un tamaño chico manteniendo posiciones */
+  .beyond-grid {
+    position: relative;
+    left: 50%;
+    margin-left: -350px;
+    margin-top: -108px;
+    margin-bottom: -108px;
+    transform: scale(0.55);
+    transform-origin: center center;
+  }
+
+  .beyond-title {
+    font-size: 34px;
+    margin-bottom: 32px;
+  }
+
+  /* CV SECTION */
+  .cv-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-title {
+    font-size: 32px;
+    font-weight: 450;
+  }
+
+  .cv-check {
+    font-size: 32px;
+    margin-left: 0;
+  }
+
+  .cv-arrow {
+    width: 55px;
+    margin-top: 20px;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-title {
+    font-size: 52px;
+    text-align: center;
+  }
+
+  .contact-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-right {
+    width: 320px;
+    height: 420px;
+    margin: 20px auto 0;
+  }
+
+  .contact-photo {
+    width: 210px;
+    top: 55px;
+    left: 15px;
+  }
+
+  .contact-sticker {
+    top: -20px;
+    left: 5px;
+  }
+
+  .contact-sticker-text {
+    font-size: 34px;
+  }
+
+  .contact-hola-arrow {
+    width: 55px;
+    top: 45px;
+    left: -35px;
+  }
+
+  .contact-locationnote {
+    width: 130px;
+    top: 55px;
+    right: -15px;
+  }
+
+  .contact-cvnote {
+    width: 130px;
+    top: 250px;
+    left: -30px;
+  }
+
+  .contact-collage {
+    width: 95px;
+    top: 245px;
+    right: 30px;
+  }
 }
 
 @media (max-width: 500px) {
-  .about-title { font-size: 36px; }
-  .contact-title { font-size: 40px; }
-  .beyond-grid { height: 700px; }
-  .skills-heading { font-size: 24px; }
+  .about-title {
+    font-size: 36px;
+  }
+
+  .sticker-text {
+    font-size: 34px;
+  }
+
+  .about-desc {
+    font-size: 15px;
+  }
+
+  .beyond-grid {
+    margin-top: -139px;
+    margin-bottom: -139px;
+    transform: scale(0.42);
+  }
+
+  .beyond-title {
+    font-size: 26px;
+  }
+
+  .skills-heading {
+    font-size: 24px;
+  }
+
+  .cv-title {
+    font-size: 26px;
+  }
+
+  .cv-check {
+    font-size: 24px;
+  }
+
+  .contact-title {
+    font-size: 38px;
+  }
+
+  .contact-right {
+    width: 260px;
+    height: 360px;
+  }
+
+  .contact-photo {
+    width: 170px;
+    top: 45px;
+    left: 10px;
+  }
+
+  .contact-sticker-text {
+    font-size: 26px;
+  }
+
+  .contact-hola-arrow {
+    width: 45px;
+    top: 35px;
+    left: -25px;
+  }
+
+  .contact-locationnote {
+    width: 105px;
+    top: 45px;
+    right: -10px;
+  }
+
+  .contact-cvnote {
+    width: 105px;
+    top: 205px;
+    left: -20px;
+  }
+
+  .contact-collage {
+    width: 78px;
+    top: 200px;
+    right: 20px;
+  }
 }
 </style>

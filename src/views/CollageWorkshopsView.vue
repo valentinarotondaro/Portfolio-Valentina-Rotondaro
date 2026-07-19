@@ -1473,29 +1473,213 @@ const upcomingWorkshops = [
   margin: 16px 0 8px;
 }
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-imgs { height: 300px; }
-  .about-inner { grid-template-columns: 1fr; gap: 40px; }
-  .steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .workshops-grid { grid-template-columns: 1fr; }
-  .reviews-grid { grid-template-columns: 1fr; }
-  .insta-grid { grid-template-columns: repeat(3, 1fr); }
-  .carousel-slide { min-width: calc(50% - 8px); }
-  .insta-hi-label { margin-left: 0; font-size: 36px; }
-  .wi-inner { grid-template-columns: 1fr; }
-  .wi-photos { height: 340px; margin-top: 40px; }
-  .wi-polaroid--top { width: 190px; height: 175px; right: 10px; }
-  .wi-polaroid--bottom { width: 175px; height: 160px; right: 140px; }
-  .vb-inner { grid-template-columns: 1fr; gap: 60px; }
-  .vb-polaroid { width: 220px; }
+  /* WORKSHOP INTRO */
+  .wi-section {
+    padding: 20px 5% 60px;
+  }
+
+  .wi-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .wi-title {
+    text-align: center;
+  }
+
+  .wi-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .wi-photos {
+    height: 340px;
+    margin-top: 40px;
+  }
+
+  .wi-polaroid--top {
+    width: 190px;
+    height: 175px;
+    right: 10px;
+  }
+
+  .wi-polaroid--bottom {
+    width: 175px;
+    height: 160px;
+    right: 140px;
+  }
+
+  .wi-deco {
+    display: none;
+  }
+
+  /* UPCOMING WORKSHOPS */
+  .section-label {
+    font-size: 32px;
+  }
+
+  .workshops-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workshop-content {
+    padding: 28px 24px;
+  }
+
+  .workshop-title {
+    font-size: 26px;
+  }
+
+  /* VALEN BIO */
+  .vb-section {
+    min-height: auto;
+    padding: 60px 0;
+  }
+
+  .vb-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .vb-left {
+    height: 260px;
+  }
+
+  .vb-right {
+    height: 260px;
+  }
+
+  .vb-polaroid {
+    width: 160px;
+    top: 20px;
+    left: 30px;
+  }
+
+  .vb-tape {
+    width: 110px;
+  }
+
+  .vb-note-text p {
+    font-size: 22px;
+  }
+
+  .vb-star {
+    display: none;
+  }
+
+  /* TESTIMONIALS */
+  .test-scissors,
+  .test-smiley {
+    display: none;
+  }
+
+  .test-title {
+    font-size: 32px;
+  }
+
+  .test-carousel {
+    gap: 12px;
+  }
+
+  .test-btn {
+    font-size: 32px;
+  }
+
+  .test-quote {
+    font-size: 18px;
+  }
+
+  .test-author {
+    font-size: 32px;
+  }
+
+  /* MEMORIES */
+  .memory-slide {
+    width: 190px;
+  }
+
+  /* NEWSLETTER */
+  .nl-scissors,
+  .nl-clips {
+    display: none;
+  }
+
+  .newsletter-title {
+    font-size: 34px;
+  }
+
+  .newsletter-sub {
+    font-size: 15px;
+  }
+
+  /* INSTAGRAM */
+  .insta-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .insta-hi-label {
+    margin-left: 0;
+    font-size: 32px;
+  }
+
+  .insta-title {
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 500px) {
-  .steps-grid { grid-template-columns: 1fr; }
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
-  .carousel-slide { min-width: 80%; }
-  .newsletter-form { flex-direction: column; align-items: center; }
-  .nl-input { width: 100%; }
+  .wi-photos {
+    height: 260px;
+  }
+
+  .wi-polaroid--top {
+    width: 150px;
+    height: 140px;
+  }
+
+  .wi-polaroid--bottom {
+    width: 135px;
+    height: 125px;
+    right: 100px;
+  }
+
+  .section-label {
+    font-size: 24px;
+  }
+
+  .workshop-title {
+    font-size: 22px;
+  }
+
+  .vb-note-text p {
+    font-size: 17px;
+  }
+
+  .test-title {
+    font-size: 26px;
+  }
+
+  .test-quote {
+    font-size: 16px;
+  }
+
+  .test-author {
+    font-size: 26px;
+  }
+
+  .memory-slide {
+    width: 150px;
+  }
+
+  .newsletter-title {
+    font-size: 26px;
+  }
+
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

@@ -823,18 +823,285 @@ const contentSections = [
   stroke: #D9FB60;
 }
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
+/* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; text-align: center; }
-  .hero-right { align-items: center; }
-  .bio-inner { grid-template-columns: 1fr; }
-  .video-grid { grid-template-columns: repeat(2, 1fr); }
-  .insta-grid { grid-template-columns: repeat(3, 1fr); }
-  .cta-inner { grid-template-columns: 1fr; }
-  .insta-hi-label { margin-left: 0; font-size: 36px; }
+  /* HERO */
+  .hero {
+    padding: 60px 5% 30px;
+  }
+
+  .hero-title {
+    font-size: 56px;
+    margin-bottom: 24px;
+  }
+
+  .hero-content-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .hero-photo-wrap {
+    margin-top: 0;
+  }
+
+  .hero-photo {
+    width: 320px;
+    max-width: 80vw;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .hero-star {
+    display: none;
+  }
+
+  .hero-search-deco {
+    position: static;
+    display: block;
+    width: 150px;
+    margin: 0 auto 12px;
+  }
+
+  .hero-tools {
+    margin-top: 16px;
+  }
+
+  .tool-icon-img {
+    width: 44px;
+    height: 44px;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .tool-icon-img--capcut {
+    width: 70px;
+    height: 70px;
+  }
+
+  .hero-skills {
+    padding-top: 8px;
+  }
+
+  .skills-label {
+    font-size: 34px;
+  }
+
+  /* BIO */
+  .bio-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .bio-body {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .bio-phone-img {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  /* NICHES */
+  .niches-section {
+    padding: 60px 5%;
+  }
+
+  .niches-web {
+    max-width: 380px;
+    height: 320px;
+  }
+
+  .niches-title {
+    font-size: 32px;
+  }
+
+  .niche-orbit .niche-pill {
+    top: -140px;
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  /* VIDEOS */
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .video-cat-title {
+    font-size: 32px;
+  }
+
+  /* INSTAGRAM */
+  .insta-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .insta-hi-label {
+    margin-left: 0;
+    font-size: 32px;
+  }
+
+  .insta-title {
+    font-size: 32px;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-title {
+    font-size: 52px;
+    text-align: center;
+  }
+
+  .contact-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-right {
+    width: 320px;
+    height: 420px;
+    margin: 20px auto 0;
+  }
+
+  .contact-photo {
+    width: 210px;
+    top: 55px;
+    left: 15px;
+  }
+
+  .contact-sticker {
+    top: -20px;
+    left: 5px;
+  }
+
+  .contact-sticker-text {
+    font-size: 34px;
+  }
+
+  .contact-hola-arrow {
+    width: 55px;
+    top: 45px;
+    left: -35px;
+  }
+
+  .contact-locationnote {
+    width: 130px;
+    top: 55px;
+    right: -15px;
+  }
+
+  .contact-cvnote {
+    width: 130px;
+    top: 250px;
+    left: -30px;
+  }
+
+  .contact-collage {
+    width: 95px;
+    top: 245px;
+    right: 30px;
+  }
 }
 
 @media (max-width: 500px) {
-  .video-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-photo {
+    width: 260px;
+  }
+
+  .skills-list {
+    align-items: center;
+  }
+
+  .skill-pill {
+    font-size: 13px;
+  }
+
+  .bio-body {
+    font-size: 15px;
+  }
+
+  .niches-web {
+    max-width: 300px;
+    height: 280px;
+  }
+
+  .niches-title {
+    font-size: 26px;
+  }
+
+  .niche-orbit .niche-pill {
+    top: -110px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .video-cat-title {
+    font-size: 26px;
+  }
+
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-title {
+    font-size: 38px;
+  }
+
+  .contact-right {
+    width: 260px;
+    height: 360px;
+  }
+
+  .contact-photo {
+    width: 170px;
+    top: 45px;
+    left: 10px;
+  }
+
+  .contact-sticker-text {
+    font-size: 26px;
+  }
+
+  .contact-hola-arrow {
+    width: 45px;
+    top: 35px;
+    left: -25px;
+  }
+
+  .contact-locationnote {
+    width: 105px;
+    top: 45px;
+    right: -10px;
+  }
+
+  .contact-cvnote {
+    width: 105px;
+    top: 205px;
+    left: -20px;
+  }
+
+  .contact-collage {
+    width: 78px;
+    top: 200px;
+    right: 20px;
+  }
 }
 </style>

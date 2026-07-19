@@ -146,13 +146,6 @@ const copyEmail = () => {
   margin-top: 40px; 
 }
 
-.contact-left {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-bottom: 100px;
-}
-
 .contact-sticker {
   position: absolute;
   top: -10px;
@@ -222,25 +215,105 @@ const copyEmail = () => {
 }
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
+/* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
   .contact-inner {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .contact-title { font-size: 60px; }
-  .contact-desc  { font-size: 18px; }
+  .contact-title {
+    font-size: 52px;
+    text-align: center;
+  }
+
+  .contact-left {
+    align-items: center;
+    text-align: center;
+  }
 
   .contact-right {
-    width: 100%;
+    width: 320px;
     height: 420px;
+    margin: 20px auto 0;
+    padding: 0;
   }
 
-  .contact-photo { width: 220px; left: 60px; }
-  .contact-cvnote { width: 130px; }
+  .contact-sticker {
+    top: -10px;
+    left: 10px;
+  }
+
+  .contact-sticker-text {
+    font-size: 34px;
+  }
+
+  .contact-hola-arrow {
+    width: 55px;
+    top: 55px;
+    left: 15px;
+  }
+
+  .contact-photo {
+    width: 200px;
+    top: 65px;
+    left: 60px;
+  }
+
+  .contact-cvnote {
+    width: 110px;
+    top: 300px;
+    left: 10px;
+  }
+
+  .contact-collage {
+    width: 95px;
+    top: 305px;
+    right: 5px;
+  }
 }
 
 @media (max-width: 500px) {
-  .contact-title { font-size: 48px; }
-  .contact-desc  { font-size: 16px; }
+  .contact-title {
+    font-size: 38px;
+  }
+
+  .contact-email,
+  .contact-social {
+    font-size: 17px;
+  }
+
+  .contact-right {
+    width: 260px;
+    height: 360px;
+  }
+
+  .contact-sticker-text {
+    font-size: 26px;
+  }
+
+  .contact-hola-arrow {
+    width: 45px;
+    top: 45px;
+    left: 10px;
+  }
+
+  .contact-photo {
+    width: 165px;
+    top: 55px;
+    left: 48px;
+  }
+
+  .contact-cvnote {
+    width: 90px;
+    top: 255px;
+    left: 8px;
+  }
+
+  .contact-collage {
+    width: 80px;
+    top: 260px;
+    right: 0;
+  }
 }
 </style>

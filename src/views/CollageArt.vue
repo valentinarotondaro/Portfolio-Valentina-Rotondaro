@@ -834,31 +834,77 @@ const upcomingWorkshops = [
 .btn-outline:hover { background: #D9FB60; border-color: #D9FB60; }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .hero-nav { gap: 40px; }
-  .artworks-grid { grid-template-columns: 1fr; }
-  .products-grid { grid-template-columns: 1fr; }
-  .product-item--tall { grid-row: auto; }
-  .workhome-cta-wrap { grid-template-columns: 1fr; }
-  .workshops-grid { grid-template-columns: 1fr; }
-  .reviews-grid { grid-template-columns: 1fr; }
-  .resources-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
-  .insta-grid { grid-template-columns: repeat(3, 1fr); }
-  .carousel-slide { min-width: calc(50% - 8px); }
-  .deco-washitape,
-  .deco-star-tl,
-  .deco-smiley,
-  .deco-note,
-  .deco-star-br { display: none; }
+  .page-section {
+    padding: 40px 5% 0;
+  }
+
+  .section-handwritten {
+    font-size: 32px;
+  }
+
+  /* ARTWORKS GRID */
+  .artworks-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .artwork-item {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  /* PRODUCTS GRID */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .product-item {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  .product-item--tall {
+    grid-row: auto !important;
+    aspect-ratio: 4/5;
+  }
+
+  /* WORK WITH ME CTA */
+  .workhome-cta-wrap {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  /* INSTAGRAM */
+  .insta-eyebrow {
+    font-size: 28px;
+    margin-left: 0;
+  }
+
+  .insta-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 500px) {
-  .hero-title { font-size: 36px; }
-  .hero-nav { gap: 24px; }
-  .hero-nav-icon { width: 56px; height: 56px; }
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
-  .carousel-slide { min-width: 80%; }
-  .newsletter-form { flex-direction: column; align-items: center; }
-  .nl-input { width: 100%; }
+  .section-handwritten {
+    font-size: 26px;
+  }
+
+  .insta-eyebrow {
+    font-size: 22px;
+  }
+
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
