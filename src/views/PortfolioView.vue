@@ -201,7 +201,7 @@ const isComingSoon = (project) => project.link === null;
 .portfolio-header {
   padding: 100px 10% 40px;
   text-align: center;
-  background-color: #fff;
+  background-color: white;
 }
 
 .portfolio-header h1 {

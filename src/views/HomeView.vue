@@ -422,15 +422,51 @@ const isComingSoon = (project) => project.link === null;
     font-size: 14px;
   }
 
-  .project-footer {
+.project-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .project-tags {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .project-tag-pill {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .btn-small {
+    width: auto;
+    padding: 4px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .status-badge {
+    width: auto;
+    font-size: 11px;
+    padding: 4px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .btn-explore {
     font-size: 15px;
     padding: 12px 32px;
     margin: 40px auto 22px;
+  }
+  .project-card {
+    overflow: visible;
+  }
+
+  .project-image-container {
+    overflow: hidden;
   }
 }
 </style>
