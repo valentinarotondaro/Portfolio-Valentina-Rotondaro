@@ -33,6 +33,7 @@ const router = createRouter({
     { path: '/portfolio/city-welcome', name: 'aarhus-city-welcome', component: () => import('../views/projects/AarhusCityWelcomeView.vue') },
     { path: '/portfolio/royal-library', name: 'royal-library', component: () => import('../views/projects/RoyalLibraryView.vue') },
     { path: '/portfolio/migrant-emotions', name: 'migrant-emotions', component: () => import('../views/projects/MigrantEmotionsView.vue') },
+    { path: '/portfolio/business-dedk', name: 'business-dedk', component: () => import('../views/projects/BusinessRegionView.vue') },
   ],
 
   // ESTO ES LO QUE SOLUCIONA EL SCROLL

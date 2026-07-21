@@ -26,6 +26,13 @@ const projectsList = [
     link: '/portfolio/itinero',
   },
   {
+  title: 'Business DE-DK',
+  description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.',
+  tags: ['Web Design'],
+  image: '/img/businessregionhero.png',
+  link: '/portfolio/business-dedk',
+},
+  {
     title: 'SoMe Content creation',
     description: 'Strategy and creation of engaging content for Instagram and TikTok.',
     tags: ['Content Creation'],

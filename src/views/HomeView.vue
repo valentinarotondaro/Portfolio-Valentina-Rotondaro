@@ -9,6 +9,7 @@ const recentFilters = [
 ];
 
 const recentProjects = [
+  { title: 'Business DE-DK', description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.', tags: ['Web Design'], image: '/img/businessregionhero.png', link: '/portfolio/business-dedk' },
   { title: 'Under', description: 'Identity design for the Syddansk Erhvervsakademi student bar.', tags: ['Visual Design'], image: '/img/underhorizontal.png', link: '/portfolio/under' },
   { title: 'Itinero', description: 'A mobile application designed to simplify and enhance travel experiences.', tags: ['UX/UI'], image: '/img/itineroapp.png', link: '/portfolio/itinero' },
   { title: 'Raíz y Sazón', description: 'A dedicated site focused on South American vegan recipes.', tags: ['UX/UI', 'Web Design'], image: '/img/raizysazonproject.png', link: null },
