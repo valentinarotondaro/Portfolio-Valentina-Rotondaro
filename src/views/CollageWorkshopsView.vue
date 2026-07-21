@@ -92,14 +92,7 @@ onUnmounted(() => {
   clearInterval(autoplayInterval);
   clearInterval(memoryInterval);
 });
-// ─── INSTAGRAM ────────────────────────────────────────────
-const instaPosts = [
-  { id: '17978620920050587', permalink: 'https://www.instagram.com/reel/DaVKDUwoys_/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxNzk3ODYyMDkyMDA1MDU4NyIsImgiOiIxZmExcmFzIn0.jpg?class=originalMedium', caption: 'un picnic creativo en papel🧚🧺🥖🧉💐', isReel: true },
-  { id: '18047996162789895', permalink: 'https://www.instagram.com/reel/DaLWd63o3Xl/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODA0Nzk5NjE2Mjc4OTg5NSIsImgiOiIyemk4ZW8ifQ.jpg?class=originalMedium', caption: 'Personalizando todo lo que se me atraviese siempre!💌❤️‍🔥🌞🖇️', isReel: true },
-  { id: '18107634158318774', permalink: 'https://www.instagram.com/p/DaD7D7MChAZ/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODEwNzYzNDE1ODMxODc3NCIsImgiOiIxYnhzMnpmIn0.jpg?class=originalMedium', caption: 'un carrete de verano🪭🧚‍♀️🌞', isReel: false },
-  { id: '18127470532712348', permalink: 'https://www.instagram.com/reel/DZ3Nm45oGnw/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODEyNzQ3MDUzMjcxMjM0OCIsImgiOiIxMHVnM3U5In0.jpg?class=originalMedium', caption: 'Cruzando a la isla de Fanø, un cuentito💌🌞⛴️', isReel: true },
-  { id: '18135789370601428', permalink: 'https://www.instagram.com/reel/DZvX574IdBw/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODEzNTc4OTM3MDYwMTQyOCIsImgiOiJxOWVubjQifQ.jpg?class=originalMedium', caption: 'Mis bienes🙂‍↔️💰🪎❤️‍🔥', isReel: true },
-];
+
 
 // ─── NEWSLETTER ───────────────────────────────────────────
 const emailInput = ref('');
@@ -287,29 +280,6 @@ const upcomingWorkshops = [
     </div>
   </div>
 </div>
-
-    <!-- ─── INSTAGRAM ─────────────────────────────────── -->
-    <section class="insta-section">
-      <span class="insta-hi-label">Follow my creative journey!</span>
-      <h2 class="insta-title">Lately on Instagram</h2>
-      <div class="insta-grid">
-        <a
-          v-for="post in instaPosts"
-          :key="post.id"
-          :href="post.permalink"
-          target="_blank"
-          rel="noopener"
-          class="insta-item"
-        >
-          <img :src="post.thumbnail" :alt="post.caption" class="insta-img" />
-          <div class="insta-overlay">
-            <span v-if="post.isReel" class="insta-reel-badge">▶ Reel</span>
-            <p class="insta-caption">{{ post.caption }}</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
   </div>
 </template>
 
@@ -772,97 +742,6 @@ const upcomingWorkshops = [
   font-size: 22px;
   color: #111;
 }
-
-/* ─── INSTAGRAM ──────────────────────────────────────────── */
-.insta-section {
-  padding: 80px 5% 60px;
-  text-align: center;
-}
-
-.insta-hi-label {
-  font-family: 'MyFont', sans-serif !important;
-  font-size: 55px;
-  color: #111;
-  display: block;
-  transform: rotate(-3deg);
-  margin-bottom: -10px;
-  margin-left: -200px;
-  text-transform: uppercase;
-}
-
-.insta-title {
-  font-family: 'BethanyElingston', sans-serif;
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: #111;
-  margin: 0 0 40px 0;
-}
-
-.insta-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.insta-item {
-  position: relative;
-  aspect-ratio: 9/16;
-  border-radius: 8px;
-  overflow: hidden;
-  text-decoration: none;
-  display: block;
-}
-
-.insta-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.insta-item:hover .insta-img { transform: scale(1.06); }
-
-.insta-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 12px;
-}
-
-.insta-item:hover .insta-overlay { opacity: 1; }
-
-.insta-reel-badge {
-  background: #FF7BB5;
-  color: #fff;
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.insta-caption {
-  color: #fff;
-  font-size: 12px;
-  font-family: 'DM Sans', sans-serif;
-  text-align: center;
-  line-height: 1.4;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 /* ─── WORKSHOP INTRO ─────────────────────────────────────── */
 .wi-section {
   padding: 25px 5% 80px;

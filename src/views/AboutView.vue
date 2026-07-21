@@ -917,13 +917,13 @@ onMounted(() => {
     font-weight: 450;
   }
 
-  /* BEYOND PIXELS — collage escalado a un tamaño chico manteniendo posiciones */
   .beyond-grid {
     position: relative;
+    width: 700px;
+    max-width: none;
+    height: 480px;
     left: 50%;
-    margin-left: -350px;
-    margin-top: -108px;
-    margin-bottom: -108px;
+    margin: -108px 0 -108px -350px;
     transform: scale(0.55);
     transform-origin: center center;
   }
@@ -1027,10 +1027,8 @@ onMounted(() => {
   .about-desc {
     font-size: 15px;
   }
-
-  .beyond-grid {
-    margin-top: -139px;
-    margin-bottom: -139px;
+.beyond-grid {
+    margin: -139px 0 -139px -350px;
     transform: scale(0.42);
   }
 

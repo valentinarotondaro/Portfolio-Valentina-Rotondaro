@@ -130,20 +130,6 @@ const upcomingWorkshops = [
         <img src="/img/fundamockup.png" alt="" class="workhome-img" />
       </div>
 </section>
-      <!-- Instagram feed -->
-      <div class="insta-section">
-        <p class="insta-eyebrow">FOLLOW MY CREATIVE JOURNEY!</p>
-        <h2 class="insta-title">Lately on Instagram</h2>
-       <div class="insta-grid">
-  <a v-for="post in instaPosts" :key="post.id" :href="post.permalink" target="_blank" rel="noopener" class="insta-item">
-    <img :src="post.thumbnail" :alt="post.caption" class="insta-img" />
-    <div class="insta-overlay">
-      <span v-if="post.isReel" class="insta-reel-badge">▶ Reel</span>
-      <p class="insta-caption">{{ post.caption }}</p>
-    </div>
-  </a>
-</div>
-      </div>
   </div>
   
 </template>
@@ -409,98 +395,6 @@ const upcomingWorkshops = [
   border-radius: 12px;
 }
 
-/* ─── INSTAGRAM SECTION ──────────────────────────────────── */
-.insta-section {
-  padding: 40px 0 80px;
-  text-align: center;
-}
-
-.insta-eyebrow {
-  font-family: 'MyFont', sans-serif !important;
-  font-size: 55px;
-  transform: rotate(-3deg);
-  margin-bottom: 15px;
-  margin-left: -290px;
-  text-transform: uppercase;
-  color:black;
-}
-
-.insta-title {
-  font-family: 'BethanyElingston', sans-serif;
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: black;
-  margin: 0 0 40px 0;
-}
-
-.insta-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.insta-item {
-  position: relative;
-  aspect-ratio: 9/16;
-  border-radius: 8px;
-  overflow: hidden;
-  text-decoration: none;
-  display: block;
-}
-
-.insta-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.insta-item:hover .insta-img {
-  transform: scale(1.06);
-}
-
-.insta-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 12px;
-}
-
-.insta-item:hover .insta-overlay {
-  opacity: 1;
-}
-
-.insta-reel-badge {
-  background: #FF7BB5;
-  color: #fff;
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.insta-caption {
-  color: #fff;
-  font-size: 12px;
-  font-family: 'DM Sans', sans-serif;
-  text-align: center;
-  line-height: 1.4;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
 /* ─── FREE RESOURCES ─────────────────────────────────────── */
 .resources-section {
   padding: 80px 0;
