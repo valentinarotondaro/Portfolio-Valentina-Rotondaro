@@ -9,7 +9,7 @@
 
       <header class="project-intro-header">
         <span class="category-badge">WEB DESIGN</span>
-        <h1>Business DE-DK. Redesigning a Cross-Border Business Hub.</h1>
+        <h1>Business DE-DK. Website redesign</h1>
       </header>
 
       <section class="hero">
@@ -21,7 +21,7 @@
         <div class="case-section">
           <h2 class="section-label">CONTEXT</h2>
           <div class="section-body">
-            <p>Business DE-DK is an Interreg-funded cross-border project based in Tønder, connecting businesses and job seekers across the German-Danish border. As a team of four (with Lucas, Facu and Alexa), we redesigned and rebuilt the platform's digital presence end to end, originally launched as business-region.eu, working within the client's real budget constraints as our second-semester exam project.</p>
+            <p>Business DE-DK is an Interreg-funded cross-border project based in Tønder, connecting businesses and job seekers across the German-Danish border. Originally launched as business-region.eu, we redesigned and rebuilt the platform's digital presence end to end as our second-semester exam project, working within the client's real budget constraints.</p>
           </div>
         </div>
 
@@ -82,79 +82,133 @@
           <h2 class="section-label">PROCESS</h2>
           <div class="section-body">
             <h4 class="sub-label">LOFI</h4>
-            <div class="lofi-dual-grid">
+            <div class="process-block">
               <img src="/img/businessregionlofi.jpeg" alt="Lofi sketch" class="process-img" />
-              <img src="/img/businessregionorca.jpeg" alt="Process diagram" class="process-img" />
             </div>
 
-            <h4 class="sub-label">STYLES</h4>
-            <div class="styles-container">
-              <div class="color-item">
-                <div class="color-block" style="background-color: #1a1333;"></div>
-                <span class="hex-code">#1a1333</span>
-              </div>
-              <div class="color-item">
-                <div class="color-block" style="background-color: #FFFFFF; border: 1px solid #eee;"></div>
-                <span class="hex-code">#FFFFFF</span>
-              </div>
+            <h4 class="sub-label">ORCA</h4>
+            <div class="process-block">
+              <img src="/img/businessregionorca.jpeg" alt="Orca board" class="process-img" />
             </div>
-            <p class="styles-note">Typography: Raleway</p>
 
             <h4 class="sub-label">PRODUCTION-READY DESIGNS</h4>
-            <div class="hifi-grid-6">
-              <img src="/img/businessregionrollup.png" alt="Roll-up banner" />
-              <img src="/img/businessregionflyer.png" alt="Flyer" />
-              <img src="/img/businessregionid.png" alt="Business card" />
-              <img src="/img/businessregiontherm.png" alt="Coffee mug" />
-              <img src="/img/businessregionpen.png" alt="Pen" />
-              <img src="/img/businessregionteam.jpg" alt="Team" />
-            </div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <h2 class="section-label">SOCIAL MEDIA</h2>
-          <div class="section-body">
-            <p>Alongside the website, we developed a trilingual social media content strategy for LinkedIn and Instagram, using a Hook–Value–CTA–Hashtags framework to boost engagement.</p>
-            <div class="social-grid">
-              <img src="/img/businessregionfeed.png" alt="Social media feed" class="social-img social-img--wide" />
-              <img src="/img/businessregionpost1.png" alt="Social media post 1" class="social-img" />
-              <img src="/img/businessregionpost2.png" alt="Social media post 2" class="social-img" />
-              <img src="/img/businessregionpost3.png" alt="Social media post 3" class="social-img" />
-            </div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <h2 class="section-label">DELIVERABLES</h2>
-          <div class="section-body">
-            <div class="deliverables-list">
-              <a href="https://portfoliolucas-112bb.web.app/assets/UserManual-BusinessDEDK-DApP7y7q.pdf" target="_blank" rel="noopener" class="deliverable-link">↗ Website User Manual</a>
-              <a href="https://portfoliolucas-112bb.web.app/assets/SEOGuide-BusinessDEDK-DSESkjLb.pdf" target="_blank" rel="noopener" class="deliverable-link">↗ SEO Guide</a>
-              <a href="https://portfoliolucas-112bb.web.app/assets/ReportBusinessDEDK-C1eVXbSE.pdf" target="_blank" rel="noopener" class="deliverable-link">↗ Project Report</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <h2 class="section-label">RESULT</h2>
-          <div class="section-body">
-            <div class="result-layout">
-              <div class="video-wrapper">
-                <img src="/img/businessregionhero.png" alt="Business DE-DK live site" class="result-video" />
-                <a href="https://businessdedk.web.app/en/events" target="_blank" rel="noopener" class="btn-outline result-btn">Visit live site ↗</a>
+            <div class="hifi-grid-4">
+              <div class="hifi-item">
+                <img src="/img/businessregionrollup.png" alt="Roll-up banner" />
               </div>
-              <p class="final-text">The final result is a fully bilingual (trilingual, in fact) cross-border platform that balances editorial flexibility for the client with a fast, modern frontend. Working within real budget constraints taught our team to make deliberate technical trade-offs, and delivering a full production-ready design suite alongside the website gave the client a cohesive brand presence both online and offline.</p>
+              <div class="hifi-item">
+                <img src="/img/businessregionflyer.png" alt="Flyer" />
+              </div>
+              <div class="hifi-item">
+                <img src="/img/businessregionid.png" class="hifi-imgid" alt="Business card" />
+              </div>
+              <div class="hifi-item">
+                <img src="/img/businessregiontherm.png" alt="Coffee mug" />
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="case-section">
+          <h2 class="section-label">TEAM</h2>
+          <div class="section-body">
+            <img src="/img/businessregionteam.jpg" alt="Business DE-DK team" class="team-photo" />
+<p>Meet the incredible team behind this project: Facundo Ayala, Alexa Cattaneo Piazza and Lucas Almeida. I feel really lucky to have worked with them.</p>          </div>
+        </div>
+
+        <div class="case-section">
+  <h2 class="section-label">SOCIAL MEDIA</h2>
+  <div class="section-body">
+    <p>Alongside the website, we developed a trilingual social media content strategy for LinkedIn and Instagram, using a Hook–Value–CTA–Hashtags framework to boost engagement.</p>
+    <img src="/img/businessregionfeed.png" alt="Social media feed" class="social-feed-img" />
+  </div>
+</div>
+
+<div class="case-section">
+  <h2 class="section-label">SOME POST SUGGESTIONS</h2>
+  <div class="section-body">
+    <div class="social-grid">
+      <img src="/img/businessregionpost1.png" alt="Social media post 1" class="social-img" />
+      <img src="/img/businessregionpost2.png" alt="Social media post 2" class="social-img" />
+      <img src="/img/businessregionpost3.png" alt="Social media post 3" class="social-img" />
+    </div>
+  </div>
+</div>
+
+      <div class="case-section">
+  <h2 class="section-label">DELIVERABLES</h2>
+  <div class="section-body">
+    <div class="deliverables-list">
+      <a href="/pdfs/BusinessDEDKSoMeandSEOguide.pdf" target="_blank" rel="noopener" class="deliverable-link">↗ SoMe & SEO Guide</a>
+      <a href="/pdfs/BusinessDEDKContentmanagmentmanual.pdf" target="_blank" rel="noopener" class="deliverable-link">↗ Content Management Manual</a>
+    </div>
+  </div>
+</div>
+
+<div class="case-section">
+  <h2 class="section-label">BEFORE / AFTER</h2>
+  <div class="section-body">
+
+    <div class="ba-pair">
+      <div class="ba-item">
+        <span class="ba-tag">BEFORE</span>
+        <img src="/img/beforeI.png" alt="Old hero section" class="ba-img" />
+        <p class="ba-caption">The old hero section had no clear value proposition, and only offered two languages to translate, without English, despite international professionals being a key customer segment.</p>
+      </div>
+      <div class="ba-item">
+        <span class="ba-tag">AFTER</span>
+        <img src="/img/afterI.png" alt="New hero section" class="ba-img" />
+        <p class="ba-caption">The redesigned hero section has a clear, visible value proposition, an easy-to-navigate menu, and the ability to browse the site in three languages.</p>
+      </div>
+    </div>
+
+    <div class="ba-pair">
+      <div class="ba-item">
+        <span class="ba-tag">BEFORE</span>
+        <img src="/img/beforeII.png" alt="Old events section" class="ba-img" />
+        <p class="ba-caption">The old events section listed items in a plain, unfiltered list with no way to search or filter by language, type, or date, making it hard for busy professionals to find relevant opportunities.</p>
+      </div>
+      <div class="ba-item">
+        <span class="ba-tag">AFTER</span>
+        <img src="/img/afterII.png" alt="New events section" class="ba-img" />
+        <p class="ba-caption">The redesigned events page includes clear filters (language, event type, date range) and a search bar, helping cross-border job seekers and businesses quickly find events relevant to them.</p>
+      </div>
+    </div>
+
+    <div class="ba-pair">
+      <div class="ba-item">
+        <span class="ba-tag">BEFORE</span>
+        <img src="/img/beforeIII.png" alt="Old resources section" class="ba-img" />
+<p class="ba-caption">The old resources page was overloaded with text, and the newsletter sign-up went completely unnoticed among all that informational content.</p>      </div>
+      <div class="ba-item">
+        <span class="ba-tag">AFTER</span>
+        <img src="/img/afterIII.png" alt="New resources section" class="ba-img" />
+        <p class="ba-caption">The new resources page organizes content into clear categories with a responsive, mobile-first layout, so users can browse cross-border business guides from any device.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+   <div class="case-section">
+  <h2 class="section-label">RESULT</h2>
+  <div class="section-body">
+    <video autoplay loop muted playsinline class="result-video">
+      <source :src="'/img/businessregionvideo.mp4'" type="video/mp4" />
+    </video>
+    <p class="final-text">Across this project we moved through the full Double Diamond process, from early lofi sketches and card-sorting sessions to a fully bilingual, production-ready platform. Working within the client's real budget as a team of four, using Scrum to manage our sprints, we rebuilt the site on a headless WordPress and Vue 3 architecture and layered a trilingual SEO and content strategy on top of it. Alongside the website, we designed a full suite of print and digital materials, from business cards to social content, so the client had a consistent brand presence everywhere their audience found them.</p>
+    <a href="https://businessdedk.web.app/en" target="_blank" rel="noopener" class="btn-outline result-btn">Visit live site ↗</a>
+
+</div>
+</div>
 
       </section>
 
       <footer class="case-footer">
-        <div class="pagination-wrapper">
-          <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        </div>
+       <div class="pagination-wrapper">
+  <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
+  <router-link to="/portfolio/itinero" class="footer-link">Next project &gt;</router-link>
+</div>
       </footer>
 
     </main>
@@ -316,80 +370,75 @@
   display: block;
 }
 
-.lofi-dual-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+.process-block {
+  margin-bottom: 20px;
 }
 
 .process-img {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border-radius: 8px;
-}
-
-/* ─── STYLES / COLORS ───────────────────────────────────── */
-.styles-container {
-  display: flex;
-  justify-content: flex-start;
-  gap: 15px;
-}
-
-.color-item {
-  flex: 0 0 140px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.color-block {
-  height: 100px;
-  width: 100%;
-  border-radius: 15px;
-}
-
-.hex-code {
-  font-size: 14px;
-  font-weight: 450;
-  color: #000;
-  text-align: center;
-}
-
-.styles-note {
-  font-size: 15px;
-  color: #666;
-  margin-top: 16px;
+  display: block;
 }
 
 /* ─── HIFI GRID ─────────────────────────────────────────── */
-.hifi-grid-6 {
+.hifi-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.hifi-item {
+  overflow: hidden;
+  border-radius: 15px;
+  aspect-ratio: 4 / 5;
+}
+
+.hifi-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 15px;   /* ← agregá esta línea */
+}
+
+.hifi-item-id {
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* ─── TEAM ──────────────────────────────────────────────── */
+.team-photo {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: block;
+  aspect-ratio: 4 / 3;     
+  object-fit: cover;
+}
+
+/* ─── SOCIAL MEDIA ──────────────────────────────────────── */
+.social-feed-img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-top: 24px;
+}
+
+.social-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.hifi-grid-6 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
-}
-
-/* ─── SOCIAL MEDIA ──────────────────────────────────────── */
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-}
-
 .social-img {
   width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
   border-radius: 10px;
   display: block;
-}
-
-.social-img--wide {
-  grid-column: span 3;
 }
 
 /* ─── DELIVERABLES ──────────────────────────────────────── */
@@ -408,7 +457,47 @@
 }
 
 .deliverable-link:hover {
-  color: #FF7BB5;
+  color: #999;
+}
+
+/* ─── BEFORE / AFTER ────────────────────────────────────── */
+.ba-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.ba-pair:last-child {
+  margin-bottom: 0;
+}
+
+.ba-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ba-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #1a1333;
+  margin-bottom: 10px;
+}
+
+.ba-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  margin-bottom: 12px;
+}
+
+.ba-caption {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444;
+  text-align: left;
+  margin: 0;
 }
 
 /* ─── RESULT ────────────────────────────────────────────── */
@@ -428,10 +517,13 @@
 .result-video {
   width: 100%;
   border-radius: 12px;
+  display: block;
+  margin-bottom: 16px;
 }
 
 .result-btn {
-  align-self: flex-start;
+  display: inline-block;
+  margin: 24px 0 0 0;
   text-decoration: none;
 }
 
@@ -451,7 +543,7 @@
   border: 2px solid #111;
   border-radius: 50px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
@@ -465,7 +557,7 @@
 
 .pagination-wrapper {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding-top: 40px;
 }
 
@@ -500,26 +592,20 @@
   }
 
   .strategy-grid,
-  .lofi-dual-grid,
   .result-layout {
     grid-template-columns: 1fr;
-  }
-
-  .hifi-grid-6 {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .social-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .social-img--wide {
-    grid-column: span 2;
-  }
+  .ba-pair {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
 
-  .styles-container {
-    flex-wrap: wrap;
-  }
+ 
 }
 
 @media (max-width: 500px) {
@@ -543,7 +629,7 @@
     font-size: 22px;
   }
 
-  .hifi-grid-6 {
+  .hifi-grid-4 {
     grid-template-columns: 1fr;
   }
 
@@ -553,10 +639,6 @@
 
   .social-img--wide {
     grid-column: span 1;
-  }
-
-  .color-block {
-    height: 70px;
   }
 
   .footer-link {

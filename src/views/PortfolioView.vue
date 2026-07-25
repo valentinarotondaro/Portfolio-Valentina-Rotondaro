@@ -9,42 +9,25 @@ const filters = [
   { label: 'Content Creation', value: 'Content Creation'},
   { label: 'Workshops',        value: 'Workshops'       },
 ];
-
 const projectsList = [
+  {
+    title: 'Business DE-DK',
+    description: 'Full redesign of a cross-border business website.',
+    tags: ['Web Design', 'UX/UI'],    image: '/img/businessregionhero.png',
+    link: '/portfolio/business-dedk',
+  },
+  {
+    title: 'Itinero',
+    description: 'A mobile application designed to simplify and enhance travel experiences.',
+    tags: ['UX/UI', 'Web Design'],    image: '/img/itineroapp.png',
+    link: '/portfolio/itinero',
+  },
   {
     title: 'Under',
     description: 'Identity design for the Syddansk Erhvervsakademi student bar.',
     tags: ['Visual Design'],
     image: '/img/underhorizontal.png',
     link: '/portfolio/under',
-  },
-  {
-    title: 'Itinero',
-    description: 'A mobile application designed to simplify and enhance travel experiences.',
-    tags: ['UX/UI'],
-    image: '/img/itineroapp.png',
-    link: '/portfolio/itinero',
-  },
-  {
-  title: 'Business DE-DK',
-  description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.',
-  tags: ['Web Design'],
-  image: '/img/businessregionhero.png',
-  link: '/portfolio/business-dedk',
-},
-  {
-    title: 'SoMe Content creation',
-    description: 'Strategy and creation of engaging content for Instagram and TikTok.',
-    tags: ['Content Creation'],
-    image: '/img/someproject.png',
-    link: '/portfolio/content-creation',
-  },
-  {
-    title: 'Raíz y Sazón',
-    description: 'A dedicated site focused on South American vegan recipes.',
-    tags: ['UX/UI', 'Web Design'],
-    image: '/img/raizysazonproject.png',
-    link: null,
   },
   {
     title: 'Amada amiga',
@@ -59,6 +42,20 @@ const projectsList = [
     tags: ['Visual Design'],
     image: '/img/arandacoria.png',
     link: '/portfolio/lic-aranda',
+  },
+  {
+    title: 'SoMe Content creation',
+    description: 'Strategy and creation of engaging content for Instagram and TikTok.',
+    tags: ['Content Creation'],
+    image: '/img/someproject.png',
+    link: '/portfolio/content-creation',
+  },
+  {
+    title: 'Raíz y Sazón',
+    description: 'A dedicated site focused on South American vegan recipes.',
+    tags: ['UX/UI', 'Web Design'],
+    image: '/img/raizysazonproject.png',
+    link: null,
   },
   {
     title: 'Collage Afternoon',
