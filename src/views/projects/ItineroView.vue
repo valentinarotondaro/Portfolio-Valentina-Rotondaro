@@ -13,7 +13,7 @@
       </header>
 
       <section class="hero">
-        <img src="/img/itineroapp.png" alt="Itinero App Mockups" class="main-hero-img" />
+        <img src="/img/itineroapp.webp" alt="Itinero App Mockups" class="main-hero-img" />
       </section>
 
       <section class="case-study-content">

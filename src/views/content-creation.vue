@@ -1,97 +1,102 @@
 <script setup>
 import { ref } from 'vue';
 
-const instaPosts = [
-  { id: '17978620920050587', permalink: 'https://www.instagram.com/reel/DaVKDUwoys_/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxNzk3ODYyMDkyMDA1MDU4NyIsImgiOiIxZmExcmFzIn0.jpg?class=originalMedium', caption: 'un picnic creativo en papel🧚🧺🥖🧉💐', isReel: true },
-  { id: '18047996162789895', permalink: 'https://www.instagram.com/reel/DaLWd63o3Xl/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODA0Nzk5NjE2Mjc4OTg5NSIsImgiOiIyemk4ZW8ifQ.jpg?class=originalMedium', caption: 'Personalizando todo lo que se me atraviese siempre!💌❤️‍🔥🌞🖇️', isReel: true },
-  { id: '18107634158318774', permalink: 'https://www.instagram.com/p/DaD7D7MChAZ/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODEwNzYzNDE1ODMxODc3NCIsImgiOiIxYnhzMnpmIn0.jpg?class=originalMedium', caption: 'un carrete de verano🪭🧚‍♀️🌞', isReel: false },
-  { id: '18127470532712348', permalink: 'https://www.instagram.com/reel/DZ3Nm45oGnw/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODEyNzQ3MDUzMjcxMjM0OCIsImgiOiIxMHVnM3U5In0.jpg?class=originalMedium', caption: 'Cruzando a la isla de Fanø, un cuentito💌🌞⛴️', isReel: true },
-  { id: '18135789370601428', permalink: 'https://www.instagram.com/reel/DZvX574IdBw/', thumbnail: 'https://hop.behold.pictures/eyJ1IjoiRTVSNHUwR0ZWY1A0Y1ZxaGZheEtEa0I2SmdDMyIsImYiOiJjc1ZkOU82ZThyZ3BQMjF0S2xEMSIsInAiOiIxODEzNTc4OTM3MDYwMTQyOCIsImgiOiJxOWVubjQifQ.jpg?class=originalMedium', caption: 'Mis bienes🙂‍↔️💰🪎❤️‍🔥', isReel: true },
-];
 const skills = [
   'Video editing', 'Short-form content', 'UGC creation',
   'Script writing', 'Color grading', 'Trend research',
 ];
 
 const niches = [
-  'Lifestyle', 'Travel', 'Stationary', 'DIY', 'Experiences',
+  'UGC', 'Travel', 'Stationary', 'DIY', 'Experiences',
 ];
 
-const nicheAngles = [-90, 198, -18, 126, 54]; // top, izq, der, abajo-izq, abajo-der (mismo orden que niches)
+const nicheAngles = [-90, 198, -18, 126, 54];
 
 function scrollToCategory(name) {
   const el = document.getElementById(name.toLowerCase());
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+// Nota: se sacaron los parámetros &background=1&autoplay=1&loop=1&muted=1
+// de cada URL para que cada reel quede pausado con su miniatura hasta
+// que se haga click, en vez de reproducirse todos a la vez sin sonido.
 const contentSections = [
   {
-    category: 'Lifestyle',
+    category: 'UGC',
     videos: [
-      "https://player.vimeo.com/video/1118478920?h=af9b6f0bab&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117766965?h=963a2edc08&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117806411?h=a7f3765b75&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5&background=1&autoplay=1&loop=1&muted=1",
+      "https://player.vimeo.com/video/1118478920?h=af9b6f0bab",
+      "https://player.vimeo.com/video/1117766965?h=963a2edc08",
+      "https://player.vimeo.com/video/1117806411?h=a7f3765b75",
+      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5",
     ],
   },
   {
     category: 'Travel',
     videos: [
-      "https://player.vimeo.com/video/1143891411?h=f9faef5ec5&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143889999?h=a67103b18f&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143890733?h=aa9b5f70bb&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143891138?h=d32f490dd3&background=1&autoplay=1&loop=1&muted=1",
+      "https://player.vimeo.com/video/1143891411?h=f9faef5ec5",
+      "https://player.vimeo.com/video/1143889999?h=a67103b18f",
+      "https://player.vimeo.com/video/1143890733?h=aa9b5f70bb",
+      "https://player.vimeo.com/video/1143891138?h=d32f490dd3",
     ],
   },
   {
     category: 'Stationary',
     videos: [
-      "https://player.vimeo.com/video/1143891592?h=f2822c00ed&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117810490?h=b2d3a3f6d4&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1118506149?h=bcca644131&background=1&autoplay=1&loop=1&muted=1",
+      "https://player.vimeo.com/video/1143891592?h=f2822c00ed",
+      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5",
+      "https://player.vimeo.com/video/1117810490?h=b2d3a3f6d4",
+      "https://player.vimeo.com/video/1118506149?h=bcca644131",
     ],
   },
   {
     category: 'DIY',
     videos: [
-      "https://player.vimeo.com/video/1117805604?h=56fde2d074&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117806411?h=a7f3765b75&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1118512621?h=02bb452692&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1118516919?h=24ed8a6dd0&background=1&autoplay=1&loop=1&muted=1",
+      "https://player.vimeo.com/video/1117805604?h=56fde2d074",
+      "https://player.vimeo.com/video/1117806411?h=a7f3765b75",
+      "https://player.vimeo.com/video/1118512621?h=02bb452692",
+      "https://player.vimeo.com/video/1118516919?h=24ed8a6dd0",
     ],
   },
   {
     category: 'Experiences',
     videos: [
-      "https://player.vimeo.com/video/1117860728?h=921b1349bc&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117864900?h=38cb2cea56&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117864183?h=507b8f035c&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117862027?h=1725f1ad98&background=1&autoplay=1&loop=1&muted=1",
+      "https://player.vimeo.com/video/1117860728?h=921b1349bc",
+      "https://player.vimeo.com/video/1117864900?h=38cb2cea56",
+      "https://player.vimeo.com/video/1117864183?h=507b8f035c",
+      "https://player.vimeo.com/video/1117862027?h=1725f1ad98",
     ],
   },
 ];
 
+// ─── CONTACT: copiar email ─────────────────────────────────
+const emailCopied = ref(false);
+function copyEmail() {
+  navigator.clipboard.writeText('vrotondaro@hotmail.com');
+  emailCopied.value = true;
+  setTimeout(() => { emailCopied.value = false; }, 2000);
+}
 </script>
 
 <template>
   <div class="cc-page">
 
-    <!-- ─── HERO ──────────────────────────────────────── -->
+<!-- ─── HERO ──────────────────────────────────────── -->
 <section class="hero">
-  <h1 class="hero-title">Content<br>creation</h1>
-
-  <div class="hero-content-row">
+  <h1 class="hero-title">Valen Rotondaro</h1>
+  <p class="hero-subtitle-tag">Content Creation Portfolio</p>
+<div class="hero-content-row">
     <div class="hero-photo-wrap">
       <img src="/img/herostar.png" alt="" class="hero-star hero-star--big" />
       <img src="/img/starpink.png" alt="" class="hero-star hero-star--small" />
-
-      <a href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener" class="hero-search-deco">
-  <img src="/img/buscador.png" alt="buscador" class="buscador" />
-  <span class="search-text">@valenrotondaro</span>
+      <a href="/contact" class="folder-link">
+  <img src="/img/folder.png" alt="Let's work together" class="folder" />
 </a>
+      <a href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener" class="hero-search-deco">
+        <img src="/img/buscador.png" alt="buscador" class="buscador" />
+        <span class="search-text">@valenrotondaro</span>
+      </a>
 
-      <img src="/img/valenugc.png" alt="Valen UGC" class="hero-photo" />
+      <img src="/img/herougc.png" alt="Valen" class="hero-photo" />
 
       <div class="hero-tools">
         <img src="/img/premiere.png" alt="Premiere" class="tool-icon-img" />
@@ -99,6 +104,7 @@ const contentSections = [
         <img src="/img/capcut.png" alt="CapCut" class="tool-icon-img tool-icon-img--capcut" />
         <img src="/img/photoshop.png" alt="Photoshop" class="tool-icon-img" />
         <img src="/img/procreate.png" alt="Procreate" class="tool-icon-img" />
+        <img src="/img/canvalogo.jpg" alt="Canva" class="tool-icon-img" />
       </div>
     </div>
 
@@ -109,58 +115,79 @@ const contentSections = [
       </div>
     </div>
   </div>
+
+  <div class="brand-cta-strip">
+    <p>Currently open for brand collaborations: UGC, product storytelling &amp; short-form content.</p>
+    <a href="#contact" class="btn-outline">Work with me ↗</a>
+  </div>
+  </section>
+
+<!-- ─── ABOUT ME ──────────────────────────────────── -->
+<section class="bio-section">
+  <div class="bio-inner">
+    <div class="bio-text">
+      <p class="about-label">About me</p>
+      <p class="bio-body">
+        With a background in design and storytelling, I create short-form videos and branded content that make people stop scrolling. From UGC to tutorials, my goal is always the same: content that feels like a friend's advice, not an ad. I blend creativity with strategy to highlight your product organically, while still delivering real results.
+      </p>
+    </div>
+    <div class="bio-phone">
+      <a href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener">
+        <img src="/img/valenrotondarofeed.png" alt="Phone mockup" class="bio-phone-img" />
+      </a>
+    </div>
+  </div>
 </section>
 
-    <!-- ─── BIO ───────────────────────────────────────── -->
-    <section class="bio-section">
-      <div class="bio-inner">
-        <div class="bio-text">
-          <p class="bio-body">
-          Hi, I'm Valen! With a background in design and storytelling, I create short-form videos and branded content that make people stop scrolling. From UGC to tutorials, my goal is always the same: content that feels like a friend's advice, not an ad. I blend creativity with strategy to highlight your product organically, while still delivering real results.
-          </p>
-        </div>
-        <div class="bio-phone">
-  <a href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener">
-    <img src="/img/valenrotondarofeed.png" alt="Phone mockup" class="bio-phone-img" />
-  </a>
+<!-- ─── BRANDS ────────────────────────────────────── -->
+<section class="brands-section">
+  <p class="section-eyebrow">Brands I've worked with</p>
+  <div class="brands-grid">
+  <img src="/img/alfar.png" alt="Departamentos Alfar" class="brand-logo" />
+  <img src="/img/casanghjulina.jpg" alt="Casa Angjulina" class="brand-logo" />
+  <img src="/img/costanera.svg" alt="Costanera" class="brand-logo" />
+  <img src="/img/dokk1.svg" alt="Dokk1" class="brand-logo" />
+  <img src="/img/lespetitesmaisons.png" alt="Les Petites Maisons" class="brand-logo" />
+  <img src="/img/libristo.png" alt="Libristo" class="brand-logo" />
+  <img src="/img/saboresnayate.jpg" alt="Sabores Nayaté" class="brand-logo" />
+  <img src="/img/uhu.png" alt="UHU" class="brand-logo" />
 </div>
-      </div>
-    </section>
+</section>
 
-   <!-- ─── NICHES & STYLES ───────────────────────────── -->
+<!-- ─── NICHES & STYLES ───────────────────────────── -->
 <section class="niches-section">
   <div class="niches-web">
     <h2 class="niches-title">Niches<br>&amp; styles</h2>
     <div
-  v-for="(niche, i) in niches"
-  :key="niche"
-  class="niche-orbit"
-  :style="{ animationDelay: `-${(((nicheAngles[i] % 360) + 360) % 360 / 360) * 40}s` }"
->
-  <span
-    class="niche-pill"
-    :style="{ animationDelay: `-${(((nicheAngles[i] % 360) + 360) % 360 / 360) * 40}s` }"
-    @click="scrollToCategory(niche)"
-  >{{ niche }}</span>
-</div>
+      v-for="(niche, i) in niches"
+      :key="niche"
+      class="niche-orbit"
+      :style="{ animationDelay: `-${(((nicheAngles[i] % 360) + 360) % 360 / 360) * 40}s` }"
+    >
+      <span
+        class="niche-pill"
+        :style="{ animationDelay: `-${(((nicheAngles[i] % 360) + 360) % 360 / 360) * 40}s` }"
+        @click="scrollToCategory(niche)"
+      >{{ niche }}</span>
+    </div>
   </div>
 </section>
     <!-- ─── VIDEO SECTIONS ────────────────────────────── -->
     <section class="videos-section">
       <div class="videos-inner">
-       <div
-  v-for="section in contentSections"
-  :key="section.category"
-  :id="section.category.toLowerCase()"
-  class="video-category"
->
+        <div
+          v-for="section in contentSections"
+          :key="section.category"
+          :id="section.category.toLowerCase()"
+          class="video-category"
+        >
           <h2 class="video-cat-title">{{ section.category }}</h2>
           <div class="video-grid">
             <div v-for="(video, i) in section.videos" :key="i" class="reel-box">
               <iframe
                 :src="video"
                 frameborder="0"
-                allow="autoplay; fullscreen"
+                allow="autoplay; fullscreen; picture-in-picture"
                 class="vimeo-frame"
               ></iframe>
             </div>
@@ -169,63 +196,39 @@ const contentSections = [
       </div>
     </section>
 
-    <!-- ─── INSTAGRAM ─────────────────────────────────── -->
-    <section class="insta-section">
-      <span class="insta-hi-label">Follow my creative journey!</span>
-      <h2 class="insta-title">Lately on Instagram</h2>
-      <div class="insta-grid">
-        <a
-          v-for="post in instaPosts"
-          :key="post.id"
-          :href="post.permalink"
-          target="_blank"
-          rel="noopener"
-          class="insta-item"
-        >
-          <img :src="post.thumbnail" :alt="post.caption" class="insta-img" />
-          <div class="insta-overlay">
-            <span v-if="post.isReel" class="insta-reel-badge">▶ Reel</span>
-            <p class="insta-caption">{{ post.caption }}</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
     <!-- ─── CONTACT ──────────────────────────────────────── -->
     <section class="contact-section" id="contact">
       <div class="contact-inner">
         <div class="contact-left">
-  <p class="contact-sub">If my work made sense</p>
-  <h2 class="contact-title">Let's talk!</h2>
-  <div class="contact-links">
-    <div class="contact-email-wrap">
-  <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
-  <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7BB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-    </svg>
-  </button>
-</div>
-    <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
-    <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
-  </div>
-</div>
+          <p class="contact-sub">If my work made sense</p>
+          <h2 class="contact-title">Let's talk!</h2>
+          <div class="contact-links">
+            <div class="contact-email-wrap">
+              <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
+              <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7BB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+            <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
+            <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
+          </div>
+        </div>
 
         <div class="contact-right">
-  <img src="/img/valpolaroid.png" alt="Valen" class="contact-photo" />
-  
-  <div class="contact-sticker">
-    <span class="contact-sticker-text">GREAT THINGS CAN HAPPEN <br> WITH A SIMPLE “HELLO!”</span>
-  </div>
-  <img src="/img/flechaabout.png" alt="" class="contact-hola-arrow" />
-
-  <img src="/img/locationnote.png" alt="" class="contact-locationnote" />
-<a href="/cv" target="_blank">
-  <img src="/img/cvnote.png" alt="My CV" class="contact-cvnote" />
-</a>  <img src="/img/collage.png" alt="" class="contact-collage" />
-</div>
-
+          <img src="/img/valpolaroid.png" alt="Valen" class="contact-photo" />
+          <div class="contact-sticker">
+            <span class="contact-sticker-text">GREAT THINGS CAN HAPPEN <br> WITH A SIMPLE "HELLO!"</span>
+          </div>
+          <img src="/img/flechaabout.png" alt="" class="contact-hola-arrow" />
+          <img src="/img/locationnote.png" alt="" class="contact-locationnote" />
+          <a href="/cv" target="_blank">
+            <img src="/img/cvnote.png" alt="My CV" class="contact-cvnote" />
+          </a>
+          <img src="/img/collage.png" alt="" class="contact-collage" />
+        </div>
       </div>
     </section>
 
@@ -233,7 +236,6 @@ const contentSections = [
 </template>
 
 <style scoped>
-
 /* ─── BASE ───────────────────────────────────────────────── */
 .cc-page {
   font-family: 'BethanyElingston', sans-serif;
@@ -241,6 +243,7 @@ const contentSections = [
   color: #111;
   overflow-x: clip;
 }
+
 /* ─── HERO ───────────────────────────────────────────────── */
 .hero {
   padding: 80px 5% 40px;
@@ -257,6 +260,56 @@ const contentSections = [
   margin: 0 0 40px 0;
 }
 
+.hero-subtitle-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.15em;
+  color: black;
+  margin: -24px 0 40px 0;
+}
+
+.about-label {
+  font-family: 'BethanyElingston', sans-serif;
+  font-size: 60px;
+  font-weight: 400;
+  color: black;
+  margin: 40px;
+}
+.brands-section {
+  padding: 40px 5% 80px;
+  text-align: center;
+}
+
+.section-eyebrow {
+  font-family: 'BethanyElingston', sans-serif;
+  font-size: 60px;
+  font-weight: 400;
+  color: black;
+  margin: 0 0 24px 0;
+}
+
+.brands-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.brand-logo {
+  width: 140px;
+  height: 70px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.brand-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
 .hero-content-row {
   display: flex;
   align-items: flex-start;
@@ -267,20 +320,24 @@ const contentSections = [
 }
 
 .hero-photo-wrap {
+    margin-left: 190px;   
   position: relative;
   flex-shrink: 0;
-  margin-top: -80px;
+  margin-top: -40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-photo {
-  width: 600px;
+  width: 400px;
   max-width: 60vw;
   display: block;
-  position:relative;
-  margin-left: 190px;
+  position: relative;
+  margin-left: 300px;
   margin-bottom: 20px;
   object-fit: contain;
-  z-index: 2;
+  z-index: 0;
 }
 
 .hero-star {
@@ -292,23 +349,33 @@ const contentSections = [
 .hero-star--big {
   width: 150px;
   top: 100px;
-  right: 550px;
+  right: 350px;
+}
+
+.folder {
+  position: absolute;
+  width: 190px;
+  height: auto;
+  top: 250px;
+  left: -30px;
+  transform: rotate(-5deg);
+  z-index: 1;
 }
 
 .hero-star--small {
   width: 120px;
-  top: 25%;
-  left: 650px;
+  top: -1%;
+  left: 560px;
 }
 
 .hero-search-deco {
   position: absolute;
-  top: 40px;
+  top: 100px;
   left: -70px;
   display: block;
   align-items: center;
-  z-index: 1; 
-  width: 190px;
+  z-index: 1;
+  width: 220px;
 }
 
 .buscador {
@@ -324,7 +391,7 @@ const contentSections = [
   left: 60%;
   transform: rotate(-1deg) translate(-50%, -50%);
   color: black;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 450;
   text-align: center;
   white-space: nowrap;
@@ -332,33 +399,38 @@ const contentSections = [
 
 .hero-tools {
   display: flex;
+  width: 100%;
   gap: 20px;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 32px;
+  flex-wrap: nowrap;
+  margin-top: -50px;
 }
 
 .tool-icon-img {
-  width: 65px;
-  height: 65px;
+  width: 70px;
+  height: 70px;
   border-radius: 14px;
   object-fit: cover;
-  margin-top: -100px;
-  margin-left: 15px;
   z-index: 3;
-  transition: transform 0.2s ease;   
+  transition: transform 0.2s ease;
 }
 
+
 .tool-icon-img--capcut {
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
+}
+
+.tool-icon-img:hover {
+  transform: scale(1.1);
 }
 
 .hero-skills {
+  margin-right: 100px; 
   display: flex;
   flex-direction: column;
-  align-items: center;   
+  align-items: center;
   gap: 12px;
   padding-top: 0px;
 }
@@ -388,7 +460,7 @@ const contentSections = [
   border-radius: 50px;
   white-space: nowrap;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: default;
 }
 
@@ -397,17 +469,52 @@ const contentSections = [
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.tool-icon-img:hover {
-  transform: scale(1.1);
+/* ─── BRAND CTA STRIP ────────────────────────────────────── */
+.brand-cta-strip {
+  max-width: 560px;
+  margin: 48px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
 }
+
+.brand-cta-strip p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: black;
+  margin: 0;
+  line-height: 1.6;
+    white-space: nowrap; 
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #D9FB60;
+  color: #111;
+  border: none;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.btn-outline:hover {
+  transform: scale(1.04);
+}
+
 /* ─── BIO ────────────────────────────────────────────────── */
 .bio-section {
-  padding: 80px 5%;
+  padding: 60px 5%;
 }
 
 .bio-inner {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: grid;
   grid-template-columns: 1fr 380px;
   gap: 80px;
@@ -422,7 +529,7 @@ const contentSections = [
   text-wrap: balance;
   line-height: 1.8;
   color: black;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   margin-left: 100px;
 }
 
@@ -490,7 +597,7 @@ const contentSections = [
   left: 50%;
   width: 0;
   height: 0;
-  will-change: transform;   
+  will-change: transform;
   animation: niche-orbit-spin 40s linear infinite;
 }
 
@@ -498,7 +605,7 @@ const contentSections = [
   position: absolute;
   top: -250px;
   left: -50%;
-  will-change: transform;   
+  will-change: transform;
   animation: niche-pill-counter 40s linear infinite;
 }
 
@@ -559,100 +666,9 @@ const contentSections = [
   object-fit: cover;
 }
 
-
-/* ─── INSTAGRAM ──────────────────────────────────────────── */
-.insta-section {
-  padding: 0px 5% 20px;
-  text-align: center;
-}
-
-.insta-hi-label {
-  font-family: 'MyFont', sans-serif !important;
-  font-size: 55px;
-  color: #111;
-  display: block;
-  transform: rotate(-3deg);
-  margin-bottom: -10px;
-  margin-left: -200px;
-  text-transform: uppercase;
-}
-
-.insta-title {
-  font-family: 'BethanyElingston', sans-serif;
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: #111;
-  margin: 0 0 40px 0;
-}
-
-.insta-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.insta-item {
-  position: relative;
-  aspect-ratio: 9/16;
-  border-radius: 8px;
-  overflow: hidden;
-  text-decoration: none;
-  display: block;
-}
-
-.insta-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.insta-item:hover .insta-img { transform: scale(1.06); }
-
-.insta-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 12px;
-}
-
-.insta-item:hover .insta-overlay { opacity: 1; }
-
-.insta-reel-badge {
-  background: #FF7BB5;
-  color: #fff;
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.insta-caption {
-  color: #fff;
-  font-size: 12px;
-  font-family: 'DM Sans', sans-serif;
-  text-align: center;
-  line-height: 1.4;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 /* ─── CONTACT ───────────────────────────────────────────── */
 .contact-section {
-  padding:0;
+  padding: 0;
   margin: 0;
   background: #fff;
 }
@@ -678,21 +694,6 @@ const contentSections = [
   margin: 0;
 }
 
-.contact-email {
-  font-size: 20px;
-  color: #FF7BB5;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-social {
-  font-size: 20px;
-  color: #111;
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.2s;
-}
-
 .contact-title {
   font-family: 'BethanyElingston', sans-serif;
   font-size: 72px;
@@ -709,7 +710,44 @@ const contentSections = [
   gap: 10px;
 }
 
+.contact-email-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.contact-email {
+  font-size: 20px;
+  color: #FF7BB5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.copy-btn:hover {
+  transform: scale(1.1);
+}
+
+.copy-btn.copied svg {
+  stroke: #D9FB60;
+}
+
+.contact-social {
+  font-size: 20px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+}
 
 .contact-social:hover { color: #FF7BB5; }
 
@@ -728,7 +766,7 @@ const contentSections = [
   top: 60px;
   left: 20px;
   z-index: 2;
-  }
+}
 
 .contact-sticker {
   position: absolute;
@@ -786,7 +824,7 @@ const contentSections = [
 }
 
 .contact-cvnote:hover {
-  transform: rotate(-10deg)  !important;
+  transform: rotate(-10deg) !important;
 }
 
 .contact-collage {
@@ -799,309 +837,65 @@ const contentSections = [
   transform: rotate(3deg);
 }
 
-.contact-email-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.copy-btn:hover {
-  transform: scale(1.1);
-}
-
-.copy-btn.copied svg {
-  stroke: #D9FB60;
-}
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
-/* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
-  /* HERO */
-  .hero {
-    padding: 60px 5% 30px;
-  }
+  .hero { padding: 60px 5% 30px; }
+  .hero-title { font-size: 56px; margin-bottom: 24px; }
+  .hero-content-row { flex-direction: column; align-items: center; gap: 32px; }
+  .hero-photo-wrap { margin-top: 0; }
+  .hero-photo { width: 320px; max-width: 80vw; margin-left: 0; margin-bottom: 0; }
+  .hero-star { display: none; }
+  .hero-search-deco { position: static; display: block; width: 150px; margin: 0 auto 12px; }
+  .hero-tools { margin-top: 16px; }
+  .tool-icon-img { width: 44px; height: 44px; margin-top: 0; margin-left: 0; }
+  .tool-icon-img--capcut { width: 70px; height: 70px; }
+  .hero-skills { padding-top: 8px; }
+  .skills-label { font-size: 34px; }
+  .brand-cta-strip { margin-top: 32px; padding: 20px; }
 
-  .hero-title {
-    font-size: 56px;
-    margin-bottom: 24px;
-  }
+  .bio-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .bio-body { width: 100%; margin-left: 0; margin-bottom: 0; font-size: 16px; text-align: left; }
+  .bio-phone-img { width: 60%; margin: 0 auto; }
 
-  .hero-content-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
+  .niches-section { padding: 60px 5%; }
+  .niches-web { max-width: 380px; height: 320px; }
+  .niches-title { font-size: 32px; }
+  .niche-orbit .niche-pill { top: -140px; font-size: 12px; padding: 8px 16px; }
 
-  .hero-photo-wrap {
-    margin-top: 0;
-  }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .video-cat-title { font-size: 32px; }
 
-  .hero-photo {
-    width: 320px;
-    max-width: 80vw;
-    margin-left: 0;
-    margin-bottom: 0;
-  }
-
-  .hero-star {
-    display: none;
-  }
-
-  .hero-search-deco {
-    position: static;
-    display: block;
-    width: 150px;
-    margin: 0 auto 12px;
-  }
-
-  .hero-tools {
-    margin-top: 16px;
-  }
-
-  .tool-icon-img {
-    width: 44px;
-    height: 44px;
-    margin-top: 0;
-    margin-left: 0;
-  }
-
-  .tool-icon-img--capcut {
-    width: 70px;
-    height: 70px;
-  }
-
-  .hero-skills {
-    padding-top: 8px;
-  }
-
-  .skills-label {
-    font-size: 34px;
-  }
-
-  /* BIO */
-  .bio-inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    text-align: center;
-  }
-
-  .bio-body {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 0;
-    font-size: 16px;
-    text-align: left;
-  }
-
-  .bio-phone-img {
-    width: 60%;
-    margin: 0 auto;
-  }
-
-  /* NICHES */
-  .niches-section {
-    padding: 60px 5%;
-  }
-
-  .niches-web {
-    max-width: 380px;
-    height: 320px;
-  }
-
-  .niches-title {
-    font-size: 32px;
-  }
-
-  .niche-orbit .niche-pill {
-    top: -140px;
-    font-size: 12px;
-    padding: 8px 16px;
-  }
-
-  /* VIDEOS */
-  .video-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .video-cat-title {
-    font-size: 32px;
-  }
-
-  /* INSTAGRAM */
-  .insta-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .insta-hi-label {
-    margin-left: 0;
-    font-size: 32px;
-  }
-
-  .insta-title {
-    font-size: 32px;
-  }
-
-  /* CONTACT */
-  .contact-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .contact-title {
-    font-size: 52px;
-    text-align: center;
-  }
-
-  .contact-left {
-    align-items: center;
-    text-align: center;
-  }
-
-  .contact-right {
-    width: 320px;
-    height: 420px;
-    margin: 20px auto 0;
-  }
-
-  .contact-photo {
-    width: 210px;
-    top: 55px;
-    left: 15px;
-  }
-
-  .contact-sticker {
-    top: -20px;
-    left: 5px;
-  }
-
-  .contact-sticker-text {
-    font-size: 34px;
-  }
-
-  .contact-hola-arrow {
-    width: 55px;
-    top: 45px;
-    left: -35px;
-  }
-
-  .contact-locationnote {
-    width: 130px;
-    top: 55px;
-    right: -15px;
-  }
-
-  .contact-cvnote {
-    width: 130px;
-    top: 250px;
-    left: -30px;
-  }
-
-  .contact-collage {
-    width: 95px;
-    top: 245px;
-    right: 30px;
-  }
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .contact-title { font-size: 52px; text-align: center; }
+  .contact-left { align-items: center; text-align: center; }
+  .contact-right { width: 320px; height: 420px; margin: 20px auto 0; }
+  .contact-photo { width: 210px; top: 55px; left: 15px; }
+  .contact-sticker { top: -20px; left: 5px; }
+  .contact-sticker-text { font-size: 34px; }
+  .contact-hola-arrow { width: 55px; top: 45px; left: -35px; }
+  .contact-locationnote { width: 130px; top: 55px; right: -15px; }
+  .contact-cvnote { width: 130px; top: 250px; left: -30px; }
+  .contact-collage { width: 95px; top: 245px; right: 30px; }
 }
 
 @media (max-width: 500px) {
-  .hero-title {
-    font-size: 40px;
-  }
-
-  .hero-photo {
-    width: 260px;
-  }
-
-  .skills-list {
-    align-items: center;
-  }
-
-  .skill-pill {
-    font-size: 13px;
-  }
-
-  .bio-body {
-    font-size: 15px;
-  }
-
-  .niches-web {
-    max-width: 300px;
-    height: 280px;
-  }
-
-  .niches-title {
-    font-size: 26px;
-  }
-
-  .niche-orbit .niche-pill {
-    top: -110px;
-    font-size: 11px;
-    padding: 6px 12px;
-  }
-
-  .video-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .video-cat-title {
-    font-size: 26px;
-  }
-
-  .insta-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-title {
-    font-size: 38px;
-  }
-
-  .contact-right {
-    width: 260px;
-    height: 360px;
-  }
-
-  .contact-photo {
-    width: 170px;
-    top: 45px;
-    left: 10px;
-  }
-
-  .contact-sticker-text {
-    font-size: 26px;
-  }
-
-  .contact-hola-arrow {
-    width: 45px;
-    top: 35px;
-    left: -25px;
-  }
-
-  .contact-locationnote {
-    width: 105px;
-    top: 45px;
-    right: -10px;
-  }
-
-  .contact-cvnote {
-    width: 105px;
-    top: 205px;
-    left: -20px;
-  }
-
-  .contact-collage {
-    width: 78px;
-    top: 200px;
-    right: 20px;
-  }
+  .hero-title { font-size: 40px; }
+  .hero-photo { width: 260px; }
+  .skills-list { align-items: center; }
+  .skill-pill { font-size: 13px; }
+  .bio-body { font-size: 15px; }
+  .niches-web { max-width: 300px; height: 280px; }
+  .niches-title { font-size: 26px; }
+  .niche-orbit .niche-pill { top: -110px; font-size: 11px; padding: 6px 12px; }
+  .video-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .video-cat-title { font-size: 26px; }
+  .contact-title { font-size: 38px; }
+  .contact-right { width: 260px; height: 360px; }
+  .contact-photo { width: 170px; top: 45px; left: 10px; }
+  .contact-sticker-text { font-size: 26px; }
+  .contact-hola-arrow { width: 45px; top: 35px; left: -25px; }
+  .contact-locationnote { width: 105px; top: 45px; right: -10px; }
+  .contact-cvnote { width: 105px; top: 205px; left: -20px; }
+  .contact-collage { width: 78px; top: 200px; right: 20px; }
 }
 </style>

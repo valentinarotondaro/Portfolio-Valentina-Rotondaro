@@ -13,7 +13,7 @@
       </header>
 
       <section class="hero">
-        <img src="/img/businessregionhero.png" alt="Business DE-DK Redesign" class="main-hero-img" />
+        <img src="/img/businessregionhero.webp" alt="Business DE-DK Redesign" class="main-hero-img" />
       </section>
 
       <section class="case-study-content">

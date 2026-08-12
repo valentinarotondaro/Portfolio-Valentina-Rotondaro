@@ -9,13 +9,19 @@ const recentFilters = [
 ];
 
 const recentProjects = [
-  { title: 'Business DE-DK', description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.', tags: ['Web Design', 'UX/UI'], image: '/img/businessregionhero.png', link: '/portfolio/business-dedk' },
+  { title: 'Business DE-DK', description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.', tags: ['Web Design', 'UX/UI'], image: '/img/businessregionhero.webp', link: '/portfolio/business-dedk' },
+  {
+  title: 'Departamentos Alfar',
+  description: 'Booking site for a family-run apartment complex in Mar del Plata.',
+  tags: ['Web Design'],
+  image: '/img/alfarhero.webp',
+  link: '/portfolio/departamentos-alfar',
+},
   { title: 'Itinero', description: 'A mobile application designed to simplify and enhance travel experiences.', tags: ['UX/UI', 'Web Design'], image: '/img/itineroapp.png', link: '/portfolio/itinero' },
-  { title: 'Under', description: 'Identity design for the Syddansk Erhvervsakademi student bar.', tags: ['Visual Design'], image: '/img/underhorizontal.png', link: '/portfolio/under' },
+    { title: 'Lic. Aranda Coria', description: 'Brand identity design for a psichologist, reflecting trust and empathy.', tags: ['Visual Design'], image: '/img/arandacoria.png', link: '/portfolio/lic-aranda' },
   { title: 'Amada amiga', description: 'Unique wine label design capturing the essence of a beloved friend.', tags: ['Visual Design'], image: '/img/amadaamigaproject.png', link: '/portfolio/amada-amiga' },
-  { title: 'Lic. Aranda Coria', description: 'Brand identity design for a psichologist, reflecting trust and empathy.', tags: ['Visual Design'], image: '/img/arandacoria.png', link: '/portfolio/lic-aranda' },
-  { title: 'SoMe Content creation', description: 'Strategy and creation of engaging content for Instagram and TikTok.', tags: ['Content Creation'], image: '/img/someproject.png', link: '/portfolio/content-creation' },
-  { title: 'Raíz y Sazón', description: 'A dedicated site focused on South American vegan recipes.', tags: ['UX/UI', 'Web Design'], image: '/img/raizysazonproject.png', link: null },
+  { title: 'SoMe Content creation', description: 'Strategy and creation of engaging content for Instagram and TikTok.', tags: ['Content Creation'], image: '/img/someproject.webp', link: '/portfolio/content-creation' },
+  { title: 'Under', description: 'Identity design for the Syddansk Erhvervsakademi student bar.', tags: ['Visual Design'], image: '/img/underhorizontal.png', link: '/portfolio/under' },
 ];
 
 const activeRecentFilter = ref('all');

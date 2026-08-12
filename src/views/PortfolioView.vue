@@ -13,9 +13,16 @@ const projectsList = [
   {
     title: 'Business DE-DK',
     description: 'Full redesign of a cross-border business website.',
-    tags: ['Web Design', 'UX/UI'],    image: '/img/businessregionhero.png',
+    tags: ['Web Design', 'UX/UI'],    image: '/img/businessregionhero.webp',
     link: '/portfolio/business-dedk',
   },
+  {
+  title: 'Departamentos Alfar',
+  description: 'Booking site for a family-run apartment complex in Argentina.',
+  tags: ['Web Design'],
+  image: '/img/alfarhero.webp',
+  link: '/portfolio/departamentos-alfar',
+},
   {
     title: 'Itinero',
     description: 'A mobile application designed to simplify and enhance travel experiences.',
@@ -23,12 +30,13 @@ const projectsList = [
     link: '/portfolio/itinero',
   },
   {
-    title: 'Under',
-    description: 'Identity design for the Syddansk Erhvervsakademi student bar.',
+    title: 'Lic. Aranda Coria',
+    description: 'Brand identity design for a psichologist, reflecting trust and empathy.',
     tags: ['Visual Design'],
-    image: '/img/underhorizontal.png',
-    link: '/portfolio/under',
+    image: '/img/arandaheroweb.webp',
+    link: '/portfolio/lic-aranda',
   },
+
   {
     title: 'Amada amiga',
     description: 'Unique wine label design capturing the essence of a beloved friend.',
@@ -37,26 +45,21 @@ const projectsList = [
     link: '/portfolio/amada-amiga',
   },
   {
-    title: 'Lic. Aranda Coria',
-    description: 'Brand identity design for a psichologist, reflecting trust and empathy.',
+    title: 'Under',
+    description: 'Identity design for the Syddansk Erhvervsakademi student bar.',
     tags: ['Visual Design'],
-    image: '/img/arandacoria.png',
-    link: '/portfolio/lic-aranda',
+    image: '/img/underhorizontal.png',
+    link: '/portfolio/under',
   },
+  
   {
     title: 'SoMe Content creation',
     description: 'Strategy and creation of engaging content for Instagram and TikTok.',
     tags: ['Content Creation'],
-    image: '/img/someproject.png',
+    image: '/img/someproject.webp',
     link: '/portfolio/content-creation',
   },
-  {
-    title: 'Raíz y Sazón',
-    description: 'A dedicated site focused on South American vegan recipes.',
-    tags: ['UX/UI', 'Web Design'],
-    image: '/img/raizysazonproject.png',
-    link: null,
-  },
+
   {
     title: 'Collage Afternoon',
     description: 'A collaborative and creative workshop held at the modern DOKK1 library.',

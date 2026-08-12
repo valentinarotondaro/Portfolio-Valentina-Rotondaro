@@ -598,6 +598,7 @@ onMounted(() => {
   color: black;
   margin-top: 10px;
   margin-left: 80px;
+  text-align: center !important;
 }
 
 .cv-arrow {
@@ -835,7 +836,6 @@ onMounted(() => {
 .pop-fade-leave-to { opacity: 0; transform: scale(0.9) translateY(10px); }
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
-/* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
   /* ABOUT ME */
   .about-section {
@@ -846,54 +846,57 @@ onMounted(() => {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
-  .about-left {
-    width: 100%;
-    height: 420px;
+.about-left {
+    position: relative;
+    width: 300px;
+    height: 372px;
     margin: 0 auto;
   }
 
   .about-photo {
-    width: 220px;
-    height: 280px;
+    width: 185px;
+    height: 200px;
+    top: 43px;
+    left: 14px;
   }
 
   .about-sticker {
-    top: -20px;
+    top: -29px;
+    left: 4px;
   }
 
   .sticker-text {
-    font-size: 44px;
+    font-size: 50px;
   }
 
   .about-hola-arrow {
     width: 36px;
-    top: 50px;
-    left: -30px;
+    top: 46px;
+    left: -32px;
   }
 
   .about-locationnote {
-    width: 130px;
-    right: 10px;
+    width: 129px;
+    top: 35px;
+    right: -6px;
   }
 
   .about-cvnote {
-    width: 130px;
+    width: 143px;
+    top: 182px;
+    left: -50px;
   }
 
   .about-star {
-    width: 80px;
-    top: 220px;
-    left: 160px;
+    width: 86px;
+    top: 193px;
+    left: 150px;
   }
 
   .about-title {
     font-size: 40px;
     margin: 0;
-  }
-
-  .about-desc {
-    font-size: 16px;
+    text-align: center;
   }
 
   /* SKILLS */
@@ -905,7 +908,7 @@ onMounted(() => {
 
   .skill-tag {
     animation: none;
-    opacity: 1;
+    opacity: 1 !important;
     transform: none !important;
     font-size: 14px;
     padding: 8px 16px;
@@ -937,10 +940,16 @@ onMounted(() => {
   .cv-inner {
     grid-template-columns: 1fr;
   }
-
-  .cv-title {
+.cv-title {
     font-size: 32px;
     font-weight: 450;
+    text-align: center;
+    margin: 0 auto 24px auto;
+    max-width: 100%;
+  }
+
+  .cv-arrow-wrap {
+    justify-content: center;
   }
 
   .cv-check {
@@ -951,8 +960,8 @@ onMounted(() => {
   .cv-arrow {
     width: 55px;
     margin-top: 20px;
+    transform: scaleX(-1) rotate(360deg);
   }
-
   /* CONTACT */
   .contact-inner {
     grid-template-columns: 1fr;
@@ -1018,6 +1027,48 @@ onMounted(() => {
 @media (max-width: 500px) {
   .about-title {
     font-size: 36px;
+    text-align: center; 
+  }
+
+  .about-left {
+    width: 260px;
+    height: 322px;
+  }
+
+  .about-photo {
+    width: 161px;
+    height: 173px;
+    top: 37px;
+    left: 12px;
+  }
+
+  .about-sticker {
+    top: -25px;
+    left: 3px;
+  }
+
+  .about-hola-arrow {
+    width: 31px;
+    top: 40px;
+    left: -28px;
+  }
+
+  .about-locationnote {
+    width: 111px;
+    top: 30px;
+    right: -5px;
+  }
+
+  .about-cvnote {
+    width: 124px;
+    top: 158px;
+    left: -43px;
+  }
+
+  .about-star {
+    width: 74px;
+    top: 167px;
+    left: 130px;
   }
 
   .sticker-text {
@@ -1042,10 +1093,12 @@ onMounted(() => {
 
   .cv-title {
     font-size: 26px;
+    text-align: center; 
   }
 
   .cv-check {
     font-size: 24px;
+    text-align: center !important; 
   }
 
   .contact-title {

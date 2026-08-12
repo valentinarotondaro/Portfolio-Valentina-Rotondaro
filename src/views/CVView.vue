@@ -12,7 +12,7 @@
 
       <div class="about-image">
         <div class="blob-frame">
-          <img src="/img/valentina-perfil.JPG" alt="Valentina Rotondaro profile picture" />
+          <img src="/img/valentina-perfil.webp" alt="Valentina Rotondaro profile picture" />
           <a href="/img/CV Valentina Rotondaro.pdf" download class="btn-download">Download my CV</a>
         </div>
       </div>

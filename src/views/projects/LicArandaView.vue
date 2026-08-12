@@ -1,6 +1,6 @@
 <script setup>
 const imgVisual = '/img/arandastyles.png';
-const imghome = '/img/arandahero.png';
+const imghome = '/img/arandaheroweb.webp';
 </script>
 
 <template>
