@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 const skills = [
-  'Video editing', 'Short-form content', 'UGC creation',
+  'Video editing',  'UGC creation',
   'Script writing', 'Color grading', 'Trend research',
 ];
 
@@ -17,9 +17,6 @@ function scrollToCategory(name) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Nota: se sacaron los parámetros &background=1&autoplay=1&loop=1&muted=1
-// de cada URL para que cada reel quede pausado con su miniatura hasta
-// que se haga click, en vez de reproducirse todos a la vez sin sonido.
 const contentSections = [
   {
     category: 'UGC',
@@ -83,7 +80,7 @@ function copyEmail() {
 <!-- ─── HERO ──────────────────────────────────────── -->
 <section class="hero">
   <h1 class="hero-title">Valen Rotondaro</h1>
-  <p class="hero-subtitle-tag">Content Creation Portfolio</p>
+  <p class="hero-subtitle-tag">Content creation Portfolio</p>
 <div class="hero-content-row">
     <div class="hero-photo-wrap">
       <img src="/img/herostar.png" alt="" class="hero-star hero-star--big" />
@@ -96,7 +93,9 @@ function copyEmail() {
         <span class="search-text">@valenrotondaro</span>
       </a>
 
-      <img src="/img/herougc.png" alt="Valen" class="hero-photo" />
+      <div class="hero-photo-position">
+  <img src="/img/herougc.png" alt="Valen" class="hero-photo" />
+</div>
 
       <div class="hero-tools">
         <img src="/img/premiere.png" alt="Premiere" class="tool-icon-img" />
@@ -117,8 +116,8 @@ function copyEmail() {
   </div>
 
   <div class="brand-cta-strip">
-    <p>Currently open for brand collaborations: UGC, product storytelling &amp; short-form content.</p>
-    <a href="#contact" class="btn-outline">Work with me ↗</a>
+    <p>Currently open for brand collaborations: <br>UGC, product storytelling &amp; short-form content.</p>
+    <a href="#contact" class="btn-outline">Work with me</a>
   </div>
   </section>
 
@@ -246,7 +245,8 @@ function copyEmail() {
 
 /* ─── HERO ───────────────────────────────────────────────── */
 .hero {
-  padding: 80px 5% 40px;
+  padding: 10px 5% 40px;
+  margin-top: -20px;
   text-align: center;
 }
 
@@ -263,7 +263,6 @@ function copyEmail() {
 .hero-subtitle-tag {
   font-family: 'DM Sans', sans-serif;
   font-size: 30px;
-  letter-spacing: 0.15em;
   color: black;
   margin: -24px 0 40px 0;
 }
@@ -273,7 +272,8 @@ function copyEmail() {
   font-size: 60px;
   font-weight: 400;
   color: black;
-  margin: 40px;
+  text-align: left; 
+  margin: 0px 0 8px 100px;
 }
 .brands-section {
   padding: 40px 5% 80px;
@@ -318,9 +318,7 @@ function copyEmail() {
   max-width: 1000px;
   margin: 0 auto;
 }
-
 .hero-photo-wrap {
-    margin-left: 190px;   
   position: relative;
   flex-shrink: 0;
   margin-top: -40px;
@@ -334,7 +332,6 @@ function copyEmail() {
   max-width: 60vw;
   display: block;
   position: relative;
-  margin-left: 300px;
   margin-bottom: 20px;
   object-fit: contain;
   z-index: 0;
@@ -352,21 +349,22 @@ function copyEmail() {
   right: 350px;
 }
 
-.folder {
-  position: absolute;
-  width: 190px;
-  height: auto;
-  top: 250px;
-  left: -30px;
-  transform: rotate(-5deg);
-  z-index: 1;
-}
-
 .hero-star--small {
   width: 120px;
   top: -1%;
   left: 560px;
 }
+.folder {
+  position: absolute;
+  width: 210px;
+  height: auto;
+  top: 270px;
+  left: -50px;
+  transform: rotate(-5deg);
+  z-index: 1;
+}
+
+
 
 .hero-search-deco {
   position: absolute;
@@ -400,11 +398,12 @@ function copyEmail() {
 .hero-tools {
   display: flex;
   width: 100%;
-  gap: 20px;
+  gap: 30px;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  margin-top: -50px;
+  margin: -60px 0 0 45px;
+
 }
 
 .tool-icon-img {
@@ -425,16 +424,15 @@ function copyEmail() {
 .tool-icon-img:hover {
   transform: scale(1.1);
 }
-
 .hero-skills {
-  margin-right: 100px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   padding-top: 0px;
+  margin-left: -200px;
+  margin-top: 35px;
 }
-
 .skills-label {
   font-family: 'MyFont', sans-serif !important;
   font-size: 65px;
@@ -481,7 +479,7 @@ function copyEmail() {
 
 .brand-cta-strip p {
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 0;
   line-height: 1.6;
@@ -499,6 +497,8 @@ function copyEmail() {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: -20px;
   text-decoration: none;
   transition: transform 0.2s;
 }
@@ -509,7 +509,7 @@ function copyEmail() {
 
 /* ─── BIO ────────────────────────────────────────────────── */
 .bio-section {
-  padding: 60px 5%;
+  padding: 40px 5%;
 }
 
 .bio-inner {
@@ -546,9 +546,11 @@ function copyEmail() {
 
 /* ─── NICHES ─────────────────────────────────────────────── */
 .niches-section {
-  padding: 100px 5%;
+  padding: 110px 5%;
   text-align: center;
   position: relative;
+  margin-top: -40px;
+  margin-bottom: -10px;
 }
 
 .niches-web {
@@ -621,7 +623,7 @@ function copyEmail() {
 
 /* ─── VIDEOS ─────────────────────────────────────────────── */
 .videos-section {
-  padding: 40px 5% 80px;
+  padding: 80px 5% 80px;
 }
 
 .videos-inner {
@@ -630,7 +632,7 @@ function copyEmail() {
 }
 
 .video-category {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .video-cat-title {
@@ -840,22 +842,98 @@ function copyEmail() {
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
   .hero { padding: 60px 5% 30px; }
-  .hero-title { font-size: 56px; margin-bottom: 24px; }
-  .hero-content-row { flex-direction: column; align-items: center; gap: 32px; }
-  .hero-photo-wrap { margin-top: 0; }
-  .hero-photo { width: 320px; max-width: 80vw; margin-left: 0; margin-bottom: 0; }
-  .hero-star { display: none; }
-  .hero-search-deco { position: static; display: block; width: 150px; margin: 0 auto 12px; }
-  .hero-tools { margin-top: 16px; }
-  .tool-icon-img { width: 44px; height: 44px; margin-top: 0; margin-left: 0; }
-  .tool-icon-img--capcut { width: 70px; height: 70px; }
-  .hero-skills { padding-top: 8px; }
-  .skills-label { font-size: 34px; }
-  .brand-cta-strip { margin-top: 32px; padding: 20px; }
+  .hero-title { font-size: 48px; margin-bottom: 0px; text-align: center; }
+  .hero-subtitle-tag { font-size: 16px; margin:10px 0 32px 0; text-align: center; }
+
+  .hero-content-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+ .hero-photo-wrap {
+  margin: 0;
+  width: 420px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.hero-photo-position {
+  margin-left: 80px;
+}
+ .hero-photo {
+  width: 420px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.hero-star--big {
+  display: none;
+}
+
+.hero-star--small {
+ display: none;
+}
+  .folder {
+    width: 90px;
+    top: -10px;
+    left: -50px;
+  }
+
+  .hero-search-deco {
+    position: absolute;
+    top: 10%;
+    left: 100px;
+    width: 120px;
+  }
+
+    .search-text {
+    font-size: 9px;
+  }
+.hero-tools {
+  margin-top: -20px;
+      gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: center;
+      margin-left: 50px;
+  }
+
+  .tool-icon-img { width: 40px; height: 40px; }
+  .tool-icon-img--capcut { width: 60px; height: 60px; }
+      
+  
+  .hero-skills {
+    margin-left: -60px;
+    align-self: flex-start;
+    margin-top: -35px;
+  }
+
+  .skills-label { font-size: 30px;margin-bottom: -20px; }
+
+  .skills-list {
+    gap: 6px;
+  }
+
+  .skill-pill {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  .brand-cta-strip { margin-top: 32px; }
+  .brand-cta-strip p { white-space: normal; font-size: 14px; }
 
   .bio-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-  .bio-body { width: 100%; margin-left: 0; margin-bottom: 0; font-size: 16px; text-align: left; }
-  .bio-phone-img { width: 60%; margin: 0 auto; }
+  .about-label { margin-left: 0; text-align: center; font-size: 26px; }
+  .bio-body { width: 100%; margin-left: 0; margin-bottom: 0; font-size: 16px; text-align: justify; }
+.bio-phone {
+  display: none;
+}
+  .brands-section { padding: 40px 5% 60px; }
+  .section-eyebrow { font-size: 28px; }
+  .brands-grid { gap: 16px; }
+  .brand-logo { width: 100px; height: 55px; }
 
   .niches-section { padding: 60px 5%; }
   .niches-web { max-width: 380px; height: 320px; }
@@ -868,7 +946,7 @@ function copyEmail() {
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
   .contact-title { font-size: 52px; text-align: center; }
   .contact-left { align-items: center; text-align: center; }
-  .contact-right { width: 320px; height: 420px; margin: 20px auto 0; }
+  .contact-right { display: none; }
   .contact-photo { width: 210px; top: 55px; left: 15px; }
   .contact-sticker { top: -20px; left: 5px; }
   .contact-sticker-text { font-size: 34px; }
@@ -879,11 +957,33 @@ function copyEmail() {
 }
 
 @media (max-width: 500px) {
-  .hero-title { font-size: 40px; }
-  .hero-photo { width: 260px; }
+  .hero-title { font-size: 36px; }
+  .hero-subtitle-tag { font-size: 11px; }
+
+.hero-photo-wrap {
+  width: 260px;
+  flex-shrink: 0;
+}
+.hero-photo {
+  width: 260px;
+}
+.hero-star--big { width: 38px; top: -16px; right: -22px; }
+.hero-star--small { width: 30px; left: -22px; }
+  .folder { width: 110px; top: 50px; left: -5px; }
+  .hero-search-deco { width: 105px; left: 5px; top: 5px; transform: rotate(-4deg);}
+
+  .tool-icon-img { width: 34px; height: 34px; }
+  .tool-icon-img--capcut { width: 50px; height: 50px; }
+
   .skills-list { align-items: center; }
   .skill-pill { font-size: 13px; }
+  .brand-cta-strip p { font-size: 13px; }
   .bio-body { font-size: 15px; }
+  .about-label { font-size: 22px; }
+  .bio-phone-img { width: 30%; }
+
+  .brand-logo { width: 80px; height: 44px; }
+
   .niches-web { max-width: 300px; height: 280px; }
   .niches-title { font-size: 26px; }
   .niche-orbit .niche-pill { top: -110px; font-size: 11px; padding: 6px 12px; }
