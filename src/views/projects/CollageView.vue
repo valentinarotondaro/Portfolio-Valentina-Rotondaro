@@ -113,7 +113,7 @@ const upcomingWorkshops = [
             <img src="/img/collageafternoon.png" alt="Collage Workshops hover" class="service-img service-img--hover" />
           </div>
             <h3 class="service-title">Collage Workshops</h3>
-          <p class="service-desc">Hands-on workshops exploring creativity, storytelling, and self-expression through collage.</p>
+          <p class="service-desc">Hands-on workshops exploring creativity, storytelling, and self-expression.</p>
         <a href="/contact" class="btn-green service-cta">Let's make this happen</a>
         </div>
         <div class="service-card">
@@ -156,7 +156,6 @@ const upcomingWorkshops = [
       <div class="wi-inner">
         <div class="wi-text">
           <h2 class="wi-title">Collage workshops where we come together to craft, connect, and express ourselves.</h2>
-          <a href="#upcoming" class="btn-green">See upcoming workshops</a>
         </div>
         <div class="wi-photos">
           <img src="/img/tijeraroja.png"  alt="" class="wi-deco wi-deco--scissors" />
@@ -171,6 +170,9 @@ const upcomingWorkshops = [
             <img src="/img/collagepolaroid.png" alt="Workshop participants" />
           </div>
         </div>
+        <div class="wi-cta-wrap">
+  <a href="#upcoming" class="btn-green">See upcoming workshops</a>
+</div>
       </div>
     </section>
 
@@ -389,14 +391,13 @@ const upcomingWorkshops = [
   width: 105%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1px;
 }
 .vb-note-text p {
   font-size: 30px;
   color: black;
-  line-height: 1;
-  text-align: justify;
-  margin: 10px;
+  text-align: justify !important;
+  margin: 2px;
 }
 .vb-star {
   position: absolute;
@@ -408,7 +409,6 @@ const upcomingWorkshops = [
 
 /* ─── SERVICES ───────────────────────────────────────────── */
 .services-section {
-;
   background: white;
 }
 .svc-label {
@@ -687,6 +687,12 @@ const upcomingWorkshops = [
 }
 .btn-green:hover { transform: scale(1.04); }
 
+.wi-cta-wrap {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 32px;
+}
+
 /* ─── BUTTONS ────────────────────────────────────────────── */
 .btn-pink {
   display: inline-block;
@@ -796,7 +802,7 @@ const upcomingWorkshops = [
 
 /* ─── MEMORIES ───────────────────────────────────────────── */
 .memories-section {
-  padding: 20px 0 20px;
+  padding: 10px 0 10px;
   overflow: hidden;
   margin-top: 60px;
   background: white;
@@ -960,26 +966,170 @@ const upcomingWorkshops = [
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .vb-inner { grid-template-columns: 1fr; }
-  .vb-left { height: 300px; }
-  .vb-polaroid { width: 130px; left: 60px; }
+  /* HERO */
+ .hero {
+  padding: 10px 5% 0;
+}
 
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-eyebrow {
+    font-size: 22px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
 
-  .wi-section { padding: 20px 5% 60px; }
+  .hero-title-wrap {
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+  }
+
+  .deco-washitape {
+    width: 60px;
+    top: -60px;
+    left: -10px;
+    transform: rotate(1deg); 
+  }
+
+  .deco-star-tl {
+    width: 45px;
+    top: -35px;
+    right: 5px;
+  }
+
+  .deco-smiley {
+    width: 28px;
+    top: 65px;
+    right: 35px;
+  }
+
+  .deco-note {
+  display: none;
+  }
+
+  .deco-star-br {
+    width: 50px;
+    bottom: -15px;
+    left:25px;
+  }
+
+  /* VALEN BIO */
+
+  .vb-section {
+  min-height: auto;
+}
+  .vb-inner {
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 60px 5%;
+  }
+
+  .vb-left {
+    position: relative;
+    height: 130px;
+  }
+
+  .vb-polaroid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg);
+    width: 110px;
+  }
+
+  .vb-tape {
+    width: 55px;
+    top: -22px;
+    left: 30px;
+  }
+
+  .vb-right {
+    height: 130px;
+    display: flex;
+    align-items: center;
+  }
+
+  .vb-note-text {
+    position: static;
+    transform: none;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .vb-note-text p {
+    font-size: 12px;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .vb-star {
+    display: none;
+  }
+
+  /* SERVICES */
+  .services-section {
+    padding: 10px 5% 50px;
+  }
+
+  .svc-label { font-size: 24px; margin-bottom: 0px; }
+  .svc-title { font-size: 32px; margin-bottom: 20px; }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .service-title { font-size: 18px; margin: 10px 14px 0; }
+  .service-desc { font-size: 12px; margin: 6px 14px 14px; }
+  .service-img-wrap { width: calc(100% - 24px); margin: 12px 12px 0; }
+  .service-cta { font-size: 12px; padding: 8px 16px; margin: 0 auto 14px; }
+
+  /* WORKSHOP INTRO */
+  .wi-section { padding: 20px 5% 20px; }
   .wi-inner { grid-template-columns: 1fr; }
   .wi-title { text-align: center; }
   .wi-text { display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .wi-photos { height: 340px; margin-top: 40px; }
-  .wi-polaroid--top { width: 190px; height: 175px; right: 10px; }
-  .wi-polaroid--bottom { width: 175px; height: 160px; right: 140px; }
+
+  .wi-photos {
+    height: 300px;
+    margin-top: -100px;
+    position: relative;
+  }
+
+  .wi-polaroid--top {
+    width: 190px;
+    height: 175px;
+    top: 0;
+    right: 10px;
+  }
+
+  .wi-polaroid--bottom {
+    width: 175px;
+    height: 160px;
+    bottom: 85px;
+    right: 160px;
+  }
+
   .wi-deco { display: none; }
 
+  .wi-cta-wrap {
+    margin-top: -30px;
+  }
+
+  /* UPCOMING */
   .section-label { font-size: 32px; }
   .workshops-grid { grid-template-columns: 1fr; }
-  .workshop-content { padding: 28px 24px; }
+  .workshop-content { padding: 28px 28px; }
   .workshop-title { font-size: 26px; }
 
+  /* TESTIMONIALS */
+  .testimonials-section {
+  padding: 30px 5%;
+}
   .test-scissors, .test-smiley { display: none; }
   .test-title { font-size: 32px; }
   .test-carousel { gap: 12px; }
@@ -987,25 +1137,18 @@ const upcomingWorkshops = [
   .test-quote { font-size: 18px; }
   .test-author { font-size: 32px; }
 
-  .memory-slide { width: 190px; }
-
-  .nl-scissors, .nl-clips { display: none; }
-  .newsletter-title { font-size: 34px; }
-  .newsletter-sub { font-size: 15px; }
+  /* MEMORIES */
+  .memory-section { padding: -30px 5% -30px; margin-top: 0;}
+  .memories-track-wrap { padding: 10px 0 50px; }
+  .memory-slide { width: 190px; margin-bottom: -20px; }
+  .memories-title {
+  margin-bottom: 40px; margin-top:-20px;
 }
 
-@media (max-width: 500px) {
-  .services-grid { grid-template-columns: 1fr; }
-  .wi-photos { height: 260px; }
-  .wi-polaroid--top { width: 150px; height: 140px; }
-  .wi-polaroid--bottom { width: 135px; height: 125px; right: 100px; }
-  .section-label { font-size: 24px; }
-  .workshop-title { font-size: 22px; }
-  .vb-note-text p { font-size: 17px; }
-  .test-title { font-size: 26px; }
-  .test-quote { font-size: 16px; }
-  .test-author { font-size: 26px; }
-  .memory-slide { width: 150px; }
-  .newsletter-title { font-size: 26px; }
+  /* NEWSLETTER */
+  .nl-scissors, .nl-clips { display: none; }
+  .newsletter-section { padding: 30px 5% 30px; }
+  .newsletter-title { font-size: 34px; }
+  .newsletter-sub { font-size: 15px; text-align: center; }
 }
 </style>

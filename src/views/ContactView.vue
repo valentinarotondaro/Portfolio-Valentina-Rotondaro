@@ -215,30 +215,51 @@ const copyEmail = () => {
 }
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
-/* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
   .contact-inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap:20px;
   }
+.contact-left {
+  display: contents;
+}
 
-  .contact-title {
-    font-size: 52px;
-    text-align: center;
-  }
+.contact-title {
+  order: 1;
+  width: 100%;
+  text-align: center;
+}
 
-  .contact-left {
-    align-items: center;
-    text-align: center;
-  }
+.contact-right {
+  order: 2;
+  margin: 20px auto 0;
+  padding: 0;
+}
 
-  .contact-right {
-    width: 320px;
-    height: 420px;
-    margin: 20px auto 0;
-    padding: 0;
-  }
+.contact-links {
+  order: 3;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
 
+.contact-email-wrap {
+  justify-content: center;
+}
+
+.contact-social {
+  text-align: center;
+}
+
+.contact-email {
+  color: black;
+}
+
+.contact-email::before {
+  content: "↗ ";
+}
   .contact-sticker {
     top: -10px;
     left: 10px;
@@ -256,13 +277,13 @@ const copyEmail = () => {
 
   .contact-photo {
     width: 200px;
-    top: 65px;
+    top: 60px;
     left: 60px;
   }
 
   .contact-cvnote {
     width: 110px;
-    top: 300px;
+    top: 370px;
     left: 10px;
   }
 
@@ -300,20 +321,21 @@ const copyEmail = () => {
 
   .contact-photo {
     width: 165px;
-    top: 55px;
+    top: 44px;
     left: 48px;
   }
 
   .contact-cvnote {
     width: 90px;
-    top: 255px;
+    top: 210px;
     left: 8px;
   }
 
   .contact-collage {
     width: 80px;
-    top: 260px;
-    right: 0;
+    top: 200px;
+    right: 20px;
+    z-index: 1;
   }
 }
 </style>

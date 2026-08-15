@@ -851,6 +851,9 @@ onMounted(() => {
     width: 300px;
     height: 372px;
     margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
   }
 
   .about-photo {
