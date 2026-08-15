@@ -2,12 +2,13 @@
 import { ref, computed } from 'vue';
 
 const recentFilters = [
-  { label: 'All',           value: 'all'          },
-  { label: 'UX/UI',         value: 'UX/UI'        },
-  { label: 'Web Design',    value: 'Web Design'   },
-  { label: 'Visual Design', value: 'Visual Design'},
+  { label: 'All',              value: 'all'              },
+  { label: 'UX/UI',            value: 'UX/UI'            },
+  { label: 'Web Design',       value: 'Web Design'       },
+  { label: 'Visual Design',    value: 'Visual Design'    },
+  { label: 'Content Creation', value: 'Content Creation' },
+  { label: 'Workshops',        value: 'Workshops'        },
 ];
-
 const recentProjects = [
   { title: 'Business DE-DK', description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.', tags: ['Web Design', 'UX/UI'], image: '/img/businessregionhero.webp', link: '/portfolio/business-dedk' },
   {
@@ -22,7 +23,8 @@ const recentProjects = [
   { title: 'Amada amiga', description: 'Unique wine label design capturing the essence of a beloved friend.', tags: ['Visual Design'], image: '/img/amadaamigaproject.png', link: '/portfolio/amada-amiga' },
   { title: 'SoMe Content creation', description: 'Strategy and creation of engaging content for Instagram and TikTok.', tags: ['Content Creation'], image: '/img/someproject.webp', link: '/portfolio/content-creation' },
   { title: 'Under', description: 'Identity design for the Syddansk Erhvervsakademi student bar.', tags: ['Visual Design'], image: '/img/underhorizontal.png', link: '/portfolio/under' },
-];
+  { title: 'Collage Afternoon', description: 'A collaborative and creative workshop held at the modern DOKK1 library.', tags: ['Workshops'], image: '/img/Collageafternoondokk1.JPG', link: '/portfolio/collage-afternoon' },
+ ];
 
 const activeRecentFilter = ref('all');
 const filteredRecentProjects = computed(() =>

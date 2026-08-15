@@ -7,10 +7,9 @@ const skills = [
 ];
 
 const niches = [
-  'UGC', 'Travel', 'Stationary', 'DIY', 'Experiences',
+  'UGC', 'Travel', 'Stationary', 'DIY', 'Experiences', 'Tutorials',
 ];
-
-const nicheAngles = [-90, 198, -18, 126, 54];
+const nicheAngles = [-90, -30, 30, 90, 150, 210];
 
 function scrollToCategory(name) {
   const el = document.getElementById(name.toLowerCase());
@@ -19,13 +18,46 @@ function scrollToCategory(name) {
 
 const contentSections = [
   {
+    category: 'Tutorials',
+    videos: [
+      "https://player.vimeo.com/video/1218497342",
+      "https://player.vimeo.com/video/1218498178",
+      "https://player.vimeo.com/video/1218498151",
+      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5", 
+    ],
+  },
+    {
+    category: 'Stationary',
+    videos: [
+      "https://player.vimeo.com/video/1218498163",
+      "https://player.vimeo.com/video/1218498153",
+      "https://player.vimeo.com/video/1117810490?h=b2d3a3f6d4",
+      "https://player.vimeo.com/video/1118512621?h=02bb452692",
+      "https://player.vimeo.com/video/1117805604?h=56fde2d074",
+      "https://player.vimeo.com/video/1118506149?h=bcca644131",
+      "https://player.vimeo.com/video/1218498152",
+      "https://player.vimeo.com/video/1218498150",
+      
+    ],
+  },
+  {
+    category: 'Color Hunting',
+    videos: [
+      "https://player.vimeo.com/video/1218498177",
+      "https://player.vimeo.com/video/1218498166",
+      "https://player.vimeo.com/video/1218498164",
+      "https://player.vimeo.com/video/1218498166",
+    ],
+  },
+  {
     category: 'UGC',
     videos: [
+      "https://player.vimeo.com/video/1218501591",
       "https://player.vimeo.com/video/1118478920?h=af9b6f0bab",
       "https://player.vimeo.com/video/1117766965?h=963a2edc08",
       "https://player.vimeo.com/video/1117806411?h=a7f3765b75",
-      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5",
-    ],
+      
+      ],
   },
   {
     category: 'Travel',
@@ -37,30 +69,13 @@ const contentSections = [
     ],
   },
   {
-    category: 'Stationary',
-    videos: [
-      "https://player.vimeo.com/video/1143891592?h=f2822c00ed",
-      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5",
-      "https://player.vimeo.com/video/1117810490?h=b2d3a3f6d4",
-      "https://player.vimeo.com/video/1118506149?h=bcca644131",
-    ],
-  },
-  {
-    category: 'DIY',
-    videos: [
-      "https://player.vimeo.com/video/1117805604?h=56fde2d074",
-      "https://player.vimeo.com/video/1117806411?h=a7f3765b75",
-      "https://player.vimeo.com/video/1118512621?h=02bb452692",
-      "https://player.vimeo.com/video/1118516919?h=24ed8a6dd0",
-    ],
-  },
-  {
     category: 'Experiences',
     videos: [
       "https://player.vimeo.com/video/1117860728?h=921b1349bc",
       "https://player.vimeo.com/video/1117864900?h=38cb2cea56",
       "https://player.vimeo.com/video/1117864183?h=507b8f035c",
       "https://player.vimeo.com/video/1117862027?h=1725f1ad98",
+      "https://player.vimeo.com/video/1218498165",
     ],
   },
 ];
@@ -204,8 +219,8 @@ function copyEmail() {
           <div class="contact-links">
             <div class="contact-email-wrap">
               <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
-              <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7BB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+               <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
@@ -720,9 +735,13 @@ function copyEmail() {
 
 .contact-email {
   font-size: 20px;
-  color: #FF7BB5;
+  color: black;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.contact-email::before {
+  content: "↗ ";
 }
 
 .copy-btn {

@@ -250,8 +250,7 @@ onMounted(() => {
             <div class="contact-email-wrap">
               <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
               <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7BB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
               </button>
@@ -677,14 +676,16 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
 }
-
 .contact-email {
   font-size: 20px;
-  color: #FF7BB5;
+  color: black;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
 }
 
+.contact-email::before {
+  content: "↗ ";
+}
 
 .contact-social {
   font-size: 20px;
@@ -981,10 +982,7 @@ onMounted(() => {
     text-align: center;
   }
 
-  .contact-right {
-    width: 320px;
-    height: 420px;
-    margin: 20px auto 0;
+  .contact-right {display: none;
   }
 
   .contact-photo {

@@ -96,7 +96,6 @@ const upcomingWorkshops = [
             <p>Ever since I can remember, I've had some kind of scissors in my hand.</p>
             <p>Today, I host workshops all about connection and playful creativity, and I create paper pieces that tell stories, bringing little ideas to life, one cut at a time.  </p>
           </div>
-          <img src="/img/starpink.png" alt="" class="vb-star" />
         </div>
       </div>
     </section>
@@ -109,8 +108,8 @@ const upcomingWorkshops = [
     
         <div class="service-card">
           <div class="service-img-wrap">
-            <img src="/img/collage-visual-system.JPG" alt="Brand Illustration" class="service-img" />
-            <img src="/img/collageafternoon.png" alt="Collage Workshops hover" class="service-img service-img--hover" />
+            <img src="/img/collageservice.webp" alt="Brand Illustration" class="service-img" />
+            <img src="/img/Collageafternoondokk1.webp" alt="Collage Workshops hover" class="service-img service-img--hover" />
           </div>
             <h3 class="service-title">Collage Workshops</h3>
           <p class="service-desc">Hands-on workshops exploring creativity, storytelling, and self-expression.</p>
@@ -118,8 +117,8 @@ const upcomingWorkshops = [
         </div>
         <div class="service-card">
           <div class="service-img-wrap">
-  <img src="/img/productstorytelling.png" alt="Product Storytelling" class="service-img service-img--base" />
-  <img src="/img/brandillustration.png" alt="Product Storytelling hover" class="service-img service-img--hover" />
+  <img src="/img/productstorytelling.webp" alt="Product Storytelling" class="service-img service-img--base" />
+  <img src="/img/brandillustration.webp" alt="Product Storytelling hover" class="service-img service-img--hover" />
 </div>
           <h3 class="service-title">Product Storytelling</h3>
           <p class="service-desc">Creative campaigns that use handmade art to tell your product story in an analog, human way.</p>
