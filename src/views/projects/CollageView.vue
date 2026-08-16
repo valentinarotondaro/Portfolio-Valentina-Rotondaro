@@ -986,14 +986,14 @@ const upcomingWorkshops = [
 
   .deco-washitape {
     width: 60px;
-    top: -60px;
+    top: -40px;
     left: -10px;
     transform: rotate(1deg); 
   }
 
   .deco-star-tl {
     width: 45px;
-    top: -35px;
+    top: -30px;
     right: 5px;
   }
 
@@ -1009,7 +1009,7 @@ const upcomingWorkshops = [
 
   .deco-star-br {
     width: 50px;
-    bottom: -15px;
+    bottom: 40px;
     left:25px;
   }
 
@@ -1103,14 +1103,14 @@ const upcomingWorkshops = [
     width: 190px;
     height: 175px;
     top: 0;
-    right: 10px;
+    right: -5px;
   }
 
   .wi-polaroid--bottom {
     width: 175px;
     height: 160px;
     bottom: 85px;
-    right: 160px;
+    right: 120px;
   }
 
   .wi-deco { display: none; }

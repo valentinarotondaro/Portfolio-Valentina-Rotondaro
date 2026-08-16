@@ -19,18 +19,18 @@ const copyEmail = () => {
         <div class="contact-left">
           <h1 class="contact-title">Let's connect!</h1>
           <div class="contact-links">
-           <div class="contact-email-wrap">
-              <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
-               <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-              </button>
-            </div>
-            <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
-            <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
-          </div>
+  <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
+  <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
+  <div class="contact-email-wrap">
+    <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
+    <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+  </div>
+</div>
         </div>
 
         <div class="contact-right">
@@ -228,12 +228,14 @@ const copyEmail = () => {
   order: 1;
   width: 100%;
   text-align: center;
+  font-size: 52px;
+  margin-bottom: 0;
 }
-
 .contact-right {
   order: 2;
   margin: 20px auto 0;
   padding: 0;
+  height: 250px;
 }
 
 .contact-links {
@@ -292,6 +294,17 @@ const copyEmail = () => {
     top: 305px;
     right: 5px;
   }
+    .contact-email {
+  font-size: 15px;
+}
+
+.contact-social {
+  font-size: 15px;
+}
+.copy-btn svg {
+  width: 13px;
+  height: 13px;
+}
 }
 
 @media (max-width: 500px) {
@@ -306,7 +319,7 @@ const copyEmail = () => {
 
   .contact-right {
     width: 260px;
-    height: 360px;
+    height: 320px;
   }
 
   .contact-sticker-text {
@@ -337,5 +350,16 @@ const copyEmail = () => {
     right: 20px;
     z-index: 1;
   }
+   .contact-email {
+  font-size: 13px;
+}
+
+.contact-social {
+  font-size: 13px;
+}
+.copy-btn svg {
+  width: 11px;
+  height: 11px;
+}
 }
 </style>

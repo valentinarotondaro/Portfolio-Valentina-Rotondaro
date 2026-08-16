@@ -247,17 +247,18 @@ onMounted(() => {
           <p class="contact-sub">If my work made sense</p>
           <h2 class="contact-title">Let's talk!</h2>
           <div class="contact-links">
-            <div class="contact-email-wrap">
-              <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
-              <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-              </button>
-            </div>
-            <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
-            <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
-          </div>
+  <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
+  <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
+  <div class="contact-email-wrap">
+    <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
+    <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+  </div>
+</div>
         </div>
         <div class="contact-right">
           <img src="/img/valpolaroid.png" alt="Valen" class="contact-photo" />
@@ -845,7 +846,7 @@ onMounted(() => {
 
   .about-inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 0px;
   }
 .about-left {
     position: relative;
@@ -904,11 +905,6 @@ onMounted(() => {
   }
 
   /* SKILLS */
-  .skills-pile-container {
-    padding-top: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
 
   .skill-tag {
     animation: none;
@@ -918,11 +914,19 @@ onMounted(() => {
     padding: 8px 16px;
   }
 
-  .skills-heading {
-    font-size: 30px;
-    white-space: normal;
-    font-weight: 450;
-  }
+ .skills-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-heading {
+  order: 1;
+  margin: 0 0 24px 0;
+}
+
+.skills-pile-container {
+  order: 2;
+}
 
   .beyond-grid {
     position: relative;
@@ -941,19 +945,25 @@ onMounted(() => {
   }
 
   /* CV SECTION */
+
+  .cv-section {
+    padding: 0px 5% 60px;
+  }
   .cv-inner {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 .cv-title {
     font-size: 32px;
     font-weight: 450;
     text-align: center;
-    margin: 0 auto 24px auto;
+    margin: 0 auto -10px auto;
     max-width: 100%;
   }
 
   .cv-arrow-wrap {
     justify-content: center;
+    padding: -20px 0 0 0;
   }
 
   .cv-check {
@@ -962,7 +972,7 @@ onMounted(() => {
   }
 
   .cv-arrow {
-    width: 55px;
+    width: 50px;
     margin-top: 20px;
     transform: scaleX(-1) rotate(360deg);
   }
@@ -1023,6 +1033,17 @@ onMounted(() => {
     top: 245px;
     right: 30px;
   }
+  .contact-email {
+  font-size: 15px;
+}
+
+.contact-social {
+  font-size: 15px;
+}
+.copy-btn svg {
+  width: 13px;
+  height: 13px;
+}
 }
 
 @media (max-width: 500px) {
@@ -1144,5 +1165,16 @@ onMounted(() => {
     top: 200px;
     right: 20px;
   }
+  .contact-email {
+  font-size: 13px;
+}
+
+.contact-social {
+  font-size: 13px;
+}
+.copy-btn svg {
+  width: 11px;
+  height: 11px;
+}
 }
 </style>

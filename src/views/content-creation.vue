@@ -95,7 +95,7 @@ function copyEmail() {
 <!-- ─── HERO ──────────────────────────────────────── -->
 <section class="hero">
   <h1 class="hero-title">Valen Rotondaro</h1>
-  <p class="hero-subtitle-tag">Content creation Portfolio</p>
+  <p class="hero-subtitle-tag">Content Creator</p>
 <div class="hero-content-row">
     <div class="hero-photo-wrap">
       <img src="/img/herostar.png" alt="" class="hero-star hero-star--big" />
@@ -217,18 +217,18 @@ function copyEmail() {
           <p class="contact-sub">If my work made sense</p>
           <h2 class="contact-title">Let's talk!</h2>
           <div class="contact-links">
-            <div class="contact-email-wrap">
-              <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
-               <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-              </button>
-            </div>
-            <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
-            <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
-          </div>
+  <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
+  <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
+  <div class="contact-email-wrap">
+    <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
+    <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+  </div>
+</div>
         </div>
 
         <div class="contact-right">
@@ -503,16 +503,16 @@ function copyEmail() {
 
 .btn-outline {
   display: inline-block;
-  padding: 12px 28px;
+  padding: 8px 25px;
   background: #D9FB60;
   color: #111;
   border: none;
   border-radius: 50px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: -20px;
   text-decoration: none;
   transition: transform 0.2s;
@@ -860,6 +860,18 @@ function copyEmail() {
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .cc-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero { order: 1; }
+.brands-section { order: 2; }
+.niches-section { order: 3; }
+.bio-section { order: 4; }
+.videos-section { order: 5; }
+.contact-section { order: 6; }
+
   .hero { padding: 60px 5% 30px; }
   .hero-title { font-size: 48px; margin-bottom: 0px; text-align: center; }
   .hero-subtitle-tag { font-size: 16px; margin:10px 0 32px 0; text-align: center; }
@@ -901,22 +913,22 @@ function copyEmail() {
     left: -50px;
   }
 
-  .hero-search-deco {
-    position: absolute;
-    top: 10%;
-    left: 100px;
-    width: 120px;
-  }
+.hero-search-deco {
+  position: absolute;
+  top: 10%;
+  left: 130px;
+  width: 110px;
+}
 
     .search-text {
     font-size: 9px;
   }
 .hero-tools {
   margin-top: -20px;
-      gap: 6px;
-    flex-wrap: nowrap;
-    justify-content: center;
-      margin-left: 50px;
+  gap: 6px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-left: 25px;
   }
 
   .tool-icon-img { width: 40px; height: 40px; }
@@ -936,13 +948,13 @@ function copyEmail() {
   }
 
   .skill-pill {
-    font-size: 11px;
-    padding: 6px 14px;
-  }
+  font-size: 7px;
+  padding: 4px 10px;
+}
 
   .brand-cta-strip { margin-top: 32px; }
   .brand-cta-strip p { white-space: normal; font-size: 14px; }
-
+  .bio-section { padding-bottom: 10px; }
   .bio-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
   .about-label { margin-left: 0; text-align: center; font-size: 26px; }
   .bio-body { width: 100%; margin-left: 0; margin-bottom: 0; font-size: 16px; text-align: justify; }
@@ -954,14 +966,13 @@ function copyEmail() {
   .brands-grid { gap: 16px; }
   .brand-logo { width: 100px; height: 55px; }
 
-  .niches-section { padding: 60px 5%; }
+  .niches-section { padding-top: 40px; padding-bottom: 0px; }
   .niches-web { max-width: 380px; height: 320px; }
   .niches-title { font-size: 32px; }
   .niche-orbit .niche-pill { top: -140px; font-size: 12px; padding: 8px 16px; }
-
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .video-cat-title { font-size: 32px; }
-
+.videos-section { padding-top: 20px; padding-bottom: 10px; }
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
   .contact-title { font-size: 52px; text-align: center; }
   .contact-left { align-items: center; text-align: center; }
@@ -973,11 +984,22 @@ function copyEmail() {
   .contact-locationnote { width: 130px; top: 55px; right: -15px; }
   .contact-cvnote { width: 130px; top: 250px; left: -30px; }
   .contact-collage { width: 95px; top: 245px; right: 30px; }
+  .contact-email {
+  font-size: 15px;
+}
+
+.contact-social {
+  font-size: 15px;
+}
+.copy-btn svg {
+  width: 13px;
+  height: 13px;
+}
 }
 
 @media (max-width: 500px) {
   .hero-title { font-size: 36px; }
-  .hero-subtitle-tag { font-size: 11px; }
+  .hero-subtitle-tag { font-size: 14px; }
 
 .hero-photo-wrap {
   width: 260px;
@@ -988,14 +1010,14 @@ function copyEmail() {
 }
 .hero-star--big { width: 38px; top: -16px; right: -22px; }
 .hero-star--small { width: 30px; left: -22px; }
-  .folder { width: 110px; top: 50px; left: -5px; }
-  .hero-search-deco { width: 105px; left: 5px; top: 5px; transform: rotate(-4deg);}
+  .folder { width: 100px; top: 50px; left: -5px; }
+  .hero-search-deco { width: 105px; left: 15px; top: -10px; transform: rotate(-4deg);}
 
   .tool-icon-img { width: 34px; height: 34px; }
   .tool-icon-img--capcut { width: 50px; height: 50px; }
 
   .skills-list { align-items: center; }
-  .skill-pill { font-size: 13px; }
+  .skill-pill { font-size: 9px; }
   .brand-cta-strip p { font-size: 13px; }
   .bio-body { font-size: 15px; }
   .about-label { font-size: 22px; }
@@ -1016,5 +1038,16 @@ function copyEmail() {
   .contact-locationnote { width: 105px; top: 45px; right: -10px; }
   .contact-cvnote { width: 105px; top: 205px; left: -20px; }
   .contact-collage { width: 78px; top: 200px; right: 20px; }
+  .contact-email {
+  font-size: 13px;
+}
+
+.contact-social {
+  font-size: 13px;
+}
+.copy-btn svg {
+  width: 11px;
+  height: 11px;
+}
 }
 </style>
