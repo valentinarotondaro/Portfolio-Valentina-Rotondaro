@@ -1,3 +1,7 @@
+<script setup>
+import ProjectFooter from './ProjectFooter.vue';
+</script>
+
 <template>
   <div class="case-study">
 
@@ -112,13 +116,7 @@
 
       </section>
 
-      <footer class="case-footer">
-        <div class="pagination-wrapper">
-          <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-          <router-link to="/portfolio/amada-amiga" class="footer-link">Next project &gt;</router-link>
-        </div>
-      </footer>
-
+    <ProjectFooter next-to="/portfolio/itinero" />
     </main>
   </div>
 </template>
@@ -186,9 +184,16 @@
   margin-bottom: 80px;
 }
 
+.section-hero {
+  padding: 0;
+}
+
 .main-hero-img {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border-radius: 10px;
+  display: block;
 }
 
 /* ─── CASE SECTIONS ─────────────────────────────────────── */
@@ -308,29 +313,6 @@
   text-decoration: none;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 0 0 20px 0;
-}
-
-.pagination-wrapper {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 40px;
-}
-
-.footer-link {
-  font-size: 28px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
 
@@ -347,9 +329,16 @@
   .strategy-grid {
     grid-template-columns: 1fr;
   }
+  .section-hero {
+  padding: 0;
+}
 }
 
 @media (max-width: 500px) {
+
+  .section-hero {
+  padding: 0;
+}
   .top-nav {
     padding: 20px 5%;
   }
@@ -370,8 +359,6 @@
     font-size: 22px;
   }
 
-  .footer-link {
-    font-size: 20px;
-  }
+
 }
 </style>

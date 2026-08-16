@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-
+import ProjectFooter from './ProjectFooter.vue';
 
 const someVideos = [
   "https://player.vimeo.com/video/1124840298?h=e4f3e1cc75&background=1",
@@ -128,12 +128,7 @@ onUnmounted(() => {
 
     </main>
 
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        <router-link to="/portfolio/royal-library" class="footer-link">Next project &gt;</router-link>
-      </div>
-    </footer>
+    <ProjectFooter next-to="/portfolio/royal-library" />
 
   </div>
 </template>
@@ -389,31 +384,6 @@ onUnmounted(() => {
   margin: 80px 0;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 30px 5%;
-  margin-top: 30px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 850px) {
@@ -458,9 +428,7 @@ onUnmounted(() => {
     margin: 60px 0;
   }
 
-  .footer-link {
-    font-size: 22px;
-  }
+
 }
 
 @media (max-width: 500px) {
@@ -486,10 +454,6 @@ onUnmounted(() => {
 
   .some-mid-img {
     height: 220px;
-  }
-
-  .footer-link {
-    font-size: 18px;
   }
 }
 </style>

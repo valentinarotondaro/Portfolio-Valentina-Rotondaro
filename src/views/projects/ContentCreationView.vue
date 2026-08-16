@@ -3,50 +3,64 @@ import { ref } from 'vue';
 
 const contentWork = ref([
   {
-    category: 'UGC',
-    videos: [
-      "https://player.vimeo.com/video/1118478920?h=af9b6f0bab&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117766965?h=963a2edc08&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117806411?h=a7f3765b75&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5&background=1&autoplay=1&loop=1&muted=1"
-    ]
-  },
-  {
     category: 'Tutorials',
     videos: [
-      "https://player.vimeo.com/video/1143891592?h=f2822c00ed&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117810490?h=b2d3a3f6d4&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1118506149?h=bcca644131&background=1&autoplay=1&loop=1&muted=1"
-    ]
+      "https://player.vimeo.com/video/1218497342",
+      "https://player.vimeo.com/video/1218498178",
+      "https://player.vimeo.com/video/1218498151",
+      "https://player.vimeo.com/video/1143892207?h=6d94e8a9a5",
+    ],
   },
   {
-    category: 'Inspiration',
+    category: 'Stationary',
     videos: [
-      "https://player.vimeo.com/video/1117805604?h=56fde2d074&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117806411?h=a7f3765b75&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1118512621?h=02bb452692&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1118516919?h=24ed8a6dd0&background=1&autoplay=1&loop=1&muted=1"
-    ]
+      "https://player.vimeo.com/video/1218498163",
+      "https://player.vimeo.com/video/1218498153",
+      "https://player.vimeo.com/video/1117810490?h=b2d3a3f6d4",
+      "https://player.vimeo.com/video/1118512621?h=02bb452692",
+      "https://player.vimeo.com/video/1117805604?h=56fde2d074",
+      "https://player.vimeo.com/video/1118506149?h=bcca644131",
+      "https://player.vimeo.com/video/1218498152",
+      "https://player.vimeo.com/video/1218498150",
+    ],
   },
   {
-    category: 'Tourism',
+    category: 'Color Hunting',
     videos: [
-      "https://player.vimeo.com/video/1143891411?h=f9faef5ec5&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143889999?h=a67103b18f&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143890733?h=aa9b5f70bb&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1143891138?h=d32f490dd3&background=1&autoplay=1&loop=1&muted=1"
-    ]
+      "https://player.vimeo.com/video/1218498177",
+      "https://player.vimeo.com/video/1218498166",
+      "https://player.vimeo.com/video/1218498164",
+      "https://player.vimeo.com/video/1218498166",
+    ],
   },
   {
-    category: 'Hospitality',
+    category: 'UGC',
     videos: [
-      "https://player.vimeo.com/video/1117860728?h=921b1349bc&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117864900?h=38cb2cea56&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117864183?h=507b8f035c&background=1&autoplay=1&loop=1&muted=1",
-      "https://player.vimeo.com/video/1117862027?h=1725f1ad98&background=1&autoplay=1&loop=1&muted=1"
-    ]
-  }
+      "https://player.vimeo.com/video/1218501591",
+      "https://player.vimeo.com/video/1118478920?h=af9b6f0bab",
+      "https://player.vimeo.com/video/1117766965?h=963a2edc08",
+      "https://player.vimeo.com/video/1117806411?h=a7f3765b75",
+    ],
+  },
+  {
+    category: 'Travel',
+    videos: [
+      "https://player.vimeo.com/video/1143891411?h=f9faef5ec5",
+      "https://player.vimeo.com/video/1143889999?h=a67103b18f",
+      "https://player.vimeo.com/video/1143890733?h=aa9b5f70bb",
+      "https://player.vimeo.com/video/1143891138?h=d32f490dd3",
+    ],
+  },
+  {
+    category: 'Experiences',
+    videos: [
+      "https://player.vimeo.com/video/1117860728?h=921b1349bc",
+      "https://player.vimeo.com/video/1117864900?h=38cb2cea56",
+      "https://player.vimeo.com/video/1117864183?h=507b8f035c",
+      "https://player.vimeo.com/video/1117862027?h=1725f1ad98",
+      "https://player.vimeo.com/video/1218498165",
+    ],
+  },
 ]);
 </script>
 

@@ -69,7 +69,7 @@ const closeMenu = () => { menuOpen.value = false }
 }
 
 .logo img {
-  height: 40px;
+  height: 60px;
   width: auto;
 }
 
@@ -182,20 +182,24 @@ const closeMenu = () => { menuOpen.value = false }
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 24px 24px 32px 24px;
+  padding: 18px 20px 24px 20px;
     margin-top: 20px;
   }
 
   .footer-logo img {
-    height: 32px;
+    height: 22px;
   }
 
   .social-links {
     gap: 16px;
   }
 
+  .logo img {
+  height: 20px;
+}
+
   .social-links img {
-    height: 20px;
+    height: 25px;
   }
 }
 </style>

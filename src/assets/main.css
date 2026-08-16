@@ -187,6 +187,10 @@ html {
         font-size: 16px;
     }
 
+    .logo img {
+  height: 60px;
+  width: auto;
+}
 
     .hero {
         padding: 0 10%;
@@ -229,5 +233,12 @@ html {
     padding: 24px 20px;
     margin-top: auto;      /* se pega al fondo pero sin espacio vacío */
     text-align: left;
+  }
+
+  .footer-logo img {
+    height: 60px;
+  } 
+  .social-links img {
+    height: 15px;
   }
 }

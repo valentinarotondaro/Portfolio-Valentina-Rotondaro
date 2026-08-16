@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -72,6 +72,28 @@ const getFixedStyle = (index, skill) => ({
   '--rotation':   `${skill.rotate}deg`,
   '--x-offset':   `${skill.xOffset}px`,
   '--y-offset':   `${skill.yOffset}px`,
+});
+
+// ─── SKILLS PICKER (mobile) ───────────────────────────────
+const skillPickerIndex = ref(0);
+let skillPickerInterval = null;
+
+onMounted(() => {
+  skillPickerInterval = setInterval(() => {
+    skillPickerIndex.value = (skillPickerIndex.value + 1) % skillsData.length;
+  }, 1800);
+});
+
+onUnmounted(() => {
+  clearInterval(skillPickerInterval);
+});
+
+const visibleSkills = computed(() => {
+  const total = skillsData.length;
+  return [-2, -1, 0, 1, 2].map(offset => {
+    const idx = ((skillPickerIndex.value + offset) % total + total) % total;
+    return { text: skillsData[idx].text, distance: Math.abs(offset) };
+  });
 });
 
 // ─── TOOLTIP ─────────────────────────────────────────────
@@ -147,10 +169,11 @@ onMounted(() => {
           <img src="/img/collage.png" alt="" class="about-star" />
         </div>
         <div class="about-right">
-<h2 class="about-title">Hi there! I'm <span class="about-title-pink">Valen</span></h2>          <p class="about-desc">
-            Driven by a fascination with human connection, I combine my sociology roots with multimedia design to bridge analytical thinking and empathy. I don't just build screens, I create warm, intuitive, and inclusive experiences designed for real people.
-          </p>
-        </div>
+  <h2 class="about-title">Hi there! I'm <span class="about-title-pink">Valen</span></h2>
+  <p class="about-desc">
+    Driven by a fascination with human connection, I combine my sociology roots with multimedia design to bridge analytical thinking and empathy. I don't just build screens, I create warm, intuitive, and inclusive experiences designed for real people.
+  </p>
+</div>
       </div>
     </section>
 
@@ -200,17 +223,27 @@ onMounted(() => {
 
     <!-- ─── SKILLS ───────────────────────────────────────── -->
     <section class="skills-section">
-      <div class="skills-content">
-        <div class="skills-pile-container">
-          <span
-            v-for="(skill, index) in skillsData"
-            :key="index"
-            class="skill-tag"
-            :style="getFixedStyle(index, skill)"
-          >{{ skill.text }}</span>
-        </div>
-        <h2 class="skills-heading">I bring a diverse skillset to the table!</h2>
-      </div>
+     <div class="skills-content">
+  <div class="skills-pile-container">
+    <span
+      v-for="(skill, index) in skillsData"
+      :key="index"
+      class="skill-tag"
+      :style="getFixedStyle(index, skill)"
+    >{{ skill.text }}</span>
+  </div>
+
+  <div class="skills-picker">
+    <div
+      v-for="(item, i) in visibleSkills"
+      :key="i"
+      class="picker-item"
+      :class="`picker-item--dist${item.distance}`"
+    >{{ item.text }}</div>
+  </div>
+
+  <h2 class="skills-heading">I bring a diverse skillset to the table!</h2>
+</div>
     </section>
 
     <!-- ─── CV / VIDEO ───────────────────────────────────── -->
@@ -430,6 +463,10 @@ onMounted(() => {
 .skills-section {
   padding: 0px 5% 80px;
   background: #fff;
+}
+
+.skills-picker {
+  display: none;
 }
 
 .skills-content {
@@ -843,14 +880,33 @@ onMounted(() => {
   .about-section {
     padding: 40px 5%;
   }
+.about-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-  .about-inner {
-    grid-template-columns: 1fr;
-    gap: 0px;
-  }
+.about-right {
+  display: contents;
+}
+
+.about-title {
+  order: 1;
+}
+
+.about-left {
+  order: 2;
+}
+
+.about-desc {
+  order: 3;
+  text-align: justify;
+  margin-top: -50px;
+  margin-bottom: 5px;
+}
 .about-left {
     position: relative;
-    width: 300px;
+    width: 290px;
     height: 372px;
     margin: 0 auto;
     align-items: center;
@@ -900,50 +956,77 @@ onMounted(() => {
 
   .about-title {
     font-size: 40px;
-    margin: 0;
+    margin-top: -10px;
     text-align: center;
   }
 
-  /* SKILLS */
-
-  .skill-tag {
-    animation: none;
-    opacity: 1 !important;
-    transform: none !important;
-    font-size: 14px;
-    padding: 8px 16px;
+  .skills-section {
+    padding: 20px 5% 30px;
   }
+ .skill-tag {
+  display: none;
+}
 
- .skills-content {
+.skills-content {
   display: flex;
   flex-direction: column;
 }
 
 .skills-heading {
   order: 1;
-  margin: 0 0 24px 0;
+    margin-top: 0 !important;
+  margin-bottom: 16px;
+    padding-top: 0;
+
+}
+
+.skills-picker {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0 24px;
+}
+
+.picker-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+  background: #D9FB60;
+  padding: 8px 22px;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: opacity 0.6s ease, transform 0.6s ease, font-weight 0.6s ease;
 }
 
 .skills-pile-container {
-  order: 2;
+  display: none;
+}
+.picker-item--dist0 {
+  opacity: 1;
+  transform: scale(1.1);
+  font-weight: 500;
 }
 
-  .beyond-grid {
-    position: relative;
-    width: 700px;
-    max-width: none;
-    height: 480px;
-    left: 50%;
-    margin: -108px 0 -108px -350px;
-    transform: scale(0.55);
-    transform-origin: center center;
-  }
+.picker-item--dist1 {
+  opacity: 0.45;
+  transform: scale(0.9);
+}
 
-  .beyond-title {
-    font-size: 34px;
-    margin-bottom: 32px;
-  }
+.picker-item--dist2 {
+  opacity: 0.15;
+  transform: scale(0.8);
+}
 
+.beyond-grid {
+  display: none;
+}
+
+.beyond-title {
+  display: none;
+}
   /* CV SECTION */
 
   .cv-section {
@@ -1101,12 +1184,11 @@ onMounted(() => {
     font-size: 15px;
   }
 .beyond-grid {
-    margin: -139px 0 -139px -350px;
-    transform: scale(0.42);
+    display: none;
   }
 
   .beyond-title {
-    font-size: 26px;
+display: none;
   }
 
   .skills-heading {
