@@ -47,15 +47,8 @@ onUnmounted(() => {
         <h1>Aarhus City Welcome</h1>
       </header>
 
-      <section class="hero">
-  <div class="some-item hero-item">
-    <iframe 
-      src="https://player.vimeo.com/video/1124840298?h=e4f3e1cc75&background=1"
-      frameborder="0" 
-      allow="autoplay; fullscreen" 
-      class="vimeo-embed video-zoom"
-    ></iframe>
-  </div>
+     <section class="hero">
+  <img src="/img/citywelcome.webp" alt="Aarhus City Welcome" class="hero-img" />
 </section>
 
       <section class="section-grid">
@@ -125,10 +118,10 @@ onUnmounted(() => {
         <h2 class="section-label">04. Results & Impact</h2>
         <p class="body-text">The workshop became a highlight of the Aarhus City Welcome event, producing a collective mural of diverse voices. It successfully introduced newcomers to the library's creative resources while building immediate social bonds.</p>
       </section>
-
+<ProjectFooter next-to="/portfolio/royal-library" />
     </main>
 
-    <ProjectFooter next-to="/portfolio/royal-library" />
+    
 
   </div>
 </template>
@@ -193,24 +186,13 @@ onUnmounted(() => {
 .hero {
   margin-bottom: 60px;
 }
-
-.hero-item {
-  position: relative;
+.hero-img {
   width: 100%;
   height: 60vh;
-  padding-bottom: 0 !important; /* cancela el 178% de .some-item */
-  background: #000;
+  object-fit: cover;
   border-radius: 12px;
-  overflow: hidden;
+  display: block;
 }
-
-.hero-item .video-zoom {
-  width: 100%;
-  left: 0;
-  transform: scale(4);
-  transform-origin: center center;
-}
-
 /* ─── SHARED LABELS ─────────────────────────────────────── */
 .section-label {
   color: #888;
@@ -395,7 +377,7 @@ onUnmounted(() => {
     padding: 0 !important;
   }
 
-  .hero-video {
+  .hero-img {
     height: 40vh;
   }
 

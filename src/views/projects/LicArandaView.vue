@@ -1,4 +1,5 @@
 <script setup>
+import ProjectFooter from './ProjectFooter.vue';
 const imgVisual = '/img/arandastyles.png';
 const imghome = '/img/arandaheroweb.webp';
 </script>
@@ -92,15 +93,10 @@ const imghome = '/img/arandaheroweb.webp';
           <br />
         </div>
       </section>
+  <ProjectFooter next-to="/portfolio/amada-amiga" />
 
     </main>
 
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        <router-link to="/portfolio/collage-afternoon" class="footer-link">Next project &gt;</router-link>
-      </div>
-    </footer>
 
   </div>
 </template>
@@ -282,32 +278,6 @@ const imghome = '/img/arandaheroweb.webp';
   flex: 1;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 30px 5%;
-  margin-top: 30px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
   .project-intro-header h1 {
@@ -349,9 +319,6 @@ const imghome = '/img/arandaheroweb.webp';
     height: auto;
   }
 
-  .footer-link {
-    font-size: 22px;
-  }
 }
 
 @media (max-width: 500px) {
@@ -371,8 +338,6 @@ const imghome = '/img/arandaheroweb.webp';
     font-size: 17px;
   }
 
-  .footer-link {
-    font-size: 18px;
-  }
+
 }
 </style>

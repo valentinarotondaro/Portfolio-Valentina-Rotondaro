@@ -181,7 +181,7 @@ import ProjectFooter from './ProjectFooter.vue';
 
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .section-hero {

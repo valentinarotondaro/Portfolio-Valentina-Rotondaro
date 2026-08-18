@@ -1,39 +1,22 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-
-const heroRef = ref(null);
-
+import ProjectFooter from './ProjectFooter.vue';
 const dualPhotos = [
   '/img/collagesome.JPEG',
   '/img/collagesome.jpg'
 ];
-
 const reviews = [
   { text: '"Thank you for this beautiful workshop that allowed us to connect with our emotions and imagination. The power of taking flight through collage!"', author: 'Virginia, Argentina' },
   { text: '"Inspiring, creative, and liberating. I felt so comfortable. Thank you for such a fantastic experience!"', author: 'Sofia, España' },
   { text: '"Thank you for creating a space for us to meet, share, and create together. Having a place like this when you are living so far from home is so important."', author: 'Regi, Argentina' }
 ];
 const activeReviewIndex = ref(0);
-
 let reviewInterval;
-
 onMounted(() => {
-  const video = heroRef.value;
-  if (video) {
-    video.currentTime = 7;
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= 46) {
-        video.currentTime = 7;
-        video.play();
-      }
-    });
-  }
-
   reviewInterval = setInterval(() => {
     activeReviewIndex.value = (activeReviewIndex.value + 1) % reviews.length;
   }, 5000);
 });
-
 onUnmounted(() => {
   clearInterval(reviewInterval);
 });
@@ -53,14 +36,9 @@ onUnmounted(() => {
         <h1>Collage & Migrant Emotions</h1>
       </header>
 
-      <section class="hero">
-        <video
-          ref="heroRef"
-          src="/img/collagemigrant-hero.MP4"
-          autoplay loop muted playsinline
-          class="hero-video"
-        ></video>
-      </section>
+<section class="hero">
+  <img src="/img/migrantemotionsworkshop.webp" alt="Collage & Migrant Emotions Workshop" class="hero-img" />
+</section>
 
       <section class="section-grid">
         <div class="text-col">
@@ -137,15 +115,10 @@ onUnmounted(() => {
         <h2 class="section-label">04. Results & Impact</h2>
         <p class="body-text">Through collage, we turned the migration experience into art. This workshop gave participants a space to reflect, create, and, most importantly, connect with a community that shares their journey.</p>
       </section>
-
+      <ProjectFooter next-to="/portfolio/business-dedk" />
     </main>
 
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        <router-link to="/portfolio/under" class="footer-link">Next project &gt;</router-link>
-      </div>
-    </footer>
+
 
   </div>
 </template>
@@ -211,12 +184,12 @@ onUnmounted(() => {
   margin-bottom: 60px;
 }
 
-.hero-video {
+.hero-img {
   width: 100%;
   height: 65vh;
   object-fit: cover;
-  object-position: 50% 20%;
   border-radius: 12px;
+  display: block;
 }
 
 /* ─── SHARED LABELS ─────────────────────────────────────── */
@@ -399,31 +372,6 @@ onUnmounted(() => {
   margin: 80px 0;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 30px 5%;
-  margin-top: 30px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 850px) {
@@ -436,7 +384,7 @@ onUnmounted(() => {
     padding: 0;
   }
 
-  .hero-video {
+  .hero-img {
     height: 40vh;
   }
 
@@ -471,9 +419,6 @@ onUnmounted(() => {
     flex: unset;
   }
 
-  .footer-link {
-    font-size: 22px;
-  }
 }
 
 @media (max-width: 500px) {
@@ -502,8 +447,6 @@ onUnmounted(() => {
     height: 220px;
   }
 
-  .footer-link {
-    font-size: 18px;
-  }
+
 }
 </style>

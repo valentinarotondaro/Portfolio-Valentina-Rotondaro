@@ -1,4 +1,5 @@
 <script setup>
+import ProjectFooter from './ProjectFooter.vue';
 import { ref } from 'vue';
 
 const imgSketches = ref('/img/undersketches.jpg');
@@ -109,19 +110,8 @@ const imgIsotipo  = ref('/img/underisotipo.png');
           </div>
         </div>
       </section>
-
+ <ProjectFooter next-to="/portfolio/content-creation" />
     </main>
-
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/Portfolio" class="footer-link">
-          <span class="nav-arrow"><</span> Back to Works
-        </router-link>
-        <router-link to="/portfolio/itinero" class="footer-link">
-          <span class="project-name">Next project</span> <span class="nav-arrow">></span>
-        </router-link>
-      </div>
-    </footer>
 
   </div>
 </template>
@@ -171,7 +161,7 @@ const imgIsotipo  = ref('/img/underisotipo.png');
   letter-spacing: 2px;
   color: #888;
   display: block;
-  margin-bottom: 5px;
+  margin: 25px 0;
 }
 
 .project-intro-header h1 {
@@ -203,6 +193,7 @@ const imgIsotipo  = ref('/img/underisotipo.png');
   width: 100%;
   height: 100%;
   object-fit: cover;
+  margin-bottom: 20px;
 }
 
 /* ── DUAL GALLERY ── */
@@ -271,38 +262,6 @@ const imgIsotipo  = ref('/img/underisotipo.png');
 .hover-effect:hover {
   opacity: 0.9;
   transform: scale(1.01);
-}
-
-/* ── FOOTER ── */
-.case-footer {
-  padding: 30px 5%;
-  margin-top: 30px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  display: block;
-  margin-top: 10px;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
-
-.project-name {
-  font-weight: 450;
 }
 
 /* ── RESPONSIVE ── */
@@ -382,9 +341,5 @@ const imgIsotipo  = ref('/img/underisotipo.png');
     width: 100%;
   }
 
-  /* Footer */
-  .footer-link {
-    font-size: 20px;
-  }
 }
 </style>

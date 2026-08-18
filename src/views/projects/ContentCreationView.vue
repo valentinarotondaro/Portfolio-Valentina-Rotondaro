@@ -1,4 +1,5 @@
 <script setup>
+import ProjectFooter from './ProjectFooter.vue';
 import { ref } from 'vue';
 
 const contentWork = ref([
@@ -113,16 +114,8 @@ const contentWork = ref([
           </div>
         </div>
       </section>
-
+       <ProjectFooter next-to="/portfolio/collage-afternoon" />
     </main>
-
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        <router-link to="/portfolio/amada-amiga" class="footer-link">Next project &gt;</router-link>
-      </div>
-    </footer>
-
   </div>
 </template>
 
@@ -251,32 +244,6 @@ const contentWork = ref([
   object-fit: cover;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 30px 5%;
-  margin-top: 30px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 850px) {
   .section-grid {
@@ -310,8 +277,5 @@ const contentWork = ref([
     margin-bottom: 50px;
   }
 
-  .footer-link {
-    font-size: 20px;
-  }
 }
 </style>

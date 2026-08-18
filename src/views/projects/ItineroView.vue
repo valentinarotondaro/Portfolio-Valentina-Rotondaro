@@ -1,3 +1,7 @@
+<script setup>
+import ProjectFooter from './ProjectFooter.vue';
+</script>
+
 <template>
   <div class="case-study">
 
@@ -134,12 +138,7 @@
 
       </section>
 
-      <footer class="case-footer">
-        <div class="pagination-wrapper">
-          <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-          <router-link to="/portfolio/content-creation" class="footer-link">Next project &gt;</router-link>
-        </div>
-      </footer>
+      <ProjectFooter next-to="/portfolio/lic-aranda" />
 
     </main>
   </div>
@@ -371,28 +370,6 @@
   margin: 0;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 0 0 20px 0;
-}
-
-.pagination-wrapper {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 40px;
-}
-
-.footer-link {
-  font-size: 28px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
@@ -460,12 +437,5 @@
     height: 70px;
   }
 
-  .footer-link {
-    font-size: 20px;
-  }
-
-  .pagination-wrapper {
-    gap: 12px;
-  }
 }
 </style>

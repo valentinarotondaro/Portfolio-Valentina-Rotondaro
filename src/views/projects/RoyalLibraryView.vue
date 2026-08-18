@@ -1,37 +1,20 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-
-const heroRef = ref(null);
-
+import { ref, onMounted, onUnmounted } from 'vue';  
+import ProjectFooter from './ProjectFooter.vue';
 const dualPhotos = [
   '/img/royalchicas2.JPEG',
   '/img/royalchicas3.JPEG'
 ];
-
 const reviews = [
   { text: '"Collage has become such a meaningful and essential experience for us in Aarhus ♥ Thank you Valen for hosting it and inspire us to create, and thank you to every woman who created such a warm and beautiful environment. It was my first visit to the Royal Library, and it was absolutely amazing! Looking forward to the next one :)"', author: 'Cecilia, Argentina' }
 ];
 const activeReviewIndex = ref(0);
-
 let reviewInterval;
-
 onMounted(() => {
-  const video = heroRef.value;
-  if (video) {
-    video.currentTime = 2;
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= 7) {
-        video.currentTime = 2;
-        video.play();
-      }
-    });
-  }
-
   reviewInterval = setInterval(() => {
     activeReviewIndex.value = (activeReviewIndex.value + 1) % reviews.length;
   }, 5000);
 });
-
 onUnmounted(() => {
   clearInterval(reviewInterval);
 });
@@ -51,14 +34,9 @@ onUnmounted(() => {
         <h1>Collage Workshop | Royal Danish Library</h1>
       </header>
 
-      <section class="hero">
-        <video
-          ref="heroRef"
-          src="/img/royalhero.MP4"
-          autoplay loop muted playsinline
-          class="hero-video"
-        ></video>
-      </section>
+    <section class="hero">
+  <img src="/img/royaldanishlibrary.webp" alt="Collage Workshop at Royal Danish Library" class="hero-img" />
+</section>
 
       <section class="section-grid">
         <div class="text-col">
@@ -127,16 +105,8 @@ onUnmounted(() => {
         <h2 class="section-label">04. Results & Impact</h2>
         <p class="body-text">The workshop produced a stunning series of monochromatic works that showcased a powerful visual harmony. Beyond the art, it successfully repositioned the library as a vibrant hub for the international community; many participants discovered the space for the first time, fostering a lasting connection and a sense of belonging within the city's cultural heart.</p>
       </section>
-
+<ProjectFooter next-to="/portfolio/migrant-emotions" />
     </main>
-
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        <router-link to="/portfolio/migrant-emotions" class="footer-link">Next project &gt;</router-link>
-      </div>
-    </footer>
-
   </div>
 </template>
 
@@ -200,13 +170,12 @@ onUnmounted(() => {
 .hero {
   margin-bottom: 60px;
 }
-
-.hero-video {
+.hero-img {
   width: 100%;
   height: 65vh;
   object-fit: cover;
-  object-position: 10% 1%;
   border-radius: 12px;
+  display: block;
 }
 
 /* ─── SHARED LABELS ─────────────────────────────────────── */
@@ -377,32 +346,6 @@ onUnmounted(() => {
   margin: 80px 0;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 30px 5%;
-  margin-top: 30px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 850px) {
   .project-intro-header h1 {
@@ -413,7 +356,7 @@ onUnmounted(() => {
     padding: 0 !important;
   }
 
-  .hero-video {
+  .hero-img {
     height: 40vh;
   }
 
@@ -446,9 +389,7 @@ onUnmounted(() => {
     height: 200px;
   }
 
-  .footer-link {
-    font-size: 22px;
-  }
+ 
 }
 
 @media (max-width: 500px) {
@@ -476,8 +417,6 @@ onUnmounted(() => {
     height: 220px;
   }
 
-  .footer-link {
-    font-size: 18px;
-  }
+
 }
 </style>

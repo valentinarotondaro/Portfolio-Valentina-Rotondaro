@@ -18,12 +18,13 @@ defineProps({
 
 <style scoped>
 .case-footer {
-  padding: 30px 5%;
+  padding: 30px 0;
   margin-top: 30px;
 }
 
 .pagination-wrapper {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

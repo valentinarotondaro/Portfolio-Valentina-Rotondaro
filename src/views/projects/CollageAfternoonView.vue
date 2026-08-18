@@ -1,4 +1,5 @@
 <script setup>
+import ProjectFooter from './ProjectFooter.vue';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const imgResult = ref('/img/collage-final-works.JPG');
@@ -55,9 +56,9 @@ onUnmounted(() => {
         <h1>Collage Afternoon</h1>
       </header>
 
-      <section class="hero">
-        <video src="/img/collage-hero.MP4" autoplay loop muted playsinline class="hero-video"></video>
-      </section>
+   <section class="hero">
+  <img src="/img/Collageafternoondokk1.webp" alt="Collage Afternoon at Dokk1" class="hero-img" />
+</section>
 
       <section class="section-grid">
         <div class="text-col">
@@ -131,16 +132,9 @@ onUnmounted(() => {
           <p class="body-text">What began as a simple gathering evolved into "Collage Afternoon" to ensure a welcoming space for everyone. Today, it maintains a consistent attendance of 20-25 people. Beyond the art produced, the real success lies in the social fabric it creates: lasting friendships and a vibrant community in Aarhus.</p>
         </div>
       </section>
+    <ProjectFooter next-to="/portfolio/city-welcome" />
 
     </main>
-
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        <router-link to="/portfolio/city-welcome" class="footer-link">Next project &gt;</router-link>
-      </div>
-    </footer>
-
   </div>
 </template>
 
@@ -204,14 +198,13 @@ onUnmounted(() => {
 .hero {
   margin-bottom: 60px;
 }
-
-.hero-video {
+.hero-img {
   width: 100%;
   height: 60vh;
   object-fit: cover;
   border-radius: 12px;
+  display: block;
 }
-
 /* ─── SHARED LABELS ─────────────────────────────────────── */
 .section-label {
   color: #888;
@@ -389,33 +382,6 @@ onUnmounted(() => {
 .result-img:hover {
   transform: scale(1.01);
 }
-
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 30px 5%;
-  margin-top: 30px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
 
@@ -427,7 +393,7 @@ onUnmounted(() => {
     font-size: 40px;
   }
 
-  .hero-video {
+  .hero-img {
     height: 40vh;
   }
 
@@ -458,9 +424,6 @@ onUnmounted(() => {
     width: 100%;
   }
 
-  .footer-link {
-    font-size: 22px;
-  }
 }
 
 @media (max-width: 500px) {
@@ -489,8 +452,5 @@ onUnmounted(() => {
     height: 220px;
   }
 
-  .footer-link {
-    font-size: 18px;
-  }
 }
 </style>

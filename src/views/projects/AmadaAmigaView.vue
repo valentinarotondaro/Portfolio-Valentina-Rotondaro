@@ -1,4 +1,5 @@
 <script setup>
+import ProjectFooter from './ProjectFooter.vue';
 const heroImg = '/img/amadahero.png';
 const labelDetail = '/img/amadamockup.png';
 const processMoodboard = '/img/amada-moodboard.png';
@@ -55,15 +56,8 @@ const finalProduct = '/img/amadabox.png';
           <p class="body-text">This project explores the intersection of personal storytelling and product design. It shows how a simple object can become a container of emotions, honoring a person and connecting design with the most colorful parts of life.</p>
         </div>
       </section>
-
+<ProjectFooter next-to="/portfolio/under" />
     </main>
-
-    <footer class="case-footer">
-      <div class="pagination-wrapper">
-        <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
-        <router-link to="/portfolio/lic-aranda" class="footer-link">Next project &gt;</router-link>
-      </div>
-    </footer>
 
   </div>
 </template>
@@ -182,31 +176,6 @@ const finalProduct = '/img/amadabox.png';
   object-fit: cover;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────── */
-.case-footer {
-  padding: 60px 5%;
-  margin-top: 60px;
-}
-
-.pagination-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer-link {
-  font-size: 32px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-link:hover {
-  opacity: 0.5;
-}
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 850px) {
 
@@ -238,8 +207,6 @@ const finalProduct = '/img/amadabox.png';
     font-size: 16px;
   }
 
-  .footer-link {
-    font-size: 20px;
-  }
+
 }
 </style>
