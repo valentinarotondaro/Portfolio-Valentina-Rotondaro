@@ -1,5 +1,44 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { useFallingTags } from '../composables/useFallingTags';
+import { tagStyle } from '../utils/tagColors';
+
+// ─── HERO TAGS: physics (matter-js), shared with AboutView ───────
+// npm install matter-js
+const heroTags = [
+  'Video Editing',
+  'UX UI',
+  'AI integration',
+  'Content Creation',
+  'Branding',
+  'Workshop Facilitation',
+  'Visual Design',
+  'Digital marketing',
+];
+const { stageRef: tagsStage, setTagRef } = useFallingTags();
+
+// ─── HERO HOVER PHOTO ─────────────────────────────────────────
+// Positioned via JS (fixed + clamped to the viewport) instead of pure
+// CSS so it's never cropped off the top/side of the screen on a
+// shorter window — a plain CSS "open upward" was getting cut off.
+const introNameRef = ref(null);
+const heroPhotoVisible = ref(false);
+const heroPhotoStyle = ref({});
+const PHOTO_W = 185;
+const PHOTO_H = 230;
+const showIntroPhoto = () => {
+  const el = introNameRef.value;
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  let left = rect.left;
+  let top = rect.top - PHOTO_H - 16;
+  // Not enough room above? Clamp to just inside the viewport instead
+  // of letting it render off-screen (cropped).
+  top = Math.max(top, 12);
+  left = Math.min(Math.max(left, 12), window.innerWidth - PHOTO_W - 12);
+  heroPhotoStyle.value = { left: `${left}px`, top: `${top}px` };
+  heroPhotoVisible.value = true;
+};
 
 const recentFilters = [
   { label: 'All',              value: 'all'              },
@@ -9,6 +48,14 @@ const recentFilters = [
   { label: 'Content Creation', value: 'Content Creation' },
   { label: 'Workshops',        value: 'Workshops'        },
 ];
+
+// ─── RECENT WORKS FILTER: inline dropdown next to the title ──────
+const filterOpen = ref(false);
+const toggleFilter = () => { filterOpen.value = !filterOpen.value; };
+const pickFilter = (value) => { activeRecentFilter.value = value; filterOpen.value = false; };
+const activeFilterLabel = computed(() =>
+  recentFilters.find(f => f.value === activeRecentFilter.value)?.label ?? 'All'
+);
 const recentProjects = [
   { title: 'Business DE-DK', description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.', tags: ['Web Design', 'UX/UI'], image: '/img/businessregionhero.webp', link: '/portfolio/business-dedk' },
   {
@@ -23,7 +70,7 @@ const recentProjects = [
   { title: 'Amada amiga', description: 'Unique wine label design capturing the essence of a beloved friend.', tags: ['Visual Design'], image: '/img/amadaamigaproject.png', link: '/portfolio/amada-amiga' },
   { title: 'SoMe Content creation', description: 'Strategy and creation of engaging content for Instagram and TikTok.', tags: ['Content Creation'], image: '/img/someproject.webp', link: '/portfolio/content-creation' },
   { title: 'Under', description: 'Identity design for the Syddansk Erhvervsakademi student bar.', tags: ['Visual Design'], image: '/img/underhorizontal.png', link: '/portfolio/under' },
-  { title: 'Collage Afternoon', description: 'A collaborative and creative workshop held at the modern DOKK1 library.', tags: ['Workshops'], image: '/img/Collageafternoondokk1.JPG', link: '/portfolio/collage-afternoon' },
+  { title: 'Collage Afternoon', description: 'A collaborative and creative workshop held at the modern DOKK1 library.', tags: ['Workshops'], image: '/img/Collageafternoondokk1.JPG', device: 'none', link: '/portfolio/collage-afternoon' },
  ];
 
 const activeRecentFilter = ref('all');
@@ -41,22 +88,40 @@ const isComingSoon = (project) => project.link === null;
 
     <!-- ─── HERO ──────────────────────────────────────────── -->
     <section class="hero">
-      <img src="/img/washitape.png"       class="icon icon-folder"  alt="Folder" />
-<div class="hero-note-wrap">
-  <span class="hero-note-label">UX UI Designer</span>
-  <img src="/img/heronote.png" class="icon icon-arrow" alt="Arrow" />
-</div>      <img src="/img/clips.png"        class="icon icon-clips"   alt="Clips"  />
-      <img src="/img/smileyface.png" class="icon icon-coffee"  alt="Coffee" />
-      <img src="/img/herostar.png"       class="icon icon-camera"  alt="Camera" />
-      <img src="/img/heroscrap.png"        class="icon icon-figma"   alt="Figma"  />
+      <div class="hero-intro">
+        <span class="hero-intro-text">Hi! I'm</span>
+        <span
+          class="hero-intro-text hero-intro-name"
+          ref="introNameRef"
+          @mouseenter="showIntroPhoto"
+          @mouseleave="heroPhotoVisible = false"
+        >Valen Rotondaro</span>
+      </div>
 
-      <div class="hero-content">
-        <h1 class="hero-title">Hi! I'm <span class="highlight">Valen Rotondaro</span></h1>
-        <p class="hero-subtitle">From pixels to paper, I design experiences that connect.</p>
+      <transition name="toast-fade">
+        <img
+          v-if="heroPhotoVisible"
+          src="/img/valen-hover-photo.png"
+          alt="Valen Rotondaro"
+          class="hero-intro-photo"
+          :style="heroPhotoStyle"
+        />
+      </transition>
+
+      <h1 class="hero-title">From pixels to paper, I design experiences that connect.</h1>
+
+      <div class="hero-tags" ref="tagsStage">
+        <span
+          v-for="(tag, i) in heroTags"
+          :key="tag"
+          class="hero-tag"
+          :style="tagStyle(tag)"
+          :ref="el => setTagRef(el, i)"
+        >{{ tag }}</span>
       </div>
     </section>
 
-      <section class="hero-categories">
+      <section class="hero-categories" v-if="false">
       <router-link to="/Portfolio/" class="hero-cat">
         <div class="cat-img-wrap">
           <img src="/img/macfigma.png" alt="Multimedia Design" class="cat-img" />
@@ -81,18 +146,31 @@ const isComingSoon = (project) => project.link === null;
     </section>
 
     <section class="recent-works-section">
-  <h2 class="recent-works-title">Recent Works</h2>
+  <div class="recent-works-header">
+    <h2 class="recent-works-title">Recent Works</h2>
 
-  <div class="filter-group">
-    <button
-      v-for="filter in recentFilters"
-      :key="filter.value"
-      class="filter-tag"
-      :class="{ 'btn-active': activeRecentFilter === filter.value }"
-      @click="activeRecentFilter = filter.value"
-    >
-      {{ filter.label }}
-    </button>
+    <div class="rw-filter">
+      <button class="rw-filter-trigger" @click="toggleFilter" :aria-expanded="filterOpen">
+        <span>Category: {{ activeFilterLabel }}</span>
+        <svg width="12" height="8" viewBox="0 0 12 8" :class="{ 'rw-chev--open': filterOpen }" class="rw-chev">
+          <path d="M1 1L6 6L11 1" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div v-if="filterOpen" class="rw-filter-backdrop" @click="filterOpen = false"></div>
+
+      <div v-if="filterOpen" class="rw-filter-panel">
+        <button
+          v-for="filter in recentFilters"
+          :key="filter.value"
+          class="rw-filter-item"
+          :class="{ 'rw-filter-item--active': activeRecentFilter === filter.value }"
+          @click="pickFilter(filter.value)"
+        >
+          {{ filter.label }}
+        </button>
+      </div>
+    </div>
   </div>
 
   <div class="projects-grid">
@@ -132,121 +210,156 @@ const isComingSoon = (project) => project.link === null;
 <style scoped>
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero {
-  height: 100vh;
+  min-height: 92vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: relative;
-  margin-top: -160px;
-  padding-top: 150px;
-  overflow: hidden;
+  padding: 130px 5% 60px;
+  gap: 28px;
+}
+
+.hero-intro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-intro-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+}
+
+.hero-intro-name {
+  position: relative;
+  color: var(--pink);
+  cursor: default;
+}
+
+/* Positioned (left/top) from JS in showIntroPhoto(), clamped to the
+   viewport so it's always fully visible, never cropped. */
+.hero-intro-photo {
+  position: fixed;
+  width: 185px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  transform: rotate(-3deg);
+  pointer-events: none;
+  z-index: 200;
 }
 
 .hero-title {
-  font-size: 100px;
-  font-weight: 450;
+  font-size: 84px;
+  font-weight: 500;
   color: #000;
-  line-height: 0.9;
+  line-height: 1.04;
   letter-spacing: -0.03em;
   margin: 0;
+  max-width: 1180px;
 }
 
-.highlight {
-  color: var(--pink);
-}
-
-.hero-subtitle {
-  font-size: 30px;
-  color: #000;
-  max-width: 800px;
-  margin: 40px auto 0;
-  line-height: 1.3;
-}
-
-.hero-content h1::selection,
-.hero-content h1::-moz-selection,
-.hero-subtitle::selection {
+.hero-title::selection,
+.hero-title::-moz-selection {
   background-color: var(--lima);
   color: var(--black);
 }
 
-/* ─── FLOATING ICONS ────────────────────────────────────── */
-.icon {
-  position: absolute;
-  width: 70px;
-  height: auto;
-  transition: transform 0.3s ease;
-  transform-origin: center;
-  z-index: 0;
-}
-
-.icon:hover {
-  transform: rotate(var(--base-rot)) scale(1.1) rotate(var(--hover-tilt));
-}
-
-.icon-folder { width: 160px; top: 22%;    left: 15%;   --base-rot: -1deg; --hover-tilt:  10deg; }
-.icon-clips  { width:  80px; top: 50%;    left: 10%;   --base-rot: -7deg; --hover-tilt:  12deg; }
-.icon-coffee { width:  70px; top: 50%;    right:  9%;  --base-rot:  8deg; --hover-tilt:  -6deg; }
-.icon-camera { width: 160px; bottom:  8%; left: 13%;   --base-rot: -7deg; --hover-tilt:   9deg; }
-.icon-figma  { width: 120px; bottom: 10%; right: 15%;  --base-rot:  2deg; --hover-tilt:  -7deg; }
-
-.hero-note-wrap {
-  position: absolute;
-  width: 200px;
-  top: 10%;
-  right: 14%;
-  z-index: 0;
-  transition: transform 0.3s ease;
-  transform-origin: center;
-  --base-rot: 1deg;
-  --hover-tilt: -15deg;
-}
-.hero-note-wrap:hover {
-  transform: rotate(var(--base-rot)) scale(1.1) rotate(var(--hover-tilt));
-}
-.hero-note-wrap .icon-arrow {
-  position: static;
+/* ─── HERO TAGS (matter-js) ─────────────────────────────── */
+.hero-tags {
+  position: relative;
+  z-index: 50;
   width: 100%;
-  transition: none;
+  max-width: 900px;
+  height: 230px;
+  margin-top: 10px;
+  overflow: visible;
 }
-.hero-note-wrap .icon-arrow:hover { transform: none; }
-.hero-note-label {
+
+.hero-tag {
   position: absolute;
-  top:160px;
-  left: 53%;
-  transform: translateX(-50%) rotate(-4deg);
-  font-family: 'MyFont', sans-serif !important;
-  font-size: 30px;
-  letter-spacing: 0.04em;
-  color: black;
-  text-transform: uppercase;
+  top: 0;
+  left: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 25px;
+  border-radius: 999px;
   white-space: nowrap;
-  pointer-events: none;
+  will-change: transform;
+  opacity: 0;
+  cursor: grab;
+  touch-action: none;
+  animation: tagFadeIn 0.3s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.hero-tag:active {
+  cursor: grabbing;
+}
+
+@keyframes tagFadeIn {
+  to { opacity: 1; }
 }
 
 .recent-works-section { padding: 40px 5% 60px; background-color: #fff; }
-.recent-works-title { font-size: 56px; font-weight: 450; text-align: center; color: #000; margin-bottom: 40px; letter-spacing: -0.02em; }
-.filter-group { display: flex; justify-content: center; gap: 12px; margin-bottom: 60px; flex-wrap: wrap; }
-.filter-tag { background-color: transparent; border: 1.5px solid #000; padding: 10px 25px; font-size: 20px; font-weight: 400; border-radius: 50px; color: #000; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
-.filter-tag:hover { background-color: #f0f0f0; }
-.filter-tag.btn-active { background-color: #E2FF54; border-color: #E2FF54; font-weight: 450; }
+
+/* ─── RECENT WORKS HEADER + INLINE FILTER DROPDOWN ───────── */
+.recent-works-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1400px; margin: 0 auto 40px; }
+.recent-works-title { font-size: 56px; font-weight: 450; color: #000; letter-spacing: -0.02em; margin: 0; }
+
+.rw-filter { position: relative; flex-shrink: 0; }
+.rw-filter-trigger {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid #000; border-radius: 999px; padding: 10px 20px;
+  font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; color: #000;
+  background: #fff; cursor: pointer; white-space: nowrap; transition: background 0.15s ease;
+}
+.rw-filter-trigger:hover { background: #f5f5f5; }
+.rw-chev { transition: transform 0.15s ease; }
+.rw-chev--open { transform: rotate(180deg); }
+.rw-filter-backdrop { position: fixed; inset: 0; z-index: 19; }
+.rw-filter-panel {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 20;
+  width: 220px; background: #fff; border: 1px solid #e3e3e3; border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 6px; display: flex; flex-direction: column;
+}
+.rw-filter-item {
+  background: none; border: none; text-align: left; cursor: pointer;
+  padding: 10px 14px; border-radius: 10px; font-family: 'Inter', sans-serif;
+  font-size: 15px; font-weight: 400; color: #000; transition: background 0.15s ease;
+}
+.rw-filter-item:hover { background: #f7f7f7; }
+.rw-filter-item--active { font-weight: 600; background: #f5f5f5; }
+
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
-.project-card { background-color: #fff; border-radius: 24px; overflow: hidden; border: 1px solid #eee; display: flex; flex-direction: column; transition: box-shadow 0.3s ease; }
+.project-card { background-color: #fff; border-radius: 24px; overflow: hidden; border: 1.5px solid #e4e4e4; display: flex; flex-direction: column; transition: box-shadow 0.3s ease; }
 .project-card:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-.project-image-container { width: 100%; height: 380px; overflow: hidden; background-color: #f9f9f9; border-radius: 24px 24px 0 0; }
+.project-image-container {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  border-radius: 24px 24px 0 0;
+}
 .project-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25,1,0.5,1); }
 .project-card:hover .project-image { transform: scale(1.1); }
+
 .project-details { padding: 25px 30px; display: flex; flex-direction: column; gap: 5px; }
 .project-name { font-size: 28px; font-weight: 450; color: #000; margin: 0; }
 .project-description { font-size: 18px; color: #000; line-height: 1.5; margin: 0; }
 .project-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; }
 .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.project-tag-pill { background-color: #000; color: #fff; font-size: 12px; padding: 6px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.project-tag-pill { font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; background-color: #000; color: #fff; }
 .status-badge { padding: 10px 25px; background-color: #f5f5f5; color: #999; font-size: 16px; border-radius: 50px; font-weight: 450; letter-spacing: 1px; white-space: nowrap; }
-.btn-lime { display: inline-block; padding: 15px 35px; background-color: #E2FF54; color: #000; text-decoration: none; border-radius: 50px; font-weight: 450; font-size: 16px; border: none; cursor: pointer; transition: all 0.4s cubic-bezier(0.25,1,0.5,1); }
-.btn-lime:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(226,255,84,0.3); }
+.btn-dark { display: inline-block; padding: 15px 35px; background-color: #000; color: #fff; text-decoration: none; border-radius: 50px; font-weight: 450; font-size: 16px; border: none; cursor: pointer; transition: all 0.4s cubic-bezier(0.25,1,0.5,1); }
+.btn-dark:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.25); }
+.btn-lime { display: inline-block; padding: 15px 35px; background-color: var(--lima); color: #000; text-decoration: none; border-radius: 50px; font-weight: 450; font-size: 16px; border: none; cursor: pointer; transition: all 0.4s cubic-bezier(0.25,1,0.5,1); }
+.btn-lime:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
 .btn-small { padding: 10px 25px; }
 /* ─── BUTTON ────────────────────────────────────────────── */
 .btn-explore {
@@ -255,7 +368,7 @@ const isComingSoon = (project) => project.link === null;
   margin: 40px auto;
   padding: 15px 45px;
   background-color: var(--lima);
-  color: var(--black);
+  color: #000;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 450;
@@ -265,7 +378,7 @@ const isComingSoon = (project) => project.link === null;
 
 .btn-explore:hover {
   transform: scale(1.01);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 .hero-categories {
@@ -346,29 +459,29 @@ const isComingSoon = (project) => project.link === null;
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero {
-    margin-top: 0;
-    padding-top: 20px;
-    height: auto;
-    min-height: 60vh;
-    padding-bottom: 40px;
+    min-height: auto;
+    padding: 90px 6% 40px;
+    gap: 18px;
+  }
+
+  .hero-intro-text {
+    font-size: 14px;
   }
 
   .hero-title {
-    font-size: 40px;
+    font-size: 36px;
     text-align: center;
-    line-height: 1.1;
+    line-height: 1.12;
   }
 
-  .hero-subtitle {
-    font-size: 16px;
-    max-width: 90%;
-    margin: 24px auto 0;
-    text-align: center;
+  .hero-tags {
+    height: 170px;
+    margin-top: 6px;
   }
 
-  .icon,
-  .hero-note-wrap {
-    display: none;
+  .hero-tag {
+    font-size: 13px;
+    padding: 8px 16px;
   }
 
   .hero-categories {
@@ -399,18 +512,19 @@ const isComingSoon = (project) => project.link === null;
     padding: 24px 5% 40px;
   }
 
-  .recent-works-title {
-    font-size: 32px;
+  .recent-works-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
     margin-bottom: 24px;
   }
 
-  .filter-group {
-    gap: 8px;
-    margin-bottom: 32px;
+  .recent-works-title {
+    font-size: 32px;
   }
 
-  .filter-tag {
-    font-size: 13px;
+  .rw-filter-trigger {
+    font-size: 14px;
     padding: 8px 16px;
   }
 
@@ -445,7 +559,7 @@ const isComingSoon = (project) => project.link === null;
   }
 
   .project-tag-pill {
-    font-size: 10px;
+    font-size: 11px;
     padding: 4px 10px;
   }
 

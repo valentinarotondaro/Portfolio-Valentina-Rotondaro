@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useFallingTags } from '../composables/useFallingTags';
 
 const router = useRouter();
 
@@ -53,26 +54,34 @@ const deactivateLamp = () => {
   if (lampSound.value) lampSound.value.pause();
 };
 
-// ─── SKILLS ──────────────────────────────────────────────
+// ─── SKILLS: falling tag rain, same physics as the hero tags ────
+// npm install matter-js
 const skillsData = [
-  { text: 'Video Editing',           rotate: 0,   xOffset: 0,   yOffset: 0  },
-  { text: 'Front-End Development',   rotate: 0,   xOffset: 5,   yOffset: 0  },
-  { text: 'Workshop Facilitation',   rotate: 0,   xOffset: 5,   yOffset: 0  },
-  { text: 'Continous Learning',      rotate: 10,  xOffset: -10, yOffset: 6  },
-  { text: 'SoMe Content',            rotate: -12, xOffset: 8,   yOffset: 0  },
-  { text: 'Visual Storytelling',     rotate: 22,  xOffset: -25, yOffset: -10 },
-  { text: 'UX/UI Design',            rotate: -20, xOffset: 0,   yOffset: -10 },
-  { text: 'Critical Thinking',       rotate: 10,  xOffset: -35, yOffset: 10 },
-  { text: 'Team Collaboration',      rotate: -7,  xOffset: -70, yOffset: -25 },
-  { text: 'AI Tool Integration',     rotate: -10, xOffset: -15, yOffset: 0  },
+  'Video Editing',
+  'Front-End Development',
+  'Workshop Facilitation',
+  'Continous Learning',
+  'SoMe Content',
+  'Visual Storytelling',
+  'UX/UI Design',
+  'Critical Thinking',
+  'Team Collaboration',
+  'AI Tool Integration',
 ];
 
-const getFixedStyle = (index, skill) => ({
-  '--index-delay': `${index * 0.15}s`,
-  '--rotation':   `${skill.rotate}deg`,
-  '--x-offset':   `${skill.xOffset}px`,
-  '--y-offset':   `${skill.yOffset}px`,
-});
+const { stageRef: skillsStage, setTagRef: setSkillTagRef } = useFallingTags({ deferUntilVisible: true });
+
+// Mixed palette, same colors as the hero tags — not all lima.
+const SKILL_COLORS = [
+  { bg: 'var(--lima)',     color: 'var(--bordeaux)' },
+  { bg: 'var(--bordeaux)', color: 'var(--lima)'     },
+  { bg: 'var(--brown)',    color: 'var(--lima)'     },
+  { bg: 'var(--pink)',     color: 'var(--bordeaux)' },
+];
+const skillStyle = (index) => {
+  const { bg, color } = SKILL_COLORS[index % SKILL_COLORS.length];
+  return { backgroundColor: bg, color };
+};
 
 // ─── SKILLS PICKER (mobile) ───────────────────────────────
 const skillPickerIndex = ref(0);
@@ -92,7 +101,7 @@ const visibleSkills = computed(() => {
   const total = skillsData.length;
   return [-2, -1, 0, 1, 2].map(offset => {
     const idx = ((skillPickerIndex.value + offset) % total + total) % total;
-    return { text: skillsData[idx].text, distance: Math.abs(offset) };
+    return { text: skillsData[idx], distance: Math.abs(offset) };
   });
 });
 
@@ -124,30 +133,7 @@ const copyEmail = () => {
   emailCopied.value = true;
   setTimeout(() => { emailCopied.value = false; }, 2000);
 };
-// ANIMATION SKILLS // 
-onMounted(() => {
-  const container = document.querySelector('.skills-pile-container');
-  if (!container) return;
-  
-  const tags = container.querySelectorAll('.skill-tag');
-  tags.forEach(tag => {
-    tag.style.opacity = '0';
-    tag.style.animationPlayState = 'paused';
-  });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        tags.forEach(tag => {
-          tag.style.animationPlayState = 'running';
-        });
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.2 });
-
-  observer.observe(container);
-});
 </script>
 
 <template>
@@ -224,13 +210,14 @@ onMounted(() => {
     <!-- ─── SKILLS ───────────────────────────────────────── -->
     <section class="skills-section">
      <div class="skills-content">
-  <div class="skills-pile-container">
+  <div class="skills-pile-container" ref="skillsStage">
     <span
       v-for="(skill, index) in skillsData"
-      :key="index"
+      :key="skill"
       class="skill-tag"
-      :style="getFixedStyle(index, skill)"
-    >{{ skill.text }}</span>
+      :style="skillStyle(index)"
+      :ref="el => setSkillTagRef(el, index)"
+    >{{ skill }}</span>
   </div>
 
   <div class="skills-picker">
@@ -476,43 +463,41 @@ onMounted(() => {
 }
 
 .skills-pile-container {
-  display: flex;
+  position: relative;
   width: 100%;
   max-width: 700px;
+  height: 230px;
   margin: 0 auto 20px auto;
   padding-top: 40px;
-  min-height: 200px;
-  flex-wrap: wrap-reverse;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
+  overflow: visible;
+  z-index: 50;
 }
 
 .skill-tag {
-  display: inline-block;
-  background-color: #D9FB60;
-  color: #111;
-  padding: 10px 22px;
-  border-radius: 50px;
-  font-size: 18px;
-  font-weight: 400;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 25px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.027em;
   white-space: nowrap;
   opacity: 0;
-  will-change: transform, opacity;
-  animation: pileUpFixed 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
-  animation-delay: var(--index-delay);
-  animation-play-state: paused;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  will-change: transform;
+  cursor: grab;
+  touch-action: none;
+  animation: skillTagFadeIn 0.3s ease forwards;
+  animation-delay: 0.1s;
 }
 
-.skill-tag:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.skill-tag:active {
+  cursor: grabbing;
 }
 
-@keyframes pileUpFixed {
-  0%   { opacity: 0; transform: translateY(-100px) scale(0.8); }
-  100% { opacity: 1; transform: translate(var(--x-offset), var(--y-offset)) rotate(var(--rotation)); }
+@keyframes skillTagFadeIn {
+  to { opacity: 1; }
 }
 
 .skills-heading {
@@ -990,13 +975,14 @@ onMounted(() => {
 }
 
 .picker-item {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   font-weight: 500;
-  color: #111;
-  background: #D9FB60;
-  padding: 8px 22px;
-  border-radius: 50px;
+  letter-spacing: -0.027em;
+  color: var(--bordeaux);
+  background: var(--lima);
+  padding: 8px 16px;
+  border-radius: 999px;
   white-space: nowrap;
   transition: opacity 0.6s ease, transform 0.6s ease, font-weight 0.6s ease;
 }

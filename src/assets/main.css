@@ -14,9 +14,11 @@
 
 :root {
     --black: #000000;
-    --pink: #ff63a7;
+    --pink: #ff6ca3;
     --white: #ffffff;
-    --lima: #d9fb60;
+    --lima: #e0f964;
+    --bordeaux: #7b0834;
+    --brown: #876a2e;
 }
 
 * {
@@ -24,6 +26,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter' !important;
+    letter-spacing: -0.027em;
 }
 
 body {      
@@ -61,56 +64,7 @@ li {
     color: var(--black);
 }
 
-/* NAVEGATION */
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 80px;
-    z-index: 100 !important;
-    position: relative;    
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 90px; 
-    width: auto; 
-    max-width: 150px; 
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 35px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--black);
-    font-size: 18px;
-    font-weight: 400;
-    transition: color 0.3s ease;
-    border-bottom: 2px solid transparent; 
-    padding-bottom: 5px;
-}
-
-.nav-links a:hover {
-    color: var(--pink);
-    border-bottom: 2px solid var(--pink);
-}
-
-.nav-links a.active {
-    color: var(--pink);
-    border-bottom: 2px solid var(--pink);
-    padding-bottom: 5px;
-}
+/* NAVEGATION — ver .navbar / .nav-shell / .nav-pill / .mail-btn en App.vue */
 
 /* FOOTER */
 
@@ -172,38 +126,6 @@ html {
 /* RESPONSIVE NAV */
 
 @media (max-width: 768px) {
-
-    .navbar {
-        padding: 15px 20px;
-        font-size: 16px;
-    }
-    
-    .nav-links {
-        gap: 25px; 
-        font-size: 16px;
-    }
-
-    .nav-links a {
-        font-size: 16px;
-    }
-
-    .logo img {
-  height: 60px;
-  width: auto;
-}
-
-    /* RESPOSNIVE ICONS */
-
-    .icon {
-        width: 45px; 
-    }
-
-    .icon-folder { top: 5%; left: 5%; }
-    .icon-arrow  { top: 8%; right: 5%; }
-    .icon-clips  { display: none; }
-    .icon-coffee { bottom: 10%; right: 5%; }
-    .icon-camera { bottom: 10%; left: 5%; }
-    .icon-figma  { display: none; }
 
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);

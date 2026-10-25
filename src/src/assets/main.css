@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "./base.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/MyFont.woff2') format('woff2'),
+       url('/fonts/MyFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+    --black: #000000;
+    --pink: #ff6ca3;
+    --white: #ffffff;
+    --lima: #e0f964;
+    --bordeaux: #7b0834;
+    --brown: #876a2e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter' !important;
+    letter-spacing: -0.027em;
+}
+
+body {      
+    background-color: var(--white);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0;
+  padding: 0;
+}
+
+h1, .section-title {
+    font-weight: 600; 
+    letter-spacing: -0.06em; 
+    line-height: 1.5; 
+    text-transform: none;
+}
+
+p {
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--black);
+}
+
+li {
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--black);
+}
+
+/* NAVEGATION — ver .navbar / .nav-shell / .nav-pill / .mail-btn en App.vue */
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 40px 80px;
+    background-color: var(--white); 
+}
+
+.footer-logo img {
+    height: 90px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a img {
+    height: 24px; 
+    width: auto;
+    transition: opacity 0.3s;
+}
+
+.social-links a:hover img {
+    opacity: 0.7;
+}
+
+.social-links a img {
+    height: 30px; 
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover img {
+    transform: scale(1.1);
+}
+
+/* ─── SCROLLBAR ROSA ────────────────────────────────────── */
+/* ─── SCROLLBAR ROSA ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FF7BB5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #FF7BB5;
+}
+
+/* Firefox */
+html {
+  scrollbar-color: #FF7BB5 #fff;
+}
+/* RESPONSIVE NAV */
+
+@media (max-width: 768px) {
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 10px;
+    }
+
+    .footer {
+    flex-direction: row;   /* ← row, no column */
+    gap: 0;
+    padding: 24px 20px;
+    margin-top: auto;      /* se pega al fondo pero sin espacio vacío */
+    text-align: left;
+  }
+
+  .footer-logo img {
+    height: 60px;
+  } 
+  .social-links img {
+    height: 15px;
+  }
+}
