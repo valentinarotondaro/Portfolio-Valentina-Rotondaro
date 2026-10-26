@@ -11,6 +11,13 @@ const filters = [
 ];
 const projectsList = [
   {
+    title: 'DANES',
+    description: 'A Danish learning platform with courses, live speaking groups and city events.',
+    tags: ['UX/UI', 'Web Design'],
+    image: '/img/danescover.webp',
+    link: null,
+  },
+  {
     title: 'Business DE-DK',
     description: 'Full redesign of a cross-border business website.',
     tags: ['Web Design', 'UX/UI'],    image: '/img/businessregionhero.webp',

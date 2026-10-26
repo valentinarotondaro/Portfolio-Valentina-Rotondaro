@@ -8,7 +8,11 @@ import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue';
 // document (that made far-down sections like About take several
 // seconds to start landing, well after the section was on screen).
 // npm install matter-js
-export function useFallingTags({ deferUntilVisible = false } = {}) {
+export function useFallingTags({ deferUntilVisible = false, startEarlyBy = 0, stagger = 110 } = {}) {
+  // startEarlyBy: fraction of the viewport height *below* the screen at which
+  // the rain starts (1 = one full screen early), so the tags have already
+  // landed by the time the visitor scrolls to the section.
+  // stagger: vertical gap (px) between tags before they drop.
   const stageRef = ref(null);
   const tagEls = [];
   const setTagRef = (el, i) => { if (el) tagEls[i] = el; };
@@ -45,7 +49,7 @@ export function useFallingTags({ deferUntilVisible = false } = {}) {
       const h = el.offsetHeight;
       return Bodies.rectangle(
         40 + Math.random() * Math.max(W - 80, 40),
-        fallFrom - i * 110,
+        fallFrom - i * stagger,
         w,
         h,
         {
@@ -87,13 +91,16 @@ export function useFallingTags({ deferUntilVisible = false } = {}) {
       }
     });
 
+    let revealed = false;
     Events.on(engine, 'afterUpdate', () => {
       bodies.forEach((body, i) => {
         const el = tagEls[i];
         if (!el) return;
+        if (!revealed) el.style.opacity = '1';
         el.style.transform =
           `translate(${body.position.x - el.offsetWidth / 2}px, ${body.position.y - el.offsetHeight / 2}px) rotate(${body.angle}rad)`;
       });
+      revealed = true;
     });
 
     runner = Runner.create();
@@ -112,7 +119,7 @@ export function useFallingTags({ deferUntilVisible = false } = {}) {
           observer = null;
           buildPhysics(stage);
         }
-      }, { threshold: 0, rootMargin: '200px 0px 0px 0px' });
+      }, { threshold: 0, rootMargin: `200px 0px ${Math.round(startEarlyBy * 100)}% 0px` });
       observer.observe(stage);
     } else {
       buildPhysics(stage);

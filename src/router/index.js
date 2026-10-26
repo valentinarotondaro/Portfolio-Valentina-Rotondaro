@@ -28,6 +28,8 @@ const router = createRouter({
     { path: '/portfolio/city-welcome', name: 'aarhus-city-welcome', component: () => import('../views/projects/AarhusCityWelcomeView.vue') },
     { path: '/portfolio/royal-library', name: 'royal-library', component: () => import('../views/projects/RoyalLibraryView.vue') },
     { path: '/portfolio/migrant-emotions', name: 'migrant-emotions', component: () => import('../views/projects/MigrantEmotionsView.vue') },
+    // DANES case study is ready (DanesView.vue) but hidden until launch: uncomment to publish
+    // { path: '/portfolio/danes', name: 'danes', component: () => import('../views/projects/DanesView.vue') },
     { path: '/portfolio/business-dedk', name: 'business-dedk', component: () => import('../views/projects/BusinessRegionView.vue') },
   ],
 

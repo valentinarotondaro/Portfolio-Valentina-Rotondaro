@@ -3,10 +3,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+/* BethanyElingston: commercial font (Attract Studio). Put your licensed file in
+   public/fonts/ as BethanyElingston.woff2 (and/or .otf / .ttf) and it loads everywhere. */
+@font-face {
+  font-family: 'BethanyElingston';
+  src: local('Bethany Elingston'), local('BethanyElingston'),
+       url('/fonts/BethanyElingston.woff2') format('woff2'),
+       url('/fonts/BethanyElingston.otf') format('opentype'),
+       url('/fonts/BethanyElingston.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'MyFont';
-  src: url('/fonts/MyFont.woff2') format('woff2'),
-       url('/fonts/MyFont.ttf') format('truetype');
+  src: url('/fonts/Myfont.woff2') format('woff2'),
+       url('/fonts/Myfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

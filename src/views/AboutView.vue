@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useFallingTags } from '../composables/useFallingTags';
 
@@ -69,7 +69,7 @@ const skillsData = [
   'AI Tool Integration',
 ];
 
-const { stageRef: skillsStage, setTagRef: setSkillTagRef } = useFallingTags({ deferUntilVisible: true });
+const { stageRef: skillsStage, setTagRef: setSkillTagRef } = useFallingTags({ deferUntilVisible: true, startEarlyBy: 1.2, stagger: 60 });
 
 // Mixed palette, same colors as the hero tags — not all lima.
 const SKILL_COLORS = [
@@ -82,28 +82,6 @@ const skillStyle = (index) => {
   const { bg, color } = SKILL_COLORS[index % SKILL_COLORS.length];
   return { backgroundColor: bg, color };
 };
-
-// ─── SKILLS PICKER (mobile) ───────────────────────────────
-const skillPickerIndex = ref(0);
-let skillPickerInterval = null;
-
-onMounted(() => {
-  skillPickerInterval = setInterval(() => {
-    skillPickerIndex.value = (skillPickerIndex.value + 1) % skillsData.length;
-  }, 1800);
-});
-
-onUnmounted(() => {
-  clearInterval(skillPickerInterval);
-});
-
-const visibleSkills = computed(() => {
-  const total = skillsData.length;
-  return [-2, -1, 0, 1, 2].map(offset => {
-    const idx = ((skillPickerIndex.value + offset) % total + total) % total;
-    return { text: skillsData[idx], distance: Math.abs(offset) };
-  });
-});
 
 // ─── TOOLTIP ─────────────────────────────────────────────
 const activePopUp      = ref(false);
@@ -218,15 +196,6 @@ const copyEmail = () => {
       :style="skillStyle(index)"
       :ref="el => setSkillTagRef(el, index)"
     >{{ skill }}</span>
-  </div>
-
-  <div class="skills-picker">
-    <div
-      v-for="(item, i) in visibleSkills"
-      :key="i"
-      class="picker-item"
-      :class="`picker-item--dist${item.distance}`"
-    >{{ item.text }}</div>
   </div>
 
   <h2 class="skills-heading">I bring a diverse skillset to the table!</h2>
@@ -452,10 +421,6 @@ const copyEmail = () => {
   background: #fff;
 }
 
-.skills-picker {
-  display: none;
-}
-
 .skills-content {
   max-width: 1100px;
   margin: 0 auto;
@@ -485,19 +450,14 @@ const copyEmail = () => {
   letter-spacing: -0.027em;
   white-space: nowrap;
   opacity: 0;
+  transition: opacity 0.3s ease;
   will-change: transform;
   cursor: grab;
   touch-action: none;
-  animation: skillTagFadeIn 0.3s ease forwards;
-  animation-delay: 0.1s;
 }
 
 .skill-tag:active {
   cursor: grabbing;
-}
-
-@keyframes skillTagFadeIn {
-  to { opacity: 1; }
 }
 
 .skills-heading {
@@ -948,8 +908,9 @@ const copyEmail = () => {
   .skills-section {
     padding: 20px 5% 30px;
   }
- .skill-tag {
-  display: none;
+.skill-tag {
+  font-size: 13px;
+  padding: 8px 16px;
 }
 
 .skills-content {
@@ -957,53 +918,15 @@ const copyEmail = () => {
   flex-direction: column;
 }
 
-.skills-heading {
-  order: 1;
-    margin-top: 0 !important;
-  margin-bottom: 16px;
-    padding-top: 0;
-
-}
-
-.skills-picker {
-  order: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 0 24px;
-}
-
-.picker-item {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: -0.027em;
-  color: var(--bordeaux);
-  background: var(--lima);
-  padding: 8px 16px;
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: opacity 0.6s ease, transform 0.6s ease, font-weight 0.6s ease;
-}
-
 .skills-pile-container {
-  display: none;
-}
-.picker-item--dist0 {
-  opacity: 1;
-  transform: scale(1.1);
-  font-weight: 500;
+  height: 250px;
+  padding-top: 0;
+  margin-bottom: 10px;
 }
 
-.picker-item--dist1 {
-  opacity: 0.45;
-  transform: scale(0.9);
-}
-
-.picker-item--dist2 {
-  opacity: 0.15;
-  transform: scale(0.8);
+.skills-heading {
+  margin-top: 0 !important;
+  padding-top: 0;
 }
 
 .beyond-grid {

@@ -7,6 +7,7 @@ import { tagStyle } from '../utils/tagColors';
 // npm install matter-js
 const heroTags = [
   'Video Editing',
+  'Web Design',
   'UX UI',
   'AI integration',
   'Content Creation',
@@ -24,8 +25,8 @@ const { stageRef: tagsStage, setTagRef } = useFallingTags();
 const introNameRef = ref(null);
 const heroPhotoVisible = ref(false);
 const heroPhotoStyle = ref({});
-const PHOTO_W = 185;
-const PHOTO_H = 230;
+const PHOTO_W = 200;
+const PHOTO_H = 250; // 4:5
 const showIntroPhoto = () => {
   const el = introNameRef.value;
   if (!el) return;
@@ -57,6 +58,7 @@ const activeFilterLabel = computed(() =>
   recentFilters.find(f => f.value === activeRecentFilter.value)?.label ?? 'All'
 );
 const recentProjects = [
+  { title: 'DANES', description: 'A Danish learning platform with courses, live speaking groups and city events.', tags: ['UX/UI', 'Web Design'], image: '/img/danescover.webp', link: null },
   { title: 'Business DE-DK', description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.', tags: ['Web Design', 'UX/UI'], image: '/img/businessregionhero.webp', link: '/portfolio/business-dedk' },
   {
   title: 'Departamentos Alfar',
@@ -228,7 +230,7 @@ const isComingSoon = (project) => project.link === null;
 }
 
 .hero-intro-text {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
   color: #666;
 }
@@ -243,8 +245,8 @@ const isComingSoon = (project) => project.link === null;
    viewport so it's always fully visible, never cropped. */
 .hero-intro-photo {
   position: fixed;
-  width: 185px;
-  height: 230px;
+  width: 200px;
+  height: 250px; /* 4:5 */
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.18);
@@ -465,7 +467,7 @@ const isComingSoon = (project) => project.link === null;
   }
 
   .hero-intro-text {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .hero-title {
