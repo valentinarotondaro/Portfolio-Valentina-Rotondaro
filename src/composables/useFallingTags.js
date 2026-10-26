@@ -8,10 +8,13 @@ import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue';
 // document (that made far-down sections like About take several
 // seconds to start landing, well after the section was on screen).
 // npm install matter-js
-export function useFallingTags({ deferUntilVisible = false, startEarlyBy = 0, stagger = 110 } = {}) {
+export function useFallingTags({ deferUntilVisible = false, startEarlyBy = 0, stagger = 110, spawnAbove = null } = {}) {
   // startEarlyBy: fraction of the viewport height *below* the screen at which
   // the rain starts (1 = one full screen early), so the tags have already
   // landed by the time the visitor scrolls to the section.
+  // spawnAbove: if set, tags start only this many px above the stage (a short,
+  // visible drop right where the visitor is looking) instead of from the top of
+  // the screen.
   // stagger: vertical gap (px) between tags before they drop.
   const stageRef = ref(null);
   const tagEls = [];
@@ -34,7 +37,9 @@ export function useFallingTags({ deferUntilVisible = false, startEarlyBy = 0, st
     // cramped box — but capped to ~one screen height, so a section far
     // down the page (About) doesn't take several real seconds for tags
     // to travel down into view.
-    const fallFrom = -Math.max(window.innerHeight * 0.9, H + 240);
+    const fallFrom = spawnAbove !== null
+      ? -spawnAbove
+      : -Math.max(window.innerHeight * 0.9, H + 240);
 
     engine = Engine.create();
     engine.gravity.y = 1;

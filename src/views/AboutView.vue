@@ -69,7 +69,14 @@ const skillsData = [
   'AI Tool Integration',
 ];
 
-const { stageRef: skillsStage, setTagRef: setSkillTagRef } = useFallingTags({ deferUntilVisible: true, startEarlyBy: 1.2, stagger: 60 });
+const { stageRef: skillsStage, setTagRef: setSkillTagRef } = useFallingTags(
+  window.matchMedia('(max-width: 900px)').matches
+    // Phone: wait until the visitor has scrolled down to the section (it must be
+    // well inside the screen), then let the tags fall in just above the pile.
+    ? { deferUntilVisible: true, startEarlyBy: -0.3, stagger: 45, spawnAbove: 160 }
+    // Desktop: start early so tags have landed before the section is reached.
+    : { deferUntilVisible: true, startEarlyBy: 1.2, stagger: 60 }
+);
 
 // Mixed palette, same colors as the hero tags — not all lima.
 const SKILL_COLORS = [
@@ -969,6 +976,10 @@ const copyEmail = () => {
     transform: scaleX(-1) rotate(360deg);
   }
   /* CONTACT */
+  .contact-links {
+    display: none;
+  }
+
   .contact-inner {
     grid-template-columns: 1fr;
     gap: 40px;
