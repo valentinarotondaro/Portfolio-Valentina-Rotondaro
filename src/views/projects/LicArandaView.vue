@@ -86,7 +86,7 @@ const imghome = '/img/arandaheroweb.webp';
       </section>
 
       <section class="results-section">
-        <video src="/img/arandahero.mp4" autoplay loop muted playsinline class="result-video"></video>
+        <img src="/img/arandahero.png" alt="Lic. Aranda Coria logo result" class="result-video" />
         <div class="results-text">
           <h2 class="section-label">04. Result</h2>
           <p class="body-text">The final logo is a beautiful balance between science and nature. By combining a brain with a plant, the design represents both professional wisdom and the organic growth of a therapy process.</p>

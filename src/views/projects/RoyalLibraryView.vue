@@ -89,14 +89,14 @@ onUnmounted(() => {
         <h2 class="section-label-gray">SoMe Content</h2>
         <div class="some-complex-grid">
           <div class="some-item">
-            <video src="/img/royalhero.MP4" autoplay loop muted playsinline class="video-fill"></video>
+            <video :src="'/img/royalhero.MP4'" autoplay loop muted playsinline class="video-fill"></video>
           </div>
           <div class="some-images-stack">
             <img src="/img/royalcollage.JPEG" class="some-mid-img" alt="Collage 1" />
             <img src="/img/royalcollage2.JPEG" class="some-mid-img" alt="Collage 2" />
           </div>
           <div class="some-item">
-            <video src="/img/royalll.mp4" autoplay loop muted playsinline class="video-fill"></video>
+            <video :src="'/img/royalll.mp4'" autoplay loop muted playsinline class="video-fill"></video>
           </div>
         </div>
       </section>
