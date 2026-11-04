@@ -4,13 +4,18 @@ defineProps({
     type: String,
     required: true,
   },
+  prevTo: {
+    type: String,
+    default: '',
+  },
 });
 </script>
 
 <template>
   <footer class="case-footer">
     <div class="pagination-wrapper">
-      <router-link to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
+      <router-link v-if="prevTo" :to="prevTo" class="footer-link">&lt; Previous project</router-link>
+      <router-link v-else to="/portfolio" class="footer-link">&lt; Back to Works</router-link>
       <router-link :to="nextTo" class="footer-link">Next project &gt;</router-link>
     </div>
   </footer>
