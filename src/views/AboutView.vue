@@ -209,33 +209,6 @@ const copyEmail = () => {
 </div>
     </section>
 
-    <!-- ─── CV / VIDEO ───────────────────────────────────── -->
-    <section class="cv-section">
-      <div class="cv-inner">
-        <div class="cv-left">
-          <h2 class="cv-title">Curious to learn more about my background?</h2>
-          <div class="cv-arrow-wrap">
-            <span class="cv-check">CHECK OUT MY CV VIDEO</span>
-            <img src="/img/flechaabout.png" alt="" class="cv-arrow" />
-          </div>
-        </div>
-        <div class="cv-right">
-          <div class="cv-mac-wrap">
-            <img src="/img/mockupmac.png" alt="Macbook mockup" class="cv-mac" />
-            <div class="cv-video-frame">
-              <iframe
-                src="https://www.youtube.com/embed/RIos_-p8gA8"
-                title="Get to know me better"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ─── CONTACT ──────────────────────────────────────── -->
     <section class="contact-section" id="contact">
       <div class="contact-inner">
