@@ -15,7 +15,7 @@ const projectsList = [
     description: 'A Danish learning platform with courses, live speaking groups and city events.',
     tags: ['UX/UI', 'Web Design'],
     image: '/img/danescover.webp',
-    link: null,
+    link: '/portfolio/danes',
   },
   {
     title: 'Business DE-DK',

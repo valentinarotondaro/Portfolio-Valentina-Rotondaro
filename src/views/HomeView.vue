@@ -58,7 +58,7 @@ const activeFilterLabel = computed(() =>
   recentFilters.find(f => f.value === activeRecentFilter.value)?.label ?? 'All'
 );
 const recentProjects = [
-  { title: 'DANES', description: 'A Danish learning platform with courses, live speaking groups and city events.', tags: ['UX/UI', 'Web Design'], image: '/img/danescover.webp', link: null },
+  { title: 'DANES', description: 'A Danish learning platform with courses, live speaking groups and city events.', tags: ['UX/UI', 'Web Design'], image: '/img/danescover.webp', link: '/portfolio/danes' },
   { title: 'Business DE-DK', description: 'Full redesign of a trilingual cross-border business hub for the German-Danish border region.', tags: ['Web Design', 'UX/UI'], image: '/img/businessregionhero.webp', link: '/portfolio/business-dedk' },
   {
   title: 'Departamentos Alfar',
