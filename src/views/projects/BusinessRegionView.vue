@@ -539,7 +539,9 @@ h2 {
   .body { font-size: 17px; }
   .vp-statement { font-size: 19px; }
   .meta-grid, .cards-3, .stack, .ba-pair { grid-template-columns: 1fr; }
-  .body, .lead, .small, .vp-statement { text-align: left; }
+  .body, .lead, .small, .vp-statement, .card .small, .small.left { text-align: justify; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+  .dd { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+  .dd svg { width: 640px; max-width: none; }
   .phase-t { font-size: 26px; }
   .social-row { grid-template-columns: 1fr 1fr; }
   .d-section { margin-bottom: 80px; }

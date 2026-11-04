@@ -746,7 +746,9 @@ h2 {
   .body { font-size: 17px; }
   .vp-statement { font-size: 19px; }
   .meta-grid, .cards-3, .main-swatches, .stack, .states-4 { grid-template-columns: 1fr; }
-  .body, .lead, .small, .vp-statement { text-align: left; }
+  .body, .lead, .small, .vp-statement, .ps-q, .small.left { text-align: justify; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+  .dd { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+  .dd svg { width: 640px; max-width: none; }
   .lap { padding: 14px 14px 12px; border-radius: 14px; }
   .phase-t { font-size: 26px; }
   .grid-3, .hifi-grid { grid-template-columns: 1fr 1fr; }
