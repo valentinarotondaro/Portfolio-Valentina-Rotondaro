@@ -1,456 +1,374 @@
 <script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import ProjectFooter from './ProjectFooter.vue';
-import { ref, onMounted, onUnmounted } from 'vue';
 
-const imgResult = ref('/img/collage-final-works.JPG');
-
-const workshopPhotos = [
-  '/img/collage-marketing.jpg',
-  '/img/collage-visual-system.JPG',
-  '/img/collage-action.JPG'
+const sections = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'context', label: 'Context' },
+  { id: 'objective', label: 'Objective' },
+  { id: 'process', label: 'Process' },
+  { id: 'community', label: 'Community' },
+  { id: 'results', label: 'Results' },
 ];
-const activePhotoIndex = ref(0);
+
+const activeId = ref('overview');
+
+const goTo = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  activeId.value = id;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+// Highlight the section currently under the top of the viewport
+const onScroll = () => {
+  const line = window.innerHeight * 0.3;
+  let current = sections[0].id;
+  for (const s of sections) {
+    const el = document.getElementById(s.id);
+    if (el && el.getBoundingClientRect().top <= line) current = s.id;
+  }
+  activeId.value = current;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+});
+onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
+
+const GOAL = 'To create a “third space” where creativity acts as a bridge. The goal was to foster well-being through art, helping participants find mental balance and genuine community during the colder months, in collaboration with the Department of Sustainable Cities and Communities.';
+
+const context = [
+  { t: 'The season', d: 'The intensity of the Danish winter and the risk of isolation.' },
+  { t: 'The need', d: 'A support network for expats who feel far from home.' },
+  { t: 'The idea', d: 'A collage workshop, a hobby cherished since childhood.' },
+];
+
+const roles = [
+  { t: 'Digital strategy', d: 'Comprehensive management of social media platforms, focusing on community growth and visual storytelling to maintain a consistent and engaging brand identity.' },
+  { t: 'Automation', d: 'Optimizing the participant journey by designing and implementing automated email workflows for seamless registrations, event reminders, and post-workshop feedback.' },
+  { t: 'Logistics', d: 'Strategic curation of physical spaces at Dokk1, managing high-quality material sourcing and environment styling to ensure a premium creative experience.' },
+  { t: 'Facilitation', d: 'Leading the end-to-end workshop flow, fostering an inclusive atmosphere where art acts as a tool for social connection and emotional well-being.' },
+];
 
 const reviews = [
-  { text: '"Lovely experience to meet new faces and make art! Can\'t wait for the next one!"', author: 'Habiba, Egypt' },
-  { text: '"The atmosphere was perfectly curated for meeting wonderful people and enjoy the creative process!"', author: 'Camelia, France' },
-  { text: '"Thank you for this marvelous and creative event that brings people together, nurtures, and inspires!"', author: 'Marisol, Argentina' }
+  { text: 'Lovely experience to meet new faces and make art! Can’t wait for the next one!', author: 'Habiba, Egypt' },
+  { text: 'The atmosphere was perfectly curated for meeting wonderful people and enjoy the creative process!', author: 'Camelia, France' },
+  { text: 'Thank you for this marvelous and creative event that brings people together, nurtures, and inspires!', author: 'Marisol, Argentina' },
 ];
-const activeReviewIndex = ref(0);
 
 const someVideos = [
   'https://player.vimeo.com/video/1119202990?h=771babcc8a&background=1',
   'https://player.vimeo.com/video/1119205438?h=8e6c4a122a&background=1',
-  'https://player.vimeo.com/video/1119204049?h=1eced4b6cc&background=1'
+  'https://player.vimeo.com/video/1119204049?h=1eced4b6cc&background=1',
 ];
-
-let reviewInterval;
-let photoInterval;
-
-onMounted(() => {
-  reviewInterval = setInterval(() => {
-    activeReviewIndex.value = (activeReviewIndex.value + 1) % reviews.length;
-  }, 5000);
-  photoInterval = setInterval(() => {
-    activePhotoIndex.value = (activePhotoIndex.value + 1) % workshopPhotos.length;
-  }, 2500);
-});
-
-onUnmounted(() => {
-  clearInterval(reviewInterval);
-  clearInterval(photoInterval);
-});
 </script>
 
 <template>
   <div class="case-study">
-
     <nav class="top-nav">
       <router-link to="/portfolio" class="back-btn">&lt; Back to Works</router-link>
     </nav>
 
-    <main class="content-wrapper">
+    <div class="cs-layout">
 
-      <header class="project-intro-header">
-        <span class="category-badge">Community Lead & Experience Design</span>
-        <h1>Collage Afternoon</h1>
-      </header>
-
-   <section class="hero">
-  <img src="/img/Collageafternoondokk1.webp" alt="Collage Afternoon at Dokk1" class="hero-img" />
-</section>
-
-      <section class="section-grid">
-        <div class="text-col">
-          <h2 class="section-label">01. Context</h2>
-          <p class="body-text">Anticipating the arrival of the Danish winter, known for its intensity and potential for isolation, I realized many fellow expats might feel the same need for a support network as I did. To connect with like-minded people, I proposed a collage workshop, a hobby I've cherished since childhood. What started as a personal initiative evolved into a monthly creative hub at <strong>Dokk1, Aarhus</strong>.</p>
+      <!-- LEFT NAV (sticky) -->
+      <aside class="side-nav">
+        <div class="side-nav-inner">
+          <router-link to="/portfolio" class="side-back-link">&lt; Back to Works</router-link>
+          <nav class="side-links">
+            <a
+              v-for="s in sections"
+              :key="s.id"
+              :href="'#' + s.id"
+              :class="{ active: activeId === s.id }"
+              @click.prevent="goTo(s.id)"
+            >{{ s.label }}</a>
+          </nav>
         </div>
-        <div class="text-col">
-          <h2 class="section-label">02. Objective</h2>
-          <p class="body-text">Create a "third space" where creativity acts as a bridge. The goal was to foster well-being through art, helping participants find mental balance and genuine community during the colder months in collaboration with the <strong>Department of Sustainable Cities and Communities</strong>.</p>
-        </div>
-      </section>
+      </aside>
 
-      <section class="process-section">
-        <h2 class="section-label">03. Process</h2>
-        <p class="body-text"><strong>From conception to facilitation:</strong> I take full responsibility for every touchpoint of the experience. My role involves a 360° management approach:</p>
-        <div class="process-cards">
-          <div class="card">
-            <h3>Digital Strategy</h3>
-            <p>Comprehensive management of social media platforms, focusing on community growth and visual storytelling to maintain a consistent and engaging brand identity.</p>
-          </div>
-          <div class="card">
-            <h3>Automation</h3>
-            <p>Optimizing the participant journey by designing and implementing automated email workflows for seamless registrations, event reminders, and post-workshop feedback.</p>
-          </div>
-          <div class="card">
-            <h3>Logistics</h3>
-            <p>Strategic curation of physical spaces at Dokk1, managing high-quality material sourcing and environment styling to ensure a premium creative experience.</p>
-          </div>
-          <div class="card">
-            <h3>Facilitation</h3>
-            <p>Leading the end-to-step workshop flow, fostering an inclusive atmosphere where art acts as a tool for social connection and emotional well-being.</p>
-          </div>
-        </div>
-      </section>
+      <main class="cs-main">
 
-      <section class="carrousel-section">
-        <img :src="workshopPhotos[activePhotoIndex]" class="carrousel-img" alt="Workshop moment" />
-      </section>
+        <!-- OVERVIEW -->
+        <section id="overview" class="d-section first">
+          <div class="hero-wrap">
+            <img src="/img/Collageafternoondokk1.webp" alt="Collage Afternoon at Dokk1" class="hero-img" />
+          </div>
 
-      <section class="reviews-section">
-        <h2 class="section-label-gray">Participants Feedback</h2>
-        <div class="reviews-wrapper">
-          <transition name="fade" mode="out-in">
-            <div :key="activeReviewIndex" class="review-box">
-              <p class="review-text">{{ reviews[activeReviewIndex].text }}</p>
-              <span class="review-author">{{ reviews[activeReviewIndex].author }}</span>
+          <span class="label accent">Community · Experience design</span>
+          <h1>Collage Afternoon. A monthly creative hub in the heart of Aarhus</h1>
+          <p class="lead">Anticipating the arrival of the Danish winter, known for its intensity and potential for isolation, I proposed a collage workshop to connect with like-minded people. What started as a personal initiative evolved into a monthly creative hub at Dokk1, Aarhus.</p>
+
+          <div class="meta-grid">
+            <div>
+              <span class="label">Fields</span>
+              <div class="pill-col">
+                <span class="pill">Workshops</span>
+                <span class="pill">Community</span>
+              </div>
             </div>
-          </transition>
-        </div>
-      </section>
-
-      <section class="some-section">
-        <h2 class="section-label-gray">SoMe Content</h2>
-        <div class="some-grid">
-          <div v-for="videoUrl in someVideos" :key="videoUrl" class="some-item">
-            <iframe :src="videoUrl" frameborder="0" allow="autoplay; fullscreen" class="vimeo-embed"></iframe>
+            <div>
+              <span class="label">Type</span>
+              <p class="meta-v">Monthly workshop</p>
+            </div>
+            <div>
+              <span class="label">Where</span>
+              <p class="meta-v">Dokk1, Aarhus<br />Denmark</p>
+            </div>
+            <div>
+              <span class="label">Role</span>
+              <p class="meta-v">Community Lead<br />and Facilitator</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="results-section">
-        <img
-          :src="imgResult"
-          class="result-img"
-          @mouseenter="imgResult = '/img/Collageafternoondokk1.JPG'"
-          @mouseleave="imgResult = '/img/collage-final-works.JPG'"
-          alt="Final Result"
-        />
-        <div class="results-text">
-          <h2 class="section-label">04. Results & Impact</h2>
-          <p class="body-text">What began as a simple gathering evolved into "Collage Afternoon" to ensure a welcoming space for everyone. Today, it maintains a consistent attendance of 20-25 people. Beyond the art produced, the real success lies in the social fabric it creates: lasting friendships and a vibrant community in Aarhus.</p>
-        </div>
-      </section>
-    <ProjectFooter next-to="/portfolio/city-welcome" />
+        <!-- CONTEXT -->
+        <section id="context" class="d-section">
+          <span class="label accent">Context</span>
+          <h2>A winter, and a need for a support network</h2>
+          <p class="body">Anticipating the arrival of the Danish winter, known for its intensity and potential for isolation, I realized many fellow expats might feel the same need for a support network as I did. To connect with like-minded people, I proposed a collage workshop, a hobby I’ve cherished since childhood. What started as a personal initiative evolved into a monthly creative hub at Dokk1, Aarhus.</p>
+          <div class="cards cards-3 cards-text gap-top">
+            <div v-for="c in context" :key="c.t" class="card"><span class="label accent">{{ c.t }}</span><p class="small">{{ c.d }}</p></div>
+          </div>
+        </section>
 
-    </main>
+        <!-- OBJECTIVE -->
+        <section id="objective" class="d-section">
+          <span class="label accent">Objective</span>
+          <h2>A “third space” where creativity is a bridge</h2>
+          <div class="vp">
+            <span class="label accent">Goal</span>
+            <p class="vp-statement">{{ GOAL }}</p>
+          </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section id="process" class="d-section">
+          <span class="label accent">Process</span>
+          <h2>From conception to facilitation</h2>
+          <p class="body">I take full responsibility for every touchpoint of the experience. My role involves a 360° management approach:</p>
+          <div class="cards cards-2 gap-top">
+            <div v-for="r in roles" :key="r.t" class="card"><span class="label accent">{{ r.t }}</span><p class="small">{{ r.d }}</p></div>
+          </div>
+
+          <div class="mosaic">
+            <div class="m-tall"><img src="/img/collage-marketing.jpg" alt="Workshop table at Dokk1" loading="lazy" /></div>
+            <div><img src="/img/collage-visual-system.JPG" alt="Collage materials on the table" loading="lazy" /></div>
+            <div><img class="flow" src="/img/collage-flow.jpg" alt="Collage Afternoon seen from above at Dokk1" loading="lazy" /></div>
+          </div>
+        </section>
+
+        <!-- COMMUNITY -->
+        <section id="community" class="d-section">
+          <span class="label accent">Community</span>
+          <h2>What participants say, and what we share online</h2>
+
+          <span class="label sub">Participants feedback</span>
+          <div class="cards cards-3">
+            <div v-for="r in reviews" :key="r.author" class="card quote">
+              <p class="quote-text">“{{ r.text }}”</p>
+              <span class="label accent">{{ r.author }}</span>
+            </div>
+          </div>
+
+          <span class="label sub">SoMe content</span>
+          <div class="reels">
+            <div v-for="v in someVideos" :key="v" class="reel">
+              <iframe :src="v" frameborder="0" allow="autoplay; fullscreen" loading="lazy" title="Collage Afternoon social media video"></iframe>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESULTS -->
+        <section id="results" class="d-section last">
+          <span class="label accent">Results</span>
+          <h2>A consistent community in Aarhus</h2>
+          <p class="body">What began as a simple gathering evolved into “Collage Afternoon” to ensure a welcoming space for everyone. Today, it maintains a consistent attendance of 20-25 people. Beyond the art produced, the real success lies in the social fabric it creates: lasting friendships and a vibrant community in Aarhus.</p>
+          <img class="banner" src="/img/collage-action.JPG" alt="Participants making collages at Dokk1" loading="lazy" />
+        </section>
+
+        <ProjectFooter prev-to="/portfolio/content-creation" next-to="/portfolio/city-welcome" />
+      </main>
+    </div>
   </div>
 </template>
 
 <style scoped>
-/* ─── BASE ──────────────────────────────────────────────── */
+/* One type scale for the whole page: 56 · 40 · 22 · 18 · 15 · 12
+   Two text colours: --ink and --muted. One accent: brand pink. */
 .case-study {
+  --ink: #111111;
+  --muted: #666A70;
+  --line: #DDE1E5;
+  --accent: #FF7BB5;
+  --surface: #F5F5F5;
+
   font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
-  color: #000;
+  background: #fff;
+  color: var(--ink);
   line-height: 1.6;
 }
 
-/* ─── LAYOUT ────────────────────────────────────────────── */
-.content-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 5%;
-}
-
-/* ─── NAV ───────────────────────────────────────────────── */
-.top-nav {
-  padding: 25px 5%;
-}
-
-.back-btn {
-  font-size: 25px;
-  font-weight: 500;
-  color: #000;
-  text-decoration: none;
-  display: block;
-  margin-top: 10px;
-  transition: opacity 0.3s ease;
-}
-
-.back-btn:hover {
-  opacity: 0.5;
-}
-
-/* ─── HEADER ────────────────────────────────────────────── */
-.project-intro-header {
-  margin: 40px 0;
-}
-
-.category-badge {
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 14px;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.project-intro-header h1 {
-  font-size: 60px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-/* ─── HERO ──────────────────────────────────────────────── */
-.hero {
-  margin-bottom: 60px;
-}
-.hero-img {
-  width: 100%;
-  height: 60vh;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-}
-/* ─── SHARED LABELS ─────────────────────────────────────── */
-.section-label {
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 14px;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.section-label-gray {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #aaa;
-  margin-bottom: 30px;
-  display: block;
-}
-
-.body-text {
-  font-size: 18px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #333;
-  margin: 0;
-}
-
-/* ─── CONTEXT / OBJECTIVE GRID ──────────────────────────── */
-.section-grid {
+/* ─── LAYOUT ─────────────────────────────── */
+.cs-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin: 60px 0;
-}
-
-/* ─── PROCESS ───────────────────────────────────────────── */
-.process-section {
-  margin-bottom: 60px;
-}
-
-.process-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.card {
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
-  padding: 35px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: 260px minmax(0, 1000px);
   justify-content: center;
-  min-height: 220px;
-  transition: all 0.4s ease;
+  column-gap: 60px;
+  padding: 0 24px;
 }
 
-.card:hover {
-  background-color: #d1ff00;
-  border-color: #d1ff00;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(209, 255, 0, 0.15);
-}
+.side-nav-inner { position: sticky; top: 30px; padding-top: 30px; }
 
-.card h3 {
-  font-size: 22px;
+.top-nav { display: none; padding: 25px 5%; }
+.side-back-link { display: block; padding: 12px 18px; margin-bottom: 18px; font-size: 22px; font-weight: 500; color: #000; text-decoration: none; transition: opacity 0.3s ease; }
+.side-back-link:hover { opacity: 0.5; }
+.back-btn { font-size: 25px; font-weight: 500; color: #000; text-decoration: none; display: block; margin-top: 10px; transition: opacity 0.3s ease; }
+.back-btn:hover { opacity: 0.5; }
+
+.side-links { display: flex; flex-direction: column; gap: 6px; }
+.side-links a {
+  display: block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.side-links a:hover { color: #000; }
+.side-links a.active { background: #E8E8E8; color: #000; }
+
+.cs-main { padding-top: 30px; min-width: 0; }
+
+/* ─── TYPE SCALE ─────────────────────────── */
+h1 {
+  font-size: 56px;
+  line-height: 1.06;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  margin: 0 0 28px;
+  max-width: 940px;
+}
+h2 {
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  max-width: 860px;
+  margin: 0 0 28px;
+}
+.lead { text-align: justify; font-size: 22px; line-height: 1.55; color: var(--muted); max-width: 860px; margin: 0 0 56px; }
+.body { text-align: justify; font-size: 18px; line-height: 1.65; color: var(--ink); max-width: 780px; margin: 0 0 20px; }
+.small { text-align: justify; font-size: 15px; line-height: 1.55; color: var(--muted); margin: 0; }
+.label {
+  display: block;
+  font-size: 12px;
   font-weight: 600;
-  margin: 0 0 15px 0;
-  color: #000;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
+.label.accent { color: var(--accent); margin-bottom: 14px; }
+.label.sub { margin: 52px 0 16px; }
+.gap-top { margin-top: 32px; }
 
-.card p {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #000;
-  margin: 0;
-  text-align: left;
-}
+.d-section { margin-bottom: 140px; scroll-margin-top: 30px; }
+.d-section.last { margin-bottom: 60px; }
+.d-section.first { margin-bottom: 70px; }
 
-/* ─── CARROUSEL ─────────────────────────────────────────── */
-.carrousel-section {
-  max-width: 1000px;
-  margin: 20px auto 80px auto;
-  padding: 0 5%;
-}
+/* ─── OVERVIEW ───────────────────────────── */
+.hero-wrap { margin-bottom: 56px; }
+.hero-img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 20px; display: block; }
 
-.carrousel-img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-/* ─── REVIEWS ───────────────────────────────────────────── */
-.reviews-section {
-  margin: 80px auto;
-  max-width: 1100px;
-  padding: 0 5%;
-}
-
-.review-text {
-  font-size: 24px;
-  font-weight: 450;
-  margin-bottom: 10px;
-  text-align: justify;
-  color: #000;
-}
-
-.review-author {
-  color: #888;
-  font-size: 16px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1s ease-in-out;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* ─── SOME VIDEOS ───────────────────────────────────────── */
-.some-section {
-  max-width: 1100px;
-  margin: 0 auto 100px auto;
-  padding: 0 5%;
-}
-
-.some-grid {
+.meta-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
+  grid-template-columns: 1.1fr 0.7fr 1.1fr 1.3fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 0;
 }
-
-.some-item {
-  position: relative;
-  width: 100%;
-  padding-bottom: 177.78%;
-  background: #000;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.vimeo-embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* ─── RESULTS ───────────────────────────────────────────── */
-.results-section {
+.meta-v { text-align: left; font-size: 18px; line-height: 1.5; color: var(--ink); margin: 0; }
+.pill-col { display: grid; grid-template-columns: repeat(2, max-content); gap: 10px; justify-content: start; align-items: start; }
+.pill {
   display: flex;
   align-items: center;
-  gap: 60px;
-  margin: 60px auto 90px auto;
-  max-width: 1100px;
-  padding: 0 5%;
+  justify-content: center;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.result-img {
-  width: 50%;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
+/* ─── OBJECTIVE ──────────────────────────── */
+.vp { border-left: 3px solid var(--accent); padding-left: 28px; margin: 0; max-width: 860px; }
+.vp-statement { text-align: justify; margin: 0 0 12px; font-size: 22px; line-height: 1.45; font-weight: 500; letter-spacing: -0.01em; }
+
+/* ─── CARDS ──────────────────────────────── */
+.cards { display: grid; gap: 20px; }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-2 { grid-template-columns: repeat(2, 1fr); max-width: 860px; }
+.card { background: var(--surface); border-radius: 16px; padding: 28px; }
+.card .label { margin-bottom: 10px; }
+.card .small { text-align: left; }
+.cards-text { max-width: 780px; }
+
+.quote-text { font-size: 18px; line-height: 1.5; margin: 0 0 16px; color: var(--ink); text-align: left; }
+.quote .label { margin: 0; }
+
+/* ─── PROCESS MOSAIC ─────────────────────── */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  margin-top: 40px;
+  height: 520px;
+}
+.mosaic > div { min-height: 0; overflow: hidden; border-radius: 14px; }
+.mosaic .m-tall { grid-row: 1 / 3; }
+.mosaic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mosaic img.flow { object-position: center 80%; }
+
+/* ─── SOCIAL MEDIA REELS ─────────────────── */
+.reels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 780px; }
+.reel { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 16px; overflow: hidden; }
+.reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ─── RESULTS IMAGE ──────────────────────── */
+.banner { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; display: block; margin-top: 24px; }
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media (max-width: 1000px) {
+  .cs-layout { grid-template-columns: minmax(0, 1fr); padding: 0 5%; }
+  .side-nav { display: none; }
+  .top-nav { display: block; }
+  .meta-grid { grid-template-columns: 1fr 1fr; }
+  h1 { font-size: 44px; }
+  h2 { font-size: 32px; }
 }
 
-.result-img:hover {
-  transform: scale(1.01);
-}
-/* ─── RESPONSIVE ────────────────────────────────────────── */
-@media (max-width: 900px) {
-
-  .hero {
-    padding: 0 !important;
-  }
-  
-  .project-intro-header h1 {
-    font-size: 40px;
-  }
-
-  .hero-img {
-    height: 40vh;
-  }
-
-  .section-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    margin: 40px 0;
-  }
-
-  .process-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .carrousel-img {
-    height: 280px;
-  }
-
-  .some-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .results-section {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .result-img {
-    width: 100%;
-  }
-
-}
-
-@media (max-width: 500px) {
-  .project-intro-header h1 {
-    font-size: 30px;
-  }
-
-  .back-btn {
-    font-size: 18px;
-  }
-
-  .body-text,
-  .highlight-text {
-    font-size: 16px;
-  }
-
-  .review-text {
-    font-size: 18px;
-  }
-
-  .some-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .carrousel-img {
-    height: 220px;
-  }
-
+@media (max-width: 600px) {
+  .top-nav { padding: 20px 5%; }
+  .back-btn { font-size: 18px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  .lead { font-size: 18px; }
+  .body { font-size: 17px; }
+  .vp-statement { font-size: 19px; }
+  .meta-grid, .cards-3, .cards-2 { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
+  .mosaic .m-tall { grid-row: auto; }
+  .mosaic > div { aspect-ratio: 4 / 3; }
+  .reels { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+  .body, .lead, .small, .vp-statement { text-align: justify; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+  .d-section { margin-bottom: 80px; }
 }
 </style>
