@@ -1,422 +1,351 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';  
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import ProjectFooter from './ProjectFooter.vue';
-const dualPhotos = [
-  '/img/royalchicas2.JPEG',
-  '/img/royalchicas3.JPEG'
+
+const sections = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'context', label: 'Context' },
+  { id: 'objective', label: 'Objective' },
+  { id: 'process', label: 'Process' },
+  { id: 'community', label: 'Community' },
+  { id: 'results', label: 'Results' },
 ];
-const reviews = [
-  { text: '"Collage has become such a meaningful and essential experience for us in Aarhus ♥ Thank you Valen for hosting it and inspire us to create, and thank you to every woman who created such a warm and beautiful environment. It was my first visit to the Royal Library, and it was absolutely amazing! Looking forward to the next one :)"', author: 'Cecilia, Argentina' }
-];
-const activeReviewIndex = ref(0);
-let reviewInterval;
+
+const activeId = ref('overview');
+
+const goTo = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  activeId.value = id;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+// Highlight the section currently under the top of the viewport
+const onScroll = () => {
+  const line = window.innerHeight * 0.3;
+  let current = sections[0].id;
+  for (const s of sections) {
+    const el = document.getElementById(s.id);
+    if (el && el.getBoundingClientRect().top <= line) current = s.id;
+  }
+  activeId.value = current;
+};
+
 onMounted(() => {
-  reviewInterval = setInterval(() => {
-    activeReviewIndex.value = (activeReviewIndex.value + 1) % reviews.length;
-  }, 5000);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 });
-onUnmounted(() => {
-  clearInterval(reviewInterval);
-});
+onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
+
+const GOAL = 'To use chromatic limitation as a tool for deeper creativity. By restricting each participant to a single color, the objective was to encourage a more profound exploration of textures, shades, and symbolism while fostering personal storytelling through the psychological weight of the chosen hue.';
+
+const context = [
+  { t: 'The place', d: 'The Royal Danish Library, a quiet space for focused exploration.' },
+  { t: 'The twist', d: 'A single colour per participant, with no full palette.' },
+  { t: 'The edition', d: 'A special session of the monthly Collage Afternoon.' },
+];
+
+const roles = [
+  { t: 'Curation', d: 'I pre-sorted thousands of magazine cutouts and materials into specific color stations, ensuring high-quality textures for each palette to provide participants with a rich sensory starting point.' },
+  { t: 'Facilitation', d: 'We began the session with introductions where each participant was assigned a specific color. I gave a brief talk on the psychology of color, inviting everyone to reflect on whether that hue resonated with their current emotional state.' },
+  { t: 'Constraint design', d: 'By removing the “choice paralysis” of a full palette, I facilitated a flow state where participants could focus purely on composition and symbolism, allowing more time to connect and enjoy the creative moment.' },
+  { t: 'Social connection', d: 'The workshop concluded with a collective showcase. Each participant shared their work while the group admired the results, turning into a deep conversation that reinforced the bonds formed during the creative process.' },
+];
+
+const reviews = [
+  { text: 'Collage has become such a meaningful and essential experience for us in Aarhus ♥ Thank you Valen for hosting it and inspire us to create, and thank you to every woman who created such a warm and beautiful environment. It was my first visit to the Royal Library, and it was absolutely amazing! Looking forward to the next one :)', author: 'Cecilia, Argentina' },
+];
 </script>
 
 <template>
   <div class="case-study">
-
     <nav class="top-nav">
       <router-link to="/portfolio" class="back-btn">&lt; Back to Works</router-link>
     </nav>
 
-    <main class="content-wrapper">
+    <div class="cs-layout">
 
-      <header class="project-intro-header">
-        <span class="category-badge">Community Lead & Experience Design</span>
-        <h1>Collage Workshop | Royal Danish Library</h1>
-      </header>
-
-    <section class="hero">
-  <img src="/img/royaldanishlibrary.webp" alt="Collage Workshop at Royal Danish Library" class="hero-img" />
-</section>
-
-      <section class="section-grid">
-        <div class="text-col">
-          <h2 class="section-label">01. Context</h2>
-          <p class="body-text">The Royal Danish Library provided the perfect setting for a focused creative exploration. In this edition of Collage Afternoon, I wanted to challenge the participants to look beyond the chaos of imagery and focus on the fundamental power of color. By stripping away the palette, we turned a quiet library space into a vibrant laboratory of individual and collective expression.</p>
+      <!-- LEFT NAV (sticky) -->
+      <aside class="side-nav">
+        <div class="side-nav-inner">
+          <router-link to="/portfolio" class="side-back-link">&lt; Back to Works</router-link>
+          <nav class="side-links">
+            <a
+              v-for="s in sections"
+              :key="s.id"
+              :href="'#' + s.id"
+              :class="{ active: activeId === s.id }"
+              @click.prevent="goTo(s.id)"
+            >{{ s.label }}</a>
+          </nav>
         </div>
-        <div class="text-col">
-          <h2 class="section-label">02. Objective</h2>
-          <p class="body-text">The primary goal was to use chromatic limitation as a tool for deeper creativity. By restricting each participant to a single color, the objective was to encourage a more profound exploration of textures, shades, and symbolism while fostering personal storytelling through the psychological weight of the chosen hue.</p>
-        </div>
-      </section>
+      </aside>
 
-      <section class="process-section">
-        <h2 class="section-label">03. Process</h2>
-        <div class="process-cards">
-          <div class="card">
-            <h3>Curation</h3>
-            <p>I pre-sorted thousands of magazine cutouts and materials into specific color stations, ensuring high-quality textures for each palette to provide participants with a rich sensory starting point.</p>
-          </div>
-          <div class="card">
-            <h3>Facilitation</h3>
-            <p>We began the session with introductions where each participant was assigned a specific color. I gave a brief talk on the psychology of color, inviting everyone to reflect on whether that hue resonated with their current emotional state.</p>
-          </div>
-          <div class="card">
-            <h3>Constraint Design</h3>
-            <p>By removing the "choice paralysis" of a full palette, I facilitated a flow state where participants could focus purely on composition and symbolism, allowing more time to connect and enjoy the creative moment.</p>
-          </div>
-          <div class="card">
-            <h3>Social Connection</h3>
-            <p>The workshop concluded with a collective showcase. Each participant shared their work while the group admired the results, turning into a deep conversation that reinforced the bonds formed during the creative process.</p>
-          </div>
-        </div>
-      </section>
+      <main class="cs-main">
 
-      <section class="dual-grid">
-        <img v-for="(img, i) in dualPhotos" :key="i" :src="img" class="dual-img" alt="Workshop photo" />
-      </section>
+        <!-- OVERVIEW -->
+        <section id="overview" class="d-section first">
+          <div class="hero-wrap">
+            <img src="/img/royaldanishlibrary.webp" alt="Royal Danish Library" style="object-position:center 60%" class="hero-img" />
+          </div>
 
-      <section class="reviews-section">
-        <h2 class="section-label-gray">Participant Feedback</h2>
-        <transition name="fade" mode="out-in">
-          <div :key="activeReviewIndex" class="review-box">
-            <p class="review-text">{{ reviews[activeReviewIndex].text }}</p>
-            <span class="review-author">{{ reviews[activeReviewIndex].author }}</span>
-          </div>
-        </transition>
-      </section>
+          <span class="label accent">Community · Experience design</span>
+          <h1>Monochromatic Collage Workshop. One colour, one story each</h1>
+          <p class="lead">At the Royal Danish Library, I challenged the participants of Collage Afternoon to look beyond the chaos of imagery and focus on the power of colour. By stripping away the palette, a quiet library space became a vibrant laboratory of individual and collective expression.</p>
 
-      <section class="some-section">
-        <h2 class="section-label-gray">SoMe Content</h2>
-        <div class="some-complex-grid">
-          <div class="some-item">
-            <video :src="'/img/royalhero.MP4'" autoplay loop muted playsinline class="video-fill"></video>
+          <div class="meta-grid">
+            <div>
+              <span class="label">Fields</span>
+              <div class="pill-col">
+                <span class="pill">Workshops</span>
+                <span class="pill">Community</span>
+              </div>
+            </div>
+            <div>
+              <span class="label">Type</span>
+              <p class="meta-v">Collage Afternoon<br />edition</p>
+            </div>
+            <div>
+              <span class="label">Where</span>
+              <p class="meta-v">Royal Danish<br />Library</p>
+            </div>
+            <div>
+              <span class="label">Role</span>
+              <p class="meta-v">Community Lead<br />and Facilitator</p>
+            </div>
           </div>
-          <div class="some-images-stack">
-            <img src="/img/royalcollage.JPEG" class="some-mid-img" alt="Collage 1" />
-            <img src="/img/royalcollage2.JPEG" class="some-mid-img" alt="Collage 2" />
-          </div>
-          <div class="some-item">
-            <video :src="'/img/royalll.mp4'" autoplay loop muted playsinline class="video-fill"></video>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="results-section">
-        <h2 class="section-label">04. Results & Impact</h2>
-        <p class="body-text">The workshop produced a stunning series of monochromatic works that showcased a powerful visual harmony. Beyond the art, it successfully repositioned the library as a vibrant hub for the international community; many participants discovered the space for the first time, fostering a lasting connection and a sense of belonging within the city's cultural heart.</p>
-      </section>
-<ProjectFooter next-to="/portfolio/migrant-emotions" />
-    </main>
+        <!-- CONTEXT -->
+        <section id="context" class="d-section">
+          <span class="label accent">Context</span>
+          <h2>A library as a creative laboratory</h2>
+          <p class="body">The Royal Danish Library provided the perfect setting for a focused creative exploration. In this edition of Collage Afternoon, I wanted to challenge the participants to look beyond the chaos of imagery and focus on the fundamental power of color. By stripping away the palette, we turned a quiet library space into a vibrant laboratory of individual and collective expression.</p>
+          <div class="cards cards-3 cards-text gap-top">
+            <div v-for="c in context" :key="c.t" class="card"><span class="label accent">{{ c.t }}</span><p class="small">{{ c.d }}</p></div>
+          </div>
+        </section>
+
+        <!-- OBJECTIVE -->
+        <section id="objective" class="d-section">
+          <span class="label accent">Objective</span>
+          <h2>Chromatic limitation as a creative tool</h2>
+          <div class="vp">
+            <span class="label accent">Goal</span>
+            <p class="vp-statement">{{ GOAL }}</p>
+          </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section id="process" class="d-section">
+          <span class="label accent">Process</span>
+          <h2>Colour stations, a talk and a shared showcase</h2>
+          <p class="body">From sorting the materials to the final conversation, every step was designed around one colour per person:</p>
+          <div class="cards cards-2 gap-top">
+            <div v-for="r in roles" :key="r.t" class="card"><span class="label accent">{{ r.t }}</span><p class="small">{{ r.d }}</p></div>
+          </div>
+
+          <div class="pair">
+            <img src="/img/royalcollage.JPEG" alt="A blue collage in progress" loading="lazy" />
+            <img src="/img/royalcollage2.JPEG" alt="Red magazine cutouts on the table" loading="lazy" />
+          </div>
+        </section>
+
+        <!-- COMMUNITY -->
+        <section id="community" class="d-section">
+          <span class="label accent">Community</span>
+          <h2>What a participant says</h2>
+
+          <span class="label sub">Participant feedback</span>
+          <div class="cards cards-1">
+            <div v-for="r in reviews" :key="r.author" class="card quote">
+              <p class="quote-text">“{{ r.text }}”</p>
+              <span class="label accent">{{ r.author }}</span>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- RESULTS -->
+        <section id="results" class="d-section last">
+          <span class="label accent">Results</span>
+          <h2>A library that feels like home</h2>
+          <p class="body">The workshop produced a stunning series of monochromatic works that showcased a powerful visual harmony. Beyond the art, it successfully repositioned the library as a vibrant hub for the international community; many participants discovered the space for the first time, fostering a lasting connection and a sense of belonging within the city’s cultural heart.</p>
+          <div class="pair">
+            <img src="/img/royalchicas2.JPEG" alt="Participants at the table in the library" loading="lazy" />
+            <img src="/img/royalchicas3.JPEG" alt="Participants sharing their collages" loading="lazy" />
+          </div>
+        </section>
+
+        <ProjectFooter prev-to="/portfolio/city-welcome" next-to="/portfolio/migrant-emotions" />
+      </main>
+    </div>
   </div>
 </template>
 
 <style scoped>
-/* ─── BASE ──────────────────────────────────────────────── */
+/* One type scale for the whole page: 56 · 40 · 22 · 18 · 15 · 12
+   Two text colours: --ink and --muted. One accent: brand pink. */
 .case-study {
+  --ink: #111111;
+  --muted: #666A70;
+  --line: #DDE1E5;
+  --accent: #FF7BB5;
+  --surface: #F5F5F5;
+
   font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
-  color: #000;
+  background: #fff;
+  color: var(--ink);
   line-height: 1.6;
 }
 
-/* ─── LAYOUT ────────────────────────────────────────────── */
-.content-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 5%;
+/* ─── LAYOUT ─────────────────────────────── */
+.cs-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1000px);
+  justify-content: center;
+  column-gap: 60px;
+  padding: 0 24px;
 }
 
-/* ─── NAV ───────────────────────────────────────────────── */
-.top-nav {
-  padding: 25px 5%;
-}
+.side-nav-inner { position: sticky; top: 30px; padding-top: 30px; }
 
-.back-btn {
-  font-size: 25px;
+.top-nav { display: none; padding: 25px 5%; }
+.side-back-link { display: block; padding: 12px 18px; margin-bottom: 18px; font-size: 22px; font-weight: 500; color: #000; text-decoration: none; transition: opacity 0.3s ease; }
+.side-back-link:hover { opacity: 0.5; }
+.back-btn { font-size: 25px; font-weight: 500; color: #000; text-decoration: none; display: block; margin-top: 10px; transition: opacity 0.3s ease; }
+.back-btn:hover { opacity: 0.5; }
+
+.side-links { display: flex; flex-direction: column; gap: 6px; }
+.side-links a {
+  display: block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 16px;
   font-weight: 500;
-  color: #000;
+  color: var(--muted);
   text-decoration: none;
-  display: block;
-  margin-top: 10px;
-  transition: opacity 0.3s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
+.side-links a:hover { color: #000; }
+.side-links a.active { background: #E8E8E8; color: #000; }
 
-.back-btn:hover {
-  opacity: 0.5;
-}
+.cs-main { padding-top: 30px; min-width: 0; }
 
-/* ─── HEADER ────────────────────────────────────────────── */
-.project-intro-header {
-  margin: 40px 0;
-}
-
-.category-badge {
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 14px;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.project-intro-header h1 {
-  font-size: 60px;
+/* ─── TYPE SCALE ─────────────────────────── */
+h1 {
+  font-size: 56px;
+  line-height: 1.06;
   font-weight: 500;
-  letter-spacing: -0.02em;
-  margin: 0;
+  letter-spacing: -0.035em;
+  margin: 0 0 28px;
+  max-width: 940px;
 }
-
-/* ─── HERO ──────────────────────────────────────────────── */
-.hero {
-  margin-bottom: 60px;
+h2 {
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  max-width: 860px;
+  margin: 0 0 28px;
 }
-.hero-img {
-  width: 100%;
-  height: 65vh;
-  object-fit: cover;
-  border-radius: 12px;
+.lead { text-align: justify; font-size: 22px; line-height: 1.55; color: var(--muted); max-width: 860px; margin: 0 0 56px; }
+.body { text-align: justify; font-size: 18px; line-height: 1.65; color: var(--ink); max-width: 780px; margin: 0 0 20px; }
+.small { text-align: justify; font-size: 15px; line-height: 1.55; color: var(--muted); margin: 0; }
+.label {
   display: block;
-}
-
-/* ─── SHARED LABELS ─────────────────────────────────────── */
-.section-label {
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 14px;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.section-label-gray {
-  font-size: 14px;
-  text-transform: uppercase;
-  color: #aaa;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  display: block;
-}
-
-.body-text {
-  font-size: 18px;
-  text-align: justify;
-  line-height: 1.6;
-  color: #333;
-  margin: 0;
-}
-
-/* ─── CONTEXT / OBJECTIVE GRID ──────────────────────────── */
-.section-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin: 60px 0;
-}
-
-/* ─── PROCESS ───────────────────────────────────────────── */
-.process-section {
-  margin-bottom: 60px;
-}
-
-.process-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.card {
-  background-color: #f9f9f9;
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid #eee;
-  transition: all 0.4s ease;
-}
-
-.card:hover {
-  background-color: #d1ff00;
-  border-color: #d1ff00;
-  transform: translateY(-5px);
-}
-
-.card h3 {
+  font-size: 12px;
   font-weight: 600;
-  font-size: 22px;
-  margin: 0 0 12px 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
+.label.accent { color: var(--accent); margin-bottom: 14px; }
+.label.sub { margin: 52px 0 16px; }
+.gap-top { margin-top: 32px; }
 
-.card p {
-  font-size: 16px;
-  color: #000;
-  line-height: 1.5;
-  margin: 0;
-  text-align: left;
-}
+.d-section { margin-bottom: 140px; scroll-margin-top: 30px; }
+.d-section.last { margin-bottom: 60px; }
+.d-section.first { margin-bottom: 70px; }
 
-/* ─── DUAL PHOTOS ───────────────────────────────────────── */
-.dual-grid {
+/* ─── OVERVIEW ───────────────────────────── */
+.hero-wrap { margin-bottom: 56px; }
+.hero-img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 20px; display: block; }
+
+.meta-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 60px 0;
+  grid-template-columns: 1.1fr 0.7fr 1.1fr 1.3fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 0;
 }
-
-.dual-img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-/* ─── REVIEWS ───────────────────────────────────────────── */
-.reviews-section {
-  margin: 100px 0;
-}
-
-.review-text {
-  font-size: 24px;
-  font-weight: 450;
-  margin-bottom: 10px;
-  text-align: justify;
-  color: #000;
-}
-
-.review-author {
-  color: #888;
-  font-size: 16px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.6s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* ─── SOME CONTENT ──────────────────────────────────────── */
-.some-section {
-  margin-bottom: 80px;
-}
-
-.some-complex-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-  max-width: 900px;
-  align-items: center;
-}
-
-.some-item {
-  position: relative;
-  width: 100%;
-  padding-bottom: 180%;
-  background: #000;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.video-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.some-images-stack {
+.meta-v { text-align: left; font-size: 18px; line-height: 1.5; color: var(--ink); margin: 0; }
+.pill-col { display: grid; grid-template-columns: repeat(2, max-content); gap: 10px; justify-content: start; align-items: start; }
+.pill {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.some-mid-img {
-  width: 100%;
-  height: 248px;
-  object-fit: cover;
-  border-radius: 12px;
+/* ─── OBJECTIVE ──────────────────────────── */
+.vp { border-left: 3px solid var(--accent); padding-left: 28px; margin: 0; max-width: 860px; }
+.vp-statement { text-align: justify; margin: 0 0 12px; font-size: 22px; line-height: 1.45; font-weight: 500; letter-spacing: -0.01em; }
+
+/* ─── CARDS ──────────────────────────────── */
+.cards { display: grid; gap: 20px; }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-1 { grid-template-columns: 1fr; max-width: 860px; }
+.cards-2 { grid-template-columns: repeat(2, 1fr); max-width: 860px; }
+.card { background: var(--surface); border-radius: 16px; padding: 28px; }
+.card .label { margin-bottom: 10px; }
+.card .small { text-align: left; }
+.cards-text { max-width: 780px; }
+
+.quote-text { font-size: 18px; line-height: 1.5; margin: 0 0 16px; color: var(--ink); text-align: left; }
+.quote .label { margin: 0; }
+
+/* ─── PROCESS PHOTOS ─────────────────────── */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+.pair img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; display: block; }
+
+/* ─── SOCIAL MEDIA REELS ─────────────────── */
+.reels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 520px; }
+.reel { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 16px; overflow: hidden; }
+.reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ─── RESULTS IMAGE ──────────────────────── */
+.banner { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 40%; border-radius: 16px; display: block; margin-top: 24px; }
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media (max-width: 1000px) {
+  .cs-layout { grid-template-columns: minmax(0, 1fr); padding: 0 5%; }
+  .side-nav { display: none; }
+  .top-nav { display: block; }
+  .meta-grid { grid-template-columns: 1fr 1fr; }
+  h1 { font-size: 44px; }
+  h2 { font-size: 32px; }
 }
 
-/* ─── RESULTS ───────────────────────────────────────────── */
-.results-section {
-  margin: 80px 0;
-}
-
-/* ─── RESPONSIVE ────────────────────────────────────────── */
-@media (max-width: 850px) {
-  .project-intro-header h1 {
-    font-size: 40px;
-  }
-
-  .hero {
-    padding: 0 !important;
-  }
-
-  .hero-img {
-    height: 40vh;
-  }
-
-  .section-grid,
-  .process-cards,
-  .dual-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin: 40px 0;
-  }
-
-  .dual-img {
-    height: 300px;
-  }
-
-  .reviews-section {
-    margin: 60px 0;
-  }
-
-  .some-complex-grid {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-
-  .some-images-stack {
-    flex-direction: row;
-  }
-
-  .some-mid-img {
-    height: 200px;
-  }
-
- 
-}
-
-@media (max-width: 500px) {
-  .project-intro-header h1 {
-    font-size: 28px;
-  }
-
-  .back-btn {
-    font-size: 18px;
-  }
-
-  .body-text {
-    font-size: 16px;
-  }
-
-  .review-text {
-    font-size: 18px;
-  }
-
-  .some-images-stack {
-    flex-direction: column;
-  }
-
-  .some-mid-img {
-    height: 220px;
-  }
-
-
+@media (max-width: 600px) {
+  .top-nav { padding: 20px 5%; }
+  .back-btn { font-size: 18px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  .lead { font-size: 18px; }
+  .body { font-size: 17px; }
+  .vp-statement { font-size: 19px; }
+  .meta-grid, .cards-3, .cards-2 { grid-template-columns: 1fr; }
+  .pair { grid-template-columns: 1fr; }
+  .reels { max-width: none; }
+  .body, .lead, .small, .vp-statement { text-align: justify; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+  .d-section { margin-bottom: 80px; }
 }
 </style>
