@@ -240,7 +240,7 @@ const stack = [
           </div>
         </section>
 
-        <ProjectFooter prev-to="/portfolio/business-dedk" next-to="/portfolio/itinero" />
+        <ProjectFooter prev-to="/portfolio/business-dedk" next-to="/portfolio/lic-aranda" />
       </main>
     </div>
   </div>

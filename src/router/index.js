@@ -20,7 +20,6 @@ const router = createRouter({
     { path: '/content-creation', name: 'content-creation', component: () => import('../views/content-creation.vue') },
 { path: '/collage', name: 'collage', component: () => import('../views/projects/CollageView.vue') },
     { path: '/portfolio/under', name: 'under', component: () => import('../views/projects/UnderView.vue') },
-    { path: '/portfolio/itinero', name: 'itinero', component: () => import('../views/projects/ItineroView.vue') },
     { path: '/portfolio/content-creation', name: 'project-content-creation', component: () => import('../views/projects/ContentCreationView.vue') },
 { path: '/portfolio/departamentos-alfar', name: 'departamentos-alfar', component: () => import('../views/projects/AlfarView.vue') },    { path: '/portfolio/amada-amiga', name: 'amada-amiga', component: () => import('../views/projects/AmadaAmigaView.vue') },
     { path: '/portfolio/lic-aranda', name: 'lic-aranda', component: () => import('../views/projects/LicArandaView.vue') },

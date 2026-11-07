@@ -67,7 +67,6 @@ const recentProjects = [
   image: '/img/alfarhero.webp',
   link: '/portfolio/departamentos-alfar',
 },
-  { title: 'Itinero', description: 'A mobile application designed to simplify and enhance travel experiences.', tags: ['UX/UI', 'Web Design'], image: '/img/itineroapp.png', link: '/portfolio/itinero' },
     { title: 'Lic. Aranda Coria', description: 'Brand identity design for a psichologist, reflecting trust and empathy.', tags: ['Visual Design'], image: '/img/arandacoria.png', link: '/portfolio/lic-aranda' },
   { title: 'Amada amiga', description: 'Unique wine label design capturing the essence of a beloved friend.', tags: ['Visual Design'], image: '/img/amadaamigaproject.png', link: '/portfolio/amada-amiga' },
   { title: 'SoMe Content creation', description: 'Strategy and creation of engaging content for Instagram and TikTok.', tags: ['Content Creation'], image: '/img/someproject.webp', link: '/portfolio/content-creation' },

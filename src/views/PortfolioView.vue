@@ -31,12 +31,6 @@ const projectsList = [
   link: '/portfolio/departamentos-alfar',
 },
   {
-    title: 'Itinero',
-    description: 'A mobile application designed to simplify and enhance travel experiences.',
-    tags: ['UX/UI', 'Web Design'],    image: '/img/itineroapp.png',
-    link: '/portfolio/itinero',
-  },
-  {
     title: 'Lic. Aranda Coria',
     description: 'Brand identity design for a psichologist, reflecting trust and empathy.',
     tags: ['Visual Design'],
