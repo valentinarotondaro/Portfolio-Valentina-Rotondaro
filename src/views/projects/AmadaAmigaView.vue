@@ -220,7 +220,7 @@ const context = [
   transition: background 0.2s ease, color 0.2s ease;
 }
 .side-links a:hover { color: #000; }
-.side-links a.active { background: var(--lima); color: #000; }
+.side-links a.active { background: #E8E8E8; color: #000; }
 
 .cs-main { padding-top: 30px; min-width: 0; }
 

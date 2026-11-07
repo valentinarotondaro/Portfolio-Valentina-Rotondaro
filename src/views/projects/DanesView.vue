@@ -491,10 +491,10 @@ const campaign = [
 .side-nav-inner { position: sticky; top: 30px; padding-top: 30px; }
 
 .top-nav { display: none; padding: 25px 5%; }
-.side-back-link { display: block; padding: 12px 18px; margin-bottom: 18px; font-size: 22px; font-weight: 500; color: #000; text-decoration: none; transition: color 0.3s ease; }
-.side-back-link:hover { color: #FF7BB5; }
-.back-btn { font-size: 25px; font-weight: 500; color: #000; text-decoration: none; display: block; margin-top: 10px; transition: color 0.3s ease; }
-.back-btn:hover { color: #FF7BB5; }
+.side-back-link { display: block; padding: 12px 18px; margin-bottom: 18px; font-size: 22px; font-weight: 500; color: #000; text-decoration: none; transition: opacity 0.3s ease; }
+.side-back-link:hover { opacity: 0.5; }
+.back-btn { font-size: 25px; font-weight: 500; color: #000; text-decoration: none; display: block; margin-top: 10px; transition: opacity 0.3s ease; }
+.back-btn:hover { opacity: 0.5; }
 
 .side-links { display: flex; flex-direction: column; gap: 6px; }
 .side-links a {
@@ -508,7 +508,7 @@ const campaign = [
   transition: background 0.2s ease, color 0.2s ease;
 }
 .side-links a:hover { color: #000; }
-.side-links a.active { background: var(--lima); color: #000; }
+.side-links a.active { background: #E8E8E8; color: #000; }
 
 .danes-main { padding-top: 30px; min-width: 0; }
 
@@ -592,7 +592,7 @@ h2 {
   white-space: nowrap;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
-.btn-lime { background: var(--lima); color: #000; }
+.btn-lime { background: var(--red); color: #fff; border-color: var(--red); }
 .btn-lime:hover { transform: translateY(-2px); }
 .btn-outline { background: transparent; color: #000; border-color: #000; }
 .btn-outline:hover { background: #000; color: #fff; }

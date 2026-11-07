@@ -292,7 +292,7 @@ const stack = [
   transition: background 0.2s ease, color 0.2s ease;
 }
 .side-links a:hover { color: #000; }
-.side-links a.active { background: var(--lima); color: #000; }
+.side-links a.active { background: #E8E8E8; color: #000; }
 
 .cs-main { padding-top: 30px; min-width: 0; }
 
@@ -377,7 +377,7 @@ h2 {
   white-space: nowrap;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
-.btn-brand { background: #D0D838; color: #000; border-color: #D0D838; }
+.btn-brand { background: #2A27C1; color: #fff; border-color: #2A27C1; }
 .btn-brand:hover { transform: translateY(-2px); }
 .btn-outline { background: transparent; color: #000; border-color: #000; }
 .btn-outline:hover { background: #000; color: #fff; }
