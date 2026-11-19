@@ -74,13 +74,10 @@ const proposalFields = computed(() => [
             <span class="row-arrow" aria-hidden="true">{{ open === i ? '↘︎' : '↗︎' }}</span>
           </button>
           <div v-if="open === i" class="row-body">
-            <div class="thumbs"><div v-for="im in w.imgs" :key="im" class="thumb"><img :src="im" alt="" loading="lazy" /></div><div v-for="im in (w.more || [])" :key="im" class="thumb thumb-desk"><img :src="im" alt="" loading="lazy" /></div></div>
+            <div class="thumbs"><div v-for="im in (w.lead || [])" :key="im" class="thumb thumb-desk"><img :src="im" alt="" loading="lazy" /></div><div v-for="im in w.imgs" :key="im" class="thumb"><img :src="im" alt="" loading="lazy" /></div><div v-for="im in (w.more || [])" :key="im" class="thumb thumb-desk"><img :src="im" alt="" loading="lazy" /></div></div>
             <router-link :to="w.to" class="read">{{ t('workshops.readCase') }} →</router-link>
           </div>
         </div>
-      </div>
-      <div class="past-video pv-desk">
-        <VimeoReel :src="PAST_VIDEO" title="Workshop video" ratio="16 / 9" />
       </div>
     </section>
 
@@ -95,7 +92,7 @@ const proposalFields = computed(() => [
       </div>
       <div class="reels">
         <VimeoReel v-for="(u, i) in WORKSHOP_REELS" :key="u" :src="u" :title="'Workshop video ' + (i + 1)" background />
-        <VimeoReel class="pv-mob" :src="PAST_VIDEO" title="Workshop video" background />
+        <VimeoReel :src="PAST_VIDEO" title="Workshop video" background />
       </div>
     </section>
 
@@ -133,8 +130,6 @@ const proposalFields = computed(() => [
 </template>
 
 <style scoped>
-.past-video { margin-top: 48px; max-width: 960px; }
-.pv-mob { display: none; }
 .gap { margin-bottom: 30px; }
 .big { font-size: clamp(30px, 3.4vw, 50px); }
 .next { margin-top: 22px; border: 1.5px solid var(--ink); border-radius: 32px; background: var(--pink); padding: 34px; display: grid; grid-template-columns: 1fr minmax(0, 600px); gap: 40px; }
@@ -205,8 +200,6 @@ const proposalFields = computed(() => [
   .m-hide { display: none; }
   .ws-hero.hero { padding-bottom: 26px; }
   .ws-next.sec { padding-top: 22px; }
-  .pv-desk { display: none; }
-  .pv-mob { display: block; }
   .b-left { padding: 40px var(--gutter); }
   .b-right { border-left: 0; border-top: 1.5px solid var(--ink); padding: 40px var(--gutter); }
   .b-card { padding: 22px; }
