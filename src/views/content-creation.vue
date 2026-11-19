@@ -6,6 +6,7 @@ import PageHero from '../components/PageHero.vue'
 import RichText from '../components/RichText.vue'
 import VimeoReel from '../components/VimeoReel.vue'
 import MessageForm from '../components/MessageForm.vue'
+import NichePills from '../components/NichePills.vue'
 
 const { t, tm } = useI18n()
 const cats = ['all', 'ugc', 'tutorials', 'lifestyle', 'stationery', 'color', 'travel', 'experiences']
@@ -45,15 +46,19 @@ const briefFields = computed(() => [
       </div>
     </div>
 
-    <!-- Brands -->
-    <section class="sec">
-      <span class="lab p">{{ t('content.brandsLabel') }}</span>
-      <h2 class="b-h2 gap">{{ t('content.brandsLabel') }}</h2>
-      <div class="runway" aria-label="Brands">
-        <div class="runway-track">
-          <div v-for="(b, i) in [...BRAND_LOGOS, ...BRAND_LOGOS]" :key="i" class="logo"><img :src="'/img/' + b" alt="" loading="lazy" /></div>
-        </div>
+    <!-- Intro: photo + short pitch -->
+    <section class="sec intro-sec">
+      <div class="intro-copy">
+        <span class="lab p">{{ t('content.introLabel') }}</span>
+        <p class="intro-lead"><RichText :parts="tm('content.introLead')" /></p>
       </div>
+      <div class="intro-photo"><img src="/img/valentina-perfil.webp" :alt="t('about.photoAlt')" /></div>
+    </section>
+
+    <!-- Niches -->
+    <section class="sec niches-sec">
+      <h2 class="b-h2 niches-title">{{ t('content.nichesTitle') }}</h2>
+      <NichePills :items="tm('content.niches')" :reset-label="t('content.nichesReset')" />
     </section>
 
     <!-- Videos -->
@@ -92,6 +97,17 @@ const briefFields = computed(() => [
       </div>
     </section>
 
+    <!-- Brands -->
+    <section class="sec">
+      <span class="lab p">{{ t('content.brandsLabel') }}</span>
+      <h2 class="b-h2 gap">{{ t('content.brandsLabel') }}</h2>
+      <div class="runway" aria-label="Brands">
+        <div class="runway-track">
+          <div v-for="(b, i) in [...BRAND_LOGOS, ...BRAND_LOGOS]" :key="i" class="logo"><img :src="'/img/' + b" alt="" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Steps -->
     <section class="sec">
       <span class="lab p">{{ t('content.stepsLabel') }}</span>
@@ -127,6 +143,14 @@ const briefFields = computed(() => [
 .stat:first-child { border-left: 0; }
 .n { font-size: 44px; line-height: 1; }
 .stat .lab { display: block; margin-top: 10px; }
+.intro-sec { display: flex; align-items: center; justify-content: center; gap: clamp(40px, 7.6vw, 110px); }
+.intro-photo { order: -1; flex: none; position: relative; width: clamp(300px, 30vw, 420px); height: clamp(300px, 30vw, 420px); border: 1.5px solid var(--ink); border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; overflow: hidden; background: var(--cream); }
+.intro-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+.intro-copy { max-width: 560px; }
+.intro-lead { font-size: clamp(30px, 3vw, 44px); line-height: 1.08; margin: 12px 0 0; text-align: justify; text-justify: inter-word; hyphens: none; }
+.intro-text { font-size: 18px; line-height: 1.45; margin: 0; color: #444; text-align: justify; text-justify: inter-word; hyphens: none; }
+.niches-title { text-align: center; max-width: 900px; margin: 0 auto 28px; font-size: clamp(26px, 2.6vw, 40px); line-height: 1.05; }
+.niches-sec { text-align: center; }
 .runway { overflow: hidden; margin: 0 calc(var(--gutter) * -1); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .runway-track { display: flex; width: max-content; align-items: center; animation: runway 30s linear infinite; }
 .runway:hover .runway-track { animation-play-state: paused; }
@@ -159,6 +183,10 @@ const briefFields = computed(() => [
 .flat { margin-top: 0; }
 .brief p { margin: 16px 0 0; font-size: 17px; }
 @media (max-width: 900px) {
+  .intro-sec { flex-direction: column; gap: 26px; align-items: stretch; }
+  .intro-photo { order: 1; align-self: center; width: min(300px, 80vw); height: min(300px, 80vw); }
+  .intro-lead { font-size: 26px; }
+  .intro-text { font-size: 16px; }
   .stats { display: none; }
   .stat:nth-child(3) { border-left: 0; }
   .stat:nth-child(n + 3) { border-top: 1.5px solid var(--ink); }

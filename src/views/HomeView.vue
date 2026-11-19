@@ -33,7 +33,6 @@ useReveal(page)
       <div class="about-photo blob"><img src="/img/valentina-perfil.webp" :alt="t('about.photoAlt')" /></div>
       <div class="about-copy">
         <span class="lab p">{{ t('home.aboutLabel') }}</span>
-        <div class="lab meta">{{ t('home.aboutMeta') }}</div>
         <p class="lead"><RichText :parts="tm('home.aboutText')" /></p>
       </div>
     </section>
