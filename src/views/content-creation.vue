@@ -108,19 +108,6 @@ const briefFields = computed(() => [
       </div>
     </section>
 
-    <!-- Steps -->
-    <section class="sec">
-      <span class="lab p">{{ t('content.stepsLabel') }}</span>
-      <h2 class="b-h2 gap">{{ t('content.stepsTitle') }}</h2>
-      <div class="steps">
-        <div v-for="(s, i) in tm('content.steps')" :key="s.t" class="step">
-          <div class="num">0{{ i + 1 }}</div>
-          <h3>{{ s.t }}</h3>
-          <p>{{ s.d }}</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Brief -->
     <section class="sec">
       <div class="brief">
