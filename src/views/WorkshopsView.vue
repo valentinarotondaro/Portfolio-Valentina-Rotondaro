@@ -74,7 +74,7 @@ const proposalFields = computed(() => [
             <span class="row-arrow" aria-hidden="true">{{ open === i ? '↘︎' : '↗︎' }}</span>
           </button>
           <div v-if="open === i" class="row-body">
-            <div class="thumbs"><div v-for="im in w.imgs" :key="im" class="thumb"><img :src="im" alt="" loading="lazy" /></div></div>
+            <div class="thumbs"><div v-for="im in w.imgs" :key="im" class="thumb"><img :src="im" alt="" loading="lazy" /></div><div v-for="im in (w.more || [])" :key="im" class="thumb thumb-desk"><img :src="im" alt="" loading="lazy" /></div></div>
             <router-link :to="w.to" class="read">{{ t('workshops.readCase') }} →</router-link>
           </div>
         </div>
@@ -196,7 +196,7 @@ const proposalFields = computed(() => [
   .row-title { font-size: 28px; }
   .row-desc { grid-column: 1; grid-row: 2; font-size: 14px; }
   .row-arrow { grid-row: 1; grid-column: 2; font-size: 28px; }
-  .thumbs { flex-direction: column; } .thumb { height: 170px; }
+  .thumbs { flex-direction: column; } .thumb { height: 170px; } .thumb-desk { display: none; }
   .head { flex-direction: column; align-items: flex-start; }
   .reels { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .photos { grid-template-columns: 1fr; } .photo { height: 220px; }

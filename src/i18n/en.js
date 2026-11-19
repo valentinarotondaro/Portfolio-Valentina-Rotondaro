@@ -171,7 +171,7 @@ export default {
     readCase: 'Read case study',
     past: [
       { t: 'Collage Afternoon', d: 'Monthly · DOKK1, Aarhus', to: '/portfolio/collage-afternoon', imgs: ['/img/collage (5).jpg', '/img/collage (4).JPG', '/img/collage-final-works.JPG'] },
-      { t: 'Aarhus City Welcome', d: 'A creative welcome for newcomers · Aarhus', to: '/portfolio/city-welcome', imgs: ['/img/CollageworkshopAarhusCityWelcome.JPG'] },
+      { t: 'Aarhus City Welcome', d: 'A creative welcome for newcomers · Aarhus', to: '/portfolio/city-welcome', imgs: ['/img/CollageworkshopAarhusCityWelcome.JPG'], more: ['/img/city-process-1.png', '/img/city-welcome-dual-1.JPEG'] },
       { t: 'Monochromatic Collage', d: 'One colour, one story each · Royal Danish Library', to: '/portfolio/royal-library', imgs: ['/img/royalcollage.JPEG', '/img/royalchicas2.JPEG'] },
       { t: 'Collage & Migrant Emotions', d: 'Turning the journey into art · Aarhus', to: '/portfolio/migrant-emotions', imgs: ['/img/migrantemotionsworkshop.webp', '/img/collagesome.JPEG', '/img/collageprocess1.PNG'] },
     ],

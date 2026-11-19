@@ -4,6 +4,7 @@ import { useI18n } from '../i18n/index.js'
 import { useReveal } from '../composables/useReveal.js'
 import PageHero from '../components/PageHero.vue'
 import RichText from '../components/RichText.vue'
+import BrandShape from '../components/BrandShape.vue'
 import WorkCard from '../components/WorkCard.vue'
 
 const { t, tm } = useI18n()
@@ -13,20 +14,26 @@ useReveal(page)
 
 <template>
   <main ref="page" class="home">
-    <PageHero class="home-hero" :label="t('home.label')">
+    <PageHero class="home-hero" :label="t('home.label')" :shapes="false">
       <template #title><RichText :parts="tm('home.title')" /></template>
       <template #actions>
-        <router-link to="/contact" class="btn pink">{{ t('nav.contact') }} ↗︎</router-link>
+        <router-link to="/contact" class="btn pink hero-contact">{{ t('nav.contact') }} ↗︎</router-link>
       </template>
+      <!-- desktop-only drifting shapes; the big flower bleeds off the right edge -->
+      <div class="hshapes" aria-hidden="true">
+        <BrandShape name="flor" class="hsh hsh-flor" />
+        <BrandShape name="arco" class="hsh hsh-arco" color="#8C9A3E" />
+        <BrandShape name="duo" class="hsh hsh-duo" />
+        <BrandShape name="v" class="hsh hsh-v" />
+      </div>
     </PageHero>
 
     <!-- About teaser -->
     <section class="sec sec-tight about">
-      <div>
+      <div class="about-photo blob"><img src="/img/valentina-perfil.webp" :alt="t('about.photoAlt')" /></div>
+      <div class="about-copy">
         <span class="lab p">{{ t('home.aboutLabel') }}</span>
         <div class="lab meta">{{ t('home.aboutMeta') }}</div>
-      </div>
-      <div>
         <p class="lead"><RichText :parts="tm('home.aboutText')" /></p>
       </div>
     </section>
@@ -64,11 +71,28 @@ useReveal(page)
 </template>
 
 <style scoped>
-/* desktop: the first screen is only the hero; the intro text appears on scroll */
+/* desktop: the first screen is only the hero (title lower-left, big spinning flower);
+   the intro appears on scroll with the photo on the left and justified text on the right */
+.hshapes, .about-photo { display: none; }
 @media (min-width: 901px) {
-  .home-hero.hero { min-height: calc(100svh - 88px); display: flex; flex-direction: column; justify-content: center; }
+  .home-hero.hero { min-height: calc(100svh - 88px); display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: clamp(60px, 13vh, 120px); }
+  .home-hero :deep(.hero-title) { font-size: clamp(54px, 5.85vw, 100px); max-width: 54vw; margin-bottom: 0; }
+  .home-hero :deep(.hero-actions) { display: none; }
+  .hshapes { display: block; }
+  .hsh { position: absolute; z-index: 0; will-change: transform; }
+  .hsh-flor { right: -11.8vw; top: -5vh; width: 44.4vw; animation: hs-spin 40s linear infinite; }
+  .hsh-arco { left: 4.9vw; top: 8vh; width: 11.8vw; animation: hs-spin 65s linear infinite; }
+  .hsh-duo { left: 31vw; top: 12vh; width: 9.7vw; animation: hs-spin 55s linear infinite; }
+  .hsh-v { right: 16vw; bottom: 6vh; width: 9vw; animation: hs-spin-r 70s linear infinite; }
+  .about { display: flex; align-items: center; justify-content: center; gap: clamp(50px, 7.6vw, 110px); min-height: 80svh; }
+  .about-photo { display: block; flex: none; width: clamp(320px, 32vw, 460px); aspect-ratio: 1; border: 1.5px solid var(--ink); border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; overflow: hidden; background: var(--cream); }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+  .about-copy { max-width: 560px; }
+  .about .lead { font-size: clamp(30px, 2.9vw, 42px); text-align: justify; text-justify: inter-word; hyphens: none; margin-bottom: 0; }
 }
-.about { display: grid; grid-template-columns: 200px 1fr; gap: 40px; }
+@keyframes hs-spin { to { transform: rotate(360deg); } }
+@keyframes hs-spin-r { to { transform: rotate(-360deg); } }
+@media (prefers-reduced-motion: reduce) { .hsh { animation: none !important; } }
 .meta { margin-top: 8px; }
 .lead { font-size: clamp(24px, 2.4vw, 34px); line-height: 1.08; margin: 0 0 30px; color: var(--ink); }
 .pills { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -91,7 +115,7 @@ useReveal(page)
 .works-head { margin-bottom: 30px; }
 .all { position: relative; z-index: 2; text-align: center; margin-top: 50px; padding-bottom: 20px; }
 @media (max-width: 900px) {
-  .about { grid-template-columns: 1fr; gap: 14px; }
+  .about { display: grid; grid-template-columns: 1fr; gap: 14px; }
   .lead { font-size: 28px; text-align: justify; text-justify: inter-word; hyphens: none; }
   .huge { font-size: 30px; }
   .doors-head { flex-direction: column; align-items: flex-start; }
