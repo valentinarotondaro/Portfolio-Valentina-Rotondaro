@@ -40,7 +40,6 @@ const links = computed(() => [
       <nav v-if="menuOpen" class="mobile" aria-label="Mobile">
         <router-link v-for="l in links" :key="l.to" :to="l.to" :class="{ on: l.on }">{{ l.label }}</router-link>
         <router-link to="/contact" class="mcta">{{ t('nav.contact') }} ↗</router-link>
-        <LangMenu />
       </nav>
     </header>
 

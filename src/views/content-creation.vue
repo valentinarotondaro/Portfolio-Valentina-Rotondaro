@@ -159,7 +159,7 @@ const briefFields = computed(() => [
 .flat { margin-top: 0; }
 .brief p { margin: 16px 0 0; font-size: 17px; }
 @media (max-width: 900px) {
-  .stats { grid-template-columns: 1fr 1fr; margin-top: 40px; }
+  .stats { display: none; }
   .stat:nth-child(3) { border-left: 0; }
   .stat:nth-child(n + 3) { border-top: 1.5px solid var(--ink); }
   .n { font-size: 34px; }

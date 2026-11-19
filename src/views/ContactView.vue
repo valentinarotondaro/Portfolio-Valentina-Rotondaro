@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from '../i18n/index.js'
 import PageHero from '../components/PageHero.vue'
 import RichText from '../components/RichText.vue'
@@ -7,6 +7,12 @@ import MessageForm from '../components/MessageForm.vue'
 
 const { t, tm } = useI18n()
 const EMAIL = 'vrotondaro@hotmail.com'
+// On phones the topic pills are hidden, so no topic is sent either.
+const mq = typeof window !== 'undefined' ? window.matchMedia('(max-width: 900px)') : null
+const isMobile = ref(mq ? mq.matches : false)
+const onMq = (e) => { isMobile.value = e.matches }
+onMounted(() => mq && mq.addEventListener('change', onMq))
+onBeforeUnmount(() => mq && mq.removeEventListener('change', onMq))
 const fields = computed(() => [
   { key: 'name', label: t('common.name'), required: true },
   { key: 'email', label: t('common.email'), type: 'email', required: true },
@@ -28,15 +34,15 @@ const fields = computed(() => [
         <div>
           <span class="lab p">{{ t('contact.side') }}</span>
           <h2 class="b-h2 head">{{ tm('contact.heading')[0] }}<br />{{ tm('contact.heading')[1] }}</h2>
-          <a :href="'mailto:' + EMAIL" class="mail">{{ EMAIL }}</a>
-          <p class="text">{{ t('contact.text') }}</p>
-          <div class="links">
+          <a :href="'mailto:' + EMAIL" class="mail m-hide">{{ EMAIL }}</a>
+          <p class="text m-hide">{{ t('contact.text') }}</p>
+          <div class="links m-hide">
             <a class="pill o" href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener">{{ t('common.instagram') }} ↗</a>
             <a class="pill o" href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" rel="noopener">{{ t('common.linkedin') }} ↗</a>
             <a class="pill o" href="/img/CV Valentina Rotondaro.pdf" download>{{ t('common.cv') }}</a>
           </div>
         </div>
-        <MessageForm subject="New message from the portfolio" :fields="fields" :topics="tm('contact.topics')" />
+        <MessageForm subject="New message from the portfolio" :fields="fields" :topics="isMobile ? [] : tm('contact.topics')" />
       </div>
     </section>
   </main>
@@ -50,7 +56,9 @@ const fields = computed(() => [
 .links { display: flex; gap: 10px; flex-wrap: wrap; }
 .links .pill { text-decoration: none; }
 @media (max-width: 900px) {
-  .grid2 { grid-template-columns: 1fr; gap: 40px; }
+  .m-hide { display: none; }
+  .head { font-size: 42px; line-height: 1.04; margin: 4px 0 22px; }
+  .grid2 { grid-template-columns: 1fr; gap: 0; }
   .mail { font-size: 26px; }
 }
 </style>

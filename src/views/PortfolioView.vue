@@ -67,11 +67,11 @@ useReveal(page)
 
 <template>
   <main ref="page">
-    <PageHero :label="t('work.label')">
+    <PageHero class="work-hero" :label="t('work.label')">
       <template #title><RichText :parts="tm('work.title')" /></template>
     </PageHero>
 
-    <section class="sec sec-tight">
+    <section class="sec sec-tight work-sec">
       <div class="filters">
         <button v-for="f in filters" :key="f" type="button" class="pill big" :class="activeFilter === f ? 'pk' : 'o'" @click="activeFilter = f">
           {{ tm('work.filters')[f] }}
@@ -86,4 +86,8 @@ useReveal(page)
 <style scoped>
 .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 34px; }
 .big { padding: 10px 20px; font-size: 15px; }
+@media (max-width: 900px) {
+  .work-hero.hero { padding-bottom: 14px; }
+  .work-sec.sec { padding-top: 6px; }
+}
 </style>

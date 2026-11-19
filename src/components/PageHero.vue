@@ -2,16 +2,16 @@
 import BrandShape from './BrandShape.vue'
 // Shared hero for Home, Content Creation, Workshops, Work and Contact:
 // label, giant statement with two highlighted words, buttons and shapes.
-defineProps({ label: { type: String, default: '' }, shapes: { type: Boolean, default: true } })
+defineProps({ label: { type: String, default: '' }, shapes: { type: Boolean, default: true }, tidy: { type: Boolean, default: false } })
 </script>
 
 <template>
-  <section class="hero paper">
-    <template v-if="shapes">
+  <section class="hero paper" :class="{ tidy }">
+    <div v-if="shapes" class="shapes">
       <BrandShape name="flor" class="hs hs-flor" />
       <BrandShape name="duo" class="hs hs-duo" />
       <BrandShape name="logo" class="hs hs-logo" />
-    </template>
+    </div>
     <div class="hero-inner">
       <span v-if="label" class="lab p">{{ label }}</span>
       <h1 class="b-h1 hero-title"><slot name="title" /></h1>
@@ -26,6 +26,7 @@ defineProps({ label: { type: String, default: '' }, shapes: { type: Boolean, def
 .hero-inner { position: relative; z-index: 1; }
 .hero-title { margin: 22px 0 36px; max-width: 1260px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.shapes { display: contents; }
 .hs { position: absolute; }
 .hs-flor { right: 50px; top: 34px; width: 100px; }
 .hs-duo { left: 46%; bottom: 56px; width: 84px; }
@@ -36,5 +37,6 @@ defineProps({ label: { type: String, default: '' }, shapes: { type: Boolean, def
   .hs-flor { width: 54px; right: 14px; top: 12px; }
   .hs-duo { width: 46px; left: auto; right: 90px; bottom: 16px; }
   .hs-logo { width: 54px; right: 20px; bottom: 20px; }
+  .shapes { display: none; }
 }
 </style>

@@ -16,7 +16,7 @@ const { t } = useI18n()
         <router-link to="/" class="fw">valen rotondaro</router-link>
         <p class="sub">{{ t('footer.tagline') }}</p>
       </div>
-      <div>
+      <div class="col-pages">
         <span class="lab p">{{ t('footer.pages') }}</span>
         <ul>
           <li><router-link to="/work">{{ t('nav.work') }}</router-link></li>
@@ -25,7 +25,7 @@ const { t } = useI18n()
           <li><router-link to="/about">{{ t('nav.about') }}</router-link></li>
         </ul>
       </div>
-      <div>
+      <div class="col-follow">
         <span class="lab p">{{ t('footer.follow') }}</span>
         <ul>
           <li><a href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener">{{ t('common.instagram') }}</a></li>
@@ -33,11 +33,12 @@ const { t } = useI18n()
           <li><a href="/img/CV Valentina Rotondaro.pdf" download>{{ t('common.cv') }}</a></li>
         </ul>
       </div>
-      <div>
+      <div class="col-write">
         <span class="lab p">{{ t('footer.write') }}</span>
         <ul>
           <li><a href="mailto:vrotondaro@hotmail.com">vrotondaro@hotmail.com</a></li>
         </ul>
+        <LangMenu up class="lang-m" />
       </div>
     </div>
     <div class="bottom">
@@ -67,6 +68,7 @@ const { t } = useI18n()
 ul { list-style: none; margin: 12px 0 0; padding: 0; line-height: 1.9; }
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
+.lang-m { display: none; }
 .bottom { padding: 0 var(--gutter) 28px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
 @media (max-width: 900px) {
   .site-footer { margin-top: 70px; }
@@ -74,5 +76,15 @@ a:hover { text-decoration: underline; }
   .cols { grid-template-columns: 1fr 1fr; gap: 28px; padding-top: 40px; }
   .brand { grid-column: 1 / -1; }
   .brand .fw { font-size: 40px; }
+  /* mobile footer: name, tagline, email and language only */
+  .col-pages, .col-follow { display: none; }
+  .site-footer .col-write .lab.p { display: none; }
+  .col-write ul { margin-top: 0; }
+  .bottom { display: none; }
+  .col-write { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .lang-m { display: block; }
+  /* bigger tap targets for the footer links on touch screens */
+  ul { line-height: 1.4; }
+  ul a { display: inline-block; padding: 10px 0; }
 }
 </style>

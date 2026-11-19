@@ -129,4 +129,6 @@ const close = () => { open.value = false }
   .hint { margin-bottom: 24px; }
 }
 @media (max-width: 480px) { .beyond { --sc: .46; } }
+@media (max-width: 400px) { .beyond { --sc: .4; } }
+@media (max-width: 340px) { .beyond { --sc: .34; } }
 </style>

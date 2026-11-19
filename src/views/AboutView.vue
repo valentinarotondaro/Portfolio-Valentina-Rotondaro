@@ -24,9 +24,10 @@ const VERB_TONES = ['pink', 'lima', 'lila', 'orange']
       <div class="hero-text">
         <span class="lab p">{{ t('about.label') }}</span>
         <h1 class="statement"><RichText :parts="tm('about.title')" /></h1>
-        <a href="/img/CV Valentina Rotondaro.pdf" download class="btn line">{{ t('common.downloadCv') }}</a>
+        <a href="/img/CV Valentina Rotondaro.pdf" download class="btn line cv-desk">{{ t('common.downloadCv') }}</a>
       </div>
       <div class="blob"><img src="/img/valentina-perfil.webp" :alt="t('about.photoAlt')" /></div>
+      <a href="/img/CV Valentina Rotondaro.pdf" download class="btn line cv-mob">{{ t('common.downloadCv') }}</a>
     </section>
 
     <!-- Journey -->
@@ -96,7 +97,7 @@ const VERB_TONES = ['pink', 'lima', 'lila', 'orange']
       </div>
     </section>
 
-    <BeyondSection />
+    <BeyondSection class="m-hide" />
   </main>
 </template>
 
@@ -106,6 +107,7 @@ const VERB_TONES = ['pink', 'lima', 'lila', 'orange']
 .statement { font-size: clamp(34px, 4.4vw, 62px); line-height: 1.06; font-weight: 400; margin: 22px 0 30px; }
 .blob { position: relative; z-index: 1; width: 420px; height: 420px; border: 1.5px solid var(--ink); border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; overflow: hidden; background: var(--cream); }
 .blob img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+.cv-mob { display: none; }
 .hs { position: absolute; }
 .hs-flor { right: 50px; top: 34px; width: 100px; }
 .hs-duo { left: 46%; bottom: 56px; width: 84px; }
@@ -148,10 +150,13 @@ h2[data-reveal].in { opacity: 1; transform: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .langs.in .fill { animation: none; width: var(--w); } .row, h2[data-reveal] { opacity: 1; transform: none; transition: none; } .row::before { transform: none; transition: none; } .track { animation: none; } .fill { animation: none; width: var(--w); } }
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding: 56px var(--gutter) 60px; gap: 30px; }
-  .statement { font-size: 32px; }
+  .hero { grid-template-columns: 1fr; padding: 44px var(--gutter) 56px; gap: 34px; }
+  .statement { font-size: 29px; line-height: 1.1; margin: 14px 0 26px; text-align: justify; text-justify: inter-word; hyphens: none; overflow-wrap: normal; }
+  .m-hide { display: none; }
+  .cv-desk { display: none; }
+  .cv-mob { display: inline-flex; justify-self: center; }
   .blob { width: min(300px, 80vw); height: min(300px, 80vw); justify-self: center; }
-  .hs-flor { width: 54px; right: 14px; top: 12px; } .hs-duo, .hs-logo { display: none; }
+  .hs { display: none; }
   .row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
   .r-title { font-size: 26px; }
   .word { font-size: 64px; margin-right: 28px; }

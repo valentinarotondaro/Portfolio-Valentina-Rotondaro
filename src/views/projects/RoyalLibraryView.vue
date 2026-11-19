@@ -343,7 +343,8 @@ h2 {
   .body { font-size: 17px; }
   .vp-statement { font-size: 19px; }
   .meta-grid, .cards-3, .cards-2 { grid-template-columns: 1fr; }
-  .pair { grid-template-columns: 1fr; }
+  .pair { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pair img { aspect-ratio: 4 / 5; }
   .reels { max-width: none; }
   .body, .lead, .small, .vp-statement { text-align: justify; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
   .d-section { margin-bottom: 80px; }

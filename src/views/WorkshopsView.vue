@@ -22,7 +22,7 @@ const proposalFields = computed(() => [
 
 <template>
   <main>
-    <PageHero :label="t('workshops.label')">
+    <PageHero class="ws-hero" :label="t('workshops.label')">
       <template #title><RichText :parts="tm('workshops.title')" /></template>
       <template #actions>
         <a :href="t('workshops.signupUrl')" target="_blank" rel="noopener" class="btn pink">{{ t('workshops.ctaSignup') }} ↗</a>
@@ -31,7 +31,7 @@ const proposalFields = computed(() => [
     </PageHero>
 
     <!-- Next workshop -->
-    <section class="sec sec-tight">
+    <section class="sec sec-tight ws-next">
       <span class="lab p">{{ t('workshops.nextLabel') }}</span>
       <div class="next">
         <div class="next-info">
@@ -79,7 +79,7 @@ const proposalFields = computed(() => [
           </div>
         </div>
       </div>
-      <div class="past-video">
+      <div class="past-video pv-desk">
         <VimeoReel :src="PAST_VIDEO" title="Workshop video" ratio="16 / 9" />
       </div>
     </section>
@@ -95,6 +95,7 @@ const proposalFields = computed(() => [
       </div>
       <div class="reels">
         <VimeoReel v-for="(u, i) in WORKSHOP_REELS" :key="u" :src="u" :title="'Workshop video ' + (i + 1)" background />
+        <VimeoReel class="pv-mob" :src="PAST_VIDEO" title="Workshop video" background />
       </div>
     </section>
 
@@ -115,8 +116,8 @@ const proposalFields = computed(() => [
       <div class="b-left paper">
         <span class="lab ink">{{ t('workshops.brands.label') }}</span>
         <h2 class="brands-title">{{ t('workshops.brands.title') }}</h2>
-        <p class="b-text">{{ t('workshops.brands.text') }}</p>
-        <ul class="list">
+        <p class="b-text m-hide">{{ t('workshops.brands.text') }}</p>
+        <ul class="list m-hide">
           <li v-for="(x, i) in tm('workshops.brands.list')" :key="x.a"><span class="lab">0{{ i + 1 }}</span><span class="la">{{ x.a }}</span><span class="lb">{{ x.b }}</span></li>
         </ul>
       </div>
@@ -133,6 +134,7 @@ const proposalFields = computed(() => [
 
 <style scoped>
 .past-video { margin-top: 48px; max-width: 960px; }
+.pv-mob { display: none; }
 .gap { margin-bottom: 30px; }
 .big { font-size: clamp(30px, 3.4vw, 50px); }
 .next { margin-top: 22px; border: 1.5px solid var(--ink); border-radius: 32px; background: var(--pink); padding: 34px; display: grid; grid-template-columns: 1fr minmax(0, 600px); gap: 40px; }
@@ -200,6 +202,11 @@ const proposalFields = computed(() => [
   .photos { grid-template-columns: 1fr; } .photo { height: 220px; }
   .reviews { grid-template-columns: 1fr; }
   .brands { grid-template-columns: 1fr; margin-top: 70px; }
+  .m-hide { display: none; }
+  .ws-hero.hero { padding-bottom: 26px; }
+  .ws-next.sec { padding-top: 22px; }
+  .pv-desk { display: none; }
+  .pv-mob { display: block; }
   .b-left { padding: 40px var(--gutter); }
   .b-right { border-left: 0; border-top: 1.5px solid var(--ink); padding: 40px var(--gutter); }
   .b-card { padding: 22px; }

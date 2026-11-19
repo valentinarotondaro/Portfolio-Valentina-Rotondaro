@@ -88,7 +88,7 @@ useReveal(page)
 .all { position: relative; z-index: 2; text-align: center; margin-top: 50px; padding-bottom: 20px; }
 @media (max-width: 900px) {
   .about { grid-template-columns: 1fr; gap: 14px; }
-  .lead { font-size: 28px; }
+  .lead { font-size: 28px; text-align: justify; text-justify: inter-word; hyphens: none; }
   .huge { font-size: 30px; }
   .doors-head { flex-direction: column; align-items: flex-start; }
   .doors { grid-template-columns: 1fr; }
