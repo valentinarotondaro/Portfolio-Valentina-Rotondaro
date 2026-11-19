@@ -85,8 +85,8 @@ useReveal(page)
   .hsh-duo { left: 31vw; top: 12vh; width: 9.7vw; animation: hs-spin 55s linear infinite; }
   .hsh-v { right: 16vw; bottom: 6vh; width: 9vw; animation: hs-spin-r 70s linear infinite; }
   .about { display: flex; align-items: center; justify-content: center; gap: clamp(50px, 7.6vw, 110px); min-height: 80svh; }
-  .about-photo { display: block; flex: none; width: clamp(320px, 32vw, 460px); aspect-ratio: 1; border: 1.5px solid var(--ink); border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; overflow: hidden; background: var(--cream); }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+  .about-photo { display: block; flex: none; position: relative; width: clamp(320px, 32vw, 460px); height: clamp(320px, 32vw, 460px); border: 1.5px solid var(--ink); border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; overflow: hidden; background: var(--cream); }
+  .about-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
   .about-copy { max-width: 560px; }
   .about .lead { font-size: clamp(30px, 2.9vw, 42px); text-align: justify; text-justify: inter-word; hyphens: none; margin-bottom: 0; }
 }

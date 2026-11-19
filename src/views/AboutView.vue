@@ -19,8 +19,8 @@ const VERB_TONES = ['pink', 'lima', 'lila', 'orange']
     <!-- Hero: statement + photo -->
     <section class="hero paper">
       <BrandShape name="flor" class="hs hs-flor" />
-      <BrandShape name="duo" class="hs hs-duo" />
-      <BrandShape name="logo" class="hs hs-logo" />
+      <BrandShape name="duo" class="hs hs-duo" color="#E6ABDD" />
+      <BrandShape name="v" class="hs hs-v" color="#D9FB60" />
       <div class="hero-text">
         <span class="lab p">{{ t('about.label') }}</span>
         <h1 class="statement"><RichText :parts="tm('about.title')" /></h1>
@@ -109,9 +109,13 @@ const VERB_TONES = ['pink', 'lima', 'lila', 'orange']
 .blob img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
 .cv-mob { display: none; }
 .hs { position: absolute; }
-.hs-flor { right: 50px; top: 34px; width: 100px; }
-.hs-duo { left: 46%; bottom: 56px; width: 84px; }
-.hs-logo { right: 60px; bottom: 90px; width: 96px; }
+.hs { z-index: 0; will-change: transform; }
+.hs-flor { right: 60px; top: 20px; width: 190px; animation: ab-spin 40s linear infinite; }
+.hs-duo { left: 46%; bottom: 30px; width: 170px; animation: ab-spin 55s linear infinite; }
+.hs-v { left: 420px; bottom: 50px; width: 130px; animation: ab-spin-r 70s linear infinite; }
+@keyframes ab-spin { to { transform: rotate(360deg); } }
+@keyframes ab-spin-r { to { transform: rotate(-360deg); } }
+@media (prefers-reduced-motion: reduce) { .hs { animation: none !important; } }
 .gap { margin-bottom: 26px; }
 .row { position: relative; border-top: 0; opacity: 0; transform: translateY(34px); transition: opacity .7s ease var(--d, 0s), transform .8s cubic-bezier(.2,.7,.2,1) var(--d, 0s); }
 .row::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1.5px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.7,0,.2,1) var(--d, 0s); }
