@@ -21,10 +21,10 @@ useReveal(page)
       </template>
       <!-- desktop-only drifting shapes; the big flower bleeds off the right edge -->
       <div class="hshapes" aria-hidden="true">
-        <BrandShape name="flor" class="hsh hsh-flor" />
+        <BrandShape name="flor" class="hsh hsh-flor" color="#E6ABDD" />
         <BrandShape name="arco" class="hsh hsh-arco" color="#8C9A3E" />
         <BrandShape name="duo" class="hsh hsh-duo" />
-        <BrandShape name="v" class="hsh hsh-v" />
+        <BrandShape name="v" class="hsh hsh-v" color="#FB6417" />
       </div>
     </PageHero>
 

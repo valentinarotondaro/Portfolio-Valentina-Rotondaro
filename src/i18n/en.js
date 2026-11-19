@@ -158,7 +158,7 @@ export default {
       { t: 'cut', hl: 'pink' },
       { t: ', ' },
       { t: 'paste', hl: 'lima' },
-      { t: ' and meet people.' },
+      { t: ' and connect.' },
     ],
     ctaSignup: 'Sign up for December 4th',
     ctaBring: 'Bring one to your city',
@@ -199,7 +199,7 @@ export default {
     brands: {
       label: 'For brands, hotels & teams',
       title: 'Bring a collage workshop to your space.',
-      text: 'Guest experiences for hotels, team days for companies, community moments for libraries and shops. I bring the materials and the facilitation. Based in Aarhus and happy to travel: Copenhagen, other cities or abroad.',
+      text: 'Guest experiences for hotels, team days for companies, community moments for libraries and shops. I bring the materials and the facilitation. Based in Aarhus and happy to travel.',
       cta: 'Ask for a proposal',
       list: [
         { a: 'Hotels & stays', b: 'Guest experiences' },
