@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "./base.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* BethanyElingston: commercial font (Attract Studio). Put your licensed file in
    public/fonts/ as BethanyElingston.woff2 (and/or .otf / .ttf) and it loads everywhere. */
@@ -27,9 +26,9 @@
 
 :root {
     --black: #000000;
-    --pink: #ff6ca3;
+    --pink: #FF7BB5;
     --white: #ffffff;
-    --lima: #e0f964;
+    --lima: #D9FB60;
     --bordeaux: #7b0834;
     --brown: #876a2e;
 }
@@ -38,8 +37,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter' !important;
-    letter-spacing: -0.027em;
+    font-family: var(--font, 'HN', 'Helvetica Neue', Helvetica, Arial, sans-serif) !important;
+    letter-spacing: -0.04em;
 }
 
 body {      

@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router' // Esto importa automáticamente tu archivo router/index.js
 import './assets/main.css'
+import './assets/brand.css'
 
 // Fix: the browser's own scroll-restoration was reopening the page at
 // whatever scroll position the last session left it at (looked like the

@@ -10,15 +10,13 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: HomeView },
     { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
-    { path: '/cv', name: 'cv', component: () => import('../views/CVView.vue') },
+    // The CV now lives inside About (journey) plus a PDF download.
+    { path: '/cv', redirect: '/about' },
     { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') },
-    { 
-      path: '/Portfolio', 
-      name: 'portfolio', 
-      component: PortfolioView 
-    },    
+    { path: '/work', name: 'portfolio', alias: ['/Portfolio'], component: PortfolioView },
+    { path: '/workshops', name: 'workshops', component: () => import('../views/WorkshopsView.vue') },
     { path: '/content-creation', name: 'content-creation', component: () => import('../views/content-creation.vue') },
-{ path: '/collage', name: 'collage', component: () => import('../views/projects/CollageView.vue') },
+{ path: '/collage', redirect: '/workshops' },
     { path: '/portfolio/under', name: 'under', component: () => import('../views/projects/UnderView.vue') },
     { path: '/portfolio/content-creation', name: 'project-content-creation', component: () => import('../views/projects/ContentCreationView.vue') },
 { path: '/portfolio/departamentos-alfar', name: 'departamentos-alfar', component: () => import('../views/projects/AlfarView.vue') },    { path: '/portfolio/amada-amiga', name: 'amada-amiga', component: () => import('../views/projects/AmadaAmigaView.vue') },

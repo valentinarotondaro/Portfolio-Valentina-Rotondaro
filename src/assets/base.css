@@ -1,11 +1,11 @@
 
 :root {
-  --pink: #FF63A7;
+  --pink: #FF7BB5;
   --lime: #D9FB60;
   --white: #FFFFFF;
   --black: #000000;
   }
 
   body {
-  font-family: 'Helvetica';
+  font-family: var(--font);
 }

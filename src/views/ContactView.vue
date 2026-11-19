@@ -1,365 +1,56 @@
 <script setup>
-import { ref } from 'vue';
+import { computed } from 'vue'
+import { useI18n } from '../i18n/index.js'
+import PageHero from '../components/PageHero.vue'
+import RichText from '../components/RichText.vue'
+import MessageForm from '../components/MessageForm.vue'
 
-const emailCopied = ref(false);
-const copyEmail = () => {
-  navigator.clipboard.writeText('vrotondaro@hotmail.com');
-  emailCopied.value = true;
-  setTimeout(() => { emailCopied.value = false; }, 2000);
-};
+const { t, tm } = useI18n()
+const EMAIL = 'vrotondaro@hotmail.com'
+const fields = computed(() => [
+  { key: 'name', label: t('common.name'), required: true },
+  { key: 'email', label: t('common.email'), type: 'email', required: true },
+  { key: 'message', label: t('contact.message'), type: 'textarea', required: true },
+])
 </script>
 
 <template>
-  <div class="contact-page">
+  <main>
+    <PageHero :label="t('contact.label')">
+      <template #title><RichText :parts="tm('contact.title')" /></template>
+      <template #actions>
+        <a :href="'mailto:' + EMAIL" class="btn line">{{ EMAIL }} ↗</a>
+      </template>
+    </PageHero>
 
-    <!-- ─── CONTACT ──────────────────────────────────────── -->
-    <section class="contact-section">
-      <div class="contact-inner">
-
-        <div class="contact-left">
-          <h1 class="contact-title">Let's connect!</h1>
-          <div class="contact-links">
-  <a href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" class="contact-social">↗ LinkedIn</a>
-  <a href="https://www.instagram.com/valenrotondaro/" target="_blank" class="contact-social">↗ Instagram</a>
-  <div class="contact-email-wrap">
-    <a href="mailto:vrotondaro@hotmail.com" class="contact-email">vrotondaro@hotmail.com</a>
-    <button class="copy-btn" @click.stop="copyEmail" :class="{ copied: emailCopied }">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </button>
-  </div>
-</div>
-        </div>
-
-        <div class="contact-right">
-          <div class="contact-sticker">
-            <span class="contact-sticker-text">GREAT THINGS CAN HAPPEN <br> WITH A SIMPLE "HELLO!"</span>
+    <section class="sec sec-tight">
+      <div class="grid2">
+        <div>
+          <span class="lab p">{{ t('contact.side') }}</span>
+          <h2 class="b-h2 head">{{ tm('contact.heading')[0] }}<br />{{ tm('contact.heading')[1] }}</h2>
+          <a :href="'mailto:' + EMAIL" class="mail">{{ EMAIL }}</a>
+          <p class="text">{{ t('contact.text') }}</p>
+          <div class="links">
+            <a class="pill o" href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener">{{ t('common.instagram') }} ↗</a>
+            <a class="pill o" href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" rel="noopener">{{ t('common.linkedin') }} ↗</a>
+            <a class="pill o" href="/img/CV Valentina Rotondaro.pdf" download>{{ t('common.cv') }}</a>
           </div>
-          <img src="/img/flechaabout.png" alt="" class="contact-hola-arrow" />
-          <img src="/img/valpolaroid.png" alt="Valen" class="contact-photo" />
-          <a href="/cv" target="_blank">
-            <img src="/img/cvnote.png" alt="My CV" class="contact-cvnote" />
-          </a>
-          <img src="/img/collage.png" alt="" class="contact-collage" />
         </div>
-
+        <MessageForm subject="New message from the portfolio" :fields="fields" :topics="tm('contact.topics')" />
       </div>
     </section>
-
-  </div>
+  </main>
 </template>
 
 <style scoped>
-
-.contact-page {
-  font-family: 'BethanyElingston', sans-serif;
-  background: #fff;
-  color: #111;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-}
-
-.contact-section {
-  width: 100%;
-  padding: 10px 5% 10px;
-}
-
-.contact-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-/* ─── LEFT ──────────────────────────────────────────────── */
-.contact-left {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.contact-title {
-  font-family: 'BethanyElingston', sans-serif;
-  font-size: 90px;
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  color: black;
-  margin-bottom: 30px;
-  line-height: 1;
-}
-
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.contact-email-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.contact-email {
-  font-size: 20px;
-  color: black;
-  text-decoration: none;
-  font-weight: 400;
-}
-
-
-.contact-social {
-  font-size: 20px;
-  color: black;
-  text-decoration: none;
-  font-weight: 450;
-  transition: color 0.2s;
-}
-
-.contact-social:hover { color: #FF7BB5; }
-
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.copy-btn:hover { transform: scale(1.1); }
-.copy-btn.copied svg { stroke: #D9FB60; }
-
-/* ─── RIGHT ─────────────────────────────────────────────── */
-.contact-right {
-  position: relative;
-  width: 420px;
-  height: 520px;
-  padding: 40px;
-  margin-top: 40px; 
-}
-
-.contact-sticker {
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-  z-index: 5;
-  white-space: nowrap;
-  transform: rotate(-2deg);
-}
-
-.contact-sticker-text {
-  font-family: 'MyFont', sans-serif !important;
-  font-size: 60px;
-  letter-spacing: 0.04em;
-  line-height: 0.5;
-  color: black;
-  text-transform: uppercase;
-}
-
-.contact-hola-arrow {
- position: absolute;
-  width: 80px;
-  height: auto;
-  top: 70px;
-  left: 20px;
-  z-index: 5;
-  transform: rotate(260deg);
-}
-
-.contact-photo {
-  position: absolute;
-  width: 290px;
-  height: auto;
-  object-fit: contain;
-  top: 80px;
-  left: 100px;
-  z-index: 2;
-}
-
-.contact-cvnote {
-  position: absolute;
-  width: 160px;
-  height: auto;
-  top: 350px;
-  left: 20px;
-  z-index: 1;
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.contact-cvnote:hover {
-  transform: rotate(10deg)  !important;
-}
-
-.contact-collage {
-  position: absolute;
-  width: 130px;
-  height: auto;
-  top: 360px;
-  right: 10px;
-  z-index: 3;
-  transform: rotate(3deg);
-}
-
-/* ─── RESPONSIVE ────────────────────────────────────────── */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
+.head { margin: 12px 0 22px; }
+.mail { display: inline-block; font-size: clamp(24px, 2.6vw, 38px); line-height: 1.05; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 6px; word-break: break-all; }
+.text { font-size: 18px; color: #444; max-width: 440px; margin: 26px 0 24px; }
+.links { display: flex; gap: 10px; flex-wrap: wrap; }
+.links .pill { text-decoration: none; }
 @media (max-width: 900px) {
-  .contact-inner {
-    grid-template-columns: 1fr;
-    gap:20px;
-  }
-.contact-left {
-  display: contents;
-}
-
-.contact-title {
-  order: 1;
-  width: 100%;
-  text-align: center;
-  font-size: 52px;
-  margin-bottom: 0;
-}
-.contact-right {
-  order: 2;
-  margin: 20px auto 0;
-  padding: 0;
-  height: 250px;
-}
-
-.contact-links {
-  order: 3;
-  width: 100%;
-  align-items: center;
-  text-align: center;
-  margin-top: -20px;
-  margin-bottom: -20px;
-}
-
-.contact-email-wrap {
-  justify-content: center;
-}
-
-.contact-social {
-  text-align: center;
-}
-
-.contact-email {
-  color: black;
-}
-
-.contact-email::before {
-  content: "↗ ";
-}
-  .contact-sticker {
-    top: -10px;
-    left: 10px;
-  }
-
-  .contact-sticker-text {
-    font-size: 34px;
-  }
-
-  .contact-hola-arrow {
-    width: 55px;
-    top: 55px;
-    left: 15px;
-  }
-
-  .contact-photo {
-    width: 200px;
-    top: 60px;
-    left: 60px;
-  }
-
-  .contact-cvnote {
-    width: 110px;
-    top: 370px;
-    left: 10px;
-  }
-
-  .contact-collage {
-    width: 95px;
-    top: 305px;
-    right: 5px;
-  }
-    .contact-email {
-  font-size: 15px;
-}
-
-.contact-social {
-  font-size: 15px;
-}
-.copy-btn svg {
-  width: 13px;
-  height: 13px;
-}
-}
-
-@media (max-width: 500px) {
-  .contact-title {
-    font-size: 38px;
-  }
-
-  .contact-email,
-  .contact-social {
-    font-size: 17px;
-  }
-
-  .contact-right {
-    width: 260px;
-    height: 320px;
-  }
-
-  .contact-sticker-text {
-    font-size: 26px;
-  }
-
-  .contact-hola-arrow {
-    width: 45px;
-    top: 45px;
-    left: 10px;
-  }
-
-  .contact-photo {
-    width: 165px;
-    top: 44px;
-    left: 48px;
-  }
-
-  .contact-cvnote {
-    width: 90px;
-    top: 210px;
-    left: 8px;
-  }
-
-  .contact-collage {
-    width: 80px;
-    top: 200px;
-    right: 20px;
-    z-index: 1;
-  }
-   .contact-email {
-  font-size: 13px;
-}
-
-.contact-social {
-  font-size: 13px;
-}
-.copy-btn svg {
-  width: 11px;
-  height: 11px;
-}
+  .grid2 { grid-template-columns: 1fr; gap: 40px; }
+  .mail { font-size: 26px; }
 }
 </style>
