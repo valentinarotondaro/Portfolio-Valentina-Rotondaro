@@ -132,7 +132,7 @@ h2[data-reveal].in { opacity: 1; transform: none; }
 .ticker { overflow: hidden; margin: 26px calc(var(--gutter) * -1) 0; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); padding: 20px 0; }
 .track { display: inline-block; white-space: nowrap; animation: mq 24s linear infinite; }
 .word { font-size: clamp(54px, 6vw, 88px); line-height: 1.1; margin-right: 50px; display: inline-block; }
-.word .hl { padding: 0 .14em; border-radius: .16em; }
+.word .hl { padding: 0 .14em; }
 .skills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 36px; }
 .big { padding: 10px 20px; font-size: 16px; transition: background .2s ease, transform .25s cubic-bezier(.2,.7,.2,1); cursor: default; }
 .big:hover { transform: translateY(-4px) rotate(-2deg); }

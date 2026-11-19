@@ -56,12 +56,13 @@ body { font-family: var(--font); color: var(--ink); background: #fff; font-varia
 .muted { color: #555; }
 
 /* ── Highlight chips inside headlines ── */
-.hl { padding: 0 .12em; line-height: 1; border-radius: .16em; color: var(--ink); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-.hl-pink { background: var(--pink); }
-.hl-lima { background: var(--lima); }
-.hl-lila { background: var(--lila); }
-.hl-orange { background: var(--orange); }
-.hl-cream { background: var(--cream); }
+/* hand-drawn marker highlight: one band per line fragment, aligned to the word */
+.hl { padding: 0 .08em; line-height: 1; color: var(--ink); background-repeat: no-repeat; background-size: 100% 66%; background-position: 0 30%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hl-pink { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%2040%27%20preserveAspectRatio%3D%27none%27%3E%3Cpolygon%20fill%3D%27%23FF7BB5%27%20points%3D%271.5%2C6%205%2C0%2050%2C4%2095%2C0%2099%2C8%20100%2C50%2098.5%2C92%2094%2C100%2050%2C96%206%2C100%200%2C90%201%2C50%27%20transform%3D%27scale%281%2C.4%29%27/%3E%3C/svg%3E"); }
+.hl-lima { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%2040%27%20preserveAspectRatio%3D%27none%27%3E%3Cpolygon%20fill%3D%27%23D9FB60%27%20points%3D%271.5%2C6%205%2C0%2050%2C4%2095%2C0%2099%2C8%20100%2C50%2098.5%2C92%2094%2C100%2050%2C96%206%2C100%200%2C90%201%2C50%27%20transform%3D%27scale%281%2C.4%29%27/%3E%3C/svg%3E"); }
+.hl-lila { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%2040%27%20preserveAspectRatio%3D%27none%27%3E%3Cpolygon%20fill%3D%27%23E6ABDD%27%20points%3D%271.5%2C6%205%2C0%2050%2C4%2095%2C0%2099%2C8%20100%2C50%2098.5%2C92%2094%2C100%2050%2C96%206%2C100%200%2C90%201%2C50%27%20transform%3D%27scale%281%2C.4%29%27/%3E%3C/svg%3E"); }
+.hl-orange { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%2040%27%20preserveAspectRatio%3D%27none%27%3E%3Cpolygon%20fill%3D%27%23FB6417%27%20points%3D%271.5%2C6%205%2C0%2050%2C4%2095%2C0%2099%2C8%20100%2C50%2098.5%2C92%2094%2C100%2050%2C96%206%2C100%200%2C90%201%2C50%27%20transform%3D%27scale%281%2C.4%29%27/%3E%3C/svg%3E"); }
+.hl-cream { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%2040%27%20preserveAspectRatio%3D%27none%27%3E%3Cpolygon%20fill%3D%27%23FBFAE6%27%20points%3D%271.5%2C6%205%2C0%2050%2C4%2095%2C0%2099%2C8%20100%2C50%2098.5%2C92%2094%2C100%2050%2C96%206%2C100%200%2C90%201%2C50%27%20transform%3D%27scale%281%2C.4%29%27/%3E%3C/svg%3E"); }
 
 /* ── Buttons & pills ── */
 .btn {
