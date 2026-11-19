@@ -84,6 +84,14 @@ export default {
     ],
     filters: { all: 'All', 'UX/UI': 'UX/UI', 'Visual Design': 'Visual Design', 'Web Design': 'Web Design' },
     empty: 'No projects in this category yet.',
+    descriptions: {
+      'Danes': 'Learning Danish platform',
+      'Business DE-DK': 'Full redesign of a cross-border business website.',
+      'Departamentos Alfar': 'Booking website for rental apartments in Mar del Plata, Argentina',
+      'Lic. Aranda Coria': 'Brand identity design for a psichologist, reflecting trust and empathy.',
+      'Amada amiga': 'Unique wine label design capturing the essence of a beloved friend.',
+      'Under': 'Identity design for the Syddansk Erhvervsakademi student bar.',
+    },
   },
 
   // ───────────── CONTENT CREATION ─────────────

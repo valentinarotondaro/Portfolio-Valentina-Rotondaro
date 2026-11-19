@@ -11,7 +11,7 @@ const page = ref(null)
 const WIPES = ['pink', 'lima', 'lila']
 const filters = ['all', 'UX/UI', 'Visual Design', 'Web Design']
 
-// Titles and descriptions are project names/short blurbs (kept in English in every language).
+// Project names stay as-is in every language; descriptions come from i18n (work.descriptions).
 const projectsList = [
   {
     title: 'Danes',
@@ -60,7 +60,7 @@ const projectsList = [
 const activeFilter = ref('all')
 const shown = computed(() =>
   (activeFilter.value === 'all' ? projectsList : projectsList.filter((p) => p.cat.includes(activeFilter.value)))
-    .map((p, i) => ({ n: String(i + 1).padStart(2, '0'), title: p.title, text: p.description, img: p.image, tags: p.tags, to: p.link, color: p.color }))
+    .map((p, i) => ({ n: String(i + 1).padStart(2, '0'), title: p.title, text: tm('work.descriptions')[p.title] || p.description, img: p.image, tags: p.tags, to: p.link, color: p.color }))
 )
 useReveal(page)
 </script>

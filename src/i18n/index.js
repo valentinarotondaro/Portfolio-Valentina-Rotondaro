@@ -3,10 +3,11 @@
 // keys as en.js, import them below and flip `enabled` to true.
 import { ref, computed } from 'vue'
 import en from './en.js'
+import es from './es.js'
 
 export const LOCALES = [
   { code: 'en', label: 'English', enabled: true, messages: en },
-  { code: 'es', label: 'Español', enabled: false, messages: null },
+  { code: 'es', label: 'Español', enabled: true, messages: es },
   { code: 'fr', label: 'Français', enabled: false, messages: null },
 ]
 
@@ -22,6 +23,7 @@ function initialLocale() {
 }
 
 const locale = ref(initialLocale())
+try { document.documentElement.lang = locale.value } catch {}
 
 function lookup(messages, key) {
   return key.split('.').reduce((o, k) => (o == null ? o : o[k]), messages)
