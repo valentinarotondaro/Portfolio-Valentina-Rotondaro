@@ -30,12 +30,12 @@ defineProps({ label: { type: String, default: '' }, shapes: { type: Boolean, def
 .hs { position: absolute; }
 .hs { z-index: 0; will-change: transform; }
 .hs-flor { right: 60px; top: 20px; width: 190px; animation: ph-spin 40s linear infinite; }
-.hs-duo { left: 46%; bottom: 30px; width: 170px; animation: ph-spin 55s linear infinite; }
-.hs-v { right: 340px; bottom: 50px; width: 130px; animation: ph-spin-r 70s linear infinite; }
+.hs-duo { right: 340px; bottom: 36px; width: 150px; animation: ph-spin 55s linear infinite; }
+.hs-v { right: 310px; top: 36px; width: 130px; animation: ph-spin-r 70s linear infinite; }
 @keyframes ph-spin { to { transform: rotate(360deg); } }
 @keyframes ph-spin-r { to { transform: rotate(-360deg); } }
 @media (prefers-reduced-motion: reduce) { .hs { animation: none !important; } }
-@media (min-width: 901px) { .hero:has(.shapes) .hero-title { max-width: min(900px, 62vw); } }
+@media (min-width: 901px) { .hero:has(.shapes) { min-height: 440px; padding-bottom: 56px; } .hero:has(.shapes) .hero-title { max-width: min(900px, 62vw); } }
 @media (max-width: 900px) {
   .hero { padding: 56px var(--gutter) 70px; min-height: 0; }
   .hero-title { margin: 16px 0 26px; }

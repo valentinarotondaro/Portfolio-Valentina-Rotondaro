@@ -98,7 +98,7 @@ const close = () => { open.value = false }
 .beyond { --sc: 1.25; padding: 90px var(--gutter) 0; text-align: center; }
 .title { margin: 0; }
 .hint { margin: 10px 0 40px; font-size: 14px; color: #777; }
-.wrap { position: relative; width: calc(780px * var(--sc)); max-width: 100%; height: calc(500px * var(--sc)); margin: 0 auto; }
+.wrap { position: relative; width: calc(780px * var(--sc)); max-width: 100%; height: calc(285px * var(--sc)); margin: 0 auto; }
 .grid { position: absolute; left: calc(35px * var(--sc)); top: calc(10px * var(--sc)); width: 700px; height: 480px; transform: scale(var(--sc)); transform-origin: top left; }
 .obj { position: absolute; cursor: pointer; height: auto; transition: transform .25s ease; }
 .obj:hover { transform: scale(1.08) rotate(3deg); z-index: 10; }

@@ -102,7 +102,7 @@ const VERB_TONES = ['pink', 'lima', 'lila', 'orange']
 </template>
 
 <style scoped>
-.hero { position: relative; padding: 100px var(--gutter); overflow: hidden; display: grid; grid-template-columns: 1fr 420px; gap: 50px; align-items: center; }
+.hero { position: relative; padding: 64px var(--gutter); overflow: hidden; display: grid; grid-template-columns: 1fr 420px; gap: 50px; align-items: center; }
 .hero-text { position: relative; z-index: 1; }
 .statement { font-size: clamp(34px, 4.4vw, 62px); line-height: 1.06; font-weight: 400; margin: 22px 0 30px; }
 .blob { position: relative; z-index: 1; width: 420px; height: 420px; border: 1.5px solid var(--ink); border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; overflow: hidden; background: var(--cream); }
@@ -110,7 +110,7 @@ const VERB_TONES = ['pink', 'lima', 'lila', 'orange']
 .cv-mob { display: none; }
 .hs { position: absolute; }
 .hs { z-index: 0; will-change: transform; }
-.hs-flor { right: 60px; top: 20px; width: 190px; animation: ab-spin 40s linear infinite; }
+.hs-flor { z-index: 2; right: 50px; top: 24px; width: 170px; animation: ab-spin 40s linear infinite; }
 .hs-duo { left: 46%; bottom: 30px; width: 170px; animation: ab-spin 55s linear infinite; }
 .hs-v { left: 420px; bottom: 50px; width: 130px; animation: ab-spin-r 70s linear infinite; }
 @keyframes ab-spin { to { transform: rotate(360deg); } }
