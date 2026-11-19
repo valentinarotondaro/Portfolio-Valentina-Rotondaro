@@ -31,7 +31,7 @@ const links = computed(() => [
 
       <div class="right">
         <LangMenu />
-        <router-link to="/contact" class="cta">{{ t('nav.contact') }} ↗</router-link>
+        <router-link to="/contact" class="cta">{{ t('nav.contact') }} ↗︎</router-link>
         <button class="burger" type="button" :aria-expanded="menuOpen" aria-label="Menu" @click="menuOpen = !menuOpen">
           <span></span><span></span>
         </button>
@@ -39,7 +39,7 @@ const links = computed(() => [
 
       <nav v-if="menuOpen" class="mobile" aria-label="Mobile">
         <router-link v-for="l in links" :key="l.to" :to="l.to" :class="{ on: l.on }">{{ l.label }}</router-link>
-        <router-link to="/contact" class="mcta">{{ t('nav.contact') }} ↗</router-link>
+        <router-link to="/contact" class="mcta">{{ t('nav.contact') }} ↗︎</router-link>
       </nav>
     </header>
 

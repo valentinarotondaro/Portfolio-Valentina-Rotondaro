@@ -125,7 +125,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
             </div>
             <div>
               <span class="label">Where</span>
-              <p class="meta-v">Instagram<br /><a class="ig-link" href="https://instagram.com/valenrotondaro" target="_blank" rel="noopener">@valenrotondaro ↗</a></p>
+              <p class="meta-v">Instagram<br /><a class="ig-link" href="https://instagram.com/valenrotondaro" target="_blank" rel="noopener">@valenrotondaro ↗︎</a></p>
             </div>
             <div>
               <span class="label">Role</span>

@@ -25,7 +25,7 @@ const proposalFields = computed(() => [
     <PageHero class="ws-hero" :label="t('workshops.label')">
       <template #title><RichText :parts="tm('workshops.title')" /></template>
       <template #actions>
-        <a :href="t('workshops.signupUrl')" target="_blank" rel="noopener" class="btn pink">{{ t('workshops.ctaSignup') }} ↗</a>
+        <a :href="t('workshops.signupUrl')" target="_blank" rel="noopener" class="btn pink">{{ t('workshops.ctaSignup') }} ↗︎</a>
         <button type="button" class="btn line" @click="goBrands">{{ t('workshops.ctaBring') }}</button>
       </template>
     </PageHero>
@@ -71,7 +71,7 @@ const proposalFields = computed(() => [
           <button type="button" class="row-head" :aria-expanded="open === i" @click="toggle(i)">
             <span class="row-title">{{ w.t }}</span>
             <span class="row-desc">{{ w.d }}</span>
-            <span class="row-arrow" aria-hidden="true">{{ open === i ? '↘' : '↗' }}</span>
+            <span class="row-arrow" aria-hidden="true">{{ open === i ? '↘︎' : '↗︎' }}</span>
           </button>
           <div v-if="open === i" class="row-body">
             <div class="thumbs"><div v-for="im in w.imgs" :key="im" class="thumb"><img :src="im" alt="" loading="lazy" /></div></div>

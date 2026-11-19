@@ -123,7 +123,7 @@ const stack = [
           </div>
 
           <div class="btn-row">
-            <a href="https://www.departamentosalfarmdp.com.ar" target="_blank" rel="noopener" class="btn btn-brand">Visit live site ↗</a>
+            <a href="https://www.departamentosalfarmdp.com.ar" target="_blank" rel="noopener" class="btn btn-brand">Visit live site ↗︎</a>
           </div>
         </section>
 
@@ -236,7 +236,7 @@ const stack = [
           <h2>A real digital front door for a family business</h2>
           <p class="body">The final site gives Departamentos Alfar a real digital front door. Guests arrive already informed about the apartments, the policies and the story behind the place, and Cris spends less time answering the same questions over and over on WhatsApp. Since it is a real, ongoing family project, the site keeps evolving with new sections as the business grows.</p>
           <div class="btn-row">
-            <a href="https://www.departamentosalfarmdp.com.ar" target="_blank" rel="noopener" class="btn btn-brand">Visit live site ↗</a>
+            <a href="https://www.departamentosalfarmdp.com.ar" target="_blank" rel="noopener" class="btn btn-brand">Visit live site ↗︎</a>
           </div>
         </section>
 

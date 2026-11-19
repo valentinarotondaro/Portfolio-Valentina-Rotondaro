@@ -8,7 +8,7 @@ const { t } = useI18n()
   <footer class="site-footer">
     <router-link to="/contact" class="band" :aria-label="t('footer.talk')">
       <div class="band-track">
-        <span v-for="n in 8" :key="n" class="band-item">{{ t('footer.talk') }} ↗</span>
+        <span v-for="n in 8" :key="n" class="band-item">{{ t('footer.talk') }} ↗︎</span>
       </div>
     </router-link>
     <div class="cols">

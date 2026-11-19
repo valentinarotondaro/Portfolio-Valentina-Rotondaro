@@ -16,7 +16,7 @@ useReveal(page)
     <PageHero class="home-hero" :label="t('home.label')">
       <template #title><RichText :parts="tm('home.title')" /></template>
       <template #actions>
-        <router-link to="/contact" class="btn pink">{{ t('nav.contact') }} ↗</router-link>
+        <router-link to="/contact" class="btn pink">{{ t('nav.contact') }} ↗︎</router-link>
       </template>
     </PageHero>
 

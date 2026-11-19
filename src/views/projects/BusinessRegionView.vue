@@ -304,8 +304,8 @@ const stack = [
             <span class="label sub">Deliverables</span>
             <p class="body">Two guides handed over to the client, so the site and its social channels can keep growing without us.</p>
             <div class="btn-row">
-              <a href="/pdfs/BusinessDEDKSoMeandSEOguide.pdf" target="_blank" rel="noopener" class="btn btn-outline">↗ SoMe &amp; SEO Guide</a>
-              <a href="/pdfs/BusinessDEDKContentmanagmentmanual.pdf" target="_blank" rel="noopener" class="btn btn-outline">↗ Content Management Manual</a>
+              <a href="/pdfs/BusinessDEDKSoMeandSEOguide.pdf" target="_blank" rel="noopener" class="btn btn-outline">↗︎ SoMe &amp; SEO Guide</a>
+              <a href="/pdfs/BusinessDEDKContentmanagmentmanual.pdf" target="_blank" rel="noopener" class="btn btn-outline">↗︎ Content Management Manual</a>
             </div>
           </div>
         </section>

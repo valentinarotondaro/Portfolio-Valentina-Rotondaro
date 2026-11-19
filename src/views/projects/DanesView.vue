@@ -166,7 +166,7 @@ const campaign = [
             </div>
           </div>
 
-          <a :href="LIVE_URL" target="_blank" rel="noopener" class="btn btn-lime">Visit live site ↗</a>
+          <a :href="LIVE_URL" target="_blank" rel="noopener" class="btn btn-lime">Visit live site ↗︎</a>
         </section>
 
         <!-- CHALLENGE -->
@@ -447,8 +447,8 @@ const campaign = [
           <p class="body">I learned a lot in this project. I took it through planning, my own design system and hi-fi designs, and then built it myself in Vue and Appwrite. It includes real accounts, purchases, progress tracking, seat booking and a full admin area.</p>
           <p class="body">The project taught me to think about the data behind every screen, and to treat AI as a tool I direct and check rather than one I follow.</p>
           <div class="btn-row">
-            <a :href="LIVE_URL" target="_blank" rel="noopener" class="btn btn-lime">Visit live site ↗</a>
-            <a :href="CODE_URL" target="_blank" rel="noopener" class="btn btn-outline">View code on GitHub ↗</a>
+            <a :href="LIVE_URL" target="_blank" rel="noopener" class="btn btn-lime">Visit live site ↗︎</a>
+            <a :href="CODE_URL" target="_blank" rel="noopener" class="btn btn-outline">View code on GitHub ↗︎</a>
           </div>
         </section>
 

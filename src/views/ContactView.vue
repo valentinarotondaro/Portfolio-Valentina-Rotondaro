@@ -25,7 +25,7 @@ const fields = computed(() => [
     <PageHero :label="t('contact.label')">
       <template #title><RichText :parts="tm('contact.title')" /></template>
       <template #actions>
-        <a :href="'mailto:' + EMAIL" class="btn line">{{ EMAIL }} ↗</a>
+        <a :href="'mailto:' + EMAIL" class="btn line">{{ EMAIL }} ↗︎</a>
       </template>
     </PageHero>
 
@@ -37,8 +37,8 @@ const fields = computed(() => [
           <a :href="'mailto:' + EMAIL" class="mail m-hide">{{ EMAIL }}</a>
           <p class="text m-hide">{{ t('contact.text') }}</p>
           <div class="links m-hide">
-            <a class="pill o" href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener">{{ t('common.instagram') }} ↗</a>
-            <a class="pill o" href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" rel="noopener">{{ t('common.linkedin') }} ↗</a>
+            <a class="pill o" href="https://www.instagram.com/valenrotondaro" target="_blank" rel="noopener">{{ t('common.instagram') }} ↗︎</a>
+            <a class="pill o" href="https://www.linkedin.com/in/valentinarotondaro/" target="_blank" rel="noopener">{{ t('common.linkedin') }} ↗︎</a>
             <a class="pill o" href="/img/CV Valentina Rotondaro.pdf" download>{{ t('common.cv') }}</a>
           </div>
         </div>

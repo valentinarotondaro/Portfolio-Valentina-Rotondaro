@@ -28,7 +28,7 @@
 }
 
 html { font-synthesis: none; }
-body { font-family: var(--font); color: var(--ink); background: #fff; }
+body { font-family: var(--font); color: var(--ink); background: #fff; font-variant-emoji: text; }
 
 /* ── Layout helpers ── */
 .paper {
