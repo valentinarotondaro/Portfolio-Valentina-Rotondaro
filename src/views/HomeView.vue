@@ -13,7 +13,7 @@ useReveal(page)
 
 <template>
   <main ref="page" class="home">
-    <PageHero :label="t('home.label')">
+    <PageHero class="home-hero" :label="t('home.label')">
       <template #title><RichText :parts="tm('home.title')" /></template>
       <template #actions>
         <router-link to="/contact" class="btn pink">{{ t('nav.contact') }} ↗</router-link>
@@ -64,6 +64,10 @@ useReveal(page)
 </template>
 
 <style scoped>
+/* desktop: the first screen is only the hero; the intro text appears on scroll */
+@media (min-width: 901px) {
+  .home-hero.hero { min-height: calc(100svh - 88px); display: flex; flex-direction: column; justify-content: center; }
+}
 .about { display: grid; grid-template-columns: 200px 1fr; gap: 40px; }
 .meta { margin-top: 8px; }
 .lead { font-size: clamp(24px, 2.4vw, 34px); line-height: 1.08; margin: 0 0 30px; color: var(--ink); }
