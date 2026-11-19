@@ -175,6 +175,14 @@ const proposalFields = computed(() => [
 .list li { display: grid; grid-template-columns: 50px 1fr auto; gap: 16px; align-items: baseline; padding: 18px 0; border-top: 1.5px solid var(--ink); }
 .la { font-size: 24px; }
 .lb { font-size: 16px; color: #555; }
+.list li { position: relative; isolation: isolate; cursor: default; }
+.list li::before { content: ''; position: absolute; inset: 0 -12px; z-index: -1; background: var(--wipe); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.list li:hover::before { transform: scaleX(1); }
+.list li .la, .list li .lb { transition: transform .35s cubic-bezier(.2,.7,.2,1), color .2s ease; }
+.list li:hover .la { transform: translateX(10px); }
+.list li:hover .lb { color: var(--ink); transform: translateX(-4px); }
+.list li:nth-child(4n+1) { --wipe: var(--pink); } .list li:nth-child(4n+2) { --wipe: var(--lima); } .list li:nth-child(4n+3) { --wipe: var(--lila); } .list li:nth-child(4n) { --wipe: var(--orange); }
+@media (prefers-reduced-motion: reduce) { .list li::before, .list li .la, .list li .lb { transition: none; } }
 .b-right { background: var(--lila); border-left: 1.5px solid var(--ink); padding: 70px var(--gutter) 70px 60px; display: flex; align-items: center; }
 .b-card { width: 100%; background: #fff; border: 1.5px solid var(--ink); border-radius: 24px; padding: 34px; }
 .b-card-title { margin: 0 0 6px; font-size: 26px; font-weight: 400; }

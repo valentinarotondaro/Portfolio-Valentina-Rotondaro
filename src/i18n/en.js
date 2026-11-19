@@ -64,7 +64,7 @@ export default {
     worksLabel: 'Featured works',
     worksTitle: 'Recent Works',
     works: [
-      { n: '01', title: 'DANES', text: 'Learning Danish platform', img: '/img/daneshero.webp', tags: ['UX/UI Design', 'Web Design', 'Branding'], to: '/portfolio/danes', color: '#B20E19' },
+      { n: '01', title: 'Danes', text: 'Learning Danish platform', img: '/img/daneshero.webp', tags: ['UX/UI Design', 'Web Design', 'Branding'], to: '/portfolio/danes', color: '#B20E19' },
       { n: '02', title: 'Alfar', text: 'Booking website for rental apartments in Mar del Plata, Argentina', img: '/img/alfarhero.webp', tags: ['Web Design', 'Branding'], to: '/portfolio/departamentos-alfar', color: '#D9FB60' },
       { n: '03', title: 'Business DE-DK', text: 'Redesigning a cross-border business website.', img: '/img/businessregionhero.webp', tags: ['UX/UI', 'Web Design', 'Visual Design'], to: '/portfolio/business-dedk', color: '#5B9FC4' },
       { n: '04', title: 'Aranda Coria', text: 'A brand and website for a law firm.', img: '/img/arandaheroweb.webp', tags: ['Branding', 'Visual Design'], to: '/portfolio/lic-aranda', color: '#32295E' },
@@ -199,7 +199,7 @@ export default {
     brands: {
       label: 'For brands, hotels & teams',
       title: 'Bring a collage workshop to your space.',
-      text: 'Guest experiences for hotels, team days for companies, community moments for libraries and shops. I bring the materials and the facilitation. Based in Aarhus and happy to travel.',
+      text: 'Guest experiences for hotels, team days for companies, community moments for libraries and shops. I bring the materials and the facilitation. Open to travel when the project calls for it.',
       cta: 'Ask for a proposal',
       list: [
         { a: 'Hotels & stays', b: 'Guest experiences' },

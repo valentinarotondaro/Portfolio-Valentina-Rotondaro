@@ -38,7 +38,8 @@ onBeforeUnmount(() => document.removeEventListener('click', away))
   width: 100%; text-align: left; background: none; border: 0; border-radius: 10px; padding: 6px 12px;
   font: inherit; font-size: 17px; cursor: pointer; color: var(--ink);
 }
-.lang-list button:hover:not(:disabled), .lang-list button.on { background: var(--cream); }
+.lang-list button:hover:not(:disabled) { background: var(--cream); }
+.lang-list button.on, .lang-list button.on:hover { background: var(--pink); }
 .lang-list button:disabled { cursor: default; color: #888; }
 .soon { font-size: 12px; text-transform: uppercase; }
 </style>

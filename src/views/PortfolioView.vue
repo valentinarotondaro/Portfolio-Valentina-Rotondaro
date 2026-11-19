@@ -14,7 +14,7 @@ const filters = ['all', 'UX/UI', 'Visual Design', 'Web Design']
 // Titles and descriptions are project names/short blurbs (kept in English in every language).
 const projectsList = [
   {
-    title: 'DANES',
+    title: 'Danes',
     description: 'Learning Danish platform',
     tags: ['UX/UI Design', 'Web Design', 'Branding'],
     image: '/img/danescover.webp',
