@@ -56,8 +56,8 @@ function send() {
 .tp.tone-3:hover, .tp.tone-3.sel { background: var(--orange); }
 .tp.sel { color: var(--ink); }
 .trap { position: absolute; left: -9999px; height: 0; width: 0; opacity: 0; }
-.msg { margin: 0; font-size: 15px; }
-.msg.ok { color: #0a7a3a; }
-.msg.bad { color: #b20e19; }
+.msg { margin: 0; font-size: 19px; font-weight: 500; color: var(--ink); }
+.msg.ok::before { content: '\2713\FE0E  '; }
+.msg.bad::before { content: '\2715\FE0E  '; }
 .btn:disabled { opacity: .6; cursor: wait; }
 </style>
